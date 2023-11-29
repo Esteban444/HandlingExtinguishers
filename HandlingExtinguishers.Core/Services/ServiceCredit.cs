@@ -36,7 +36,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El credito no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El credito no existe en la base de datos." });
             }
         }
 
@@ -64,7 +64,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El credito que desea actualizar no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El credito que desea actualizar no existe en la base de datos." });
             }
         }
 
@@ -81,12 +81,12 @@ namespace HandlingExtinguishers.Core.Services
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "La credito tiene relacion con servicios no se puede borrar." });
+                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La credito tiene relacion con servicios no se puede borrar." });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "La credito no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La credito no existe en la base de datos." });
             }
 
         }

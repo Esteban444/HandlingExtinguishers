@@ -35,7 +35,7 @@ namespace ManagementFireEstinguisher.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor que solicita no existe en la base de datos" });
             }
         }
 
@@ -61,7 +61,7 @@ namespace ManagementFireEstinguisher.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -79,12 +79,12 @@ namespace ManagementFireEstinguisher.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.InternalServerError, new { Mensaje = "El peso de extintor tiene relacion con productos o detalle de servicio no se puede borrar" });
+                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El peso de extintor tiene relacion con productos o detalle de servicio no se puede borrar" });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor no existe en la base de datos" });
             }
         }
 

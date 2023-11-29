@@ -15,15 +15,12 @@ namespace HandlingFireExtinguishers.WebApi.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IValidator<LoginRequestDto> _validatorAuten;
-        private readonly IValidator<VerificacionDosPasosDTO> _validatorVerif;
         private readonly IUserService _userService;
 
-        public AccountController(IUserService userService, IValidator<LoginRequestDto> validatoraut,
-            IValidator<VerificacionDosPasosDTO> validatorVerif)
+        public AccountController(IUserService userService, IValidator<LoginRequestDto> validatoraut)
         {
             this._userService = userService;
             _validatorAuten = validatoraut;
-            _validatorVerif = validatorVerif;
         }
 
         [HttpPost("login")]

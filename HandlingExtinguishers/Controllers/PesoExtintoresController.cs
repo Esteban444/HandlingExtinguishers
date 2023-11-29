@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Extinguishers;
 using Microsoft.AspNetCore.Authorization;
@@ -24,16 +23,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Consultas()
         {
-            var pesos = await _servicioPesoExtintor.ConsultaPesoExtintor();
-            var response = new OperationResult<IEnumerable<PesoExtintorDTO>>(pesos);
+            var response = await _servicioPesoExtintor.ConsultaPesoExtintor();
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Consulta(Guid id)
         {
-            var peso = await _servicioPesoExtintor.ConsultaPorId(id);
-            var response = new OperationResult<PesoExtintorDTO>(peso);
+            var response = await _servicioPesoExtintor.ConsultaPorId(id);
             return Ok(response);
         }
 
@@ -49,8 +46,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _servicioPesoExtintor.CrearPesoExtintor(pesobase);
-                var response = new OperationResult<PesoExtintorBase>(pesobase);
+                var response = await _servicioPesoExtintor.CrearPesoExtintor(pesobase);
                 return Ok(response);
             }
         }
@@ -67,8 +63,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _servicioPesoExtintor.ActualizarPesoExtintor(id, actualizar);
-                var response = new OperationResult<PesoExtintorBase>(result);
+                var response = await _servicioPesoExtintor.ActualizarPesoExtintor(id, actualizar);
                 return Ok(response);
             }
         }
@@ -76,8 +71,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(Guid id)
         {
-            var result = await _servicioPesoExtintor.EliminarPesoExtintor(id);
-            var response = new OperationResult<PesoExtintorDTO>(result);
+            var response = await _servicioPesoExtintor.EliminarPesoExtintor(id);
             return Ok(response);
 
         }

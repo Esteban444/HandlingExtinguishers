@@ -37,7 +37,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El detalle de extintor de cliente no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El detalle de extintor de cliente no existe en la base de datos." });
             }
         }
 
@@ -67,7 +67,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El detalle extintor del cliente que desea actualizar no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El detalle extintor del cliente que desea actualizar no existe en la base de datos." });
             }
         }
 
@@ -84,12 +84,12 @@ namespace ManejoExtintores.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "La detalle extintor de este cliente tiene relaciones con otras tablas no se puede borrar." });
+                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La detalle extintor de este cliente tiene relaciones con otras tablas no se puede borrar." });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "La detalle extintor de cliente no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La detalle extintor de cliente no existe en la base de datos." });
             }
 
         }

@@ -1,5 +1,6 @@
 ﻿using HandlingExtinguisher.Infraestructure.Data;
 using HandlingExtinguisher.Infraestructure.Middleware;
+using HandlingExtinguishers.Configurations;
 using HandlingExtinguishers.Dto.Models;
 using HandlingExtinguishers.WebApi.Configurations;
 using HandlingFireExtinguisher.Core.Helpers;
@@ -15,7 +16,7 @@ builder.Services.AddContext(builder.Configuration);
 
 builder.Services.AddOptions(builder.Configuration);
 
-builder.Services.AddServices();
+builder.Services.AdddependencyInjection();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentity<Users, IdentityRole>(options =>
@@ -52,7 +53,7 @@ builder.Services.AddScoped<JwtHandler>();
 builder.Services.AddPolicyCors();
 
 builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
-                opt.TokenLifespan = TimeSpan.FromHours(2));
+                opt.TokenLifespan = TimeSpan.FromHours(1));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Dto.Clients;
-using HandlingExtinguishers.Dto;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
@@ -26,17 +25,15 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaDetalleExtClientes([FromQuery] FiltroDetalleExtClientes filtro)
         {
-            var detalleextintorclientes = await _servicioDetalleExtClientes.ConsultaDetalleClientes(filtro);
-            var resultado = new OperationResult<List<DetailExtinguisherClientDto>>(detalleextintorclientes);
-            return Ok(resultado);
+            var response = await _servicioDetalleExtClientes.ConsultaDetalleClientes(filtro);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaDetalleExtclientePorId(Guid id)
         {
-            var detalleExtintorCliente = await _servicioDetalleExtClientes.ConsultaDetalleExtClientePorId(id);
-            var resultado = new OperationResult<DetailExtinguisherClientDto>(detalleExtintorCliente);
-            return Ok(resultado);
+            var response = await _servicioDetalleExtClientes.ConsultaDetalleExtClientePorId(id);
+            return Ok(response);
         }
 
         [HttpPost]
@@ -51,9 +48,8 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var creardetalleExtintorcliente = await _servicioDetalleExtClientes.CrearDetalleExtCliente(crear);
-                var resultado = new OperationResult<BaseDetailExtinguisherClient>(creardetalleExtintorcliente);
-                return Ok(resultado);
+                var response = await _servicioDetalleExtClientes.CrearDetalleExtCliente(crear);
+                return Ok(response);
             }
         }
 
@@ -69,18 +65,16 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var actualizardetalleextintorcliente = await _servicioDetalleExtClientes.ActualizarDetalleExtCliente(id, actualizar);
-                var detalleextCliAct = new OperationResult<BaseDetailExtinguisherClient>(actualizardetalleextintorcliente);
-                return Ok(detalleextCliAct);
+                var response = await _servicioDetalleExtClientes.ActualizarDetalleExtCliente(id, actualizar);
+                return Ok(response);
             }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarCredito(Guid id)
         {
-            var resultado = await _servicioDetalleExtClientes.EliminarDetalleExtCliente(id);
-            var respuesta = new OperationResult<DetailExtinguisherClientDto>(resultado);
-            return Ok(respuesta);
+            var response = await _servicioDetalleExtClientes.EliminarDetalleExtCliente(id);
+            return Ok(response);
         }
 
     }

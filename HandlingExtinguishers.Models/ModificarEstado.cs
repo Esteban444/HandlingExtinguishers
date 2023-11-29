@@ -2,6 +2,6 @@
 {
     public class ModificarEstado
     {
-        public string Estado { get; set; }
+        public string? Estado { get; set; }
     }
 }

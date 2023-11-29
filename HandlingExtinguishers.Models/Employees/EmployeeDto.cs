@@ -5,7 +5,7 @@ namespace HandlingExtinguisher.Dto.Employees
     public class EmployeeDto : EmployeeBase
     {
         public Guid IdEmpleados { get; set; }
-        public CompanyDto? Empresa { get; set; }
+        public CompanyResponseDto? Empresa { get; set; }
 
     }
 }

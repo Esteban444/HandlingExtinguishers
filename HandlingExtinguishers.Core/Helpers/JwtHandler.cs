@@ -1,8 +1,11 @@
-﻿using HandlingExtinguishers.Dto.Models;
+﻿using HandlingExtinguisher.Core.Exceptions;
+using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -32,11 +35,8 @@ namespace HandlingFireExtinguisher.Core.Helpers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Email!)
+                new Claim(ClaimTypes.NameIdentifier, user.Id!)
             };
-
-            var userIdClaim = new Claim(ClaimTypes.NameIdentifier, user.Id);
-            claims.Add(userIdClaim);
 
             var roles = await _userManager.GetRolesAsync(user);
             foreach (var role in roles)
@@ -69,5 +69,49 @@ namespace HandlingFireExtinguisher.Core.Helpers
             return token;
         }
 
+        public TokenValidationDto ValidateCurrentToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            try
+            {
+                var mySecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtConfiguration.GetSection("securityKey").Value!));
+                TokenValidationParameters validationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = _jwtConfiguration.GetSection("validIssuer").Value,
+                    ValidAudiences = new[] { _jwtConfiguration.GetSection("validAudience").Value },
+                    IssuerSigningKeys = new[] { mySecurityKey }
+                };
+                var claimsPrincipal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+
+                return new TokenValidationDto
+                {
+                    IsSuccess = true,
+                    Claims = claimsPrincipal
+                };
+            }
+            catch (Exception)
+            {
+                throw new HandlingExceptions(HttpStatusCode.BadRequest, new { Mensaje = "The token is not valid." });
+            }
+        }
+
+        public TokenClaimsResult ValidatedClaimsCurrentToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            try
+            {
+                var claimsPrincipal = tokenHandler.ReadJwtToken(token);
+
+                return new TokenClaimsResult
+                {
+                    IsSuccess = true,
+                    Claims = claimsPrincipal.Claims
+                };
+            }
+            catch (Exception)
+            {
+                throw new HandlingExceptions(HttpStatusCode.BadRequest, new { Mensaje = "The token is not valid." });
+            }
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Inventories;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -25,8 +24,7 @@ namespace HandlingExtinguisher.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaInventarios([FromQuery] FiltroInventario filtro)
         {
-            var inventarios = await _servicioInventario.ConsultaInventarios(filtro);
-            var response = new OperationResult<IEnumerable<InventarioDTO>>(inventarios);
+            var response = await _servicioInventario.ConsultaInventarios(filtro);
             return Ok(response);
         }
 
@@ -34,8 +32,7 @@ namespace HandlingExtinguisher.WebApi.Controllers
         public async Task<IActionResult> ConsultaPorId(Guid id)
         {
 
-            var inventario = await _servicioInventario.ConsultaInventarioPorId(id);
-            var response = new OperationResult<InventarioDTO>(inventario);
+            var response = await _servicioInventario.ConsultaInventarioPorId(id);
             return Ok(response);
         }
 
@@ -51,8 +48,7 @@ namespace HandlingExtinguisher.WebApi.Controllers
             }
             else
             {
-                await _servicioInventario.CrearInventario(inventariob);
-                var response = new OperationResult<InventarioBase>(inventariob);
+                var response = await _servicioInventario.CrearInventario(inventariob);
                 return Ok(response);
             }
         }
@@ -69,8 +65,7 @@ namespace HandlingExtinguisher.WebApi.Controllers
             }
             else
             {
-                var result = await _servicioInventario.ActualizarInventario(id, actualizar);
-                var response = new OperationResult<InventarioBase>(result);
+                var response = await _servicioInventario.ActualizarInventario(id, actualizar);
                 return Ok(response);
             }
         }
@@ -78,8 +73,7 @@ namespace HandlingExtinguisher.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(Guid id)
         {
-            var result = await _servicioInventario.EliminarInventario(id);
-            var response = new OperationResult<InventarioBase>(result);
+            var response = await _servicioInventario.EliminarInventario(id);
             return Ok(response);
 
         }

@@ -38,7 +38,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El  detalle  de servicio que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El  detalle  de servicio que solicita no existe en la base de datos" });
             }
         }
 
@@ -69,7 +69,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El detalle de servicio que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El detalle de servicio que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -87,12 +87,12 @@ namespace ManejoExtintores.Core.Servicios
                 catch (Exception)
                 {
 
-                    throw new HandlingExcepciones(HttpStatusCode.InternalServerError, new { Mensaje = "El detalle de  servicio tiene relaciones con otros datos no se puede borrar" });
+                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El detalle de  servicio tiene relaciones con otros datos no se puede borrar" });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El detalle de servicio no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El detalle de servicio no existe en la base de datos" });
             }
         }
     }

@@ -36,7 +36,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El producto que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El producto que solicita no existe en la base de datos" });
             }
         }
 
@@ -63,7 +63,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El producto que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El producto que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -81,12 +81,12 @@ namespace ManejoExtintores.Core.Servicios
                 catch (Exception)
                 {
 
-                    throw new HandlingExcepciones(HttpStatusCode.InternalServerError, new { mensaje = "El producto tiene relacion con inventario no se puede borrar" });
+                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { mensaje = "El producto tiene relacion con inventario no se puede borrar" });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { mensaje = "El producto no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El producto no existe en la base de datos" });
             }
         }
     }

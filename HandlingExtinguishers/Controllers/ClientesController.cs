@@ -2,7 +2,6 @@
 using HandlinExtinguisher.Dto.Clients;
 using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Dto.Clients;
-using HandlingExtinguishers.Dto;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,16 +24,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet("clients")]
         public async Task<IActionResult> Searchs([FromQuery] FilterClient filter)
         {
-            var clients = await _serviceClient.GetClients(filter);
-            var response = new OperationResult<IEnumerable<ClientDto>>(clients);
+            var response = await _serviceClient.GetClients(filter);
             return Ok(response);
         }
 
         [HttpGet("search-by/{clientId}")]
         public async Task<IActionResult> Search(Guid clientId)
         {
-            var client = await _serviceClient.GetClient(clientId);
-            var response = new OperationResult<ClientDto>(client);
+            var response = await _serviceClient.GetClient(clientId);
             return Ok(response);
         }
 
@@ -50,8 +47,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _serviceClient.CreateClient(client);
-                var response = new OperationResult<BaseClient>(client);
+                var response = await _serviceClient.CreateClient(client);
                 return Ok(response);
             }
         }
@@ -68,8 +64,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _serviceClient.UpdateClient(clientId, request);
-                var response = new OperationResult<BaseClient>(result);
+                var response = await _serviceClient.UpdateClient(clientId, request);
                 return Ok(response);
             }
         }
@@ -77,8 +72,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("delete/{clientId}")]
         public async Task<IActionResult> DeleteClient(Guid clientId)
         {
-            var result = await _serviceClient.DeleteClient(clientId);
-            var response = new OperationResult<ClientDto>(result);
+            var response = await _serviceClient.DeleteClient(clientId);
             return Ok(response);
 
         }

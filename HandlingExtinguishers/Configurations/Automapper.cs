@@ -39,7 +39,7 @@ namespace HandlingExtinguishers.WebApi.Configurations
             CreateMap<DetailExtinguisherClient, DetailExtinguisherClientDto>()
                 .ForMember(x => x.Client, y => y.MapFrom(z => z.Clientes));
 
-            CreateMap<Companies, CompanyDto>().ReverseMap();
+            CreateMap<Companies, CompanyResponseDto>().ReverseMap();
             CreateMap<Companies, CompanyBase>().ReverseMap();
 
             CreateMap<Employee, EmployeeDto>()

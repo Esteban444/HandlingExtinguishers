@@ -20,12 +20,12 @@ namespace HandlingEstinguishers.Core.Servicios
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CompanyDto>> GetCompanies()
+        public async Task<IEnumerable<CompanyResponseDto>> GetCompanies()
         {
             try
             {
                 var result = await _repositoryCompany.GetAll().ToListAsync();
-                var response = _mapper.Map<IEnumerable<CompanyDto>>(result);
+                var response = _mapper.Map<IEnumerable<CompanyResponseDto>>(result);
                 return response;
             }
             catch (Exception)
@@ -34,16 +34,16 @@ namespace HandlingEstinguishers.Core.Servicios
             }
         }
 
-        public async Task<CompanyDto> GetCompany(Guid companyId)
+        public async Task<CompanyResponseDto> GetCompany(Guid companyId)
         {
             var result = await _repositoryCompany.FindByAsNoTracking(x => x.Id == companyId).FirstOrDefaultAsync();
             if (result != null)
             {
-                return _mapper.Map<CompanyDto>(result);
+                return _mapper.Map<CompanyResponseDto>(result);
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "La empresa que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa que solicita no existe en la base de datos" });
             }
         }
 
@@ -73,11 +73,11 @@ namespace HandlingEstinguishers.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "La empresa que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa que desea actualizar no existe en la base de datos" });
             }
         }
 
-        public async Task<CompanyDto> DeleteCompany(Guid companyId)
+        public async Task<CompanyResponseDto> DeleteCompany(Guid companyId)
         {
             var company = await _repositoryCompany.FindBy(e => e.Id == companyId).FirstOrDefaultAsync();
             if (company != null)
@@ -85,17 +85,17 @@ namespace HandlingEstinguishers.Core.Servicios
                 try
                 {
                     await _repositoryCompany.Delete(company);
-                    var response = _mapper.Map<CompanyDto>(company);
+                    var response = _mapper.Map<CompanyResponseDto>(company);
                     return response;
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "La empresa tiene relacion con empleados no se puede borrar" });
+                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa tiene relacion con empleados no se puede borrar" });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "La empresa no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa no existe en la base de datos" });
             }
         }
     }

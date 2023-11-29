@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Prices;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -25,16 +24,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultasPrecios([FromQuery] FiltroPrecios filtro)
         {
-            var precios = await _servicioPrecios.ConsultaPrecios(filtro);
-            var response = new OperationResult<IEnumerable<PrecioDTO>>(precios);
+            var response = await _servicioPrecios.ConsultaPrecios(filtro);
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaPrecio(Guid id)
         {
-            var precio = await _servicioPrecios.ConsultaPor(id);
-            var response = new OperationResult<PrecioDTO>(precio);
+            var response = await _servicioPrecios.ConsultaPor(id);
             return Ok(response);
         }
 
@@ -50,8 +47,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _servicioPrecios.CrearPrecio(preciobase);
-                var response = new OperationResult<PrecioBase>(preciobase);
+                var response = await _servicioPrecios.CrearPrecio(preciobase);
                 return Ok(response);
             }
         }
@@ -68,8 +64,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _servicioPrecios.ActualizarPrecio(id, actualizar);
-                var response = new OperationResult<PrecioBase>(result);
+                var response = await _servicioPrecios.ActualizarPrecio(id, actualizar);
                 return Ok(response);
             }
         }
@@ -77,8 +72,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarPrecios(Guid id)
         {
-            var result = await _servicioPrecios.EliminarPrecio(id);
-            var response = new OperationResult<PrecioDTO>(result);
+            var response = await _servicioPrecios.EliminarPrecio(id);
             return Ok(response);
 
         }

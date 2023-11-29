@@ -37,7 +37,7 @@ namespace ManagementFireEstinguisher.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El inventario que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El inventario que solicita no existe en la base de datos" });
             }
         }
 
@@ -68,7 +68,7 @@ namespace ManagementFireEstinguisher.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El inventario que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El inventario que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -85,12 +85,12 @@ namespace ManagementFireEstinguisher.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.InternalServerError, new { Mensaje = "El inventario tiene relacion con productos no se puede borrar" });
+                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El inventario tiene relacion con productos no se puede borrar" });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El inventario no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El inventario no existe en la base de datos" });
             }
         }
 

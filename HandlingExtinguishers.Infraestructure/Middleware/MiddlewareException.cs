@@ -34,7 +34,7 @@ namespace HandlingExtinguisher.Infraestructure.Middleware
             object errores = null;
             switch (e)
             {
-                case HandlingExcepciones me:
+                case HandlingExceptions me:
                     logger.LogError(e, "Error handling");
                     errores = new { Mensage = me.Error };
                     context.Response.StatusCode = (int)me.Code;

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto;
 using ManagementFireEstinguisher.Dto.Services;
@@ -24,21 +23,19 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaServicios([FromQuery] FiltroServicios filtros)
         {
-            var servicios = await _serviciodeServicio.ConsultarServicios(filtros);
-            var response = new OperationResult<IEnumerable<ServicioDTO>>(servicios);
+            var response = await _serviciodeServicio.ConsultarServicios(filtros);
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaPorId(Guid id)
         {
-            var servicio = await _serviciodeServicio.ConsultaServicio(id);
-            var response = new OperationResult<ServicioDTO>(servicio);
+            var response = await _serviciodeServicio.ConsultaServicio(id);
             return Ok(response);
         }
 
         [HttpPost("Crear-Servicio-Detalle")]
-        public IActionResult CreacionDetalleServicio(ServicioBase serviciobase)
+        public async Task<IActionResult> CreacionDetalleServicio(ServicioBase serviciobase)
         {
             var Validacion = _validator.Validate(serviciobase);
             if (!Validacion.IsValid)
@@ -49,9 +46,8 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                _serviciodeServicio.CrearServicioDetalle(serviciobase);
-                var respuesta = new OperationResult<ServicioBase>(serviciobase);
-                return Ok(respuesta);
+                var response = await _serviciodeServicio.CrearServicioDetalle(serviciobase);
+                return Ok(response);
             }
         }
 
@@ -67,8 +63,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _serviciodeServicio.CrearServicios(serviciob);
-                var response = new OperationResult<ServicioBase>(serviciob);
+                var response = await _serviciodeServicio.CrearServicios(serviciob);
                 return Ok(response);
             }
         }
@@ -76,9 +71,8 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpPut("modificar-estado")]
         public async Task<IActionResult> ModificarEstado(Guid id, ModificarEstado modificar)
         {
-            var resultado = await _serviciodeServicio.ActualizarEstado(id, modificar);
-            var respuesta = new OperationResult<ModificarEstado>(resultado);
-            return Ok(respuesta);
+            var response = await _serviciodeServicio.ActualizarEstado(id, modificar);
+            return Ok(response);
         }
 
         [HttpPut("{id}")]
@@ -93,18 +87,16 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var resultado = await _serviciodeServicio.ActualizarServicios(id, actualizar);
-                var respuesta = new OperationResult<ServicioBase>(resultado);
-                return Ok(respuesta);
+                var response = await _serviciodeServicio.ActualizarServicios(id, actualizar);
+                return Ok(response);
             }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(Guid id)
         {
-            var resultado = await _serviciodeServicio.EliminarServicios(id);
-            var respuesta = new OperationResult<ServicioDTO>(resultado);
-            return Ok(respuesta);
+            var response = await _serviciodeServicio.EliminarServicios(id);
+            return Ok(response);
         }
     }
 }

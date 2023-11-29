@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Extinguishers;
 using Microsoft.AspNetCore.Authorization;
@@ -24,16 +23,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Consultas()
         {
-            var tipos = await _servicioTExtintor.ConsultaTipoExtintor();
-            var response = new OperationResult<IEnumerable<TipoExtintorDTO>>(tipos);
+            var response = await _servicioTExtintor.ConsultaTipoExtintor();
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaTipoExtPorId(Guid id)
         {
-            var tipo = await _servicioTExtintor.ConsultaTipoId(id);
-            var response = new OperationResult<TipoExtintorDTO>(tipo);
+            var response = await _servicioTExtintor.ConsultaTipoId(id);
             return Ok(response);
         }
 
@@ -49,8 +46,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _servicioTExtintor.CrearTipoExtintor(tipobase);
-                var response = new OperationResult<TipoExtintorBase>(tipobase);
+                var response = await _servicioTExtintor.CrearTipoExtintor(tipobase);
                 return Ok(response);
             }
         }
@@ -67,8 +63,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _servicioTExtintor.ActualizarTipoExtintor(id, actualizar);
-                var response = new OperationResult<TipoExtintorBase>(result);
+                var response = await _servicioTExtintor.ActualizarTipoExtintor(id, actualizar);
                 return Ok(response);
             }
         }
@@ -76,8 +71,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarTipoExt(Guid id)
         {
-            var result = await _servicioTExtintor.EliminarTipoExtintor(id);
-            var response = new OperationResult<TipoExtintorDTO>(result);
+            var response = await _servicioTExtintor.EliminarTipoExtintor(id);
             return Ok(response);
 
         }

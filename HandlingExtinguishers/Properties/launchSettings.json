@@ -26,7 +26,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7206;http://localhost:5064"
+      "applicationUrl": "https://localhost:5001;http://localhost:5002"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
@@ -34,8 +34,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:12781",
-      "sslPort": 44368
+      "applicationUrl": "http://localhost:5001",
+      "sslPort": 5001
     }
   }
 }

@@ -38,11 +38,11 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El servicio que solicita no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio que solicita no existe en la base de datos." });
             }
         }
 
-        public ServicioBase CrearServicioDetalle(ServicioBase serviciob)
+        public async Task<ServicioBase> CrearServicioDetalle(ServicioBase serviciob)
         {
             // await _repositorio.Add(serviciob);
             serviciob = _mapper.Map<ServicioBase>(serviciob);
@@ -70,7 +70,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El servicio que desea actualizarle el estado no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio que desea actualizarle el estado no existe en la base de datos" });
             }
         }
 
@@ -91,7 +91,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El servicio que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -108,12 +108,12 @@ namespace ManejoExtintores.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.InternalServerError, new { Mensaje = "El servicio tiene relaciones con otros datos no se puede borrar." });
+                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El servicio tiene relaciones con otros datos no se puede borrar." });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El servicio no existe en la base de datos." });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio no existe en la base de datos." });
             }
         }
     }

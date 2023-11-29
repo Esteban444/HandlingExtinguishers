@@ -36,7 +36,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El empleado que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado que solicita no existe en la base de datos" });
             }
         }
 
@@ -66,7 +66,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El empleado que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -81,7 +81,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El empleado no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado no existe en la base de datos" });
             }
         }
     }

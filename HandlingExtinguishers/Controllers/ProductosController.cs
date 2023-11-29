@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Products;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -25,16 +24,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaProductos([FromQuery] FiltroProductos filtros)
         {
-            var productos = await _servicioProducto.ConsultaProductos(filtros);
-            var response = new OperationResult<IEnumerable<ProductoDTO>>(productos);
+            var response = await _servicioProducto.ConsultaProductos(filtros);
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaProductoPorId(Guid id)
         {
-            var producto = await _servicioProducto.ConsultaPorId(id);
-            var response = new OperationResult<ProductoDTO>(producto);
+            var response = await _servicioProducto.ConsultaPorId(id);
             return Ok(response);
         }
 
@@ -50,8 +47,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _servicioProducto.CrearProducto(productobase);
-                var response = new OperationResult<ProductoBase>(productobase);
+                var response = await _servicioProducto.CrearProducto(productobase);
                 return Ok(response);
             }
         }
@@ -68,8 +64,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _servicioProducto.ActualizarProducto(id, actualizar);
-                var response = new OperationResult<ProductoBase>(result);
+                var response = await _servicioProducto.ActualizarProducto(id, actualizar);
                 return Ok(response);
             }
         }
@@ -77,8 +72,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(Guid id)
         {
-            var result = await _servicioProducto.EliminarProducto(id);
-            var response = new OperationResult<ProductoBase>(result);
+            var response = await _servicioProducto.EliminarProducto(id);
             return Ok(response);
 
         }

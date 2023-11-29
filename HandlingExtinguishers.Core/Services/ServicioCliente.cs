@@ -45,7 +45,7 @@ namespace HandlingFireExtinguisher.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El cliente que solicita no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El cliente que solicita no existe en la base de datos" });
             }
         }
 
@@ -78,7 +78,7 @@ namespace HandlingFireExtinguisher.Core.Services
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El cliente que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El cliente que desea actualizar no existe en la base de datos" });
             }
         }
 
@@ -95,12 +95,12 @@ namespace HandlingFireExtinguisher.Core.Services
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExcepciones(HttpStatusCode.InternalServerError, new { Mensaje = "El cliente tiene relacion con un servicio no se puede borrar" });
+                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El cliente tiene relacion con un servicio no se puede borrar" });
                 }
             }
             else
             {
-                throw new HandlingExcepciones(HttpStatusCode.NotFound, new { Mensaje = "El cliente no existe en la base de datos" });
+                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El cliente no existe en la base de datos" });
             }
         }
     }

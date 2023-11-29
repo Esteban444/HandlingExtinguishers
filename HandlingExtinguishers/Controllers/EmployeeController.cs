@@ -1,15 +1,15 @@
 ﻿using FluentValidation;
 using HandlingExtinguisher.Dto.Employees;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto;
 using ManejoExtintores.Core.Filtros_Busqueda;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HandlingExtinguishers.WebApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private readonly IServiceEmployee _serviceEmployee;
@@ -24,16 +24,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet("employees")]
         public async Task<IActionResult> Employees([FromQuery] FiltroEmpleados filtros)
         {
-            var employees = await _serviceEmployee.ConsultaEmpleados(filtros);
-            var response = new OperationResult<IEnumerable<EmployeeDto>>(employees);
+            var response = await _serviceEmployee.ConsultaEmpleados(filtros);
             return Ok(response);
         }
 
         [HttpGet("employee-by/{idEmployee}")]
         public async Task<IActionResult> EmployeeById(Guid idEmployee)
         {
-            var empleado = await _serviceEmployee.ConsultaEmpleadoPorId(idEmployee);
-            var response = new OperationResult<EmployeeDto>(empleado);
+            var response = await _serviceEmployee.ConsultaEmpleadoPorId(idEmployee);
             return Ok(response);
         }
 
@@ -49,8 +47,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _serviceEmployee.CrearEmpleado(empleadob);
-                var response = new OperationResult<EmployeeBase>(empleadob);
+                var response = await _serviceEmployee.CrearEmpleado(empleadob);
                 return Ok(response);
             }
         }
@@ -67,8 +64,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _serviceEmployee.ActualizarEmpleado(idEmployee, actualizar);
-                var response = new OperationResult<EmployeeBase>(result);
+                var response = await _serviceEmployee.ActualizarEmpleado(idEmployee, actualizar);
                 return Ok(response);
             }
         }
@@ -76,8 +72,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("delete/{idEmployee}")]
         public async Task<IActionResult> EliminarEmpleado(Guid idEmployee)
         {
-            var result = await _serviceEmployee.EliminarEmpleado(idEmployee);
-            var response = new OperationResult<EmployeeDto>(result);
+            var response = await _serviceEmployee.EliminarEmpleado(idEmployee);
             return Ok(response);
 
         }

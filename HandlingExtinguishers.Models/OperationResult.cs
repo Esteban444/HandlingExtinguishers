@@ -1,12 +1,20 @@
-﻿
-namespace HandlingExtinguishers.Dto
+﻿namespace HandlingExtinguisher.Dto
 {
-    public class OperationResult<T>
+    public class OperationResult
     {
-        public OperationResult(T data)
+
+        public OperationResult()
         {
-            Data = data;
+            Errors = Array.Empty<string>();
         }
-        public T Data { get; set; }
+
+        public bool IsSuccess { get; set; }
+        public IEnumerable<string> Errors { get; set; }
+
+        public override string ToString()
+        {
+            return string.Join(" • ", Errors);
+        }
+
     }
 }

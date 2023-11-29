@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
-using HamdlingExtinguisher.Dto.Users;
+using HandlingExtinguisher.Core.Exceptions;
+using HandlingExtinguisher.Dto;
 using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Dto.Models;
 using HandlingFireExtinguisher.Core.Helpers;
 using ManagementFireEstinguisher.Dto.Users;
 using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Security.Claims;
 
 namespace HandlingExtinguishers.Core.Services
 {
@@ -35,10 +39,10 @@ namespace HandlingExtinguishers.Core.Services
                     if (await _userManager.IsLockedOutAsync(user))
                     {
 
-                        return new AuthResponseDto { MensajeError = "The account is blocked." };
+                        return new AuthResponseDto { Errors = new string[] { "The account is blocked." } };
                     }
 
-                    return new AuthResponseDto { MensajeError = "Invalid authentication." };
+                    return new AuthResponseDto { Errors = new string[] { "Invalid authentication." } };
                 }
 
 
@@ -46,7 +50,7 @@ namespace HandlingExtinguishers.Core.Services
 
                 await _userManager.ResetAccessFailedCountAsync(user);
 
-                return new AuthResponseDto { AuthExitosa = true, Token = token };
+                return new AuthResponseDto { IsSuccess = true, Token = token };
             }
             catch (Exception)
             {
@@ -54,16 +58,36 @@ namespace HandlingExtinguishers.Core.Services
             }
         }
 
-        public Task<AuthResponseDto> RefreshToken(string token)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<RegisterResponseDto> Register(RegisterUserDto request)
+        public async Task<AuthResponseDto> RefreshToken(string token)
         {
             try
             {
-                var response = new RegisterResponseDto();
+                var validateResult =  _jwtHandler.ValidateCurrentToken(token);
+                var oldClams =  _jwtHandler.ValidatedClaimsCurrentToken(token);
+                var handler = new JwtSecurityTokenHandler();
+                var expiredToken = handler.ReadToken(token) as JwtSecurityToken;
+                var userId = expiredToken?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                var user = await _userManager.FindByIdAsync(userId!) ?? throw new HandlingExceptions(HttpStatusCode.BadRequest, new { Mensaje = "The user was not found in the database." });
+                var result = await _jwtHandler.CreateToken(user);
+                AuthResponseDto response = new();
+                if (result != null)
+                {
+                   response.IsSuccess = true;
+                   response.Token = result;
+                }
+                return response;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<OperationResult> Register(RegisterUserDto request)
+        {
+            try
+            {
+                var response = new OperationResult();
 
                 var user = _mapper.Map<Users>(request);
 

@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
@@ -24,17 +23,15 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaCreditos([FromQuery] FiltroCreditos filtro)
         {
-            var creditos = await _serviciCreditos.ConsultaCreditos(filtro);
-            var respuesta = new OperationResult<List<CreditoServiciosDTO>>(creditos);
-            return Ok(respuesta);
+            var response = await _serviciCreditos.ConsultaCreditos(filtro);
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaporId(Guid id)
         {
-            var credito = await _serviciCreditos.ConsultaCreditoPorId(id);
-            var respuesta = new OperationResult<CreditoServiciosDTO>(credito);
-            return Ok(respuesta);
+            var response = await _serviciCreditos.ConsultaCreditoPorId(id);
+            return Ok(response);
         }
 
         [HttpPost]
@@ -49,9 +46,8 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var creditoC = await _serviciCreditos.CrearCredito(crearcredito);
-                var respueta = new OperationResult<CreditoServicioBase>(creditoC);
-                return Ok(respueta);
+                var response = await _serviciCreditos.CrearCredito(crearcredito);
+                return Ok(response);
             }
         }
 
@@ -67,17 +63,15 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var creditoAc = await _serviciCreditos.ActualizarCredito(id, actualizar);
-                var creditoAdt = new OperationResult<CreditoServicioBase>(creditoAc);
-                return Ok(creditoAdt);
+                var response = await _serviciCreditos.ActualizarCredito(id, actualizar);
+                return Ok(response);
             }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarCredito(Guid id)
         {
-            var result = await _serviciCreditos.EliminarCredito(id);
-            var response = new OperationResult<CreditoServiciosDTO>(result);
+            var response = await _serviciCreditos.EliminarCredito(id);
             return Ok(response);
         }
     }

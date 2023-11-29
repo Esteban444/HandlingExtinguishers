@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using HandlingExtinguishers.Dto;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Expenses;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -26,16 +25,14 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaGastos([FromQuery] FiltrosGastos filtros)
         {
-            var gastos = await _servicioGasto.GetGastos(filtros);
-            var response = new OperationResult<IEnumerable<GastosDTO>>(gastos);
+            var response = await _servicioGasto.GetGastos(filtros);
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaGastoPorId(Guid id)
         {
-            var gasto = await _servicioGasto.GetGasto(id);
-            var response = new OperationResult<GastosDTO>(gasto);
+            var response = await _servicioGasto.GetGasto(id);
             return Ok(response);
         }
 
@@ -51,8 +48,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                await _servicioGasto.CrearGasto(gastosbase);
-                var response = new OperationResult<GastosBase>(gastosbase);
+                var response = await _servicioGasto.CrearGasto(gastosbase);
                 return Ok(response);
             }
         }
@@ -69,8 +65,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
             }
             else
             {
-                var result = await _servicioGasto.ActualizarGasto(id, actualizar);
-                var response = new OperationResult<GastosBase>(result);
+                var response = await _servicioGasto.ActualizarGasto(id, actualizar);
                 return Ok(response);
             }
         }
@@ -78,8 +73,7 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(Guid id)
         {
-            var result = await _servicioGasto.EliminarGasto(id);
-            var response = new OperationResult<GastosDTO>(result);
+            var response = await _servicioGasto.EliminarGasto(id);
             return Ok(response);
 
         }

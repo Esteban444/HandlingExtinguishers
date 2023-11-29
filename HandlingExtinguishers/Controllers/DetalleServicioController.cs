@@ -1,5 +1,4 @@
 ﻿using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto;
 using ManagementFireEstinguisher.Dto.Services;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
@@ -22,40 +21,35 @@ namespace HandlingExtinguishers.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultaDetalles([FromQuery] FiltroDetalleServicio filtro)
         {
-            var detalles = await _servicioDetalle.ConsultaDetalles(filtro);
-            var response = new OperationResult<IEnumerable<DetalleServicioDTO>>(detalles);
+            var response = await _servicioDetalle.ConsultaDetalles(filtro);
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> ConsultaPorId(Guid id)
         {
-            var detalle = await _servicioDetalle.ConsultaDetallePorId(id);
-            var response = new OperationResult<DetalleServicioDTO>(detalle);
+            var response = await _servicioDetalle.ConsultaDetallePorId(id);
             return Ok(response);
         }
 
         [HttpPost]
         public async Task<IActionResult> CrearDetalle(DetalleServicioBase creardetalle)
         {
-            var detallecreado = await _servicioDetalle.CrearDetalles(creardetalle);
-            var response = new OperationResult<DetalleServicioBase>(detallecreado);
+            var response = await _servicioDetalle.CrearDetalles(creardetalle);
             return Ok(response);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarDetalles(Guid id, DetalleServicioBase actualizar)
         {
-            var result = await _servicioDetalle.ActualizarDetalle(id, actualizar);
-            var response = new OperationResult<DetalleServicioBase>(result);
+            var response = await _servicioDetalle.ActualizarDetalle(id, actualizar);
             return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(Guid id)
         {
-            var result = await _servicioDetalle.EliminarDetalle(id);
-            var response = new OperationResult<DetalleServicioDTO>(result);
+            var response = await _servicioDetalle.EliminarDetalle(id);
             return Ok(response);
 
         }
