@@ -1,7 +1,7 @@
 ﻿using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 
-namespace HandlingFireExtinguisher.Contracts.Interfaces.Services
+namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
     public interface IServicieCredit
     {

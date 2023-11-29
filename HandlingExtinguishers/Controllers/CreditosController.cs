@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Dto;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;

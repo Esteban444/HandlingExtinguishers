@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Dto.Models;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using System.Data.Entity;
 using System.Net;
 
-namespace ManejoExtintores.Core.Servicios
+namespace HandlingExtinguishers.Core.Services
 {
     public class ServiceCredit : IServicieCredit
     {
