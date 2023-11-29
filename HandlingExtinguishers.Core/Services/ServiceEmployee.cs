@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto.Employees;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Dto.Models;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using System.Data.Entity;
 using System.Net;
 
-namespace ManagementFireEstinguisher.Core.Servicios
+namespace HandlingExtinguishers.Core.Services
 {
     public class ServiceEmployee : IServiceEmployee
     {
