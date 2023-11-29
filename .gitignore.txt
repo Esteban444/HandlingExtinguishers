@@ -14,3 +14,7 @@
 *.bak
 [Dd]ebug/
 [Rr]elease/
+
+# Ignorar la carpeta bin y obj
+bin/
+obj/
