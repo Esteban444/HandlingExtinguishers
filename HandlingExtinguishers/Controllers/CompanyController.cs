@@ -1,7 +1,9 @@
 ﻿using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Dto.Company;
+using HandlingExtinguishers.Dto.Pagination;
 using HandlingExtinguishers.Models;
+using HandlingExtinguishers.Models.Company;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,13 +21,13 @@ namespace HandlingExtinguishers.WebApi.Controllers
             _serviceCompany = serviceCompany;
         }
 
-        [HttpGet("list-company")]
-        [ProducesResponseType(typeof(IEnumerable<CompanyResponseDto>), 200)]
+        [HttpGet("search-company")]
+        [ProducesResponseType(typeof(FilterCompanyResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> Companies()
+        public async Task<IActionResult> Companies([FromQuery] QueryParameter filter)
         {
-            var response = await _serviceCompany.GetCompanies();
+            var response = await _serviceCompany.GetCompanies(filter);
             return Ok(response);
         }
 

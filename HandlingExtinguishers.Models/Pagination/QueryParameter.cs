@@ -15,8 +15,8 @@
 
         public QueryParameter(int pageNumber, int pageSize, string oderby, string search)
         {
-            this.PageNumber = pageNumber < 1 ? 1 : pageNumber;
-            this.PageSize = pageSize < 1 ? 10 : pageSize > 100 ? 30 : pageSize;
+            this.PageNumber = pageNumber <= 1 ? 1 : pageNumber;
+            this.PageSize = pageSize <= 1 ? 10 : pageSize > 100 ? 30 : pageSize;
             this.OrderBy = string.IsNullOrEmpty(oderby) ? "Id" : oderby;
             this.Search = string.IsNullOrEmpty(search) ? "" : search; ;
         }

@@ -1,0 +1,15 @@
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net7.0\HandlingExtinguishers.Contracs.deps.json
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net7.0\HandlingExtinguishers.Contracs.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net7.0\HandlingExtinguishers.Contracs.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net7.0\HandlingExtinguishers.Models.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net7.0\HandlingExtinguishers.Models.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.csproj.AssemblyReference.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.AssemblyInfoInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.AssemblyInfo.cs
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.csproj.CoreCompileInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.csproj.CopyComplete
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\refint\HandlingExtinguishers.Contracs.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\HandlingExtinguishers.Contracs.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net7.0\ref\HandlingExtinguishers.Contracs.dll

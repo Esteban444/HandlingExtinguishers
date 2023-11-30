@@ -4,6 +4,9 @@ using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Dto.Company;
 using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Dto.Pagination;
+using HandlingExtinguishers.Models.Company;
+using HandlingFireExtinguisher.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 
@@ -20,12 +23,24 @@ namespace HandlingEstinguishers.Core.Servicios
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CompanyResponseDto>> GetCompanies()
+        public async Task<FilterCompanyResponseDto> GetCompanies(QueryParameter filter)
         {
             try
             {
-                var result = await _repositoryCompany.GetAll().ToListAsync();
-                var response = _mapper.Map<IEnumerable<CompanyResponseDto>>(result);
+                var response = new FilterCompanyResponseDto();
+
+                var result =  _repositoryCompany.GetAll();
+
+                if(filter.OrderBy  ==  "Id") filter.OrderBy = "Name";
+
+                if (!string.IsNullOrEmpty(filter.Search))
+                {
+                    result = result.Where(x => x.Name!.ToLower().Contains(filter.Search));
+                }
+                var companies = await  result.PaginateAsync(filter); // aca se hacen los includes
+                var preResponse = _mapper.Map<List<CompanyResponseDto>>(companies.Resource);
+
+                response.Companies = PaginationHelper.CreatePagedReponse<CompanyResponseDto>(preResponse,filter, companies.TotalRecords);
                 return response;
             }
             catch (Exception)

@@ -23,7 +23,7 @@ namespace HandlingFireExtinguisher.Core.Helpers
         {
             var totalItemsCountTask = query.AsNoTracking().Count();
 
-            var startRow = filter.PageNumber * filter.PageSize;
+            var startRow = (filter.PageNumber - 1) * filter.PageSize;
             var data = await query
                        .AsNoTracking()
                        .Skip(startRow)

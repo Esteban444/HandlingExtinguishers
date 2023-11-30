@@ -22,8 +22,8 @@
 
         public PaginationParameter(int pageNumber, int pageSize)
         {
-            this.PageNumber = pageNumber < 1 ? 1 : pageNumber;
-            this.PageSize = pageSize < 1 ? 10 : pageSize > 100 ? 100 : pageSize;
+            this.PageNumber = pageNumber <= 1 ? 1 : pageNumber;
+            this.PageSize = pageSize <= 1 ? 10 : pageSize > 100 ? 100 : pageSize;
         }
     }
 }
