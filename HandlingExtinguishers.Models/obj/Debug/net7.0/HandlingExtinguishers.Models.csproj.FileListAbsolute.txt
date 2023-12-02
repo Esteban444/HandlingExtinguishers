@@ -1,0 +1,12 @@
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.csproj.AssemblyReference.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.AssemblyInfoInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.AssemblyInfo.cs
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.csproj.CoreCompileInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\bin\Debug\net7.0\HandlingExtinguishers.Models.deps.json
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\bin\Debug\net7.0\HandlingExtinguishers.Models.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\bin\Debug\net7.0\HandlingExtinguishers.Models.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\refint\HandlingExtinguishers.Models.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\HandlingExtinguishers.Models.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Models\obj\Debug\net7.0\ref\HandlingExtinguishers.Models.dll

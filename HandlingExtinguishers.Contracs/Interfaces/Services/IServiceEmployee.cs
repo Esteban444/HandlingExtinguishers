@@ -1,14 +1,14 @@
-﻿using HandlingExtinguisher.Dto.Employees;
-using ManejoExtintores.Core.Filtros_Busqueda;
+﻿using HandlingExtinguishers.Models.Employees;
+using HandlingExtinguishers.Models.Pagination;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
     public interface IServiceEmployee
     {
-        Task<IEnumerable<EmployeeDto>> ConsultaEmpleados(FiltroEmpleados filtros);
-        Task<EmployeeDto> ConsultaEmpleadoPorId(Guid id);
-        Task<EmployeeBase> CrearEmpleado(EmployeeBase empleado);
-        Task<EmployeeBase> ActualizarEmpleado(Guid id, EmployeeBase empleado);
-        Task<EmployeeDto> EliminarEmpleado(Guid id);
+        Task<FilterEmployeeResponseDto> SearchEmployees(QueryParameter filter);
+        Task<EmployeeResponseDto> SearchEmployeeById(Guid id);
+        Task<EmployeeBaseResponseDto> AddEmployee(EmployeeRequestDto Request);
+        Task<EmployeeResponseDto> UpdatedFieldEmployee(Guid id, PatchEmployeeRequestDto request);
+        Task<bool> DeleteEmployee(Guid id);
     }
 }

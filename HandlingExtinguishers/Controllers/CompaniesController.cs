@@ -1,5 +1,5 @@
 ﻿using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto.Pagination;
+using HandlingExtinguishers.Models.Pagination;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Company;
 using Microsoft.AspNetCore.Authorization;

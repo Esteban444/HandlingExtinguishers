@@ -1,4 +1,4 @@
-﻿using HandlingExtinguishers.Dto.Pagination;
+﻿using HandlingExtinguishers.Models.Pagination;
 
 namespace HandlingExtinguishers.Models.Company
 {

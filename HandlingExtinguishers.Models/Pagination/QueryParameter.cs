@@ -1,4 +1,4 @@
-﻿namespace HandlingExtinguishers.Dto.Pagination
+﻿namespace HandlingExtinguishers.Models.Pagination
 {
     public class QueryParameter : PaginationParameter
     {

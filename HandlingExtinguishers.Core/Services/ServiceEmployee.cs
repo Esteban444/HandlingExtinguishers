@@ -1,83 +1,133 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
-using HandlingExtinguisher.Dto.Employees;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Models;
-using ManejoExtintores.Core.Filtros_Busqueda;
-using System.Data.Entity;
+using HandlingExtinguishers.Models.Pagination;
+using HandlingFireExtinguisher.Core.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
+using WebApplicationFacturas.Helpers;
 
 namespace HandlingExtinguishers.Core.Services
 {
     public class ServiceEmployee : IServiceEmployee
     {
         private readonly IMapper _mapper;
-        private readonly IRepositoryEmployee _repositorio;
+        private readonly IRepositoryEmployee _repositoryEmployee;
 
-        public ServiceEmployee(IRepositoryEmployee repositorio, IMapper mapper)
+        public ServiceEmployee(IRepositoryEmployee repositoryEmployee, IMapper mapper)
         {
-            _repositorio = repositorio;
-            _mapper = mapper;
+            this._repositoryEmployee = repositoryEmployee;
+            this._mapper = mapper;
         }
 
-        public async Task<IEnumerable<EmployeeDto>> ConsultaEmpleados(FiltroEmpleados filtros)
+        public async Task<FilterEmployeeResponseDto> SearchEmployees(QueryParameter filter)
         {
-            var empleado = await _repositorio.GetAll().ToListAsync();
-            return _mapper.Map<IEnumerable<EmployeeDto>>(empleado);
-        }
-
-        public async Task<EmployeeDto> ConsultaEmpleadoPorId(Guid id)
-        {
-            var empleado = await _repositorio.FindBy(x => x.Id == id).FirstOrDefaultAsync();
-            if (empleado != null)
+            try
             {
-                return _mapper.Map<EmployeeDto>(empleado);
-            }
-            else
-            {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado que solicita no existe en la base de datos" });
-            }
-        }
+                var response = new FilterEmployeeResponseDto();
 
-        public async Task<EmployeeBase> CrearEmpleado(EmployeeBase empleadob)
-        {
-            var empleado = _mapper.Map<Employee>(empleadob);
-            await _repositorio.Add(empleado);
-            empleadob = _mapper.Map<EmployeeBase>(empleado);
-            return empleadob;
-        }
+                var result = _repositoryEmployee.FindByAsNoTracking(x => x.Active);
 
-        public async Task<EmployeeBase> ActualizarEmpleado(Guid id, EmployeeBase empleadod)
-        {
-            var result = await _repositorio.FindBy(e => e.Id == id).FirstOrDefaultAsync();
-            if (result != null)
-            {
-                result.CompanyId = empleadod.IdCompany;
-                result.Address = empleadod.Nombre;
-                result.LastName = empleadod.Apellido;
-                result.Address = empleadod.Direccion;
-                result.Phone = empleadod.Telefono;
-                result.Email = empleadod.Email;
+                if (filter.OrderBy == "Id") filter.OrderBy = "Name";
 
-                await _repositorio.Update(result);
-                var response = _mapper.Map<EmployeeBase>(result);
+                if (!string.IsNullOrEmpty(filter.Search))
+                {
+                    result = result.Where(x => x.FirstName!.ToLower().Contains(filter.Search) || x.LastName!.ToLower().Contains(filter.Search));
+                }
+                var employees = await result.PaginateAsync(filter);
+                var preResponse = _mapper.Map<List<EmployeeBaseResponseDto>>(employees.Resource);
+
+                response.Employees = PaginationHelper.CreatePagedReponse<EmployeeBaseResponseDto>(preResponse, filter, employees.TotalRecords);
                 return response;
             }
-            else
+            catch (Exception)
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado que desea actualizar no existe en la base de datos" });
+                throw;
             }
         }
 
-        public async Task<EmployeeDto> EliminarEmpleado(Guid id)
+        public async Task<EmployeeResponseDto> SearchEmployeeById(Guid id)
         {
-            var empleadobd = await _repositorio.FindBy(e => e.Id == id).FirstOrDefaultAsync();
-            if (empleadobd != null)
+            try
             {
-                await _repositorio.Delete(empleadobd);
-                var empleadoE = _mapper.Map<EmployeeDto>(empleadobd);
-                return empleadoE;
+                var result = await _repositoryEmployee.FindBy(x => x.Id == id).Include(x => x.Company).FirstOrDefaultAsync();
+                if (result != null)
+                {
+                    return _mapper.Map<EmployeeResponseDto>(result);
+                }
+                else
+                {
+                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado que solicita no existe en la base de datos" });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<EmployeeBaseResponseDto> AddEmployee(EmployeeRequestDto request)
+        {
+            try
+            {
+                var employee = _mapper.Map<Employee>(request);
+                employee.Active = true;
+
+                await _repositoryEmployee.Add(employee);
+                var response = _mapper.Map<EmployeeBaseResponseDto>(request);
+                return response;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<EmployeeResponseDto> UpdatedFieldEmployee(Guid employeeId, PatchEmployeeRequestDto request)
+        {
+            try
+            {
+                var result = await _repositoryEmployee.FindBy(x => x.Id == employeeId).FirstOrDefaultAsync();
+                if (result != null)
+                {
+                    var properties = new UpdateMapperProperties<Employee, PatchEmployeeRequestDto>();
+                    var resultToUpdate = await properties.MapperUpdate(result!, request);
+
+                    if (request.Active.HasValue)
+                    {
+                        resultToUpdate.Active = request.Active.Value;
+                    }
+                    else
+                    {
+                        resultToUpdate.Active = result.Active;
+                    }
+
+                    await _repositoryEmployee.Patch(resultToUpdate);
+                    var response = _mapper.Map<EmployeeResponseDto>(resultToUpdate);
+                    return response;
+                }
+                else
+                {
+                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empleado que desea actualizar no existe en la base de datos" });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> DeleteEmployee(Guid employeeId)
+        {
+
+            var result = await _repositoryEmployee.FindBy(e => e.Id == employeeId).FirstOrDefaultAsync();
+            if (result != null)
+            {
+                await _repositoryEmployee.Delete(result);
+                return true;
             }
             else
             {

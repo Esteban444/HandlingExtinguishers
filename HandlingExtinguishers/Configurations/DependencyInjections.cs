@@ -2,7 +2,6 @@
 using HandlingEstinguishers.Core.Servicios;
 using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Dto.Clients;
-using HandlingExtinguisher.Dto.Employees;
 using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
@@ -51,10 +50,10 @@ namespace HandlingExtinguishers.Configurations
             services.AddScoped<IValidator<CreditoServicioBase>, ValidacionCreditos>();
             services.AddScoped<IValidator<BaseDetailExtinguisherClient>, ValidacionDetalleExtintorClientes>();
 
-            // services.AddScoped<IValidator<CompanyBase>, ValidatorCompany>();
+         
             services.AddValidatorsFromAssemblyContaining<ValidatorCompany>();
+            services.AddValidatorsFromAssemblyContaining<ValidatorEmployee>();
 
-            services.AddScoped<IValidator<EmployeeBase>, ValidacionEmpleados>();
             services.AddScoped<IValidator<GastosBase>, ValidacionesGastos>();
             services.AddScoped<IValidator<InventarioBase>, ValidacionInventario>();
             services.AddScoped<IValidator<PesoExtintorBase>, ValidacionPesoExtintor>();

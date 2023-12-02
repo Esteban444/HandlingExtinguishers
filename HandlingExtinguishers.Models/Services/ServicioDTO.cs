@@ -1,5 +1,5 @@
 ﻿using HandlingExtinguisher.Dto.Clients;
-using HandlingExtinguisher.Dto.Employees;
+using HandlingExtinguishers.Models.Employees;
 
 namespace ManagementFireEstinguisher.Dto.Services
 {
@@ -8,6 +8,6 @@ namespace ManagementFireEstinguisher.Dto.Services
         public int IdServicios { get; set; }
 
         public ClientDto? Cliente { get; set; }
-        public EmployeeDto? Empleado { get; set; }
+        public EmployeeResponseDto? Empleado { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto.Pagination;
+using HandlingExtinguishers.Models.Pagination;
 using HandlingExtinguishers.Models.Company;
 using HandlingExtinguishers.Models.Models;
 using HandlingFireExtinguisher.Core.Helpers;
@@ -111,28 +111,35 @@ namespace HandlingEstinguishers.Core.Servicios
 
         public async Task<CompanyRequestDto> UpdateFieldsCompany(Guid companyId, PatchCompanyRequestDto request)
         {
-            var result = await _repositoryCompany.FindBy(x =>  x.Id == companyId).FirstOrDefaultAsync();
-            if (result != null)
+            try
             {
-                var properties = new UpdateMapperProperties<Company, PatchCompanyRequestDto>();
-                var resultToUpdate = await properties.MapperUpdate(result!, request);
-
-                if (request.Active.HasValue)
+                var result = await _repositoryCompany.FindBy(x => x.Id == companyId).FirstOrDefaultAsync();
+                if (result != null)
                 {
-                    resultToUpdate.Active = request.Active.Value;
+                    var properties = new UpdateMapperProperties<Company, PatchCompanyRequestDto>();
+                    var resultToUpdate = await properties.MapperUpdate(result!, request);
+
+                    if (request.Active.HasValue)
+                    {
+                        resultToUpdate.Active = request.Active.Value;
+                    }
+                    else
+                    {
+                        resultToUpdate.Active = result.Active;
+                    }
+
+                    await _repositoryCompany.Patch(resultToUpdate);
+                    var response = _mapper.Map<CompanyRequestDto>(resultToUpdate);
+                    return response;
                 }
                 else
                 {
-                    resultToUpdate.Active = result.Active;
+                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa que desea actualizar no existe en la base de datos" });
                 }
-
-                await _repositoryCompany.Patch(resultToUpdate);
-                var response = _mapper.Map<CompanyRequestDto>(resultToUpdate);
-                return response;
             }
-            else
+            catch (Exception)
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa que desea actualizar no existe en la base de datos" });
+                throw;
             }
         }
 

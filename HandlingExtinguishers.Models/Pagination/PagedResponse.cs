@@ -1,6 +1,6 @@
 ﻿using HandlingExtinguisher.Dto;
 
-namespace HandlingExtinguishers.Dto.Pagination
+namespace HandlingExtinguishers.Models.Pagination
 {
     public class PagedResponse<T> : OperationResult
     {
