@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HandlingExtinguishers.Models
+﻿namespace HandlingExtinguishers.Models
 {
     public class FailedOperationResult
     {

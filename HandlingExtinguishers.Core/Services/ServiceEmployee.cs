@@ -3,7 +3,7 @@ using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto.Employees;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using System.Data.Entity;
 using System.Net;
@@ -53,7 +53,7 @@ namespace HandlingExtinguishers.Core.Services
             var result = await _repositorio.FindBy(e => e.Id == id).FirstOrDefaultAsync();
             if (result != null)
             {
-                result.IdCompany = empleadod.IdCompany;
+                result.CompanyId = empleadod.IdCompany;
                 result.Address = empleadod.Nombre;
                 result.LastName = empleadod.Apellido;
                 result.Address = empleadod.Direccion;

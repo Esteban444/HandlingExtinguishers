@@ -7,11 +7,10 @@ using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Services;
-using HandlingExtinguishers.Dto.Company;
-using HandlingExtinguishers.Dto.Models;
 using HandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Infraestructure.Repositories;
 using HandlingExtinguishers.Infrastructure.Repositories;
+using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.WebApi.Configurations.Validators;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using HandlingFireExtinguisher.Core.Services;
@@ -39,7 +38,7 @@ namespace HandlingExtinguishers.Configurations
             services.AddScoped<IRepositoryCredit, RepositoryCredit>();
             services.AddScoped<IRepositoryDetailService, RepositoryDetailService>();
             services.AddScoped<IRepositoryDetailExtinguisherClient, RepositoryDetailExtinguisherClient>();
-            services.AddScoped<IRepositoryEmployee, RepositorioEmpleado>();
+            services.AddScoped<IRepositoryEmployee, RepositoryEmployee>();
             services.AddScoped<IRepositoryExpense, RepositoryExpense>();
             services.AddScoped<IRepositoryInventory, RepositoryInventory>();
             services.AddScoped<IRepositoryPrice, RepositoryPrice>();
@@ -51,7 +50,10 @@ namespace HandlingExtinguishers.Configurations
             services.AddScoped<IValidator<BaseClient>, ValidacionClientes>();
             services.AddScoped<IValidator<CreditoServicioBase>, ValidacionCreditos>();
             services.AddScoped<IValidator<BaseDetailExtinguisherClient>, ValidacionDetalleExtintorClientes>();
-            services.AddScoped<IValidator<CompanyBase>, ValidacionesEmpresas>();
+
+            // services.AddScoped<IValidator<CompanyBase>, ValidatorCompany>();
+            services.AddValidatorsFromAssemblyContaining<ValidatorCompany>();
+
             services.AddScoped<IValidator<EmployeeBase>, ValidacionEmpleados>();
             services.AddScoped<IValidator<GastosBase>, ValidacionesGastos>();
             services.AddScoped<IValidator<InventarioBase>, ValidacionInventario>();

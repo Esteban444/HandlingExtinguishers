@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto;
 using ManagementFireEstinguisher.Dto.Services;

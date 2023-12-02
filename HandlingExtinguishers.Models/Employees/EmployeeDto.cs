@@ -1,4 +1,4 @@
-﻿using HandlingExtinguishers.Dto.Company;
+﻿using HandlingExtinguishers.Models.Company;
 
 namespace HandlingExtinguisher.Dto.Employees
 {

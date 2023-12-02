@@ -2,7 +2,7 @@
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using System.Data.Entity;

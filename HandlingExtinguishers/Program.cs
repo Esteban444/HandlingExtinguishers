@@ -1,7 +1,8 @@
-﻿using HandlingExtinguisher.Infraestructure.Data;
+﻿using FluentValidation.AspNetCore;
+using HandlingExtinguisher.Infraestructure.Data;
 using HandlingExtinguisher.Infraestructure.Middleware;
 using HandlingExtinguishers.Configurations;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.WebApi.Configurations;
 using HandlingFireExtinguisher.Core.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -56,6 +57,11 @@ builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
                 opt.TokenLifespan = TimeSpan.FromHours(1));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+
 
 var app = builder.Build();
 

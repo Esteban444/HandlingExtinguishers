@@ -1,5 +1,5 @@
 ﻿using HandlingExtinguisher.Infraestructure.Data;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

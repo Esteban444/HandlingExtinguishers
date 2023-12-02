@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace HandlingExtinguishers.Dto.Models
+namespace HandlingExtinguishers.Models.Models
 {
     public class Users : IdentityUser
     {

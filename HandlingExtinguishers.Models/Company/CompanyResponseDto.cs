@@ -1,6 +1,6 @@
-﻿namespace HandlingExtinguishers.Dto.Company
+﻿namespace HandlingExtinguishers.Models.Company
 {
-    public class CompanyResponseDto : CompanyBase
+    public class CompanyResponseDto : CompanyRequestDto
     {
         public Guid Id { get; set; }
     }

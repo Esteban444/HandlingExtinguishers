@@ -1,4 +1,4 @@
-﻿using HandlingExtinguishers.Dto.Models;
+﻿using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -17,7 +17,7 @@ namespace HandlingExtinguisher.Infraestructure.Data
         //public DbSet<DetalleServicioDetalleClientes> DetailServiceDetailClient { get; set; }
         public DbSet<DetailService> DetailService { get; set; }
         public DbSet<Employee> Employee { get; set; }
-        public DbSet<Companies> Company { get; set; }
+        public DbSet<Company> Company { get; set; }
         public DbSet<Expense> Expense { get; set; }
         public DbSet<Inventory> Inventory { get; set; }
         public DbSet<WeightExtinguisher> WeightExtinguisher { get; set; }
@@ -30,8 +30,8 @@ namespace HandlingExtinguisher.Infraestructure.Data
         {
             modelBuilder.Entity<Client>().Property(e => e.Id).HasConversion<string>();
 
-            modelBuilder.Entity<Companies>().Property(e => e.Id).HasConversion<string>();
-            modelBuilder.Entity<Companies>(entity =>
+            modelBuilder.Entity<Company>().Property(e => e.Id).HasConversion<string>();
+            modelBuilder.Entity<Company>(entity =>
             {
                 entity.ToTable("Company");
 
@@ -75,7 +75,7 @@ namespace HandlingExtinguisher.Infraestructure.Data
             modelBuilder.Entity<DetailService>().Property(e => e.IdWeightExtinguisher).HasConversion<string>();
 
             modelBuilder.Entity<Employee>().Property(e => e.Id).HasConversion<string>();
-            modelBuilder.Entity<Employee>().Property(e => e.IdCompany).HasConversion<string>();
+            modelBuilder.Entity<Employee>().Property(e => e.CompanyId).HasConversion<string>();
 
             modelBuilder.Entity<Expense>().Property(e => e.Id).HasConversion<string>();
 

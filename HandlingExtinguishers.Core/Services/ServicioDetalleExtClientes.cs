@@ -3,7 +3,7 @@ using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto.Clients;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;

@@ -5,9 +5,9 @@ using HandlingExtinguishers.Models.Models;
 
 namespace HandlingExtinguishers.Infraestructure.Repositories
 {
-    public class RepositoryCompany : BaseRepository<Company>, IRepositoryCompany
+    public class RepositoryEmployee : BaseRepository<Employee>, IRepositoryEmployee
     {
-        public RepositoryCompany(HandlingExtinguisherContext context) : base(context)
+        public RepositoryEmployee(HandlingExtinguisherContext context) : base(context)
         {
 
         }

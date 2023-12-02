@@ -1,6 +1,6 @@
 ﻿using HandlingExtinguisher.Core.Exceptions;
-using HandlingExtinguishers.Dto.Models;
 using HandlingExtinguishers.Models.Authentication;
+using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

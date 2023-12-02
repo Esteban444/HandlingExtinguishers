@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Dto.Clients;
 using HandlingExtinguisher.Dto.Employees;
-using HandlingExtinguishers.Dto.Company;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Company;
+using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManagementFireEstinguisher.Dto.Expenses;
@@ -39,8 +39,9 @@ namespace HandlingExtinguishers.WebApi.Configurations
             CreateMap<DetailExtinguisherClient, DetailExtinguisherClientDto>()
                 .ForMember(x => x.Client, y => y.MapFrom(z => z.Clientes));
 
-            CreateMap<Companies, CompanyResponseDto>().ReverseMap();
-            CreateMap<Companies, CompanyBase>().ReverseMap();
+            CreateMap<Company, CompanyResponseDto>().ReverseMap();
+            CreateMap<Company, CompanyRequestDto>().ReverseMap();
+            CreateMap<Company, PatchCompanyRequestDto>().ReverseMap();
 
             CreateMap<Employee, EmployeeDto>()
                 .ForMember(x => x.Empresa, y => y.MapFrom(z => z.Company));

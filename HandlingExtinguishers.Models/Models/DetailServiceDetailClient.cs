@@ -1,4 +1,4 @@
-﻿using HandlingExtinguishers.Dto.Models;
+﻿using HandlingExtinguishers.Models.Models;
 
 namespace HandlingEstinguisherS.Dto.Models
 {

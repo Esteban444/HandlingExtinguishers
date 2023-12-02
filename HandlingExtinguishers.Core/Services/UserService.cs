@@ -3,7 +3,7 @@ using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto;
 using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Dto.Models;
+using HandlingExtinguishers.Models.Models;
 using HandlingFireExtinguisher.Core.Helpers;
 using ManagementFireEstinguisher.Dto.Users;
 using Microsoft.AspNetCore.Identity;
@@ -62,8 +62,8 @@ namespace HandlingExtinguishers.Core.Services
         {
             try
             {
-                var validateResult =  _jwtHandler.ValidateCurrentToken(token);
-                var oldClams =  _jwtHandler.ValidatedClaimsCurrentToken(token);
+                var validateResult = _jwtHandler.ValidateCurrentToken(token);
+                var oldClams = _jwtHandler.ValidatedClaimsCurrentToken(token);
                 var handler = new JwtSecurityTokenHandler();
                 var expiredToken = handler.ReadToken(token) as JwtSecurityToken;
                 var userId = expiredToken?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -72,8 +72,8 @@ namespace HandlingExtinguishers.Core.Services
                 AuthResponseDto response = new();
                 if (result != null)
                 {
-                   response.IsSuccess = true;
-                   response.Token = result;
+                    response.IsSuccess = true;
+                    response.Token = result;
                 }
                 return response;
             }

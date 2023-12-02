@@ -1,4 +1,4 @@
-﻿namespace HandlingExtinguishers.Dto.Models
+﻿namespace HandlingExtinguishers.Models.Models
 {
     public class WeightExtinguisher
     {
