@@ -1,0 +1,20 @@
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.user
+*.suo
+*.tss
+*.tlh
+*.tli
+*.dbmdl
+*.pch
+*.idb
+*.ipch
+*.bak
+[Dd]ebug/
+[Rr]elease/
+
+# Ignorar la carpeta bin y obj
+bin/
+obj/
