@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace HandlingExtinguishers.WebApi.Configurations
@@ -64,38 +63,6 @@ namespace HandlingExtinguishers.WebApi.Configurations
                 };
             });
 
-            return services;
-        }
-
-        public static IServiceCollection AddSwaggerGen(this IServiceCollection services)
-        {
-            services.AddSwaggerGen(c =>
-             {
-                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Handling Extinguishers", Version = "v1" });
-                 // Configuración de Swagger para JWT
-                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                 {
-                     Description = "Bearer",
-                     Name = "Authorization",
-                     In = ParameterLocation.Header,
-                     Type = SecuritySchemeType.ApiKey,
-                     Scheme = "Bearer"
-                 });
-                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                   {
-                     new OpenApiSecurityScheme
-                     {
-                        Reference = new OpenApiReference
-                        {
-                             Type = ReferenceType.SecurityScheme,
-                              Id = "Bearer"
-                        }
-                     },
-                      new List<string>()
-                   }
-               });
-             });
             return services;
         }
 

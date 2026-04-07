@@ -1,0 +1,1615 @@
+[
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_4",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingFireExtinguishers.WebApi.Controllers.AccountController",
+    "Method": "InicioSeccion",
+    "RelativePath": "Account/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguisher.Dto.Users.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingFireExtinguishers.WebApi.Controllers.AccountController",
+    "Method": "RefreshToken",
+    "RelativePath": "Account/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "authorization",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingFireExtinguishers.WebApi.Controllers.AccountController",
+    "Method": "RegistrarUsuario",
+    "RelativePath": "Account/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ManagementFireEstinguisher.Dto.Users.RegisterUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "Method": "Create",
+    "RelativePath": "Clientes/client",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "client",
+        "Type": "HandlingExtinguisher.Dto.Clients.BaseClient",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "Method": "Searchs",
+    "RelativePath": "Clientes/clients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Document",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nit",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "Method": "DeleteClient",
+    "RelativePath": "Clientes/delete/{clientId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "Method": "Search",
+    "RelativePath": "Clientes/search-by/{clientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "Method": "UpdateClient",
+    "RelativePath": "Clientes/update/{clientId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguisher.Dto.Clients.BaseClient",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "Method": "Create",
+    "RelativePath": "Companies/add-company",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empresabase",
+        "Type": "HandlingExtinguishers.Models.Company.CompanyRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Company.CompanyResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "Method": "Eliminar",
+    "RelativePath": "Companies/delete-company-permanent-by/{companyId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companyId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "Method": "Company",
+    "RelativePath": "Companies/search-company-by/{companyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companyId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Company.CompanyResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "Method": "CompaniesDasabled",
+    "RelativePath": "Companies/search-company-disabled",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Company.FilterCompanyResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "Method": "Companies",
+    "RelativePath": "Companies/search-company-enable",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Company.FilterCompanyResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "Method": "UpdateCompany",
+    "RelativePath": "Companies/update-company-by/{companyId}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companyId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "HandlingExtinguishers.Models.Company.PatchCompanyRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Company.CompanyResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "Method": "ConsultaCreditos",
+    "RelativePath": "Creditos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Fecha",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "Method": "CrearCredito",
+    "RelativePath": "Creditos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "crearcredito",
+        "Type": "ManagementFireEstinguisher.Dto.Credit.CreditoServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "Method": "ConsultaporId",
+    "RelativePath": "Creditos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "Method": "ActualizarCredito",
+    "RelativePath": "Creditos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Credit.CreditoServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "Method": "EliminarCredito",
+    "RelativePath": "Creditos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "Method": "ConsultaDetalleExtClientes",
+    "RelativePath": "DetalleExtintorClientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TipoExtintor",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaServicio",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaVencimiento",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaMantenimiento",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "Method": "CrearDetalleExtintorCliente",
+    "RelativePath": "DetalleExtintorClientes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "crear",
+        "Type": "HandlingExtinguisher.Dto.Clients.BaseDetailExtinguisherClient",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "Method": "ConsultaDetalleExtclientePorId",
+    "RelativePath": "DetalleExtintorClientes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "Method": "ActualizarCredito",
+    "RelativePath": "DetalleExtintorClientes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "HandlingExtinguisher.Dto.Clients.BaseDetailExtinguisherClient",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "Method": "EliminarCredito",
+    "RelativePath": "DetalleExtintorClientes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "Method": "ConsultaDetalles",
+    "RelativePath": "DetalleServicio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TipoExtintor",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "Method": "CrearDetalle",
+    "RelativePath": "DetalleServicio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "creardetalle",
+        "Type": "ManagementFireEstinguisher.Dto.Services.DetalleServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "Method": "ConsultaPorId",
+    "RelativePath": "DetalleServicio/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "Method": "ActualizarDetalles",
+    "RelativePath": "DetalleServicio/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Services.DetalleServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "Method": "Eliminar",
+    "RelativePath": "DetalleServicio/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "Method": "AddEnployee",
+    "RelativePath": "Employees/add-employee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empleadob",
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "Method": "DeleteEmployee",
+    "RelativePath": "Employees/delete-employee-by/{employeeId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "Method": "EmployeeById",
+    "RelativePath": "Employees/search-employee-by/{employeeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "Method": "Employees",
+    "RelativePath": "Employees/search-employees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Employees.FilterEmployeeResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "Method": "UpdateEmployee",
+    "RelativePath": "Employees/update-employee-by/{employeeId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "employeeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Employees.PatchEmployeeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "Method": "ConsultaGastos",
+    "RelativePath": "Gastos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Fecha",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "Method": "CrearGasto",
+    "RelativePath": "Gastos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gastosbase",
+        "Type": "ManagementFireEstinguisher.Dto.Expenses.GastosBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "Method": "ConsultaGastoPorId",
+    "RelativePath": "Gastos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "Method": "ActualizarGasto",
+    "RelativePath": "Gastos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Expenses.GastosBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "Method": "Eliminar",
+    "RelativePath": "Gastos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "Method": "ConsultaInventarios",
+    "RelativePath": "Inventarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Fecha",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaVencimiento",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "Method": "Crear",
+    "RelativePath": "Inventarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventariob",
+        "Type": "ManagementFireEstinguisher.Dto.Inventories.InventarioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "Method": "ConsultaPorId",
+    "RelativePath": "Inventarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "Method": "ActualizarInventario",
+    "RelativePath": "Inventarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Inventories.InventarioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "Method": "Eliminar",
+    "RelativePath": "Inventarios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "Method": "Consultas",
+    "RelativePath": "PesoExtintores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "Method": "Crear",
+    "RelativePath": "PesoExtintores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pesobase",
+        "Type": "ManagementFireEstinguisher.Dto.Extinguishers.PesoExtintorBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "Method": "Consulta",
+    "RelativePath": "PesoExtintores/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "Method": "ActualizarPeso",
+    "RelativePath": "PesoExtintores/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Extinguishers.PesoExtintorBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "Method": "Eliminar",
+    "RelativePath": "PesoExtintores/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "Method": "ConsultasPrecios",
+    "RelativePath": "Precios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "Method": "CrearPrecios",
+    "RelativePath": "Precios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "preciobase",
+        "Type": "ManagementFireEstinguisher.Dto.Prices.PrecioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "Method": "ConsultaPrecio",
+    "RelativePath": "Precios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "Method": "ActualizarPrecios",
+    "RelativePath": "Precios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Prices.PrecioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "Method": "EliminarPrecios",
+    "RelativePath": "Precios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "Method": "ConsultaProductos",
+    "RelativePath": "Productos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TipoProducto",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "Method": "CrearProductos",
+    "RelativePath": "Productos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productobase",
+        "Type": "ManagementFireEstinguisher.Dto.Products.ProductoBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "Method": "ConsultaProductoPorId",
+    "RelativePath": "Productos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "Method": "ActualizarProductos",
+    "RelativePath": "Productos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Products.ProductoBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "Method": "Eliminar",
+    "RelativePath": "Productos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "ConsultaServicios",
+    "RelativePath": "Servicios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FechaServicio",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "Crear",
+    "RelativePath": "Servicios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviciob",
+        "Type": "ManagementFireEstinguisher.Dto.Services.ServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "ConsultaPorId",
+    "RelativePath": "Servicios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "ActualizarServicios",
+    "RelativePath": "Servicios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Services.ServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "Eliminar",
+    "RelativePath": "Servicios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "CreacionDetalleServicio",
+    "RelativePath": "Servicios/Crear-Servicio-Detalle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviciobase",
+        "Type": "ManagementFireEstinguisher.Dto.Services.ServicioBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "Method": "ModificarEstado",
+    "RelativePath": "Servicios/modificar-estado",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "modificar",
+        "Type": "ManagementFireEstinguisher.Dto.ModificarEstado",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "Method": "Consultas",
+    "RelativePath": "TipoExtintores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "Method": "CrearTipoExtintor",
+    "RelativePath": "TipoExtintores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipobase",
+        "Type": "ManagementFireEstinguisher.Dto.Extinguishers.TipoExtintorBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "Method": "ConsultaTipoExtPorId",
+    "RelativePath": "TipoExtintores/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "Method": "ActualizarTipo",
+    "RelativePath": "TipoExtintores/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizar",
+        "Type": "ManagementFireEstinguisher.Dto.Extinguishers.TipoExtintorBase",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "Method": "EliminarTipoExt",
+    "RelativePath": "TipoExtintores/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

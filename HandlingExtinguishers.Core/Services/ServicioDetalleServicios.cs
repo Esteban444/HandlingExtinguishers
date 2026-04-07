@@ -6,7 +6,6 @@ using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Services;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
 using System.Net;
 
 namespace ManejoExtintores.Core.Servicios
