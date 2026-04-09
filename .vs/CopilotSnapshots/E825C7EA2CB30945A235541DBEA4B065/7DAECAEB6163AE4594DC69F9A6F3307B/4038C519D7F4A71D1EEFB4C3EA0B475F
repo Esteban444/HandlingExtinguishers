@@ -1,0 +1,92 @@
+﻿namespace HandlingExtinguishers.Infraestructure.Extensions;
+
+public static class CommonConstantsExtension
+{
+    // ========== Identity Configuration Constants ==========
+
+    /// <summary>
+    /// Minimum required length for user passwords
+    /// </summary>
+    public const int PasswordMinimumLength = 7;
+
+    /// <summary>
+    /// Indicates whether passwords must contain at least one digit
+    /// </summary>
+    public const bool PasswordRequireDigit = false;
+
+    /// <summary>
+    /// Indicates whether user email addresses must be unique in the system
+    /// </summary>
+    public const bool UserRequireUniqueEmail = true;
+
+    /// <summary>
+    /// Indicates whether new user accounts can be locked out after failed login attempts
+    /// </summary>
+    public const bool LockoutAllowedForNewUsers = true;
+
+    /// <summary>
+    /// Default duration in minutes for account lockout after maximum failed attempts
+    /// </summary>
+    public const int LockoutDurationInMinutes = 2;
+
+    /// <summary>
+    /// Maximum number of failed login attempts before account lockout
+    /// </summary>
+    public const int MaximumFailedAccessAttempts = 3;
+
+    // ========== JWT Configuration Constants ==========
+
+    /// <summary>
+    /// Configuration section name for JWT settings in appsettings.json
+    /// </summary>
+    public const string JwtConfigurationSectionName = "JWTConfiguracion";
+
+    /// <summary>
+    /// Configuration key for JWT issuer validation claim
+    /// </summary>
+    public const string JwtValidIssuerKeyName = "validIssuer";
+
+    /// <summary>
+    /// Configuration key for JWT audience validation claim
+    /// </summary>
+    public const string JwtValidAudienceKeyName = "validAudience";
+
+    /// <summary>
+    /// Configuration key for JWT security key used for token signing
+    /// </summary>
+    public const string JwtSecurityKeyName = "securityKey";
+
+    // ========== Application Route Constants ==========
+
+    /// <summary>
+    /// Root application route path
+    /// </summary>
+    public const string RootPath = "/";
+
+    /// <summary>
+    /// Scalar API Reference documentation route path
+    /// </summary>
+    public const string ScalarApiReferencePath = "/scalar/v1";
+
+    // ========== Bearer Security Scheme Constants ==========
+
+    /// <summary>
+    /// Bearer authentication scheme name
+    /// </summary>
+    public const string BearerSchemeName = "Bearer";
+
+    /// <summary>
+    /// Bearer authentication scheme type (lowercase)
+    /// </summary>
+    public const string BearerSchemeType = "bearer";
+
+    /// <summary>
+    /// JWT bearer format identifier
+    /// </summary>
+    public const string JwtBearerFormat = "JWT";
+
+    /// <summary>
+    /// Description for JWT authentication in API documentation
+    /// </summary>
+    public const string JwtAuthenticationDescription = "Ingresa tu token JWT";
+}

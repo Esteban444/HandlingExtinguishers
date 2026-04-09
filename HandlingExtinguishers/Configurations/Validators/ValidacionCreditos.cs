@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using ManagementFireEstinguisher.Dto.Credit;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     public class ValidacionCreditos : AbstractValidator<CreditoServicioBase>
     {

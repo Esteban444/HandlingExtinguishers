@@ -1085,9 +1085,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj",
-      "projectName": "HandlingExtinguishers.Contracs",
-      "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj",
+      "projectUniqueName": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj",
+      "projectName": "HandlingExtinguishers.Contracts",
+      "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj",
       "packagesPath": "C:\\Users\\juane\\.nuget\\packages\\",
       "outputPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\obj\\",
       "projectStyle": "PackageReference",

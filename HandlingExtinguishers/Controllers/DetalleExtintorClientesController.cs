@@ -1,21 +1,21 @@
 ﻿using FluentValidation;
-using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Dto.Clients;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandlingExtinguishers.WebApi.Controllers
+namespace HandlingExtinguishers.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     [Authorize]
     public class DetalleExtintorClientesController : ControllerBase
     {
-        private readonly IServicioDetalleExtClientes _servicioDetalleExtClientes;
+        private readonly IServiceDetailExtClients _servicioDetalleExtClientes;
         private readonly IValidator<BaseDetailExtinguisherClient> _validator;
-        public DetalleExtintorClientesController(IServicioDetalleExtClientes servicioDetalleExtClientes,
+        public DetalleExtintorClientesController(IServiceDetailExtClients servicioDetalleExtClientes,
             IValidator<BaseDetailExtinguisherClient> validator)
         {
             _servicioDetalleExtClientes = servicioDetalleExtClientes;

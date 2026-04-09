@@ -5,7 +5,7 @@ using HandlingExtinguishers.Models.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandlingExtinguishers.WebApi.Controllers
+namespace HandlingExtinguishers.Controllers
 {
     [Route("[controller]")]
     [ApiController]

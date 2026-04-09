@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Extinguishers;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 
 namespace ManagementFireEstinguisher.Core.Servicios
 {
-    public class ServicioTipoExtintor : IServicioTipoExtintor
+    public class ServicioTipoExtintor : IServiceTypeExtinguisher
     {
         private readonly IBaseRepository<TypeExtinguisher> _repositorio;
         private readonly IMapper _mapper;

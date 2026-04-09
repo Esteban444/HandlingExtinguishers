@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using HandlingExtinguishers.Models.Employees;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     public class ValidatorEmployee : AbstractValidator<EmployeeRequestDto>
     {

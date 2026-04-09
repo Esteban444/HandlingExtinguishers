@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using HandlingExtinguisher.Dto.Users;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     public class ValidacionAutenticacionUsuario : AbstractValidator<LoginRequestDto>
     {

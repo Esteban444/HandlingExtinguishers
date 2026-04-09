@@ -947,17 +947,17 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "HandlingExtinguishers.Contracs/1.0.0": {
+      "HandlingExtinguishers.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "HandlingExtinguishers.Models": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/HandlingExtinguishers.Contracs.dll": {}
+          "bin/placeholder/HandlingExtinguishers.Contracts.dll": {}
         },
         "runtime": {
-          "bin/placeholder/HandlingExtinguishers.Contracs.dll": {}
+          "bin/placeholder/HandlingExtinguishers.Contracts.dll": {}
         }
       },
       "HandlingExtinguishers.Core/1.0.0": {
@@ -965,7 +965,7 @@
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "AutoMapper": "12.0.1",
-          "HandlingExtinguishers.Contracs": "1.0.0",
+          "HandlingExtinguishers.Contracts": "1.0.0",
           "HandlingExtinguishers.Models": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.5",
           "Microsoft.EntityFrameworkCore": "10.0.5",
@@ -2308,10 +2308,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "HandlingExtinguishers.Contracs/1.0.0": {
+    "HandlingExtinguishers.Contracts/1.0.0": {
       "type": "project",
-      "path": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracs.csproj",
-      "msbuildProject": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracs.csproj"
+      "path": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracts.csproj",
+      "msbuildProject": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracts.csproj"
     },
     "HandlingExtinguishers.Core/1.0.0": {
       "type": "project",

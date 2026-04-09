@@ -1,0 +1,83 @@
+﻿namespace HandlingExtinguishers.Core.Localization;
+
+/// <summary>
+/// Centralized resource strings for the HandlingExtinguisher application
+/// Supports multiple languages (Spanish by default, English available)
+/// </summary>
+public static class HandlingExtinguisherResources
+{
+    /// <summary>
+    /// Authentication-related resource messages
+    /// </summary>
+    public static class Authentication
+    {
+        /// <summary>
+        /// Gets the user not found message
+        /// </summary>
+        public static string UserNotFound(string culture = "es") => culture switch
+        {
+            "en" => "The user does not exist.",
+            _ => "El usuario no existe."
+        };
+
+        /// <summary>
+        /// Gets the invalid authentication message
+        /// </summary>
+        public static string InvalidAuthentication(string culture = "es") => culture switch
+        {
+            "en" => "Invalid authentication.",
+            _ => "Autenticación inválida."
+        };
+
+        /// <summary>
+        /// Gets the account blocked message
+        /// </summary>
+        public static string AccountBlocked(string culture = "es") => culture switch
+        {
+            "en" => "The account is blocked.",
+            _ => "La cuenta está bloqueada."
+        };
+
+        /// <summary>
+        /// Gets the user not found in database message
+        /// </summary>
+        public static string UserNotFoundInDatabase(string culture = "es") => culture switch
+        {
+            "en" => "The user was not found in the database.",
+            _ => "El usuario no fue encontrado en la base de datos."
+        };
+    }
+
+    /// <summary>
+    /// User management resource messages
+    /// Add new user-related messages here
+    /// </summary>
+    public static class Users
+    {
+        // Add user-related messages here
+        // Example:
+        // public static string UserCreatedSuccessfully(string culture = "es") => culture switch { ... };
+    }
+
+    /// <summary>
+    /// Validation resource messages
+    /// Add new validation-related messages here
+    /// </summary>
+    public static class Validation
+    {
+        // Add validation messages here
+        // Example:
+        // public static string InvalidEmailFormat(string culture = "es") => culture switch { ... };
+    }
+
+    /// <summary>
+    /// General application resource messages
+    /// Add new general messages here
+    /// </summary>
+    public static class General
+    {
+        // Add general messages here
+        // Example:
+        // public static string OperationCompletedSuccessfully(string culture = "es") => culture switch { ... };
+    }
+}

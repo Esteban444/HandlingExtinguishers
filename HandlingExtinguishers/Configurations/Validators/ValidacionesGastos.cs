@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using ManagementFireEstinguisher.Dto.Expenses;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     public class ValidacionesGastos : AbstractValidator<GastosBase>
     {

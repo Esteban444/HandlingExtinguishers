@@ -2,7 +2,7 @@
 using ManagementFireEstinguisher.Dto.Products;
 
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     class ValidacionesProducto : AbstractValidator<ProductoBase>
     {

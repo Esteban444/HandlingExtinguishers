@@ -1,7 +1,7 @@
 ﻿using HandlingExtinguisher.Dto.Clients;
 using ManejoExtintores.Core.Filtros_Busqueda;
 
-namespace HandlingExtinguisher.Contracts.Interfaces.Services
+namespace HandlingExtinguishers.Contracts.Interfaces.Services 
 {
     public interface IServicieClient
     {

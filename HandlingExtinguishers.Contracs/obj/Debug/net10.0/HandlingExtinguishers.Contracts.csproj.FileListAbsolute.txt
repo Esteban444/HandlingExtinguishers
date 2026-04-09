@@ -1,0 +1,16 @@
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net10.0\HandlingExtinguishers.Contracts.deps.json
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net10.0\HandlingExtinguishers.Contracts.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net10.0\HandlingExtinguishers.Contracts.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net10.0\HandlingExtinguishers.Models.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\bin\Debug\net10.0\HandlingExtinguishers.Models.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.csproj.AssemblyReference.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.AssemblyInfoInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.AssemblyInfo.cs
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.csproj.CoreCompileInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.sourcelink.json
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\Handling.7D11F4F6.Up2Date
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\refint\HandlingExtinguishers.Contracts.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\HandlingExtinguishers.Contracts.pdb
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Contracs\obj\Debug\net10.0\ref\HandlingExtinguishers.Contracts.dll

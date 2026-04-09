@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Products;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Net;
 
 namespace ManejoExtintores.Core.Servicios
 {
-    public class ServicioProducto : IServicioProducto
+    public class ServicioProducto : IServiceProducts
     {
         private readonly IRepositoryProduct _repositorio;
         private readonly IMapper _mapper;

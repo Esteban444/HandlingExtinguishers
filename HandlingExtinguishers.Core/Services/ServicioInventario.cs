@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Inventories;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 
-namespace ManagementFireEstinguisher.Core.Servicios
+namespace HandlingExtinguishers.Core.Services
 {
-    public class ServicioInventario : IServicioInventario
+    public class ServicioInventario : IServiceInventory
     {
         private readonly IMapper _mapper;
         private readonly IRepositoryInventory _repositorio;

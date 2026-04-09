@@ -1,0 +1,82 @@
+﻿using HandlingExtinguisher.Infraestructure.Data;
+using HandlingExtinguisher.Infraestructure.Middleware;
+using HandlingExtinguishers.Configurations;
+using HandlingExtinguishers.Models.Models;
+using HandlingExtinguishers.WebApi.Configurations;
+using HandlingFireExtinguisher.Core.Helpers;
+using HandlingExtinguishers.Infraestructure.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using Scalar.AspNetCore;
+using System.Text;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddContext(builder.Configuration);
+builder.Services.AddOptions(builder.Configuration);
+builder.Services.AdddependencyInjection();
+
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddMaps(typeof(Automapper).Assembly);
+});
+
+builder.Services.AddIdentity<Users, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = IdentityConfigurationConstants.PasswordMinimumLength;
+    options.Password.RequireDigit = IdentityConfigurationConstants.PasswordRequireDigit;
+    options.User.RequireUniqueEmail = IdentityConfigurationConstants.UserRequireUniqueEmail;
+    options.Lockout.AllowedForNewUsers = IdentityConfigurationConstants.LockoutAllowedForNewUsers;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(IdentityConfigurationConstants.LockoutDurationInMinutes);
+    options.Lockout.MaxFailedAccessAttempts = IdentityConfigurationConstants.MaximumFailedAccessAttempts;
+}).AddEntityFrameworkStores<HandlingExtinguisherContext>().AddDefaultTokenProviders();
+
+
+var jwtConfiguracion = builder.Configuration.GetSection("JWTConfiguracion");
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtConfiguracion.GetSection("validIssuer").Value,
+        ValidAudience = jwtConfiguracion.GetSection("validAudience").Value,
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(jwtConfiguracion.GetSection("securityKey").Value!))
+    };
+});
+
+builder.Services.AddScoped<JwtHandler>();
+builder.Services.AddPolicyCors();
+builder.Services.AddControllers();
+
+builder.Services.AddOpenApi(options =>
+{
+    options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+});
+
+var app = builder.Build();
+
+app.UseMiddleware<MiddlewareException>();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.MapScalarApiReference();
+    app.MapGet("/", () => Results.Redirect("/scalar/v1"));
+}
+
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();

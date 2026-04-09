@@ -1,0 +1,5 @@
+﻿namespace HandlingExtinguishers.Infraestructure.Extensions;
+
+public class CommonConstantsExtension
+{
+}

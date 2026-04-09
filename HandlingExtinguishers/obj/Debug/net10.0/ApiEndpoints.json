@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_4",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_5",
     "RelativePath": "",
     "HttpMethod": "GET",
     "IsController": false,
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingFireExtinguishers.WebApi.Controllers.AccountController",
+    "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
     "Method": "InicioSeccion",
     "RelativePath": "Account/login",
     "HttpMethod": "POST",
@@ -32,7 +32,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingFireExtinguishers.WebApi.Controllers.AccountController",
+    "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
     "Method": "RefreshToken",
     "RelativePath": "Account/refresh-token",
     "HttpMethod": "POST",
@@ -48,7 +48,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingFireExtinguishers.WebApi.Controllers.AccountController",
+    "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
     "Method": "RegistrarUsuario",
     "RelativePath": "Account/register",
     "HttpMethod": "POST",
@@ -64,7 +64,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
     "Method": "Create",
     "RelativePath": "Clientes/client",
     "HttpMethod": "POST",
@@ -80,7 +80,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
     "Method": "Searchs",
     "RelativePath": "Clientes/clients",
     "HttpMethod": "GET",
@@ -111,7 +111,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
     "Method": "DeleteClient",
     "RelativePath": "Clientes/delete/{clientId}",
     "HttpMethod": "DELETE",
@@ -127,7 +127,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
     "Method": "Search",
     "RelativePath": "Clientes/search-by/{clientId}",
     "HttpMethod": "GET",
@@ -143,7 +143,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
     "Method": "UpdateClient",
     "RelativePath": "Clientes/update/{clientId}",
     "HttpMethod": "PUT",
@@ -164,7 +164,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
     "Method": "Create",
     "RelativePath": "Companies/add-company",
     "HttpMethod": "POST",
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
     "Method": "Eliminar",
     "RelativePath": "Companies/delete-company-permanent-by/{companyId}",
     "HttpMethod": "DELETE",
@@ -252,7 +252,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
     "Method": "Company",
     "RelativePath": "Companies/search-company-by/{companyId}",
     "HttpMethod": "GET",
@@ -296,7 +296,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
     "Method": "CompaniesDasabled",
     "RelativePath": "Companies/search-company-disabled",
     "HttpMethod": "GET",
@@ -355,7 +355,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
     "Method": "Companies",
     "RelativePath": "Companies/search-company-enable",
     "HttpMethod": "GET",
@@ -414,7 +414,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
     "Method": "UpdateCompany",
     "RelativePath": "Companies/update-company-by/{companyId}",
     "HttpMethod": "PATCH",
@@ -463,7 +463,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
     "Method": "ConsultaCreditos",
     "RelativePath": "Creditos",
     "HttpMethod": "GET",
@@ -479,7 +479,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
     "Method": "CrearCredito",
     "RelativePath": "Creditos",
     "HttpMethod": "POST",
@@ -495,7 +495,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
     "Method": "ConsultaporId",
     "RelativePath": "Creditos/{id}",
     "HttpMethod": "GET",
@@ -511,7 +511,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
     "Method": "ActualizarCredito",
     "RelativePath": "Creditos/{id}",
     "HttpMethod": "PUT",
@@ -532,7 +532,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
     "Method": "EliminarCredito",
     "RelativePath": "Creditos/{id}",
     "HttpMethod": "DELETE",
@@ -548,7 +548,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
     "Method": "ConsultaDetalleExtClientes",
     "RelativePath": "DetalleExtintorClientes",
     "HttpMethod": "GET",
@@ -579,7 +579,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
     "Method": "CrearDetalleExtintorCliente",
     "RelativePath": "DetalleExtintorClientes",
     "HttpMethod": "POST",
@@ -595,7 +595,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
     "Method": "ConsultaDetalleExtclientePorId",
     "RelativePath": "DetalleExtintorClientes/{id}",
     "HttpMethod": "GET",
@@ -611,7 +611,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
     "Method": "ActualizarCredito",
     "RelativePath": "DetalleExtintorClientes/{id}",
     "HttpMethod": "PUT",
@@ -632,7 +632,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
     "Method": "EliminarCredito",
     "RelativePath": "DetalleExtintorClientes/{id}",
     "HttpMethod": "DELETE",
@@ -648,7 +648,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
     "Method": "ConsultaDetalles",
     "RelativePath": "DetalleServicio",
     "HttpMethod": "GET",
@@ -669,7 +669,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
     "Method": "CrearDetalle",
     "RelativePath": "DetalleServicio",
     "HttpMethod": "POST",
@@ -685,7 +685,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
     "Method": "ConsultaPorId",
     "RelativePath": "DetalleServicio/{id}",
     "HttpMethod": "GET",
@@ -701,7 +701,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
     "Method": "ActualizarDetalles",
     "RelativePath": "DetalleServicio/{id}",
     "HttpMethod": "PUT",
@@ -722,7 +722,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
     "Method": "Eliminar",
     "RelativePath": "DetalleServicio/{id}",
     "HttpMethod": "DELETE",
@@ -738,7 +738,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
     "Method": "AddEnployee",
     "RelativePath": "Employees/add-employee",
     "HttpMethod": "POST",
@@ -782,7 +782,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
     "Method": "DeleteEmployee",
     "RelativePath": "Employees/delete-employee-by/{employeeId}",
     "HttpMethod": "DELETE",
@@ -826,7 +826,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
     "Method": "EmployeeById",
     "RelativePath": "Employees/search-employee-by/{employeeId}",
     "HttpMethod": "GET",
@@ -870,7 +870,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
     "Method": "Employees",
     "RelativePath": "Employees/search-employees",
     "HttpMethod": "GET",
@@ -929,7 +929,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
     "Method": "UpdateEmployee",
     "RelativePath": "Employees/update-employee-by/{employeeId}",
     "HttpMethod": "PUT",
@@ -978,7 +978,7 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
     "Method": "ConsultaGastos",
     "RelativePath": "Gastos",
     "HttpMethod": "GET",
@@ -999,7 +999,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
     "Method": "CrearGasto",
     "RelativePath": "Gastos",
     "HttpMethod": "POST",
@@ -1015,7 +1015,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
     "Method": "ConsultaGastoPorId",
     "RelativePath": "Gastos/{id}",
     "HttpMethod": "GET",
@@ -1031,7 +1031,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
     "Method": "ActualizarGasto",
     "RelativePath": "Gastos/{id}",
     "HttpMethod": "PUT",
@@ -1052,7 +1052,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
     "Method": "Eliminar",
     "RelativePath": "Gastos/{id}",
     "HttpMethod": "DELETE",
@@ -1068,7 +1068,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
     "Method": "ConsultaInventarios",
     "RelativePath": "Inventarios",
     "HttpMethod": "GET",
@@ -1094,7 +1094,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
     "Method": "Crear",
     "RelativePath": "Inventarios",
     "HttpMethod": "POST",
@@ -1110,7 +1110,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
     "Method": "ConsultaPorId",
     "RelativePath": "Inventarios/{id}",
     "HttpMethod": "GET",
@@ -1126,7 +1126,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
     "Method": "ActualizarInventario",
     "RelativePath": "Inventarios/{id}",
     "HttpMethod": "PUT",
@@ -1147,7 +1147,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.WebApi.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
     "Method": "Eliminar",
     "RelativePath": "Inventarios/{id}",
     "HttpMethod": "DELETE",
@@ -1163,7 +1163,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PesoExtintoresController",
     "Method": "Consultas",
     "RelativePath": "PesoExtintores",
     "HttpMethod": "GET",
@@ -1173,7 +1173,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PesoExtintoresController",
     "Method": "Crear",
     "RelativePath": "PesoExtintores",
     "HttpMethod": "POST",
@@ -1189,7 +1189,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PesoExtintoresController",
     "Method": "Consulta",
     "RelativePath": "PesoExtintores/{id}",
     "HttpMethod": "GET",
@@ -1205,7 +1205,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PesoExtintoresController",
     "Method": "ActualizarPeso",
     "RelativePath": "PesoExtintores/{id}",
     "HttpMethod": "PUT",
@@ -1226,7 +1226,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PesoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PesoExtintoresController",
     "Method": "Eliminar",
     "RelativePath": "PesoExtintores/{id}",
     "HttpMethod": "DELETE",
@@ -1242,7 +1242,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
     "Method": "ConsultasPrecios",
     "RelativePath": "Precios",
     "HttpMethod": "GET",
@@ -1258,7 +1258,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
     "Method": "CrearPrecios",
     "RelativePath": "Precios",
     "HttpMethod": "POST",
@@ -1274,7 +1274,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
     "Method": "ConsultaPrecio",
     "RelativePath": "Precios/{id}",
     "HttpMethod": "GET",
@@ -1290,7 +1290,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
     "Method": "ActualizarPrecios",
     "RelativePath": "Precios/{id}",
     "HttpMethod": "PUT",
@@ -1311,7 +1311,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
     "Method": "EliminarPrecios",
     "RelativePath": "Precios/{id}",
     "HttpMethod": "DELETE",
@@ -1327,7 +1327,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
     "Method": "ConsultaProductos",
     "RelativePath": "Productos",
     "HttpMethod": "GET",
@@ -1343,7 +1343,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
     "Method": "CrearProductos",
     "RelativePath": "Productos",
     "HttpMethod": "POST",
@@ -1359,7 +1359,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
     "Method": "ConsultaProductoPorId",
     "RelativePath": "Productos/{id}",
     "HttpMethod": "GET",
@@ -1375,7 +1375,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
     "Method": "ActualizarProductos",
     "RelativePath": "Productos/{id}",
     "HttpMethod": "PUT",
@@ -1396,7 +1396,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
     "Method": "Eliminar",
     "RelativePath": "Productos/{id}",
     "HttpMethod": "DELETE",
@@ -1412,7 +1412,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "ConsultaServicios",
     "RelativePath": "Servicios",
     "HttpMethod": "GET",
@@ -1428,7 +1428,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "Crear",
     "RelativePath": "Servicios",
     "HttpMethod": "POST",
@@ -1444,7 +1444,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "ConsultaPorId",
     "RelativePath": "Servicios/{id}",
     "HttpMethod": "GET",
@@ -1460,7 +1460,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "ActualizarServicios",
     "RelativePath": "Servicios/{id}",
     "HttpMethod": "PUT",
@@ -1481,7 +1481,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "Eliminar",
     "RelativePath": "Servicios/{id}",
     "HttpMethod": "DELETE",
@@ -1497,7 +1497,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "CreacionDetalleServicio",
     "RelativePath": "Servicios/Crear-Servicio-Detalle",
     "HttpMethod": "POST",
@@ -1513,7 +1513,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
     "Method": "ModificarEstado",
     "RelativePath": "Servicios/modificar-estado",
     "HttpMethod": "PUT",
@@ -1534,7 +1534,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
     "Method": "Consultas",
     "RelativePath": "TipoExtintores",
     "HttpMethod": "GET",
@@ -1544,7 +1544,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
     "Method": "CrearTipoExtintor",
     "RelativePath": "TipoExtintores",
     "HttpMethod": "POST",
@@ -1560,7 +1560,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
     "Method": "ConsultaTipoExtPorId",
     "RelativePath": "TipoExtintores/{id}",
     "HttpMethod": "GET",
@@ -1576,7 +1576,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
     "Method": "ActualizarTipo",
     "RelativePath": "TipoExtintores/{id}",
     "HttpMethod": "PUT",
@@ -1597,7 +1597,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.WebApi.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
     "Method": "EliminarTipoExt",
     "RelativePath": "TipoExtintores/{id}",
     "HttpMethod": "DELETE",

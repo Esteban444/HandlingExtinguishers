@@ -1,0 +1,59 @@
+﻿using System.Globalization;
+using System.Resources;
+
+namespace HandlingExtinguishers.Infraestructure.Localization;
+
+/// <summary>
+/// Helper class to manage authentication-related localized messages
+/// </summary>
+public static class AuthenticationMessageLocalization
+{
+    private static readonly ResourceManager resourceManager = new(
+        "HandlingExtinguishers.Infraestructure.Resources.AuthenticationMessages",
+        typeof(AuthenticationMessageLocalization).Assembly
+    );
+
+    /// <summary>
+    /// Gets the user not found message in the specified culture
+    /// </summary>
+    public static string UserNotFound(string cultureName = "es") =>
+        GetLocalizedMessage("UserNotFound", cultureName);
+
+    /// <summary>
+    /// Gets the invalid authentication message in the specified culture
+    /// </summary>
+    public static string InvalidAuthentication(string cultureName = "es") =>
+        GetLocalizedMessage("InvalidAuthentication", cultureName);
+
+    /// <summary>
+    /// Gets the account blocked message in the specified culture
+    /// </summary>
+    public static string AccountBlocked(string cultureName = "es") =>
+        GetLocalizedMessage("AccountBlocked", cultureName);
+
+    /// <summary>
+    /// Gets the user not found in database message in the specified culture
+    /// </summary>
+    public static string UserNotFoundInDatabase(string cultureName = "es") =>
+        GetLocalizedMessage("UserNotFoundInDatabase", cultureName);
+
+    /// <summary>
+    /// Gets a localized message for the specified key and culture
+    /// </summary>
+    /// <param name="key">The resource key</param>
+    /// <param name="cultureName">The culture name (e.g., "es" for Spanish, "en" for English)</param>
+    /// <returns>The localized message or the key if not found</returns>
+    private static string GetLocalizedMessage(string key, string cultureName)
+    {
+        try
+        {
+            var culture = new CultureInfo(cultureName);
+            var message = resourceManager.GetString(key, culture);
+            return message ?? key;
+        }
+        catch
+        {
+            return key;
+        }
+    }
+}

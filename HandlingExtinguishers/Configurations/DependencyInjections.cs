@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using HandlingEstinguishers.Core.Servicios;
-using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Dto.Clients;
 using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
@@ -10,8 +8,7 @@ using HandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Infraestructure.Repositories;
 using HandlingExtinguishers.Infrastructure.Repositories;
 using HandlingExtinguishers.Models.Models;
-using HandlingExtinguishers.WebApi.Configurations.Validators;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Configurations.Validators;
 using HandlingFireExtinguisher.Core.Services;
 using HandlingFireExtinguishers.Infraestructure.Repositories;
 using ManagementFireEstinguisher.Core.Servicios;
@@ -24,6 +21,7 @@ using ManagementFireEstinguisher.Dto.Products;
 using ManagementFireEstinguisher.Dto.Services;
 using ManejoExtintores.Core.Servicios;
 using MHandlingExtinguishers.Infraestructura.Repositorios;
+using HandlingExtinguishers.Models.Extinguishers;
 
 namespace HandlingExtinguishers.Configurations
 {
@@ -56,7 +54,7 @@ namespace HandlingExtinguishers.Configurations
 
             services.AddScoped<IValidator<GastosBase>, ValidacionesGastos>();
             services.AddScoped<IValidator<InventarioBase>, ValidacionInventario>();
-            services.AddScoped<IValidator<PesoExtintorBase>, ValidacionPesoExtintor>();
+            services.AddScoped<IValidator<WeightExtinguisherBase>, ValidacionPesoExtintor>();
             services.AddScoped<IValidator<PrecioBase>, ValidacionesPrecios>();
             services.AddScoped<IValidator<ProductoBase>, ValidacionesProducto>();
             services.AddScoped<IValidator<TipoExtintorBase>, ValidacionTipoExtintor>();
@@ -66,17 +64,17 @@ namespace HandlingExtinguishers.Configurations
             services.AddScoped<IServicieClient, ServicioCliente>();
             services.AddScoped<IServicieCredit, ServiceCredit>();
             services.AddScoped<IDetailService, ServicioDetalleServicios>();
-            services.AddScoped<IServicioDetalleExtClientes, ServicioDetalleExtClientes>();
+            services.AddScoped<IServiceDetailExtClients, ServicioDetalleExtClientes>();
             services.AddScoped<IServicioGasto, ServicioGasto>();
             services.AddScoped<IServiceCompany, ServiceCompany>();
             services.AddScoped<IServiceEmployee, ServiceEmployee>();
-            services.AddScoped<IServicioInventario, ServicioInventario>();
-            services.AddScoped<IServicioPrecios, ServicioPrecios>();
-            services.AddScoped<IServicioProducto, ServicioProducto>();
-            services.AddScoped<IServicioPesoExtintor, ServicioPesoExtintor>();
-            services.AddScoped<IServicioTipoExtintor, ServicioTipoExtintor>();
+            services.AddScoped<IServiceInventory, ServicioInventario>();
+            services.AddScoped<IServicePrices, ServicioPrecios>();
+            services.AddScoped<IServiceProducts, ServicioProducto>();
+            services.AddScoped<IServiceWeightExtinguisher, ServiceWeightExtinguisher>();
+            services.AddScoped<IServiceTypeExtinguisher, ServicioTipoExtintor>();
             services.AddScoped<IServiceOfService, ServiceOfService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthentificationService, AuthentificationService>();
 
             return services;
         }

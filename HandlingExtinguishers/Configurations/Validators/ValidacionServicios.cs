@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using ManagementFireEstinguisher.Dto.Services;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     class ValidacionServicios : AbstractValidator<ServicioBase>
     {

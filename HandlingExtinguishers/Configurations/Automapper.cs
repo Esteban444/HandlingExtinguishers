@@ -12,8 +12,9 @@ using ManagementFireEstinguisher.Dto.Prices;
 using ManagementFireEstinguisher.Dto.Products;
 using ManagementFireEstinguisher.Dto.Services;
 using ManagementFireEstinguisher.Dto.Users;
+using HandlingExtinguishers.Models.Extinguishers;
 
-namespace HandlingExtinguishers.WebApi.Configurations
+namespace HandlingExtinguishers.Configurations
 {
     public class Automapper : Profile
     {
@@ -68,8 +69,8 @@ namespace HandlingExtinguishers.WebApi.Configurations
                 .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher))
                 .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher));
 
-            CreateMap<WeightExtinguisher, PesoExtintorBase>().ReverseMap();
-            CreateMap<WeightExtinguisher, PesoExtintorDTO>().ReverseMap();
+            CreateMap<WeightExtinguisher, WeightExtinguisherBase>().ReverseMap();
+            CreateMap<WeightExtinguisher, WightExtuinguiserDto>().ReverseMap();
 
             CreateMap<TypeExtinguisher, TipoExtintorBase>().ReverseMap();
             CreateMap<TypeExtinguisher, TipoExtintorDTO>().ReverseMap();

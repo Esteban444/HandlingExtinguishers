@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace HandlingExtinguishers.WebApi.Configurations
+namespace HandlingExtinguishers.Configurations
 {
     public static class ServiceExtension
     {

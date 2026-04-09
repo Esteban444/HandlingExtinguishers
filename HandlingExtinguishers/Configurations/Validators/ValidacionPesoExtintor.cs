@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using ManagementFireEstinguisher.Dto.Extinguishers;
+using HandlingExtinguishers.Models.Extinguishers;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidacionPesoExtintor : AbstractValidator<PesoExtintorBase>
+    public class ValidacionPesoExtintor : AbstractValidator<WeightExtinguisherBase>
     {
         public ValidacionPesoExtintor()
         {

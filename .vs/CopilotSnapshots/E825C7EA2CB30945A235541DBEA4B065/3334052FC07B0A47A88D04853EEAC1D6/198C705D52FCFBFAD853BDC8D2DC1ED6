@@ -1,0 +1,38 @@
+﻿namespace HandlingExtinguishers.Infraestructure.Extensions;
+
+public static class IdentityConfigurationConstants
+{
+    /// <summary>
+    /// Minimum required length for user passwords
+    /// </summary>
+    public const int PasswordMinimumLength = 7;
+
+    /// <summary>
+    /// Indicates whether passwords must contain at least one digit
+    /// </summary>
+    public const bool PasswordRequireDigit = false;
+
+    /// <summary>
+    /// Indicates whether user email addresses must be unique in the system
+    /// </summary>
+    public const bool UserRequireUniqueEmail = true;
+
+    /// <summary>
+    /// Indicates whether new user accounts can be locked out after failed login attempts
+    /// </summary>
+    public const bool LockoutAllowedForNewUsers = true;
+
+    /// <summary>
+    /// Default duration in minutes for account lockout after maximum failed attempts
+    /// </summary>
+    public const int LockoutDurationInMinutes = 2;
+
+    /// <summary>
+    /// Maximum number of failed login attempts before account lockout
+    /// </summary>
+    public const int MaximumFailedAccessAttempts = 3;
+}
+
+public class CommonConstantsExtension
+{
+}

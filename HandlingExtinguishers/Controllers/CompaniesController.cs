@@ -5,7 +5,7 @@ using HandlingExtinguishers.Models.Company;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandlingExtinguishers.WebApi.Controllers
+namespace HandlingExtinguishers.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,21 +1,21 @@
 ﻿using FluentValidation;
-using HandlingFireExtinguisher.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using ManagementFireEstinguisher.Dto.Prices;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandlingExtinguishers.WebApi.Controllers
+namespace HandlingExtinguishers.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     [Authorize]
     public class PreciosController : ControllerBase
     {
-        private readonly IServicioPrecios _servicioPrecios;
+        private readonly IServicePrices _servicioPrecios;
         private readonly IValidator<PrecioBase> _validator;
 
-        public PreciosController(IServicioPrecios servicioPrecio, IValidator<PrecioBase> validator)
+        public PreciosController(IServicePrices servicioPrecio, IValidator<PrecioBase> validator)
         {
             _servicioPrecios = servicioPrecio;
             _validator = validator;

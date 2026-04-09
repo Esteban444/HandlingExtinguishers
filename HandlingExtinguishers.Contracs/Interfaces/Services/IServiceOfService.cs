@@ -2,7 +2,7 @@
 using ManagementFireEstinguisher.Dto.Services;
 using ManejoExtintores.Core.Filtros_Busqueda;
 
-namespace HandlingFireExtinguisher.Contracts.Interfaces.Services
+namespace HandlingExtinguishers.Contracts.Interfaces.Services 
 {
     public interface IServiceOfService
     {

@@ -561,17 +561,17 @@
           }
         }
       },
-      "HandlingExtinguishers.Contracs/1.0.0": {
+      "HandlingExtinguishers.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "HandlingExtinguishers.Models": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/HandlingExtinguishers.Contracs.dll": {}
+          "bin/placeholder/HandlingExtinguishers.Contracts.dll": {}
         },
         "runtime": {
-          "bin/placeholder/HandlingExtinguishers.Contracs.dll": {}
+          "bin/placeholder/HandlingExtinguishers.Contracts.dll": {}
         }
       },
       "HandlingExtinguishers.Models/1.0.0": {
@@ -1415,10 +1415,10 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
-    "HandlingExtinguishers.Contracs/1.0.0": {
+    "HandlingExtinguishers.Contracts/1.0.0": {
       "type": "project",
-      "path": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracs.csproj",
-      "msbuildProject": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracs.csproj"
+      "path": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracts.csproj",
+      "msbuildProject": "../HandlingExtinguishers.Contracs/HandlingExtinguishers.Contracts.csproj"
     },
     "HandlingExtinguishers.Models/1.0.0": {
       "type": "project",
@@ -1429,7 +1429,7 @@
   "projectFileDependencyGroups": {
     "net10.0": [
       "AutoMapper >= 12.0.1",
-      "HandlingExtinguishers.Contracs >= 1.0.0",
+      "HandlingExtinguishers.Contracts >= 1.0.0",
       "HandlingExtinguishers.Models >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.5",
       "Microsoft.EntityFrameworkCore >= 10.0.5",
@@ -1469,8 +1469,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj": {
-              "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj"
+            "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj": {
+              "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj"
             },
             "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj": {
               "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj"

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using HandlingExtinguisher.Dto.Clients;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     public class ValidacionDetalleExtintorClientes : AbstractValidator<BaseDetailExtinguisherClient>
     {

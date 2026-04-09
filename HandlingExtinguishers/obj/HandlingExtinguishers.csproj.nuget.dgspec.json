@@ -4,12 +4,12 @@
     "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\HandlingExtinguishers.csproj": {}
   },
   "projects": {
-    "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj": {
+    "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj",
-        "projectName": "HandlingExtinguishers.Contracs",
-        "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj",
+        "projectUniqueName": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj",
+        "projectName": "HandlingExtinguishers.Contracts",
+        "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj",
         "packagesPath": "C:\\Users\\juane\\.nuget\\packages\\",
         "outputPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\obj\\",
         "projectStyle": "PackageReference",
@@ -377,8 +377,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj": {
-                "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj"
+              "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj": {
+                "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj"
               },
               "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj": {
                 "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj"
@@ -1453,8 +1453,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj": {
-                "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj"
+              "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj": {
+                "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj"
               },
               "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj": {
                 "projectPath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj"
@@ -1484,9 +1484,9 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "AutoMapper": {
               "target": "Package",
-              "version": "[12.0.1, )"
+              "version": "[16.1.1, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",

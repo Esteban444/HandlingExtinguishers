@@ -1,0 +1,43 @@
+﻿namespace HandlingExtinguishers.Infraestructure.Localization;
+
+/// <summary>
+/// Localized authentication messages for Spanish and English
+/// </summary>
+public static class AuthenticationMessageLocalization
+{
+    /// <summary>
+    /// Gets the user not found message
+    /// </summary>
+    public static string UserNotFound(string culture = "es") => culture switch
+    {
+        "en" => "The user does not exist.",
+        _ => "El usuario no existe."
+    };
+
+    /// <summary>
+    /// Gets the invalid authentication message
+    /// </summary>
+    public static string InvalidAuthentication(string culture = "es") => culture switch
+    {
+        "en" => "Invalid authentication.",
+        _ => "Autenticación inválida."
+    };
+
+    /// <summary>
+    /// Gets the account blocked message
+    /// </summary>
+    public static string AccountBlocked(string culture = "es") => culture switch
+    {
+        "en" => "The account is blocked.",
+        _ => "La cuenta está bloqueada."
+    };
+
+    /// <summary>
+    /// Gets the user not found in database message
+    /// </summary>
+    public static string UserNotFoundInDatabase(string culture = "es") => culture switch
+    {
+        "en" => "The user was not found in the database.",
+        _ => "El usuario no fue encontrado en la base de datos."
+    };
+}

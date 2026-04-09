@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HandlingExtinguishers.Contracs\HandlingExtinguishers.Contracs.csproj" />
+    <ProjectReference Include="..\HandlingExtinguishers.Contracs\HandlingExtinguishers.Contracts.csproj" />
     <ProjectReference Include="..\HandlingExtinguishers.Models\HandlingExtinguishers.Models.csproj" />
   </ItemGroup>
 

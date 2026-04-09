@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using ManagementFireEstinguisher.Dto.Inventories;
 
-namespace HandlingExtinguishers.WebApi.Configurations.Validators
+namespace HandlingExtinguishers.Configurations.Validators
 {
     public class ValidacionInventario : AbstractValidator<InventarioBase>
     {

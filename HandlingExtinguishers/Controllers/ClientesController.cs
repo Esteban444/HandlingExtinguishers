@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
 using HandlinExtinguisher.Dto.Clients;
-using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Dto.Clients;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandlingExtinguishers.WebApi.Controllers
+namespace HandlingExtinguishers.Controllers
 {
     [Route("[controller]")]
     [ApiController]

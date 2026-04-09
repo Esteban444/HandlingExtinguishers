@@ -4,10 +4,11 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>HandlingExtinguishers-dev</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.5" />
@@ -17,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HandlingExtinguishers.Contracs\HandlingExtinguishers.Contracs.csproj" />
+    <ProjectReference Include="..\HandlingExtinguishers.Contracs\HandlingExtinguishers.Contracts.csproj" />
     <ProjectReference Include="..\HandlingExtinguishers.Core\HandlingExtinguishers.Core.csproj" />
     <ProjectReference Include="..\HandlingExtinguishers.Infraestructure\HandlingExtinguishers.Infraestructure.csproj" />
     <ProjectReference Include="..\HandlingExtinguishers.Models\HandlingExtinguishers.Models.csproj" />

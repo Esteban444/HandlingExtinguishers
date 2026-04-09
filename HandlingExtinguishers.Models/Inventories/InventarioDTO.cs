@@ -1,4 +1,5 @@
-﻿using ManagementFireEstinguisher.Dto.Extinguishers;
+﻿using HandlingExtinguishers.Models.Extinguishers;
+using ManagementFireEstinguisher.Dto.Extinguishers;
 using ManagementFireEstinguisher.Dto.Products;
 
 namespace ManagementFireEstinguisher.Dto.Inventories
@@ -7,7 +8,7 @@ namespace ManagementFireEstinguisher.Dto.Inventories
     {
         public int IdInventario { get; set; }
         public ProductoDTO Producto { get; set; }
-        public PesoExtintorDTO PesoExtintor { get; set; }
+        public WightExtuinguiserDto PesoExtintor { get; set; }
         public TipoExtintorDTO TipoExtintor { get; set; }
     }
 }

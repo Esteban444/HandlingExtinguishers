@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Contracts.Interfaces.Services;
 using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto.Clients;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;

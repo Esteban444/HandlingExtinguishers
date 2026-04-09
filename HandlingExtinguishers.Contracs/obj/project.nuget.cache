@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VVpSxc4fvqo=",
+  "dgSpecHash": "H4WPSjvnT0k=",
   "success": true,
-  "projectFilePath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracs.csproj",
+  "projectFilePath": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Contracs\\HandlingExtinguishers.Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\juane\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\10.0.5\\microsoft.aspnetcore.cryptography.internal.10.0.5.nupkg.sha512",
     "C:\\Users\\juane\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\10.0.5\\microsoft.aspnetcore.cryptography.keyderivation.10.0.5.nupkg.sha512",

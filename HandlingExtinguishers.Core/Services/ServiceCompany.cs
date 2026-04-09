@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using HandlingExtinguisher.Core.Exceptions;
-using HandlingExtinguishers.Contracts.Interfaces.Repositories;
-using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Pagination;
 using HandlingExtinguishers.Models.Company;
 using HandlingExtinguishers.Models.Models;
@@ -9,8 +7,10 @@ using HandlingFireExtinguisher.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using WebApplicationFacturas.Helpers;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 
-namespace HandlingEstinguishers.Core.Servicios
+namespace HandlingExtinguishers.Core.Services
 {
     public class ServiceCompany : IServiceCompany
     {
