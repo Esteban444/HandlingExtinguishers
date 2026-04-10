@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Extinguishers;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace ManagementFireEstinguisher.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El tipo de extintor que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
             }
         }
 
@@ -61,7 +62,7 @@ namespace ManagementFireEstinguisher.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NoContent, new { mensaje = "El tipo de extintor que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
             }
         }
 
@@ -79,12 +80,12 @@ namespace ManagementFireEstinguisher.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { mensaje = "El tipo de extintor tiene relacion con productos o detalle de servicio no se puede borrar" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherRelated );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El tipo de extintor no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
             }
         }
 

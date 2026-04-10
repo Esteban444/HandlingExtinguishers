@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto;
 using ManagementFireEstinguisher.Dto.Services;
@@ -38,7 +39,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio que solicita no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
             }
         }
 
@@ -70,7 +71,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio que desea actualizarle el estado no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
             }
         }
 
@@ -91,7 +92,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
             }
         }
 
@@ -108,12 +109,12 @@ namespace ManejoExtintores.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El servicio tiene relaciones con otros datos no se puede borrar." });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedService );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El servicio no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
             }
         }
     }

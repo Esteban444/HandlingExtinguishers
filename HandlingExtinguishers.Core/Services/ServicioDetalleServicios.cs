@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Services;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
-namespace ManejoExtintores.Core.Servicios
+namespace HandlingExtinguishers.Core.Services
 {
     public class ServicioDetalleServicios : IDetailService
     {
@@ -37,7 +37,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El  detalle  de servicio que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.DetailServiceNotFound );
             }
         }
 
@@ -68,7 +68,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El detalle de servicio que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.DetailServiceNotFound );
             }
         }
 
@@ -86,12 +86,12 @@ namespace ManejoExtintores.Core.Servicios
                 catch (Exception)
                 {
 
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El detalle de  servicio tiene relaciones con otros datos no se puede borrar" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedDetailService );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El detalle de servicio no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.DetailServiceNotFound );
             }
         }
     }

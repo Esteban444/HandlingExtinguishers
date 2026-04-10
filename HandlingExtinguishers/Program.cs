@@ -1,10 +1,10 @@
 ﻿using HandlingExtinguisher.Infraestructure.Data;
-using HandlingExtinguisher.Infraestructure.Middleware;
 using HandlingExtinguishers.Configurations;
-using HandlingExtinguishers.Models.Models;
-using HandlingFireExtinguisher.Core.Helpers;
-using HandlingExtinguishers.Infraestructure.Extensions;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Core.Localization;
+using HandlingExtinguishers.Infraestructure.Middleware;
+using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -22,18 +22,32 @@ builder.Services.AddAutoMapper(cfg =>
     cfg.AddMaps(typeof(Automapper).Assembly);
 });
 
+var supportedCultures = new[] { CommonConstants.CultureEs, CommonConstants.CultureEn };
+
+builder.Services.AddLocalization(options =>
+    options.ResourcesPath = CommonConstants.CulturePath );
+
+builder.Services.Configure<RequestLocalizationOptions>( options =>
+{
+    options.SetDefaultCulture( CommonConstants.CultureEs )
+           .AddSupportedCultures(supportedCultures)
+           .AddSupportedUICultures(supportedCultures);
+
+    options.ApplyCurrentCultureToResponseHeaders = true;
+});
+
 builder.Services.AddIdentity<Users, IdentityRole>(options =>
 {
-    options.Password.RequiredLength = CommonConstantsExtension.PasswordMinimumLength;
-    options.Password.RequireDigit = CommonConstantsExtension.PasswordRequireDigit;
-    options.User.RequireUniqueEmail = CommonConstantsExtension.UserRequireUniqueEmail;
-    options.Lockout.AllowedForNewUsers = CommonConstantsExtension.LockoutAllowedForNewUsers;
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(CommonConstantsExtension.LockoutDurationInMinutes);
-    options.Lockout.MaxFailedAccessAttempts = CommonConstantsExtension.MaximumFailedAccessAttempts;
+    options.Password.RequiredLength = CommonConstants.PasswordMinimumLength;
+    options.Password.RequireDigit = CommonConstants.PasswordRequireDigit;
+    options.User.RequireUniqueEmail = CommonConstants.UserRequireUniqueEmail;
+    options.Lockout.AllowedForNewUsers = CommonConstants.LockoutAllowedForNewUsers;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(CommonConstants.LockoutDurationInMinutes);
+    options.Lockout.MaxFailedAccessAttempts = CommonConstants.MaximumFailedAccessAttempts;
 }).AddEntityFrameworkStores<HandlingExtinguisherContext>().AddDefaultTokenProviders();
 
 
-var jwtConfiguracion = builder.Configuration.GetSection(CommonConstantsExtension.JwtConfigurationSectionName);
+var jwtConfiguracion = builder.Configuration.GetSection(CommonConstants.JwtConfigurationSectionName);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,10 +60,10 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtConfiguracion.GetSection(CommonConstantsExtension.JwtValidIssuerKeyName).Value,
-        ValidAudience = jwtConfiguracion.GetSection(CommonConstantsExtension.JwtValidAudienceKeyName).Value,
+        ValidIssuer = jwtConfiguracion.GetSection(CommonConstants.JwtValidIssuerKeyName).Value,
+        ValidAudience = jwtConfiguracion.GetSection(CommonConstants.JwtValidAudienceKeyName).Value,
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(jwtConfiguracion.GetSection(CommonConstantsExtension.JwtSecurityKeyName).Value!))
+            Encoding.UTF8.GetBytes(jwtConfiguracion.GetSection(CommonConstants.JwtSecurityKeyName).Value!))
     };
 });
 
@@ -66,13 +80,15 @@ builder.Services.AddOpenApi(options =>
 
 var app = builder.Build();
 
+app.UseRequestLocalization();
+
 app.UseMiddleware<MiddlewareException>();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();
-    app.MapGet(CommonConstantsExtension.RootPath, () => Results.Redirect(CommonConstantsExtension.ScalarApiReferencePath));
+    app.MapGet(CommonConstants.RootPath, () => Results.Redirect(CommonConstants.ScalarApiReferencePath));
 }
 
 app.UseHttpsRedirection();

@@ -2340,168 +2340,6 @@
         ]
       }
     },
-    "/PesoExtintores": {
-      "get": {
-        "tags": [
-          "PesoExtintores"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "PesoExtintores"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/PesoExtintores/{id}": {
-      "get": {
-        "tags": [
-          "PesoExtintores"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "PesoExtintores"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PesoExtintorBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "PesoExtintores"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
     "/Precios": {
       "get": {
         "tags": [
@@ -3252,6 +3090,174 @@
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/WeightExtinguisher/searchs": {
+      "get": {
+        "tags": [
+          "WeightExtinguisher"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/WeightExtinguisher/search-by/{idWeightExtinguisher}": {
+      "get": {
+        "tags": [
+          "WeightExtinguisher"
+        ],
+        "parameters": [
+          {
+            "name": "idWeightExtinguisher",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/WeightExtinguisher/create-weight-extinguisher": {
+      "post": {
+        "tags": [
+          "WeightExtinguisher"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/WeightExtinguisher/update-weight-extinguisher-by/{idWeightExtinguisher}": {
+      "put": {
+        "tags": [
+          "WeightExtinguisher"
+        ],
+        "parameters": [
+          {
+            "name": "idWeightExtinguisher",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeightExtinguisherBase"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/WeightExtinguisher/delete-weight-extinguisher-by/{idWeightExtinguisher}": {
+      "delete": {
+        "tags": [
+          "WeightExtinguisher"
+        ],
+        "parameters": [
+          {
+            "name": "idWeightExtinguisher",
             "in": "path",
             "required": true,
             "schema": {
@@ -4137,20 +4143,6 @@
           }
         }
       },
-      "PesoExtintorBase": {
-        "type": "object",
-        "properties": {
-          "pesoXlibras": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          }
-        }
-      },
       "PrecioBase": {
         "type": "object",
         "properties": {
@@ -4312,6 +4304,20 @@
             "type": "string"
           }
         }
+      },
+      "WeightExtinguisherBase": {
+        "type": "object",
+        "properties": {
+          "pesoXlibras": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -4355,9 +4361,6 @@
       "name": "Gastos"
     },
     {
-      "name": "PesoExtintores"
-    },
-    {
       "name": "Precios"
     },
     {
@@ -4368,6 +4371,9 @@
     },
     {
       "name": "TipoExtintores"
+    },
+    {
+      "name": "WeightExtinguisher"
     }
   ]
 }

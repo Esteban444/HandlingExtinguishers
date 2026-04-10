@@ -1,6 +1,6 @@
-﻿namespace HandlingExtinguishers.Infraestructure.Extensions;
+﻿namespace HandlingExtinguishers.Core.Helpers;
 
-public static class CommonConstantsExtension
+public static class CommonConstants
 {
     // ========== Identity Configuration Constants ==========
 
@@ -89,4 +89,24 @@ public static class CommonConstantsExtension
     /// Description for JWT authentication in API documentation
     /// </summary>
     public const string JwtAuthenticationDescription = "Ingresa tu token JWT";
+
+    public const string CultureEn = "en";
+
+    public const string CultureEs = "es";
+
+    public const string CulturePath = "Localization";
+
+    public const string ContentType = "application/json";
+
+    public const string AuthenticationError = "Authentication error";
+
+    public const string ErrorHandling = "Error handling";
+
+    public const string ServerError = "Server error";
+
+    public const string UnhandledException = "Unhandled exception";
+
+    public const string ErrorMessage = "Error";
+
+    public const string SettingsJWTConfiguracion = "JWTConfiguracion";
 }

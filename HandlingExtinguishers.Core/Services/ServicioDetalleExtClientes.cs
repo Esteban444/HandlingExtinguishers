@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto.Clients;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El detalle de extintor de cliente no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
             }
         }
 
@@ -66,7 +67,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El detalle extintor del cliente que desea actualizar no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
             }
         }
 
@@ -83,12 +84,12 @@ namespace ManejoExtintores.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La detalle extintor de este cliente tiene relaciones con otras tablas no se puede borrar." });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedDetailExtinguisherClient );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La detalle extintor de cliente no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
             }
 
         }

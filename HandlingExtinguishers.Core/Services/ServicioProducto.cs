@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Products;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -36,7 +37,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El producto que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
             }
         }
 
@@ -63,7 +64,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El producto que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
             }
         }
 
@@ -81,12 +82,12 @@ namespace ManejoExtintores.Core.Servicios
                 catch (Exception)
                 {
 
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { mensaje = "El producto tiene relacion con inventario no se puede borrar" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedProduct );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El producto no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
             }
         }
     }

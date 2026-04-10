@@ -504,6 +504,14 @@
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
+        },
+        "resources": {
+          "en/HandlingExtinguishers.Core.resources.dll": {
+            "locale": "en"
+          },
+          "es/HandlingExtinguishers.Core.resources.dll": {
+            "locale": "es"
+          }
         }
       },
       "HandlingExtinguishers.Infraestructure/1.0.0": {

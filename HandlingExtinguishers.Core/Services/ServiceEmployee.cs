@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Models.Pagination;
@@ -60,7 +61,7 @@ namespace HandlingExtinguishers.Core.Services
                 }
                 else
                 {
-                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado que solicita no existe en la base de datos" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
                 }
             }
             catch (Exception)
@@ -111,7 +112,7 @@ namespace HandlingExtinguishers.Core.Services
                 }
                 else
                 {
-                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empleado que desea actualizar no existe en la base de datos" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
                 }
             }
             catch (Exception)
@@ -131,7 +132,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El empleado no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
             }
         }
     }

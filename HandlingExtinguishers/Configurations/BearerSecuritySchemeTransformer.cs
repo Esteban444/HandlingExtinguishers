@@ -1,4 +1,4 @@
-﻿using HandlingExtinguishers.Infraestructure.Extensions;
+﻿using HandlingExtinguishers.Core.Helpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi;
@@ -10,19 +10,19 @@ public sealed class BearerSecuritySchemeTransformer( IAuthenticationSchemeProvid
     {
         var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync();
 
-        if (authenticationSchemes.Any(s => s.Name == CommonConstantsExtension.BearerSchemeName))
+        if (authenticationSchemes.Any(s => s.Name == CommonConstants.BearerSchemeName))
         {
             document.Components ??= new OpenApiComponents();
 
             document.Components.SecuritySchemes = new Dictionary<string, IOpenApiSecurityScheme>
             {
-                [CommonConstantsExtension.BearerSchemeName] = new OpenApiSecurityScheme
+                [CommonConstants.BearerSchemeName] = new OpenApiSecurityScheme
                 {
                     Type = SecuritySchemeType.Http,
-                    Scheme = CommonConstantsExtension.BearerSchemeType,
-                    BearerFormat = CommonConstantsExtension.JwtBearerFormat,
+                    Scheme = CommonConstants.BearerSchemeType,
+                    BearerFormat = CommonConstants.JwtBearerFormat,
                     In = ParameterLocation.Header,
-                    Description = CommonConstantsExtension.JwtAuthenticationDescription
+                    Description = CommonConstants.JwtAuthenticationDescription
                 }
             };
 
@@ -36,7 +36,7 @@ public sealed class BearerSecuritySchemeTransformer( IAuthenticationSchemeProvid
 
                     operation.Security.Add(new OpenApiSecurityRequirement
                     {
-                        [new OpenApiSecuritySchemeReference(CommonConstantsExtension.BearerSchemeName, document)] = new List<string>()
+                        [new OpenApiSecuritySchemeReference(CommonConstants.BearerSchemeName, document)] = new List<string>()
                     });
                 }
             }

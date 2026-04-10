@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Credit;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -36,7 +37,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El credito no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.CreditNotFound );
             }
         }
 
@@ -64,7 +65,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "El credito que desea actualizar no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.CreditNotFound );
             }
         }
 
@@ -81,12 +82,12 @@ namespace HandlingExtinguishers.Core.Services
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La credito tiene relacion con servicios no se puede borrar." });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedCredit );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { mensaje = "La credito no existe en la base de datos." });
+                throw new HandlingExceptions( HandlingExtinguisherResources.CreditNotFound );
             }
 
         }

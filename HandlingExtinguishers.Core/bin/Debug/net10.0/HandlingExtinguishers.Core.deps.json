@@ -17,6 +17,14 @@
         },
         "runtime": {
           "HandlingExtinguishers.Core.dll": {}
+        },
+        "resources": {
+          "en/HandlingExtinguishers.Core.resources.dll": {
+            "locale": "en"
+          },
+          "es/HandlingExtinguishers.Core.resources.dll": {
+            "locale": "es"
+          }
         }
       },
       "AutoMapper/12.0.1": {

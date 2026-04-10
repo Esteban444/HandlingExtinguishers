@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Prices;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -36,7 +37,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El precio que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.PriceNotFound );
             }
         }
 
@@ -65,7 +66,7 @@ namespace ManejoExtintores.Core.Servicios
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El precio que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.PriceNotFound );
             }
         }
 
@@ -82,12 +83,12 @@ namespace ManejoExtintores.Core.Servicios
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El Precio tiene relacion con productos o detalle de servicio no se puede borrar" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedPrice );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El Precio no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.PriceNotFound );
             }
         }
     }

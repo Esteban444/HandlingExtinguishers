@@ -1,65 +1,66 @@
-﻿using HandlingExtinguisher.Core.Exceptions;
+﻿using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Net;
 
-namespace HandlingExtinguisher.Infraestructure.Middleware
+namespace HandlingExtinguishers.Infraestructure.Middleware
 {
-    public class MiddlewareException
+    public class MiddlewareException( RequestDelegate next, ILogger<MiddlewareException> logger )
     {
-        private readonly RequestDelegate _requestDelegate;
-        private readonly ILogger<MiddlewareException> _logger;
+        private readonly RequestDelegate requestDelegate = next;
+        private readonly ILogger<MiddlewareException> logger = logger;
 
-        public MiddlewareException(RequestDelegate next, ILogger<MiddlewareException> logger)
-        {
-            _requestDelegate = next;
-            _logger = logger;
-        }
-
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync( HttpContext context )
         {
             try
             {
-                await _requestDelegate(context);
+                await requestDelegate( context );
             }
-            catch (Exception e)
+            catch ( Exception ex )
             {
-                await HandlingExcepcionAsync(context, e, _logger);
+                await HandlingExcepcionAsync( context, ex, logger );
             }
         }
 
-        public async Task HandlingExcepcionAsync(HttpContext context, Exception e, ILogger<MiddlewareException> logger)
+        public async Task HandlingExcepcionAsync( HttpContext context, Exception exception, ILogger<MiddlewareException> logger )
         {
-            object errores = null;
-            switch (e)
+            object errores = new();
+
+            switch ( exception )
             {
-                case HandlingExceptions me:
-                    logger.LogError(e, "Error handling");
-                    errores = new { Mensage = me.Error };
-                    context.Response.StatusCode = (int)me.Code;
+                case HandlingExceptions ex:
+                    logger.LogError( ex, CommonConstants.ErrorHandling );
+                    errores = new { 
+                        StatusCode = context.Response.StatusCode,
+                        Message = ex.Message
+                    };
                     break;
 
                 case Exception ex:
-                    logger.LogError(e, "Server error");
-                    errores = new { Mensage = string.IsNullOrWhiteSpace(ex.Message) ? "Error" : ex.Message };
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    logger.LogError( exception, CommonConstants.ServerError);
+                    errores = new { 
+                        StatusCode = context.Response.StatusCode,
+                        Message = string.IsNullOrWhiteSpace(ex.Message) ? CommonConstants.ErrorMessage : ex.Message 
+                    };
                     break;
 
                 default:
-                    logger.LogError(e, "Unhandled exception");
-                    errores = new { Mensage = "Unhandled exception" };
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    logger.LogError( exception, CommonConstants.UnhandledException );
+                    errores = new {
+                        StatusCode = context.Response.StatusCode,
+                        Message = exception.Message
+                    };
                     break;
             }
 
-            context.Response.ContentType = "application/json";
-            if (errores != null)
+            context.Response.ContentType = CommonConstants.ContentType;
+
+            if ( errores is not null )
             {
-                var resultados = JsonConvert.SerializeObject(new { errores });
-                await context.Response.WriteAsync(resultados);
+                var result = JsonConvert.SerializeObject( new { errores } );
+                await context.Response.WriteAsync( result );
             }
         }
     }
-
 }

@@ -7,20 +7,8 @@
       "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\services\\authentificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\localization\\localizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\localization\\localizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\exceptions\\authenticationexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\exceptions\\authenticationexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|solutionrelative:handlingextinguishers\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|solutionrelative:handlingextinguishers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\helpers\\jwthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\helpers\\jwthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 318,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,67 +46,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthenticationException.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Exceptions\\AuthenticationException.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\Exceptions\\AuthenticationException.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Exceptions\\AuthenticationException.cs",
-              "RelativeToolTip": "HandlingExtinguishers.Core\\Exceptions\\AuthenticationException.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T18:37:44.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LocalizationService.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Localization\\LocalizationService.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\Localization\\LocalizationService.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Localization\\LocalizationService.cs",
-              "RelativeToolTip": "HandlingExtinguishers.Core\\Localization\\LocalizationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T18:18:49.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AuthentificationService.cs",
               "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Services\\AuthentificationService.cs",
               "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\Services\\AuthentificationService.cs",
               "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Services\\AuthentificationService.cs",
               "RelativeToolTip": "HandlingExtinguishers.Core\\Services\\AuthentificationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T17:38:19.236Z",
+              "WhenOpened": "2026-04-10T02:11:37.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "HandlingExtinguishers\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "JwtHandler.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Helpers\\JwtHandler.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\Helpers\\JwtHandler.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Helpers\\JwtHandler.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Core\\Helpers\\JwtHandler.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T17:33:46.102Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Program.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers\\Program.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Program.cs",
-              "RelativeToolTip": "HandlingExtinguishers\\Program.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAArwAMAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T21:17:14.233Z",
+              "WhenOpened": "2026-04-10T00:14:17.931Z",
               "EditorCaption": ""
             }
           ]

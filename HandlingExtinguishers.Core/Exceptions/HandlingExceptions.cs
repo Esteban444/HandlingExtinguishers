@@ -1,16 +1,13 @@
-﻿using System.Net;
+﻿namespace HandlingExtinguishers.Core.Exceptions;
 
-namespace HandlingExtinguisher.Core.Exceptions
+using System.Net;
+
+public class HandlingExceptions : Exception
 {
-    public class HandlingExceptions : Exception
-    {
-        public HttpStatusCode Code { get; }
-        public object Error { get; }
+    public HandlingExceptions() { }
 
-        public HandlingExceptions(HttpStatusCode status, object error = null)
-        {
-            Code = status;
-            Error = error;
-        }
+    public HandlingExceptions(string message) : base(message)
+    {
+
     }
 }

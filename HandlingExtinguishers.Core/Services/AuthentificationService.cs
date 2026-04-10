@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguisher.Dto;
 using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
-using HandlingExtinguishers.Core.Localization;
-using HandlingFireExtinguisher.Core.Helpers;
 using ManagementFireEstinguisher.Dto.Users;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Net;
+using HandlingExtinguishers.Core.Localization;
+using System.Security.Authentication;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Helpers;
 
 namespace HandlingExtinguishers.Core.Services
 {
@@ -25,8 +25,8 @@ namespace HandlingExtinguishers.Core.Services
         {
             try
             {
-                var user = await userManager.FindByEmailAsync( request.Email) 
-                    ?? throw new AuthenticationException(HandlingExtinguisherResources.UserNotFound, localizationService);
+                var user = await userManager.FindByEmailAsync(request.Email)
+                    ?? throw new AuthenticationException( HandlingExtinguisherResources.UserNotFound );
 
                 if ( !await userManager.CheckPasswordAsync( user, request.Password ) )
                 {
@@ -34,16 +34,11 @@ namespace HandlingExtinguishers.Core.Services
 
                     if ( await userManager.IsLockedOutAsync( user ) )
                     {
-                        throw new AuthenticationException( HandlingExtinguisherResources.AccountBlocked,
-                                                           localizationService,
-                                                           HttpStatusCode.Unauthorized);
+                        throw new HandlingExceptions( HandlingExtinguisherResources.AccountBlocked );
 
                     }
 
-                    throw new AuthenticationException( HandlingExtinguisherResources.InvalidAuthentication,
-                                                       localizationService,
-                                                       HttpStatusCode.Unauthorized);
-
+                    throw new HandlingExceptions( HandlingExtinguisherResources.InvalidAuthentication );
                 }
 
                 var token = await jwtHandler.CreateToken( user );
@@ -70,8 +65,7 @@ namespace HandlingExtinguishers.Core.Services
                 var expiredToken = handler.ReadToken( token ) as JwtSecurityToken;
                 var userId = expiredToken?.Claims.FirstOrDefault( c => c.Type == ClaimTypes.NameIdentifier )?.Value;
 
-                var user = await userManager.FindByIdAsync( userId! ) 
-                    ?? throw new AuthenticationException( HandlingExtinguisherResources.UserNotFoundInDatabase, localizationService, System.Net.HttpStatusCode.BadRequest );
+                var user = await userManager.FindByIdAsync(userId!) ?? throw new HandlingExceptions( HandlingExtinguisherResources.UserNotFound );
 
                 var result = await jwtHandler.CreateToken( user );
 

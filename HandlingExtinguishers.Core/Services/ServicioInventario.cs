@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Inventories;
 using ManejoExtintores.Core.Filtros_Busqueda;
@@ -37,7 +38,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El inventario que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
             }
         }
 
@@ -68,7 +69,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El inventario que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
             }
         }
 
@@ -83,14 +84,14 @@ namespace HandlingExtinguishers.Core.Services
                     var inventarioE = _mapper.Map<InventarioBase>(inventariobd);
                     return inventarioE;
                 }
-                catch (Exception)
+                catch ( Exception )
                 {
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El inventario tiene relacion con productos no se puede borrar" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedInventory );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El inventario no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
             }
         }
 

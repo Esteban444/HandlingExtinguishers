@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Extinguishers;
 using HandlingExtinguishers.Models.Models;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
             }
         }
 
@@ -70,7 +71,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor que desea actualizar no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
             }
         }
 
@@ -91,12 +92,12 @@ namespace HandlingExtinguishers.Core.Services
                 }
                 catch (Exception)
                 {
-                    throw new HandlingExceptions(HttpStatusCode.InternalServerError, new { Mensaje = "El peso de extintor tiene relacion con productos o detalle de servicio no se puede borrar" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedWeight );
                 }
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "El peso de extintor no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
             }
         }
 

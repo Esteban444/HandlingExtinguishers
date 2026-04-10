@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Core.Exceptions;
 using HandlingExtinguishers.Models.Pagination;
 using HandlingExtinguishers.Models.Company;
 using HandlingExtinguishers.Models.Models;
 using HandlingFireExtinguisher.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 using WebApplicationFacturas.Helpers;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
 
 namespace HandlingExtinguishers.Core.Services
 {
@@ -86,7 +86,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa que solicita no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.CompanyNotFound );
             }
         }
 
@@ -96,7 +96,7 @@ namespace HandlingExtinguishers.Core.Services
             try
             {
                 var result = await _repositoryCompany.FindByAsNoTracking(e => e.Nit == company.Nit).FirstOrDefaultAsync();
-                if (result != null) throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "Ya existe una empresa con el mismo nit,Por favor actualizala." });
+                if (result != null) throw new HandlingExceptions( HandlingExtinguisherResources.DuplicatedCompany );
                 var newCompany = _mapper.Map<Company>(company);
                 newCompany.Active = true;
                 await _repositoryCompany.Add(newCompany);
@@ -134,7 +134,7 @@ namespace HandlingExtinguishers.Core.Services
                 }
                 else
                 {
-                    throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa que desea actualizar no existe en la base de datos" });
+                    throw new HandlingExceptions( HandlingExtinguisherResources.CompanyNotFound );
                 }
             }
             catch (Exception)
@@ -166,7 +166,7 @@ namespace HandlingExtinguishers.Core.Services
             }
             else
             {
-                throw new HandlingExceptions(HttpStatusCode.NotFound, new { Mensaje = "La empresa no existe en la base de datos" });
+                throw new HandlingExceptions( HandlingExtinguisherResources.CompanyNotFound );
             }
         }
     
