@@ -10,12 +10,12 @@ namespace HandlingExtinguishers.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class CreditosController : ControllerBase
+    public class CreditController : ControllerBase
     {
         private readonly IServicieCredit _serviciCreditos;
         private readonly IValidator<CreditoServicioBase> _validator;
 
-        public CreditosController(IServicieCredit servicioCreditos, IValidator<CreditoServicioBase> validator)
+        public CreditController(IServicieCredit servicioCreditos, IValidator<CreditoServicioBase> validator)
         {
             _serviciCreditos = servicioCreditos;
             _validator = validator;

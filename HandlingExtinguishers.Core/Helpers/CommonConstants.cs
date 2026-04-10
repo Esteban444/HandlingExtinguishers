@@ -88,7 +88,7 @@ public static class CommonConstants
     /// <summary>
     /// Description for JWT authentication in API documentation
     /// </summary>
-    public const string JwtAuthenticationDescription = "Ingresa tu token JWT";
+    public const string JwtAuthenticationDescription = "Enter your JWT token";
 
     public const string CultureEn = "en";
 
@@ -108,5 +108,11 @@ public static class CommonConstants
 
     public const string ErrorMessage = "Error";
 
-    public const string SettingsJWTConfiguracion = "JWTConfiguracion";
+    public const string SettingsJWTConfiguracion = "JWTConfiguration";
+
+    public const string ExpiryInMinutes = "expiryInMinutes";
+
+    public const string DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
+    public const string DataBaseDefaultConnection = "DefaultConnection";
 }

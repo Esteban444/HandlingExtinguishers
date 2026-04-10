@@ -58,15 +58,15 @@ namespace ManejoExtintores.Core.Servicios
             return serviciob;
         }
 
-        public async Task<ModificarEstado> ActualizarEstado(Guid id, ModificarEstado modificar)
+        public async Task<EditStatus> ActualizarEstado(Guid id, EditStatus modificar)
         {
             var serviciobd = await _repositorio.FindBy(s => s.Id == id).FirstOrDefaultAsync();
             if (serviciobd != null)
             {
-                serviciobd.StateService = modificar.Estado ?? serviciobd.StateService;
+                serviciobd.StateService = modificar.Status ?? serviciobd.StateService;
 
                 await _repositorio.Update(serviciobd);
-                var servicioAct = _mapper.Map<ModificarEstado>(serviciobd);
+                var servicioAct = _mapper.Map<EditStatus>(serviciobd);
                 return servicioAct;
             }
             else

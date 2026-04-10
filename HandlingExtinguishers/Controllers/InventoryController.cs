@@ -10,12 +10,12 @@ namespace HandlingExtinguisher.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class InventariosController : ControllerBase
+    public class InventoryController : ControllerBase
     {
         private readonly IServiceInventory _servicioInventario;
         private readonly IValidator<InventarioBase> _validator;
 
-        public InventariosController( IServiceInventory servicioInventario, IValidator<InventarioBase> validator )
+        public InventoryController( IServiceInventory servicioInventario, IValidator<InventarioBase> validator )
         {
             _servicioInventario = servicioInventario;
             _validator = validator;

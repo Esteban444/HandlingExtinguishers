@@ -1,4 +1,4 @@
-﻿namespace HandlingExtinguisher.Dto.Users
+﻿namespace HandlingExtinguishers.Models.Authentication
 {
     public class LoginRequestDto
     {

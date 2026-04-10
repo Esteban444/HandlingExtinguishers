@@ -1,4 +1,5 @@
 ﻿using HandlingExtinguisher.Infraestructure.Data;
+using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -10,27 +11,29 @@ namespace HandlingExtinguishers.Configurations
 {
     public static class ServiceExtension
     {
-        public static IServiceCollection AddContext(this IServiceCollection services, IConfiguration Configuracion)
+        public static IServiceCollection AddContext( this IServiceCollection services, IConfiguration Configuration )
         {
-            services.AddDbContext<HandlingExtinguisherContext>(options => options.UseSqlServer(Configuracion.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<HandlingExtinguisherContext>( options => options.UseSqlServer( Configuration.GetConnectionString( CommonConstants.DataBaseDefaultConnection ) ) );
+
             return services;
         }
 
-        public static IServiceCollection AddIdentityToApp(this IServiceCollection services)
+        public static IServiceCollection AddIdentityToApp( this IServiceCollection services )
         {
-            services.AddIdentity<Users, IdentityRole>(options =>
+            services.AddIdentity<Users, IdentityRole>( options =>
             {
                 options.Password.RequiredLength = 7;
                 options.Password.RequireDigit = false;
                 options.User.RequireUniqueEmail = true;
                 options.Lockout.AllowedForNewUsers = true;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes( 2 );
                 options.Lockout.MaxFailedAccessAttempts = 3;
             }).AddEntityFrameworkStores<HandlingExtinguisherContext>().AddDefaultTokenProviders();
+
             return services;
         }
 
-        public static IServiceCollection AddPolicyCors(this IServiceCollection services)
+        public static IServiceCollection AddPolicyCors( this IServiceCollection services )
         {
             services.AddCors(options =>
             {
@@ -40,16 +43,19 @@ namespace HandlingExtinguishers.Configurations
                         builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                     });
             });
+
             return services;
         }
-        public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration Configuration)
+
+        public static IServiceCollection AddAuthentication( this IServiceCollection services, IConfiguration Configuration )
         {
-            var jwtConfiguracion = Configuration.GetSection("JWTConfiguracion");
+            var jwtConfiguracion = Configuration.GetSection( CommonConstants.SettingsJWTConfiguracion );
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
+            }).AddJwtBearer( options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -57,26 +63,27 @@ namespace HandlingExtinguishers.Configurations
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtConfiguracion.GetSection("validIssuer").Value,
-                    ValidAudience = jwtConfiguracion.GetSection("validAudience").Value,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfiguracion.GetSection("securityKey").Value!))
+                    ValidIssuer = jwtConfiguracion.GetSection( CommonConstants.JwtValidIssuerKeyName ).Value,
+                    ValidAudience = jwtConfiguracion.GetSection( CommonConstants.JwtValidAudienceKeyName ).Value,
+                    IssuerSigningKey = new SymmetricSecurityKey( Encoding.UTF8.GetBytes( jwtConfiguracion.GetSection( CommonConstants.JwtSecurityKeyName ).Value! ) )
                 };
             });
 
             return services;
         }
 
-        public static IServiceCollection AddOptions(this IServiceCollection services, IConfiguration Configuration)
+        public static IServiceCollection AddOptions( this IServiceCollection services, IConfiguration Configuration )
         {
-            services.AddControllers(option =>
+            services.AddControllers( option =>
             {
 
 
-            }).AddNewtonsoftJson(options =>
+            }).AddNewtonsoftJson( options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
+
             return services;
         }
     }

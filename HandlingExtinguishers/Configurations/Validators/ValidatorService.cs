@@ -3,9 +3,9 @@ using ManagementFireEstinguisher.Dto.Services;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    class ValidacionServicios : AbstractValidator<ServicioBase>
+    class ValidatorService : AbstractValidator<ServicioBase>
     {
-        public ValidacionServicios()
+        public ValidatorService()
         {
             RuleFor(s => s.IdClientes).NotEmpty()
                 .WithMessage("El campo cliente debe existir en la tabla clientes de la base de datos");

@@ -18,14 +18,14 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
     "Method": "Loguin",
-    "RelativePath": "Account/login",
+    "RelativePath": "api/account/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "HandlingExtinguisher.Dto.Users.LoginRequestDto",
+        "Type": "HandlingExtinguishers.Models.Authentication.LoginRequestDto",
         "IsRequired": true
       }
     ],
@@ -34,7 +34,7 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
     "Method": "RefreshToken",
-    "RelativePath": "Account/refresh-token",
+    "RelativePath": "api/account/refresh-token",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -50,7 +50,7 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
     "Method": "Register",
-    "RelativePath": "Account/register",
+    "RelativePath": "api/account/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -64,9 +64,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
     "Method": "Create",
-    "RelativePath": "Clientes/client",
+    "RelativePath": "Client/client",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -80,9 +80,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
     "Method": "Searchs",
-    "RelativePath": "Clientes/clients",
+    "RelativePath": "Client/clients",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -111,9 +111,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
     "Method": "DeleteClient",
-    "RelativePath": "Clientes/delete/{clientId}",
+    "RelativePath": "Client/delete/{clientId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -127,9 +127,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
     "Method": "Search",
-    "RelativePath": "Clientes/search-by/{clientId}",
+    "RelativePath": "Client/search-by/{clientId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -143,9 +143,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
     "Method": "UpdateClient",
-    "RelativePath": "Clientes/update/{clientId}",
+    "RelativePath": "Client/update/{clientId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -164,9 +164,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "Create",
-    "RelativePath": "Companies/add-company",
+    "RelativePath": "Company/add-company",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -208,9 +208,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "Eliminar",
-    "RelativePath": "Companies/delete-company-permanent-by/{companyId}",
+    "RelativePath": "Company/delete-company-permanent-by/{companyId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -252,9 +252,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "Company",
-    "RelativePath": "Companies/search-company-by/{companyId}",
+    "RelativePath": "Company/search-company-by/{companyId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -296,9 +296,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "CompaniesDasabled",
-    "RelativePath": "Companies/search-company-disabled",
+    "RelativePath": "Company/search-company-disabled",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -355,9 +355,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "Companies",
-    "RelativePath": "Companies/search-company-enable",
+    "RelativePath": "Company/search-company-enable",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -414,9 +414,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CompaniesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "UpdateCompany",
-    "RelativePath": "Companies/update-company-by/{companyId}",
+    "RelativePath": "Company/update-company-by/{companyId}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -463,9 +463,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
     "Method": "ConsultaCreditos",
-    "RelativePath": "Creditos",
+    "RelativePath": "Credit",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -479,9 +479,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
     "Method": "CrearCredito",
-    "RelativePath": "Creditos",
+    "RelativePath": "Credit",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -495,9 +495,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
     "Method": "ConsultaporId",
-    "RelativePath": "Creditos/{id}",
+    "RelativePath": "Credit/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -511,9 +511,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
     "Method": "ActualizarCredito",
-    "RelativePath": "Creditos/{id}",
+    "RelativePath": "Credit/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -532,9 +532,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
     "Method": "EliminarCredito",
-    "RelativePath": "Creditos/{id}",
+    "RelativePath": "Credit/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -548,9 +548,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
     "Method": "ConsultaDetalleExtClientes",
-    "RelativePath": "DetalleExtintorClientes",
+    "RelativePath": "DetailExtinguisherClient",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -579,9 +579,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
     "Method": "CrearDetalleExtintorCliente",
-    "RelativePath": "DetalleExtintorClientes",
+    "RelativePath": "DetailExtinguisherClient",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -595,9 +595,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
     "Method": "ConsultaDetalleExtclientePorId",
-    "RelativePath": "DetalleExtintorClientes/{id}",
+    "RelativePath": "DetailExtinguisherClient/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -611,9 +611,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
     "Method": "ActualizarCredito",
-    "RelativePath": "DetalleExtintorClientes/{id}",
+    "RelativePath": "DetailExtinguisherClient/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -632,9 +632,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleExtintorClientesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
     "Method": "EliminarCredito",
-    "RelativePath": "DetalleExtintorClientes/{id}",
+    "RelativePath": "DetailExtinguisherClient/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -648,9 +648,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
     "Method": "ConsultaDetalles",
-    "RelativePath": "DetalleServicio",
+    "RelativePath": "DetailService",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -669,9 +669,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
     "Method": "CrearDetalle",
-    "RelativePath": "DetalleServicio",
+    "RelativePath": "DetailService",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -685,9 +685,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
     "Method": "ConsultaPorId",
-    "RelativePath": "DetalleServicio/{id}",
+    "RelativePath": "DetailService/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -701,9 +701,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
     "Method": "ActualizarDetalles",
-    "RelativePath": "DetalleServicio/{id}",
+    "RelativePath": "DetailService/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -722,9 +722,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetalleServicioController",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
     "Method": "Eliminar",
-    "RelativePath": "DetalleServicio/{id}",
+    "RelativePath": "DetailService/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -738,9 +738,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "AddEnployee",
-    "RelativePath": "Employees/add-employee",
+    "RelativePath": "Employee/add-employee",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -782,9 +782,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "DeleteEmployee",
-    "RelativePath": "Employees/delete-employee-by/{employeeId}",
+    "RelativePath": "Employee/delete-employee-by/{employeeId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -826,9 +826,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "EmployeeById",
-    "RelativePath": "Employees/search-employee-by/{employeeId}",
+    "RelativePath": "Employee/search-employee-by/{employeeId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -870,9 +870,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "Employees",
-    "RelativePath": "Employees/search-employees",
+    "RelativePath": "Employee/search-employees",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -929,9 +929,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.EmployeesController",
+    "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "UpdateEmployee",
-    "RelativePath": "Employees/update-employee-by/{employeeId}",
+    "RelativePath": "Employee/update-employee-by/{employeeId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -978,9 +978,9 @@
     ]
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
     "Method": "ConsultaGastos",
-    "RelativePath": "Gastos",
+    "RelativePath": "Expense",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -999,9 +999,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
     "Method": "CrearGasto",
-    "RelativePath": "Gastos",
+    "RelativePath": "Expense",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1015,9 +1015,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
     "Method": "ConsultaGastoPorId",
-    "RelativePath": "Gastos/{id}",
+    "RelativePath": "Expense/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1031,9 +1031,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
     "Method": "ActualizarGasto",
-    "RelativePath": "Gastos/{id}",
+    "RelativePath": "Expense/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1052,9 +1052,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.GastosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
     "Method": "Eliminar",
-    "RelativePath": "Gastos/{id}",
+    "RelativePath": "Expense/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1068,9 +1068,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
     "Method": "ConsultaInventarios",
-    "RelativePath": "Inventarios",
+    "RelativePath": "Inventory",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1094,9 +1094,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
     "Method": "Crear",
-    "RelativePath": "Inventarios",
+    "RelativePath": "Inventory",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1110,9 +1110,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
     "Method": "ConsultaPorId",
-    "RelativePath": "Inventarios/{id}",
+    "RelativePath": "Inventory/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1126,9 +1126,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
     "Method": "ActualizarInventario",
-    "RelativePath": "Inventarios/{id}",
+    "RelativePath": "Inventory/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1147,9 +1147,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventariosController",
+    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
     "Method": "Eliminar",
-    "RelativePath": "Inventarios/{id}",
+    "RelativePath": "Inventory/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1163,9 +1163,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
     "Method": "ConsultasPrecios",
-    "RelativePath": "Precios",
+    "RelativePath": "Price",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1179,9 +1179,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
     "Method": "CrearPrecios",
-    "RelativePath": "Precios",
+    "RelativePath": "Price",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1195,9 +1195,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
     "Method": "ConsultaPrecio",
-    "RelativePath": "Precios/{id}",
+    "RelativePath": "Price/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1211,9 +1211,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
     "Method": "ActualizarPrecios",
-    "RelativePath": "Precios/{id}",
+    "RelativePath": "Price/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1232,9 +1232,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.PreciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
     "Method": "EliminarPrecios",
-    "RelativePath": "Precios/{id}",
+    "RelativePath": "Price/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1248,9 +1248,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
     "Method": "ConsultaProductos",
-    "RelativePath": "Productos",
+    "RelativePath": "Product",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1264,9 +1264,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
     "Method": "CrearProductos",
-    "RelativePath": "Productos",
+    "RelativePath": "Product",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1280,9 +1280,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
     "Method": "ConsultaProductoPorId",
-    "RelativePath": "Productos/{id}",
+    "RelativePath": "Product/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1296,9 +1296,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
     "Method": "ActualizarProductos",
-    "RelativePath": "Productos/{id}",
+    "RelativePath": "Product/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1317,9 +1317,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
     "Method": "Eliminar",
-    "RelativePath": "Productos/{id}",
+    "RelativePath": "Product/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1333,9 +1333,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "ConsultaServicios",
-    "RelativePath": "Servicios",
+    "RelativePath": "Service",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1349,9 +1349,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "Crear",
-    "RelativePath": "Servicios",
+    "RelativePath": "Service",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1365,9 +1365,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "ConsultaPorId",
-    "RelativePath": "Servicios/{id}",
+    "RelativePath": "Service/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1381,9 +1381,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "ActualizarServicios",
-    "RelativePath": "Servicios/{id}",
+    "RelativePath": "Service/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1402,9 +1402,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "Eliminar",
-    "RelativePath": "Servicios/{id}",
+    "RelativePath": "Service/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -1418,9 +1418,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "CreacionDetalleServicio",
-    "RelativePath": "Servicios/Crear-Servicio-Detalle",
+    "RelativePath": "Service/Crear-Servicio-Detalle",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1434,9 +1434,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiciosController",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "ModificarEstado",
-    "RelativePath": "Servicios/modificar-estado",
+    "RelativePath": "Service/modificar-estado",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1448,16 +1448,16 @@
       },
       {
         "Name": "modificar",
-        "Type": "ManagementFireEstinguisher.Dto.ModificarEstado",
+        "Type": "ManagementFireEstinguisher.Dto.EditStatus",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
     "Method": "Consultas",
-    "RelativePath": "TipoExtintores",
+    "RelativePath": "TypeExtinguisher",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1465,9 +1465,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
     "Method": "CrearTipoExtintor",
-    "RelativePath": "TipoExtintores",
+    "RelativePath": "TypeExtinguisher",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -1481,9 +1481,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
     "Method": "ConsultaTipoExtPorId",
-    "RelativePath": "TipoExtintores/{id}",
+    "RelativePath": "TypeExtinguisher/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1497,9 +1497,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
     "Method": "ActualizarTipo",
-    "RelativePath": "TipoExtintores/{id}",
+    "RelativePath": "TypeExtinguisher/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1518,9 +1518,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TipoExtintoresController",
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
     "Method": "EliminarTipoExt",
-    "RelativePath": "TipoExtintores/{id}",
+    "RelativePath": "TypeExtinguisher/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

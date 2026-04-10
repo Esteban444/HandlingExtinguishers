@@ -3,9 +3,9 @@ using ManagementFireEstinguisher.Dto.Expenses;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidacionesGastos : AbstractValidator<GastosBase>
+    public class ValidatorExpense : AbstractValidator<GastosBase>
     {
-        public ValidacionesGastos()
+        public ValidatorExpense()
         {
             RuleFor(gasto => gasto.Descripcion)
                 .NotEmpty()

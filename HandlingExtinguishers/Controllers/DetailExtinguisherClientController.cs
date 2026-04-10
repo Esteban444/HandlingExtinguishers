@@ -11,11 +11,11 @@ namespace HandlingExtinguishers.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class DetalleExtintorClientesController : ControllerBase
+    public class DetailExtinguisherClientController : ControllerBase
     {
         private readonly IServiceDetailExtClients _servicioDetalleExtClientes;
         private readonly IValidator<BaseDetailExtinguisherClient> _validator;
-        public DetalleExtintorClientesController(IServiceDetailExtClients servicioDetalleExtClientes,
+        public DetailExtinguisherClientController(IServiceDetailExtClients servicioDetalleExtClientes,
             IValidator<BaseDetailExtinguisherClient> validator)
         {
             _servicioDetalleExtClientes = servicioDetalleExtClientes;

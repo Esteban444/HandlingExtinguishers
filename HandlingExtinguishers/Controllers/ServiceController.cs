@@ -9,12 +9,12 @@ namespace HandlingExtinguishers.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ServiciosController : ControllerBase
+    public class ServiceController : ControllerBase
     {
         private readonly IServiceOfService _serviciodeServicio;
         private readonly IValidator<ServicioBase> _validator;
 
-        public ServiciosController(IServiceOfService serviciodeservicio, IValidator<ServicioBase> validator)
+        public ServiceController(IServiceOfService serviciodeservicio, IValidator<ServicioBase> validator)
         {
             _serviciodeServicio = serviciodeservicio;
             _validator = validator;
@@ -69,7 +69,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPut("modificar-estado")]
-        public async Task<IActionResult> ModificarEstado(Guid id, ModificarEstado modificar)
+        public async Task<IActionResult> ModificarEstado(Guid id, EditStatus modificar)
         {
             var response = await _serviciodeServicio.ActualizarEstado(id, modificar);
             return Ok(response);

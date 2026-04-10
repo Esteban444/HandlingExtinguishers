@@ -76,7 +76,7 @@ namespace HandlingExtinguishers.Configurations
             CreateMap<TypeExtinguisher, TipoExtintorDTO>().ReverseMap();
 
             CreateMap<Service, ServicioBase>().ReverseMap();
-            CreateMap<Service, ModificarEstado>().ReverseMap();
+            CreateMap<Service, EditStatus>().ReverseMap();
             CreateMap<Service, ServicioDTO>()
                 .ForMember(x => x.Cliente, y => y.MapFrom(z => z.Client))
                 .ForMember(x => x.Empleado, y => y.MapFrom(z => z.Employee));

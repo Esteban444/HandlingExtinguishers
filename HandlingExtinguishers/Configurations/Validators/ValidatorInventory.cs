@@ -3,9 +3,9 @@ using ManagementFireEstinguisher.Dto.Inventories;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidacionInventario : AbstractValidator<InventarioBase>
+    public class ValidatorInventory : AbstractValidator<InventarioBase>
     {
-        public ValidacionInventario()
+        public ValidatorInventory()
         {
             RuleFor(i => i.IdProductos).NotEmpty()
                .WithMessage("El campo idproductos no puede ir vacio, y el producto debe existir en la tabla Productos de la base de datos");

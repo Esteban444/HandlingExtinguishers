@@ -10,11 +10,11 @@ namespace HandlingExtinguishers.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class EmployeesController : ControllerBase
+    public class EmployeeController : ControllerBase
     {
         private readonly IServiceEmployee _serviceEmployee;
 
-        public EmployeesController(IServiceEmployee serviceEmployee)
+        public EmployeeController(IServiceEmployee serviceEmployee)
         {
             _serviceEmployee = serviceEmployee;
         }

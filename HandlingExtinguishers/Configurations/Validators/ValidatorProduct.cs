@@ -4,9 +4,9 @@ using ManagementFireEstinguisher.Dto.Products;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    class ValidacionesProducto : AbstractValidator<ProductoBase>
+    class ValidatorProduct : AbstractValidator<ProductoBase>
     {
-        public ValidacionesProducto()
+        public ValidatorProduct()
         {
             RuleFor(p => p.IdPesoExtintor).NotEmpty()
                 .WithMessage("El campo idPesoExtintor debe existir en la tabla PesoExtintores de la base de datos");

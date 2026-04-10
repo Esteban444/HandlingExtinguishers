@@ -9,12 +9,12 @@ namespace HandlingExtinguishers.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class TipoExtintoresController : ControllerBase
+    public class TypeExtinguisherController : ControllerBase
     {
         private readonly IServiceTypeExtinguisher _servicioTExtintor;
         private readonly IValidator<TipoExtintorBase> _validator;
 
-        public TipoExtintoresController( IServiceTypeExtinguisher servicioTipo, IValidator<TipoExtintorBase> validator )
+        public TypeExtinguisherController( IServiceTypeExtinguisher servicioTipo, IValidator<TipoExtintorBase> validator )
         {
             _servicioTExtintor = servicioTipo;
             _validator = validator;

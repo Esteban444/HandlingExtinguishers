@@ -1,4 +1,6 @@
-﻿using HandlingExtinguishers.Core.Helpers;
+﻿namespace HandlingExtinguishers.Configurations;
+
+using HandlingExtinguishers.Core.Helpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi;
@@ -10,7 +12,7 @@ public sealed class BearerSecuritySchemeTransformer( IAuthenticationSchemeProvid
     {
         var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync();
 
-        if (authenticationSchemes.Any(s => s.Name == CommonConstants.BearerSchemeName))
+        if ( authenticationSchemes.Any( scheme => scheme.Name == CommonConstants.BearerSchemeName ) )
         {
             document.Components ??= new OpenApiComponents();
 
@@ -26,17 +28,17 @@ public sealed class BearerSecuritySchemeTransformer( IAuthenticationSchemeProvid
                 }
             };
 
-            if (document.Paths is null) return;
+            if ( document.Paths is null ) return;
 
-            foreach (var path in document.Paths.Values)
+            foreach ( var path in document.Paths.Values )
             {
-                foreach (var operation in path.Operations.Values)
+                foreach ( var operation in path.Operations.Values )
                 {
-                    operation.Security ??= new List<OpenApiSecurityRequirement>();
+                    operation.Security ??= [];
 
-                    operation.Security.Add(new OpenApiSecurityRequirement
+                    operation.Security.Add( new OpenApiSecurityRequirement
                     {
-                        [new OpenApiSecuritySchemeReference(CommonConstants.BearerSchemeName, document)] = new List<string>()
+                        [new OpenApiSecuritySchemeReference(CommonConstants.BearerSchemeName, document)] = []
                     });
                 }
             }

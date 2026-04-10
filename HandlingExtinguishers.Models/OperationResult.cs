@@ -1,4 +1,4 @@
-﻿namespace HandlingExtinguisher.Dto
+﻿namespace HandlingExtinguishers.Models
 {
     public class OperationResult
     {

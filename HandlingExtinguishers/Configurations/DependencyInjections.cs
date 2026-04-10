@@ -1,6 +1,8 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Configurations;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguisher.Dto.Clients;
-using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Services;
@@ -22,61 +24,60 @@ using ManagementFireEstinguisher.Dto.Services;
 using ManejoExtintores.Core.Servicios;
 using MHandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Models.Extinguishers;
+using HandlingExtinguishers.Models.Authentication;
+#endregion
 
-namespace HandlingExtinguishers.Configurations
+public static class DependencyInjections
 {
-    public static class DependencyInjections
+    public static IServiceCollection AdddependencyInjection(this IServiceCollection services)
     {
-        public static IServiceCollection AdddependencyInjection(this IServiceCollection services)
-        {
-            services.AddScoped<IRepositoryCompany, CompanyRepository>();
+        services.AddScoped<IRepositoryCompany, CompanyRepository>();
 
-            services.AddScoped<IRepositoryClient, RepositoryClient>();
-            services.AddScoped<IRepositoryCredit, RepositoryCredit>();
-            services.AddScoped<IRepositoryDetailService, RepositoryDetailService>();
-            services.AddScoped<IRepositoryDetailExtinguisherClient, RepositoryDetailExtinguisherClient>();
-            services.AddScoped<IRepositoryEmployee, RepositoryEmployee>();
-            services.AddScoped<IRepositoryExpense, RepositoryExpense>();
-            services.AddScoped<IRepositoryInventory, RepositoryInventory>();
-            services.AddScoped<IRepositoryPrice, RepositoryPrice>();
-            services.AddScoped<IRepositoryProduct, RepositoryProduct>();
-            services.AddScoped(typeof(IBaseRepository<WeightExtinguisher>), typeof(BaseRepository<WeightExtinguisher>));
-            services.AddScoped(typeof(IBaseRepository<TypeExtinguisher>), typeof(BaseRepository<TypeExtinguisher>));
-            services.AddScoped<IRepositoryService, RepositoryService>();
+        services.AddScoped<IRepositoryClient, RepositoryClient>();
+        services.AddScoped<IRepositoryCredit, RepositoryCredit>();
+        services.AddScoped<IRepositoryDetailService, RepositoryDetailService>();
+        services.AddScoped<IRepositoryDetailExtinguisherClient, RepositoryDetailExtinguisherClient>();
+        services.AddScoped<IRepositoryEmployee, RepositoryEmployee>();
+        services.AddScoped<IRepositoryExpense, RepositoryExpense>();
+        services.AddScoped<IRepositoryInventory, RepositoryInventory>();
+        services.AddScoped<IRepositoryPrice, RepositoryPrice>();
+        services.AddScoped<IRepositoryProduct, RepositoryProduct>();
+        services.AddScoped<IBaseRepository<WeightExtinguisher>, BaseRepository<WeightExtinguisher>>();
+        services.AddScoped<IBaseRepository<TypeExtinguisher>, BaseRepository<TypeExtinguisher>>();
+        services.AddScoped<IRepositoryService, RepositoryService>();
 
-            services.AddScoped<IValidator<BaseClient>, ValidacionClientes>();
-            services.AddScoped<IValidator<CreditoServicioBase>, ValidacionCreditos>();
-            services.AddScoped<IValidator<BaseDetailExtinguisherClient>, ValidacionDetalleExtintorClientes>();
+        services.AddScoped<IValidator<BaseClient>, ValidatorClient>();
+        services.AddScoped<IValidator<CreditoServicioBase>, ValidatorCredit>();
+        services.AddScoped<IValidator<BaseDetailExtinguisherClient>, ValidatorDetailExtinguisherClient>();
 
-         
-            services.AddValidatorsFromAssemblyContaining<ValidatorCompany>();
-            services.AddValidatorsFromAssemblyContaining<ValidatorEmployee>();
+     
+        services.AddValidatorsFromAssemblyContaining<ValidatorCompany>();
+        services.AddValidatorsFromAssemblyContaining<ValidatorEmployee>();
 
-            services.AddScoped<IValidator<GastosBase>, ValidacionesGastos>();
-            services.AddScoped<IValidator<InventarioBase>, ValidacionInventario>();
-            services.AddScoped<IValidator<WeightExtinguisherBase>, ValidacionPesoExtintor>();
-            services.AddScoped<IValidator<PrecioBase>, ValidacionesPrecios>();
-            services.AddScoped<IValidator<ProductoBase>, ValidacionesProducto>();
-            services.AddScoped<IValidator<TipoExtintorBase>, ValidacionTipoExtintor>();
-            services.AddScoped<IValidator<ServicioBase>, ValidacionServicios>();
-            services.AddScoped<IValidator<LoginRequestDto>, ValidacionAutenticacionUsuario>();
+        services.AddScoped<IValidator<GastosBase>, ValidatorExpense>();
+        services.AddScoped<IValidator<InventarioBase>, ValidatorInventory>();
+        services.AddScoped<IValidator<WeightExtinguisherBase>, ValidatorWieghtExtinguisher>();
+        services.AddScoped<IValidator<PrecioBase>, ValidatorPrice>();
+        services.AddScoped<IValidator<ProductoBase>, ValidatorProduct>();
+        services.AddScoped<IValidator<TipoExtintorBase>, ValidatorTypeExtinguisher>();
+        services.AddScoped<IValidator<ServicioBase>, ValidatorService>();
+        services.AddScoped<IValidator<LoginRequestDto>, ValidatorAuthenticationUser>();
 
-            services.AddScoped<IServicieClient, ServicioCliente>();
-            services.AddScoped<IServicieCredit, ServiceCredit>();
-            services.AddScoped<IDetailService, ServicioDetalleServicios>();
-            services.AddScoped<IServiceDetailExtClients, ServicioDetalleExtClientes>();
-            services.AddScoped<IServicioGasto, ServicioGasto>();
-            services.AddScoped<IServiceCompany, ServiceCompany>();
-            services.AddScoped<IServiceEmployee, ServiceEmployee>();
-            services.AddScoped<IServiceInventory, ServicioInventario>();
-            services.AddScoped<IServicePrices, ServicioPrecios>();
-            services.AddScoped<IServiceProducts, ServicioProducto>();
-            services.AddScoped<IServiceWeightExtinguisher, ServiceWeightExtinguisher>();
-            services.AddScoped<IServiceTypeExtinguisher, ServicioTipoExtintor>();
-            services.AddScoped<IServiceOfService, ServiceOfService>();
-            services.AddScoped<IAuthentificationService, AuthentificationService>();
+        services.AddScoped<IServicieClient, ServicioCliente>();
+        services.AddScoped<IServicieCredit, ServiceCredit>();
+        services.AddScoped<IDetailService, ServicioDetalleServicios>();
+        services.AddScoped<IServiceDetailExtClients, ServicioDetalleExtClientes>();
+        services.AddScoped<IServicioGasto, ServicioGasto>();
+        services.AddScoped<IServiceCompany, ServiceCompany>();
+        services.AddScoped<IServiceEmployee, ServiceEmployee>();
+        services.AddScoped<IServiceInventory, ServicioInventario>();
+        services.AddScoped<IServicePrices, ServicioPrecios>();
+        services.AddScoped<IServiceProducts, ServicioProducto>();
+        services.AddScoped<IServiceWeightExtinguisher, ServiceWeightExtinguisher>();
+        services.AddScoped<IServiceTypeExtinguisher, ServicioTipoExtintor>();
+        services.AddScoped<IServiceOfService, ServiceOfService>();
+        services.AddScoped<IAuthentificationService, AuthentificationService>();
 
-            return services;
-        }
+        return services;
     }
 }

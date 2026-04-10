@@ -3,9 +3,9 @@ using ManagementFireEstinguisher.Dto.Extinguishers;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidacionTipoExtintor : AbstractValidator<TipoExtintorBase>
+    public class ValidatorTypeExtinguisher : AbstractValidator<TipoExtintorBase>
     {
-        public ValidacionTipoExtintor()
+        public ValidatorTypeExtinguisher()
         {
             RuleFor(t => t.Tipo_Extintor).NotEmpty().WithMessage("El campo tipoExtintor no puede ir vacio");
         }

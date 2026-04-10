@@ -10,7 +10,7 @@ namespace HandlingExtinguishers.Contracts.Interfaces.Services
         Task<ServicioDTO> ConsultaServicio(Guid id);
         Task<ServicioBase> CrearServicios(ServicioBase servicio);
         Task<ServicioBase> CrearServicioDetalle(ServicioBase servicio);
-        Task<ModificarEstado> ActualizarEstado(Guid id, ModificarEstado modificar);
+        Task<EditStatus> ActualizarEstado(Guid id, EditStatus modificar);
         Task<ServicioBase> ActualizarServicios(Guid id, ServicioBase servicio);
         Task<ServicioDTO> EliminarServicios(Guid id);
     }

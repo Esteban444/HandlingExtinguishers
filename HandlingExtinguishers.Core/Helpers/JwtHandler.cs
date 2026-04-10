@@ -1,4 +1,5 @@
-﻿using HandlingExtinguishers.Core.Exceptions;
+﻿using HandlingExtinguisher.Dto.Users;
+using HandlingExtinguishers.Core.Exceptions;
 using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Authentication;
 using HandlingExtinguishers.Models.Models;
@@ -26,23 +27,27 @@ namespace HandlingExtinguishers.Core.Helpers
 
         private SigningCredentials GetSignatureCredentials()
         {
-            var key = Encoding.UTF8.GetBytes( jwtConfiguration.GetSection( "securityKey" ).Value! );
+            var key = Encoding.UTF8.GetBytes( jwtConfiguration.GetSection( CommonConstants.JwtSecurityKeyName ).Value! );
             var secret = new SymmetricSecurityKey( key );
 
             return new SigningCredentials( secret, SecurityAlgorithms.HmacSha256 );
         }
 
-        private async Task<List<Claim>> GetClaims( Users user )
+        private async Task<List<Claim>> GetClaims(Users user)
         {
             var claims = new List<Claim>
             {
-                new( ClaimTypes.NameIdentifier, user.Id! )
+                new( ClaimTypes.NameIdentifier, user.Id! ),
+                new( ClaimTypes.Email, user.Email! ),            
+                new( ClaimTypes.Name, user.UserName! ),          
+                new( JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString() ),                
+                new( JwtRegisteredClaimNames.Iat,DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64 ),
             };
 
-            var roles = await userManager.GetRolesAsync( user );
-            foreach ( var role in roles )
+            var roles = await userManager.GetRolesAsync(user);
+            foreach (var role in roles)
             {
-                claims.Add( new Claim(ClaimTypes.Role, role ) );
+                claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
             return claims;
@@ -51,23 +56,29 @@ namespace HandlingExtinguishers.Core.Helpers
         private JwtSecurityToken GetTokenOptions( SigningCredentials signingCredentials, List<Claim> claims )
         {
             var tokenOptions = new JwtSecurityToken(
-                issuer: jwtConfiguration.GetSection( "validIssuer" ).Value,
-                audience: jwtConfiguration.GetSection( "validAudience" ).Value,
+                issuer: jwtConfiguration.GetSection( CommonConstants.JwtValidIssuerKeyName).Value,
+                audience: jwtConfiguration.GetSection( CommonConstants.JwtValidAudienceKeyName).Value,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes( Convert.ToDouble( jwtConfiguration.GetSection( "expiryInMinutes" ).Value ) ),
+                expires: DateTime.Now.AddMinutes( Convert.ToDouble( jwtConfiguration.GetSection( CommonConstants.ExpiryInMinutes ).Value ) ),
                 signingCredentials: signingCredentials );
 
             return tokenOptions;
         }
 
-        public async Task<string> CreateToken( Users user )
+        public async Task<AuthResponseDto> CreateToken( Users user )
         {
-            var firmacredenciales = GetSignatureCredentials();
+            var signingCredential = GetSignatureCredentials();
             var claims = await GetClaims( user );
-            var opcionestoken = GetTokenOptions( firmacredenciales, claims );
-            var token = new JwtSecurityTokenHandler().WriteToken( opcionestoken );
+            var optionsToken = GetTokenOptions( signingCredential, claims );
+            var token = new JwtSecurityTokenHandler().WriteToken( optionsToken );
 
-            return token;
+            var response = new AuthResponseDto
+            {
+                Token = token,
+                Expiration = optionsToken.ValidTo.ToString( CommonConstants.DateTimeFormat )
+            };
+
+            return response;
         }
 
         public TokenValidationDto ValidateCurrentToken( string token )
@@ -75,20 +86,20 @@ namespace HandlingExtinguishers.Core.Helpers
             var tokenHandler = new JwtSecurityTokenHandler();
             try
             {
-                var mySecurityKey = new SymmetricSecurityKey( Encoding.ASCII.GetBytes( jwtConfiguration.GetSection( "securityKey" ).Value! ) );
+                var mySecurityKey = new SymmetricSecurityKey( Encoding.ASCII.GetBytes( jwtConfiguration.GetSection( CommonConstants.JwtSecurityKeyName ).Value! ) );
                 TokenValidationParameters validationParameters = new()
                 {
-                    ValidIssuer = jwtConfiguration.GetSection("validIssuer").Value,
-                    ValidAudiences = [jwtConfiguration.GetSection("validAudience").Value],
+                    ValidIssuer = jwtConfiguration.GetSection(CommonConstants.JwtValidIssuerKeyName).Value,
+                    ValidAudiences = [jwtConfiguration.GetSection(CommonConstants.JwtValidAudienceKeyName).Value],
                     IssuerSigningKeys = [mySecurityKey]
                 };
 
-                var claimsPrincipal = tokenHandler.ValidateToken( token, validationParameters, out SecurityToken validatedToken );
+                var claims = tokenHandler.ValidateToken( token, validationParameters, out SecurityToken validatedToken );
 
                 return new TokenValidationDto
                 {
                     IsSuccess = true,
-                    Claims = claimsPrincipal
+                    Claims = claims
                 };
             }
             catch ( Exception )
@@ -102,15 +113,15 @@ namespace HandlingExtinguishers.Core.Helpers
             var tokenHandler = new JwtSecurityTokenHandler();
             try
             {
-                var claimsPrincipal = tokenHandler.ReadJwtToken( token );
+                var claims = tokenHandler.ReadJwtToken( token );
 
                 return new TokenClaimsResult
                 {
                     IsSuccess = true,
-                    Claims = claimsPrincipal.Claims
+                    Claims = claims.Claims
                 };
             }
-            catch (Exception)
+            catch ( Exception )
             {
                 throw new HandlingExceptions( HandlingExtinguisherResources.InvalidToken );
             }

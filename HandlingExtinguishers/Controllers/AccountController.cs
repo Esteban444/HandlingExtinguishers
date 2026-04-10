@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
-using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Helpers;
+using HandlingExtinguishers.Models.Authentication;
 using ManagementFireEstinguisher.Dto.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,19 +9,31 @@ using System.Net.Http.Headers;
 
 namespace HandlingExtinguishers.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/account")]
     [ApiController]
     [AllowAnonymous]
 
-    public class AccountController( IAuthentificationService userService, IValidator<LoginRequestDto> validatoraut ) : ControllerBase
+    public class AccountController( IAuthentificationService authentificationService, 
+                                    IValidator<LoginRequestDto> validator, 
+                                    IValidator<RegisterUserDto> validatorRegister ) : ControllerBase
     {
-        private readonly IValidator<LoginRequestDto> validatorAuten = validatoraut;
-        private readonly IAuthentificationService userService = userService;
+        private readonly IValidator<LoginRequestDto> validator = validator;
+        private readonly IValidator<RegisterUserDto> validatorRegister = validatorRegister;
+        private readonly IAuthentificationService authentificationService = authentificationService;
 
         [HttpPost("login")]
         public async Task<IActionResult> Loguin( [FromBody] LoginRequestDto request )
         {
-            var result = await userService.Login( request );
+            var Validacion = validator.Validate( request );
+
+            if ( !Validacion.IsValid )
+            {
+                var errors = Validacion.Errors.Select( error => error.ErrorMessage );
+
+                return BadRequest( new AuthResponse { Errors = errors } );
+            }
+
+            var result = await authentificationService.Login( request );
 
             return Ok( result );
         }
@@ -28,7 +41,16 @@ namespace HandlingExtinguishers.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register( [FromBody] RegisterUserDto request )
         {
-            var result = await userService.Register( request );
+            var Validacion = validatorRegister.Validate( request );
+
+            if ( !Validacion.IsValid )
+            {
+                var errors = Validacion.Errors.Select( error => error.ErrorMessage );
+
+                return BadRequest( new AuthResponse { Errors = errors } );
+            }
+
+            var result = await authentificationService.Register( request );
 
             return Ok( result );
         }
@@ -36,16 +58,20 @@ namespace HandlingExtinguishers.Controllers
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken( [FromHeader] string authorization )
         {
-            if (AuthenticationHeaderValue.TryParse( authorization, out var headerValue ) )
-            {
-                var token = headerValue.Parameter;
+            if (string.IsNullOrEmpty( authorization ) )
+                return BadRequest( new AuthResponse { Errors = [ValidatorMessageCommonConstants.TokenRequired] } );
 
-                var result = await userService.RefreshToken(token!);
+            if ( !AuthenticationHeaderValue.TryParse( authorization, out var headerValue ) )
+                return BadRequest(new AuthResponse { Errors = [ValidatorMessageCommonConstants.InvalidAuthorizationFormat] });
 
-                return Ok( result );
-            }
+            var token = headerValue.Parameter;
 
-            return BadRequest();
+            if ( string.IsNullOrWhiteSpace( token ) )
+                return BadRequest( new AuthResponse { Errors = [ValidatorMessageCommonConstants.TokenCannotBeEmpty] } );
+
+            var result = await authentificationService.RefreshToken( token );
+
+            return Ok( result );
         }
 
     }

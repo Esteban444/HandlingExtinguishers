@@ -3,9 +3,9 @@ using ManagementFireEstinguisher.Dto.Prices;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidacionesPrecios : AbstractValidator<PrecioBase>
+    public class ValidatorPrice : AbstractValidator<PrecioBase>
     {
-        public ValidacionesPrecios()
+        public ValidatorPrice()
         {
             RuleFor(precio => precio.IdProductos).NotEmpty()
                 .WithMessage("El campo id productos no puede ir vacio,El producto debe existir en la tabla productos de la base de datos");

@@ -1,0 +1,18 @@
+﻿namespace HandlingExtinguishers.Core.Helpers;
+
+public static class ValidatorMessageCommonConstants
+{
+    public const string TokenRequired = "The authorization header is required.";
+
+    public const string InvalidAuthorizationFormat = "Invalid authorization format.";
+
+    public const string TokenCannotBeEmpty = "The token cannot be empty.";
+
+    public const string EmailCannotBeEmpty = "The Email field cannot be left blank.";
+
+    public const string PasswordCannotBeEmpty = "The Password field cannot be left blank.";
+
+    public const string FullNameCannotBeEmpty = "The FullName field cannot be left blank.";
+
+    public const string UserNameCannotBeEmpty = "The UserName field cannot be left blank.";
+}

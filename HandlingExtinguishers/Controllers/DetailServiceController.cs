@@ -9,11 +9,11 @@ namespace HandlingExtinguishers.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class DetalleServicioController : ControllerBase
+    public class DetailServiceController : ControllerBase
     {
         private readonly IDetailService _servicioDetalle;
 
-        public DetalleServicioController(IDetailService serviciodetalle)
+        public DetailServiceController(IDetailService serviciodetalle)
         {
             _servicioDetalle = serviciodetalle;
         }

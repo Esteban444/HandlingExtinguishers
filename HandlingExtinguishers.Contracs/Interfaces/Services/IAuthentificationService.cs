@@ -1,5 +1,6 @@
-﻿using HandlingExtinguisher.Dto;
-using HandlingExtinguisher.Dto.Users;
+﻿using HandlingExtinguisher.Dto.Users;
+using HandlingExtinguishers.Models;
+using HandlingExtinguishers.Models.Authentication;
 using ManagementFireEstinguisher.Dto.Users;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services

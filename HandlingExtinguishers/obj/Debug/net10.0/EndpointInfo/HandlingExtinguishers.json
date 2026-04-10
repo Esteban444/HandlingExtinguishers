@@ -30,10 +30,10 @@
         ]
       }
     },
-    "/Inventarios": {
+    "/Inventory": {
       "get": {
         "tags": [
-          "Inventarios"
+          "Inventory"
         ],
         "parameters": [
           {
@@ -73,7 +73,7 @@
       },
       "post": {
         "tags": [
-          "Inventarios"
+          "Inventory"
         ],
         "requestBody": {
           "content": {
@@ -112,10 +112,10 @@
         ]
       }
     },
-    "/Inventarios/{id}": {
+    "/Inventory/{id}": {
       "get": {
         "tags": [
-          "Inventarios"
+          "Inventory"
         ],
         "parameters": [
           {
@@ -141,7 +141,7 @@
       },
       "put": {
         "tags": [
-          "Inventarios"
+          "Inventory"
         ],
         "parameters": [
           {
@@ -192,7 +192,7 @@
       },
       "delete": {
         "tags": [
-          "Inventarios"
+          "Inventory"
         ],
         "parameters": [
           {
@@ -217,7 +217,7 @@
         ]
       }
     },
-    "/Account/login": {
+    "/api/account/login": {
       "post": {
         "tags": [
           "Account"
@@ -259,7 +259,7 @@
         ]
       }
     },
-    "/Account/register": {
+    "/api/account/register": {
       "post": {
         "tags": [
           "Account"
@@ -301,7 +301,7 @@
         ]
       }
     },
-    "/Account/refresh-token": {
+    "/api/account/refresh-token": {
       "post": {
         "tags": [
           "Account"
@@ -318,10 +318,10 @@
         ]
       }
     },
-    "/Clientes/clients": {
+    "/Client/clients": {
       "get": {
         "tags": [
-          "Clientes"
+          "Client"
         ],
         "parameters": [
           {
@@ -365,10 +365,10 @@
         ]
       }
     },
-    "/Clientes/search-by/{clientId}": {
+    "/Client/search-by/{clientId}": {
       "get": {
         "tags": [
-          "Clientes"
+          "Client"
         ],
         "parameters": [
           {
@@ -393,10 +393,10 @@
         ]
       }
     },
-    "/Clientes/client": {
+    "/Client/client": {
       "post": {
         "tags": [
-          "Clientes"
+          "Client"
         ],
         "requestBody": {
           "content": {
@@ -435,10 +435,10 @@
         ]
       }
     },
-    "/Clientes/update/{clientId}": {
+    "/Client/update/{clientId}": {
       "put": {
         "tags": [
-          "Clientes"
+          "Client"
         ],
         "parameters": [
           {
@@ -488,10 +488,10 @@
         ]
       }
     },
-    "/Clientes/delete/{clientId}": {
+    "/Client/delete/{clientId}": {
       "delete": {
         "tags": [
-          "Clientes"
+          "Client"
         ],
         "parameters": [
           {
@@ -516,10 +516,10 @@
         ]
       }
     },
-    "/Companies/search-company-enable": {
+    "/Company/search-company-enable": {
       "get": {
         "tags": [
-          "Companies"
+          "Company"
         ],
         "parameters": [
           {
@@ -630,10 +630,10 @@
         ]
       }
     },
-    "/Companies/search-company-disabled": {
+    "/Company/search-company-disabled": {
       "get": {
         "tags": [
-          "Companies"
+          "Company"
         ],
         "parameters": [
           {
@@ -744,10 +744,10 @@
         ]
       }
     },
-    "/Companies/search-company-by/{companyId}": {
+    "/Company/search-company-by/{companyId}": {
       "get": {
         "tags": [
-          "Companies"
+          "Company"
         ],
         "parameters": [
           {
@@ -829,10 +829,10 @@
         ]
       }
     },
-    "/Companies/add-company": {
+    "/Company/add-company": {
       "post": {
         "tags": [
-          "Companies"
+          "Company"
         ],
         "requestBody": {
           "content": {
@@ -928,10 +928,10 @@
         ]
       }
     },
-    "/Companies/update-company-by/{companyId}": {
+    "/Company/update-company-by/{companyId}": {
       "patch": {
         "tags": [
-          "Companies"
+          "Company"
         ],
         "parameters": [
           {
@@ -1038,10 +1038,10 @@
         ]
       }
     },
-    "/Companies/delete-company-permanent-by/{companyId}": {
+    "/Company/delete-company-permanent-by/{companyId}": {
       "delete": {
         "tags": [
-          "Companies"
+          "Company"
         ],
         "parameters": [
           {
@@ -1123,10 +1123,10 @@
         ]
       }
     },
-    "/Creditos": {
+    "/Credit": {
       "get": {
         "tags": [
-          "Creditos"
+          "Credit"
         ],
         "parameters": [
           {
@@ -1151,7 +1151,7 @@
       },
       "post": {
         "tags": [
-          "Creditos"
+          "Credit"
         ],
         "requestBody": {
           "content": {
@@ -1190,10 +1190,10 @@
         ]
       }
     },
-    "/Creditos/{id}": {
+    "/Credit/{id}": {
       "get": {
         "tags": [
-          "Creditos"
+          "Credit"
         ],
         "parameters": [
           {
@@ -1219,7 +1219,7 @@
       },
       "put": {
         "tags": [
-          "Creditos"
+          "Credit"
         ],
         "parameters": [
           {
@@ -1270,7 +1270,7 @@
       },
       "delete": {
         "tags": [
-          "Creditos"
+          "Credit"
         ],
         "parameters": [
           {
@@ -1295,10 +1295,10 @@
         ]
       }
     },
-    "/DetalleExtintorClientes": {
+    "/DetailExtinguisherClient": {
       "get": {
         "tags": [
-          "DetalleExtintorClientes"
+          "DetailExtinguisherClient"
         ],
         "parameters": [
           {
@@ -1346,7 +1346,7 @@
       },
       "post": {
         "tags": [
-          "DetalleExtintorClientes"
+          "DetailExtinguisherClient"
         ],
         "requestBody": {
           "content": {
@@ -1385,10 +1385,10 @@
         ]
       }
     },
-    "/DetalleExtintorClientes/{id}": {
+    "/DetailExtinguisherClient/{id}": {
       "get": {
         "tags": [
-          "DetalleExtintorClientes"
+          "DetailExtinguisherClient"
         ],
         "parameters": [
           {
@@ -1414,7 +1414,7 @@
       },
       "put": {
         "tags": [
-          "DetalleExtintorClientes"
+          "DetailExtinguisherClient"
         ],
         "parameters": [
           {
@@ -1465,7 +1465,7 @@
       },
       "delete": {
         "tags": [
-          "DetalleExtintorClientes"
+          "DetailExtinguisherClient"
         ],
         "parameters": [
           {
@@ -1490,10 +1490,10 @@
         ]
       }
     },
-    "/DetalleServicio": {
+    "/DetailService": {
       "get": {
         "tags": [
-          "DetalleServicio"
+          "DetailService"
         ],
         "parameters": [
           {
@@ -1524,7 +1524,7 @@
       },
       "post": {
         "tags": [
-          "DetalleServicio"
+          "DetailService"
         ],
         "requestBody": {
           "content": {
@@ -1563,10 +1563,10 @@
         ]
       }
     },
-    "/DetalleServicio/{id}": {
+    "/DetailService/{id}": {
       "get": {
         "tags": [
-          "DetalleServicio"
+          "DetailService"
         ],
         "parameters": [
           {
@@ -1592,7 +1592,7 @@
       },
       "put": {
         "tags": [
-          "DetalleServicio"
+          "DetailService"
         ],
         "parameters": [
           {
@@ -1643,7 +1643,7 @@
       },
       "delete": {
         "tags": [
-          "DetalleServicio"
+          "DetailService"
         ],
         "parameters": [
           {
@@ -1668,10 +1668,10 @@
         ]
       }
     },
-    "/Employees/search-employees": {
+    "/Employee/search-employees": {
       "get": {
         "tags": [
-          "Employees"
+          "Employee"
         ],
         "parameters": [
           {
@@ -1782,10 +1782,10 @@
         ]
       }
     },
-    "/Employees/search-employee-by/{employeeId}": {
+    "/Employee/search-employee-by/{employeeId}": {
       "get": {
         "tags": [
-          "Employees"
+          "Employee"
         ],
         "parameters": [
           {
@@ -1867,10 +1867,10 @@
         ]
       }
     },
-    "/Employees/add-employee": {
+    "/Employee/add-employee": {
       "post": {
         "tags": [
-          "Employees"
+          "Employee"
         ],
         "requestBody": {
           "content": {
@@ -1966,10 +1966,10 @@
         ]
       }
     },
-    "/Employees/update-employee-by/{employeeId}": {
+    "/Employee/update-employee-by/{employeeId}": {
       "put": {
         "tags": [
-          "Employees"
+          "Employee"
         ],
         "parameters": [
           {
@@ -2076,10 +2076,10 @@
         ]
       }
     },
-    "/Employees/delete-employee-by/{employeeId}": {
+    "/Employee/delete-employee-by/{employeeId}": {
       "delete": {
         "tags": [
-          "Employees"
+          "Employee"
         ],
         "parameters": [
           {
@@ -2161,10 +2161,10 @@
         ]
       }
     },
-    "/Gastos": {
+    "/Expense": {
       "get": {
         "tags": [
-          "Gastos"
+          "Expense"
         ],
         "parameters": [
           {
@@ -2196,7 +2196,7 @@
       },
       "post": {
         "tags": [
-          "Gastos"
+          "Expense"
         ],
         "requestBody": {
           "content": {
@@ -2235,10 +2235,10 @@
         ]
       }
     },
-    "/Gastos/{id}": {
+    "/Expense/{id}": {
       "get": {
         "tags": [
-          "Gastos"
+          "Expense"
         ],
         "parameters": [
           {
@@ -2264,7 +2264,7 @@
       },
       "put": {
         "tags": [
-          "Gastos"
+          "Expense"
         ],
         "parameters": [
           {
@@ -2315,7 +2315,7 @@
       },
       "delete": {
         "tags": [
-          "Gastos"
+          "Expense"
         ],
         "parameters": [
           {
@@ -2340,10 +2340,10 @@
         ]
       }
     },
-    "/Precios": {
+    "/Price": {
       "get": {
         "tags": [
-          "Precios"
+          "Price"
         ],
         "parameters": [
           {
@@ -2367,7 +2367,7 @@
       },
       "post": {
         "tags": [
-          "Precios"
+          "Price"
         ],
         "requestBody": {
           "content": {
@@ -2406,10 +2406,10 @@
         ]
       }
     },
-    "/Precios/{id}": {
+    "/Price/{id}": {
       "get": {
         "tags": [
-          "Precios"
+          "Price"
         ],
         "parameters": [
           {
@@ -2435,7 +2435,7 @@
       },
       "put": {
         "tags": [
-          "Precios"
+          "Price"
         ],
         "parameters": [
           {
@@ -2486,7 +2486,7 @@
       },
       "delete": {
         "tags": [
-          "Precios"
+          "Price"
         ],
         "parameters": [
           {
@@ -2511,10 +2511,10 @@
         ]
       }
     },
-    "/Productos": {
+    "/Product": {
       "get": {
         "tags": [
-          "Productos"
+          "Product"
         ],
         "parameters": [
           {
@@ -2538,7 +2538,7 @@
       },
       "post": {
         "tags": [
-          "Productos"
+          "Product"
         ],
         "requestBody": {
           "content": {
@@ -2577,10 +2577,10 @@
         ]
       }
     },
-    "/Productos/{id}": {
+    "/Product/{id}": {
       "get": {
         "tags": [
-          "Productos"
+          "Product"
         ],
         "parameters": [
           {
@@ -2606,7 +2606,7 @@
       },
       "put": {
         "tags": [
-          "Productos"
+          "Product"
         ],
         "parameters": [
           {
@@ -2657,7 +2657,7 @@
       },
       "delete": {
         "tags": [
-          "Productos"
+          "Product"
         ],
         "parameters": [
           {
@@ -2682,10 +2682,10 @@
         ]
       }
     },
-    "/Servicios": {
+    "/Service": {
       "get": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "parameters": [
           {
@@ -2710,7 +2710,7 @@
       },
       "post": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "requestBody": {
           "content": {
@@ -2749,10 +2749,10 @@
         ]
       }
     },
-    "/Servicios/{id}": {
+    "/Service/{id}": {
       "get": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "parameters": [
           {
@@ -2778,7 +2778,7 @@
       },
       "put": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "parameters": [
           {
@@ -2829,7 +2829,7 @@
       },
       "delete": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "parameters": [
           {
@@ -2854,10 +2854,10 @@
         ]
       }
     },
-    "/Servicios/Crear-Servicio-Detalle": {
+    "/Service/Crear-Servicio-Detalle": {
       "post": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "requestBody": {
           "content": {
@@ -2896,10 +2896,10 @@
         ]
       }
     },
-    "/Servicios/modificar-estado": {
+    "/Service/modificar-estado": {
       "put": {
         "tags": [
-          "Servicios"
+          "Service"
         ],
         "parameters": [
           {
@@ -2915,22 +2915,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/ModificarEstado"
+                "$ref": "#/components/schemas/EditStatus"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ModificarEstado"
+                "$ref": "#/components/schemas/EditStatus"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ModificarEstado"
+                "$ref": "#/components/schemas/EditStatus"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ModificarEstado"
+                "$ref": "#/components/schemas/EditStatus"
               }
             }
           },
@@ -2948,10 +2948,10 @@
         ]
       }
     },
-    "/TipoExtintores": {
+    "/TypeExtinguisher": {
       "get": {
         "tags": [
-          "TipoExtintores"
+          "TypeExtinguisher"
         ],
         "responses": {
           "200": {
@@ -2966,7 +2966,7 @@
       },
       "post": {
         "tags": [
-          "TipoExtintores"
+          "TypeExtinguisher"
         ],
         "requestBody": {
           "content": {
@@ -3005,10 +3005,10 @@
         ]
       }
     },
-    "/TipoExtintores/{id}": {
+    "/TypeExtinguisher/{id}": {
       "get": {
         "tags": [
-          "TipoExtintores"
+          "TypeExtinguisher"
         ],
         "parameters": [
           {
@@ -3034,7 +3034,7 @@
       },
       "put": {
         "tags": [
-          "TipoExtintores"
+          "TypeExtinguisher"
         ],
         "parameters": [
           {
@@ -3085,7 +3085,7 @@
       },
       "delete": {
         "tags": [
-          "TipoExtintores"
+          "TypeExtinguisher"
         ],
         "parameters": [
           {
@@ -3566,6 +3566,17 @@
           }
         }
       },
+      "EditStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "EmployeeBaseResponseDto": {
         "type": "object",
         "properties": {
@@ -3904,17 +3915,6 @@
           },
           "password": {
             "type": "string"
-          }
-        }
-      },
-      "ModificarEstado": {
-        "type": "object",
-        "properties": {
-          "estado": {
-            "type": [
-              "null",
-              "string"
-            ]
           }
         }
       },
@@ -4323,7 +4323,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "Ingresa tu token JWT",
+        "description": "Enter your JWT token",
         "scheme": "bearer",
         "bearerFormat": "JWT"
       }
@@ -4334,43 +4334,43 @@
       "name": "HandlingExtinguishers"
     },
     {
-      "name": "Inventarios"
+      "name": "Inventory"
     },
     {
       "name": "Account"
     },
     {
-      "name": "Clientes"
+      "name": "Client"
     },
     {
-      "name": "Companies"
+      "name": "Company"
     },
     {
-      "name": "Creditos"
+      "name": "Credit"
     },
     {
-      "name": "DetalleExtintorClientes"
+      "name": "DetailExtinguisherClient"
     },
     {
-      "name": "DetalleServicio"
+      "name": "DetailService"
     },
     {
-      "name": "Employees"
+      "name": "Employee"
     },
     {
-      "name": "Gastos"
+      "name": "Expense"
     },
     {
-      "name": "Precios"
+      "name": "Price"
     },
     {
-      "name": "Productos"
+      "name": "Product"
     },
     {
-      "name": "Servicios"
+      "name": "Service"
     },
     {
-      "name": "TipoExtintores"
+      "name": "TypeExtinguisher"
     },
     {
       "name": "WeightExtinguisher"
