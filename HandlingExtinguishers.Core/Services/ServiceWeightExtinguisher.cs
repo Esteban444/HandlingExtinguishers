@@ -10,7 +10,7 @@ using System.Net;
 
 namespace HandlingExtinguishers.Core.Services
 {
-    public class ServiceWeightExtinguisher : IServiceWeightExtinguisher
+    public class ServiceWeightExtinguisher : IWeightExtinguisherService
     {
         private readonly IBaseRepository<WeightExtinguisher> repository;
         private readonly IMapper mapper;

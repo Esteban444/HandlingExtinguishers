@@ -3,7 +3,7 @@ using ManejoExtintores.Core.Filtros_Busqueda;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
-    public interface IServicieCredit
+    public interface ICreditService
     {
         Task<List<CreditoServiciosDTO>> ConsultaCreditos(FiltroCreditos filtros);
         Task<CreditoServiciosDTO> ConsultaCreditoPorId(Guid id);

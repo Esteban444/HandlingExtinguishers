@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
@@ -8,132 +11,136 @@ using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Models.Pagination;
 using HandlingFireExtinguisher.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 using WebApplicationFacturas.Helpers;
+#endregion
 
-namespace HandlingExtinguishers.Core.Services
+public class ServiceEmployee( IRepositoryEmployee repositoryEmployee, IMapper mapper ) : IEmployeeService
 {
-    public class ServiceEmployee : IServiceEmployee
+    private readonly IMapper mapper = mapper;
+    private readonly IRepositoryEmployee repositoryEmployee = repositoryEmployee;
+
+    public async Task<FilterEmployeeResponseDto> SearchEmployees( QueryParameter filter )
     {
-        private readonly IMapper _mapper;
-        private readonly IRepositoryEmployee _repositoryEmployee;
-
-        public ServiceEmployee(IRepositoryEmployee repositoryEmployee, IMapper mapper)
+        try
         {
-            this._repositoryEmployee = repositoryEmployee;
-            this._mapper = mapper;
+            var response = new FilterEmployeeResponseDto();
+
+            var search = repositoryEmployee.FindByAsNoTracking(x => x.Active);
+
+            if ( filter.OrderBy == "Id" ) filter.OrderBy = "Name";
+
+            if ( !string.IsNullOrEmpty( filter.Search ) )
+            {
+                search = search.Where( employee => employee.FirstName!.ToLower().Contains( filter.Search ) || employee.LastName!.ToLower().Contains( filter.Search ) );
+            }
+
+            var pagegResult = await search.PaginateAsync( filter );
+
+            var result = mapper.Map<List<EmployeeBaseResponseDto>>( pagegResult.Resource );
+
+            response.Employees = PaginationHelper.CreatePagedReponse<EmployeeBaseResponseDto>( result, filter, pagegResult.TotalRecords );
+
+            return response;
         }
-
-        public async Task<FilterEmployeeResponseDto> SearchEmployees(QueryParameter filter)
+        catch ( Exception )
         {
-            try
-            {
-                var response = new FilterEmployeeResponseDto();
-
-                var result = _repositoryEmployee.FindByAsNoTracking(x => x.Active);
-
-                if (filter.OrderBy == "Id") filter.OrderBy = "Name";
-
-                if (!string.IsNullOrEmpty(filter.Search))
-                {
-                    result = result.Where(x => x.FirstName!.ToLower().Contains(filter.Search) || x.LastName!.ToLower().Contains(filter.Search));
-                }
-                var employees = await result.PaginateAsync(filter);
-                var preResponse = _mapper.Map<List<EmployeeBaseResponseDto>>(employees.Resource);
-
-                response.Employees = PaginationHelper.CreatePagedReponse<EmployeeBaseResponseDto>(preResponse, filter, employees.TotalRecords);
-                return response;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            throw;
         }
+    }
 
-        public async Task<EmployeeResponseDto> SearchEmployeeById(Guid id)
+    public async Task<EmployeeResponseDto> SearchEmployeeById( Guid idEmployee )
+    {
+        try
         {
-            try
-            {
-                var result = await _repositoryEmployee.FindBy(x => x.Id == id).Include(x => x.Company).FirstOrDefaultAsync();
-                if (result != null)
-                {
-                    return _mapper.Map<EmployeeResponseDto>(result);
-                }
-                else
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+            var result = await repositoryEmployee.FindBy( employee => employee.Id == idEmployee ).Include( company => company.Company ).FirstOrDefaultAsync();
 
-        public async Task<EmployeeBaseResponseDto> AddEmployee(EmployeeRequestDto request)
-        {
-            try
+            if ( result is not null )
             {
-                var employee = _mapper.Map<Employee>(request);
-                employee.Active = true;
-
-                await _repositoryEmployee.Add(employee);
-                var response = _mapper.Map<EmployeeBaseResponseDto>(request);
-                return response;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public async Task<EmployeeResponseDto> UpdatedFieldEmployee(Guid employeeId, PatchEmployeeRequestDto request)
-        {
-            try
-            {
-                var result = await _repositoryEmployee.FindBy(x => x.Id == employeeId).FirstOrDefaultAsync();
-                if (result != null)
-                {
-                    var properties = new UpdateMapperProperties<Employee, PatchEmployeeRequestDto>();
-                    var resultToUpdate = await properties.MapperUpdate(result!, request);
-
-                    if (request.Active.HasValue)
-                    {
-                        resultToUpdate.Active = request.Active.Value;
-                    }
-                    else
-                    {
-                        resultToUpdate.Active = result.Active;
-                    }
-
-                    await _repositoryEmployee.Patch(resultToUpdate);
-                    var response = _mapper.Map<EmployeeResponseDto>(resultToUpdate);
-                    return response;
-                }
-                else
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public async Task<bool> DeleteEmployee(Guid employeeId)
-        {
-
-            var result = await _repositoryEmployee.FindBy(e => e.Id == employeeId).FirstOrDefaultAsync();
-            if (result != null)
-            {
-                await _repositoryEmployee.Delete(result);
-                return true;
+                return mapper.Map<EmployeeResponseDto>(result);
             }
             else
             {
                 throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
             }
+        }
+        catch ( Exception )
+        {
+            throw;
+        }
+    }
+
+    public async Task<EmployeeBaseResponseDto> CreateEmployee( EmployeeRequestDto request )
+    {
+        try
+        {
+            var employee = mapper.Map<Employee>( request );
+
+            employee.Active = true;
+
+            await repositoryEmployee.Add( employee );
+
+            var response = mapper.Map<EmployeeBaseResponseDto>( request );
+
+            return response;
+        }
+        catch ( Exception )
+        {
+            throw;
+        }
+    }
+
+    public async Task<EmployeeResponseDto> UpdatedEmployee( Guid employeeId, PatchEmployeeRequestDto request )
+    {
+        try
+        {
+            var search = await repositoryEmployee.FindBy( employee => employee.Id == employeeId ).FirstOrDefaultAsync();
+
+            if ( search is not null )
+            {
+                var properties = new UpdateMapperProperties<Employee, PatchEmployeeRequestDto>();
+
+                var result = await properties.MapperUpdate( search!, request );
+
+                if ( request.Active.HasValue )
+                {
+                    result.Active = request.Active.Value;
+                }
+                else
+                {
+                    result.Active = search.Active;
+                }
+
+                await repositoryEmployee.Patch( search );
+
+                var response = mapper.Map<EmployeeResponseDto>( search );
+
+                return response;
+            }
+            else
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
+            }
+        }
+        catch ( Exception )
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> DeleteEmployee( Guid employeeId )
+    {
+
+        var result = await repositoryEmployee.FindBy(employee => employee.Id == employeeId).FirstOrDefaultAsync();
+
+        if (result is not null)
+        {
+            await repositoryEmployee.Delete( result );
+
+            return true;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.EmployeeNotFound );
         }
     }
 }

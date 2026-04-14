@@ -12,10 +12,10 @@ namespace HandlingExtinguishers.Controllers
     [Authorize]
     public class WeightExtinguisherController : ControllerBase
     {
-        private readonly IServiceWeightExtinguisher serviceWeightExtinguisher;
+        private readonly IWeightExtinguisherService serviceWeightExtinguisher;
         private readonly IValidator<WeightExtinguisherBase> _validator;
 
-        public WeightExtinguisherController( IServiceWeightExtinguisher serviceWeightExtinguisher, IValidator<WeightExtinguisherBase> validator )
+        public WeightExtinguisherController( IWeightExtinguisherService serviceWeightExtinguisher, IValidator<WeightExtinguisherBase> validator )
         {
             this.serviceWeightExtinguisher = serviceWeightExtinguisher;
             _validator = validator;

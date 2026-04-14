@@ -2,7 +2,7 @@
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
-    public interface IServiceTypeExtinguisher
+    public interface ITypeExtinguisherService
     {
         Task<IEnumerable<TipoExtintorDTO>> ConsultaTipoExtintor();
         Task<TipoExtintorDTO> ConsultaTipoId(Guid id);

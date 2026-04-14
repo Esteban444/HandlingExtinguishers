@@ -10,7 +10,7 @@ using System.Net;
 
 namespace ManagementFireEstinguisher.Core.Servicios
 {
-    public class ServicioTipoExtintor : IServiceTypeExtinguisher
+    public class ServicioTipoExtintor : ITypeExtinguisherService
     {
         private readonly IBaseRepository<TypeExtinguisher> _repositorio;
         private readonly IMapper _mapper;

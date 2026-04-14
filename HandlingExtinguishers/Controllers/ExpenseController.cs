@@ -13,10 +13,10 @@ namespace HandlingExtinguishers.Controllers
     public class ExpenseController : ControllerBase
     {
 
-        private readonly IServicioGasto _servicioGasto;
+        private readonly IExpenseService _servicioGasto;
         private readonly IValidator<GastosBase> _validator;
 
-        public ExpenseController(IServicioGasto servicioGasto, IValidator<GastosBase> validator)
+        public ExpenseController(IExpenseService servicioGasto, IValidator<GastosBase> validator)
         {
             _servicioGasto = servicioGasto;
             _validator = validator;

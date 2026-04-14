@@ -11,7 +11,7 @@ using System.Net;
 
 namespace HandlingFireExtinguisher.Core.Services
 {
-    public class ServicioCliente : IServicieClient
+    public class ServicioCliente : IClientService
     {
         private readonly IRepositoryClient _repository;
         private readonly IMapper _mapper;

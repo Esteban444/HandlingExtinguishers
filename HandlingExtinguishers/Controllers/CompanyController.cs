@@ -8,75 +8,76 @@ using Microsoft.AspNetCore.Mvc;
 namespace HandlingExtinguishers.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/company")]
     [Authorize]
-    public class CompanyController : ControllerBase
+    public class CompanyController( ICompanyService serviceCompany ) : ControllerBase
     {
-        private readonly IServiceCompany _serviceCompany;
-
-        public CompanyController(IServiceCompany serviceCompany)
-        {
-            _serviceCompany = serviceCompany;
-        }
+        private readonly ICompanyService serviceCompany = serviceCompany;
 
         [HttpGet("search-company-enable")]
         [ProducesResponseType(typeof(FilterCompanyResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> Companies([FromQuery] QueryParameter filter)
+        public async Task<IActionResult> SearchCompanies( [FromQuery] QueryParameter filter )
         {
-            var response = await _serviceCompany.GetCompanies(filter);
-            return Ok(response);
+            var response = await serviceCompany.SearchCompanies( filter );
+
+            return Ok( response );
         }
 
         [HttpGet("search-company-disabled")]
         [ProducesResponseType(typeof(FilterCompanyResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> CompaniesDasabled([FromQuery] QueryParameter filter)
+        public async Task<IActionResult> SearchCompaniesDisabled( [FromQuery] QueryParameter filter )
         {
-            var response = await _serviceCompany.GetCompaniesDisabled(filter);
-            return Ok(response);
+            var response = await serviceCompany.SearchCompaniesDisabled( filter );
+
+            return Ok( response );
         }
 
-        [HttpGet("search-company-by/{companyId}")]
+        [HttpGet("search-by/{companyId}")]
         [ProducesResponseType(typeof(CompanyResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> Company(Guid companyId)
+        public async Task<IActionResult> SearchCompany( Guid companyId )
         {
-            var response = await _serviceCompany.GetCompany(companyId);
-            return Ok(response);
+            var response = await serviceCompany.SearchCompany( companyId );
+
+            return Ok( response);
         }
 
-        [HttpPost("add-company")]
+        [HttpPost("Create")]
         [ProducesResponseType(typeof(CompanyResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> Create(CompanyRequestDto empresabase)
+        public async Task<IActionResult> CreateCompany( CompanyRequestDto company )
         {
-            var response = await _serviceCompany.CreateCompany(empresabase);
-            return Ok(response);
+            var response = await serviceCompany.CreateCompany( company );
+
+            return Ok( response );
         }
 
-        [HttpPatch("update-company-by/{companyId}")]
+        [HttpPatch("update-by/{companyId}")]
         [ProducesResponseType(typeof(CompanyResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> UpdateCompany(Guid companyId, PatchCompanyRequestDto actualizar)
+        public async Task<IActionResult> UpdateCompany( Guid companyId, PatchCompanyRequestDto company )
         {
-            var response = await _serviceCompany.UpdateFieldsCompany(companyId, actualizar);
-            return Ok(response);
+            var response = await serviceCompany.UpdateCompany( companyId, company );
+
+            return Ok( response );
         }
 
-        [HttpDelete("delete-company-permanent-by/{companyId}")]
+        [HttpDelete("delete-by/{companyId}")]
         [ProducesResponseType(typeof(bool), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> Eliminar (Guid companyId)
+        public async Task<IActionResult> DeletedCompany ( Guid companyId )
         {
-            var response = await _serviceCompany.DeleteCompany(companyId);
-            return Ok(response);
+            var response = await serviceCompany.DeleteCompany( companyId );
+
+            return Ok( response );
 
         }
     }

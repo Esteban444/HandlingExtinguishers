@@ -1,5 +1,5 @@
-﻿using HandlingExtinguisher.Infraestructure.Data;
-using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+﻿using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Infraestructure.Data;
 using HandlingExtinguishers.Models.Models;
 
 namespace HandlingExtinguishers.Infrastructure.Repositories

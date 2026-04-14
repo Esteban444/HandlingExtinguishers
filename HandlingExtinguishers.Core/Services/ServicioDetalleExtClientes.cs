@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguisher.Dto.Clients;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
@@ -7,91 +10,96 @@ using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Models;
 using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
+#endregion
 
-namespace ManejoExtintores.Core.Servicios
+public class ServicioDetalleExtClientes( IRepositoryDetailExtinguisherClient repositoryDetailExtinguisherClient, 
+                                         IMapper mapper ) : IServiceDetailExtinguisherClients
 {
-    public class ServicioDetalleExtClientes : IServiceDetailExtClients
+    private readonly IRepositoryDetailExtinguisherClient repositoryDetailExtinguisherClient = repositoryDetailExtinguisherClient;
+    private readonly IMapper mapper = mapper;
+
+    public async Task<List<DetailExtinguisherClientDto>> SearchDetailClients( FiltroDetalleExtClientes filter ) 
     {
-        private readonly IRepositoryDetailExtinguisherClient _repositorioDetalleExtClientes;
-        private readonly IMapper _mapper;
-        public ServicioDetalleExtClientes(IRepositoryDetailExtinguisherClient repositorio, IMapper mapper)
+        var search = await repositoryDetailExtinguisherClient.GetAll().ToListAsync();
+
+        var response = mapper.Map<List<DetailExtinguisherClientDto>>( search );
+
+        return response;
+    }
+
+    public async Task<DetailExtinguisherClientDto> SearchDetailClientById( Guid idDetail )
+    {
+        var result = await repositoryDetailExtinguisherClient.FindBy( detail => detail.Id == idDetail ).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            _repositorioDetalleExtClientes = repositorio;
-            _mapper = mapper;
+            return mapper.Map<DetailExtinguisherClientDto>( result );
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
+        }
+    }
+
+    public async Task<BaseDetailExtinguisherClient> CreateDetailClient( BaseDetailExtinguisherClient request  )
+    {
+        var detailExtinguisher = mapper.Map<DetailExtinguisherClient>( request );
+
+        await repositoryDetailExtinguisherClient.Add( detailExtinguisher );
+
+        var result = mapper.Map<BaseDetailExtinguisherClient>( detailExtinguisher );
+
+        return result;
+    }
+
+    public async Task<BaseDetailExtinguisherClient> UpdateDetailClient( Guid idDetail, BaseDetailExtinguisherClient request )
+    {
+        var result = await repositoryDetailExtinguisherClient.FindBy( detail => detail.Id == idDetail ).FirstOrDefaultAsync();
+
+        if ( result is not null )
+        {
+            result.IdClients = request.IdClients;
+            result.TypeExtinguisher = request.TypeExtinguisher ?? result.TypeExtinguisher;
+            result.WeightExtinguisher = request.TypeExtinguisher ?? result.TypeExtinguisher;
+            result.Quantity = request.Quantity ?? result.Quantity;
+            result.MaintenanceDate = request.MaintenanceDate ?? result.MaintenanceDate;
+            result.ExpirationDate = request.ExpirationDate ?? result.ExpirationDate;
+
+            await repositoryDetailExtinguisherClient.Update( result );
+
+            var response = mapper.Map<BaseDetailExtinguisherClient>( result );
+
+            return response;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
+        }
+    }
+
+    public async Task<DetailExtinguisherClientDto> DeleteDetailClient( Guid idDetail )
+    {
+        var result = await repositoryDetailExtinguisherClient.FindBy( detail => detail.Id == idDetail ).FirstOrDefaultAsync();
+
+        if ( result is not null )
+        {
+            try
+            {
+                await repositoryDetailExtinguisherClient.Delete( result );
+
+                var response = mapper.Map<DetailExtinguisherClientDto>( result );
+
+                return response;
+            }
+            catch ( Exception )
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.RelatedDetailExtinguisherClient );
+            }
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
         }
 
-        public async Task<List<DetailExtinguisherClientDto>> ConsultaDetalleClientes(FiltroDetalleExtClientes filtro)
-        {
-            var detalleextClientes = await _repositorioDetalleExtClientes.GetAll().ToListAsync();
-            var detalleextclientesdt = _mapper.Map<List<DetailExtinguisherClientDto>>(detalleextClientes);
-            return detalleextclientesdt;
-        }
-
-        public async Task<DetailExtinguisherClientDto> ConsultaDetalleExtClientePorId(Guid id)
-        {
-            var detalleextintorCliente = await _repositorioDetalleExtClientes.FindBy(x => x.Id == id).FirstOrDefaultAsync();
-            if (detalleextintorCliente != null)
-            {
-                return _mapper.Map<DetailExtinguisherClientDto>(detalleextintorCliente);
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
-            }
-        }
-
-        public async Task<BaseDetailExtinguisherClient> CrearDetalleExtCliente(BaseDetailExtinguisherClient detalleExtCliente)
-        {
-            var detalleextintorcliente = _mapper.Map<DetailExtinguisherClient>(detalleExtCliente);
-            await _repositorioDetalleExtClientes.Add(detalleextintorcliente); ;
-            detalleExtCliente = _mapper.Map<BaseDetailExtinguisherClient>(detalleextintorcliente);
-            return detalleExtCliente;
-        }
-
-        public async Task<BaseDetailExtinguisherClient> ActualizarDetalleExtCliente(Guid id, BaseDetailExtinguisherClient detalleExtCliente)
-        {
-            var detalleactualizarbd = await _repositorioDetalleExtClientes.FindBy(x => x.Id == id).FirstOrDefaultAsync();
-            if (detalleactualizarbd != null)
-            {
-                detalleactualizarbd.IdClients = detalleExtCliente.IdClients;
-                detalleactualizarbd.TypeExtinguisher = detalleExtCliente.TypeExtinguisher ?? detalleactualizarbd.TypeExtinguisher;
-                detalleactualizarbd.WeightExtinguisher = detalleExtCliente.TypeExtinguisher ?? detalleactualizarbd.TypeExtinguisher;
-                detalleactualizarbd.Quantity = detalleExtCliente.Quantity ?? detalleactualizarbd.Quantity;
-                detalleactualizarbd.MaintenanceDate = detalleExtCliente.MaintenanceDate ?? detalleactualizarbd.MaintenanceDate;
-                detalleactualizarbd.ExpirationDate = detalleExtCliente.ExpirationDate ?? detalleactualizarbd.ExpirationDate;
-
-                await _repositorioDetalleExtClientes.Update(detalleactualizarbd);
-                var detalleExtclienteactualizado = _mapper.Map<BaseDetailExtinguisherClient>(detalleactualizarbd);
-                return detalleExtclienteactualizado;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
-            }
-        }
-
-        public async Task<DetailExtinguisherClientDto> EliminarDetalleExtCliente(Guid id)
-        {
-            var detalleExtclientebd = await _repositorioDetalleExtClientes.FindBy(e => e.Id == id).FirstOrDefaultAsync();
-            if (detalleExtclientebd != null)
-            {
-                try
-                {
-                    await _repositorioDetalleExtClientes.Delete(detalleExtclientebd);
-                    var detalleExtClienteE = _mapper.Map<DetailExtinguisherClientDto>(detalleExtclientebd);
-                    return detalleExtClienteE;
-                }
-                catch (Exception)
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedDetailExtinguisherClient );
-                }
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.DetailExtinguisherClientNotFound );
-            }
-
-        }
     }
 }

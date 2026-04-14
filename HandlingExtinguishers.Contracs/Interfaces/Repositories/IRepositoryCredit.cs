@@ -1,8 +1,9 @@
-﻿using HandlingExtinguishers.Models.Models;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Repositories;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Repositories
+#region Usings
+using HandlingExtinguishers.Models.Models;
+# endregion
+
+public interface IRepositoryCredit : IBaseRepository<CreditService>
 {
-    public interface IRepositoryCredit : IBaseRepository<CreditService>
-    {
-    }
 }

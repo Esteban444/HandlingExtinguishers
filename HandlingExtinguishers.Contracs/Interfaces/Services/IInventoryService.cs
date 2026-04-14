@@ -3,7 +3,7 @@ using ManejoExtintores.Core.Filtros_Busqueda;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
-    public interface IServiceInventory
+    public interface IInventoryService
     {
         Task<IEnumerable<InventarioDTO>> ConsultaInventarios(FiltroInventario filtro);
         Task<InventarioDTO> ConsultaInventarioPorId(Guid id);

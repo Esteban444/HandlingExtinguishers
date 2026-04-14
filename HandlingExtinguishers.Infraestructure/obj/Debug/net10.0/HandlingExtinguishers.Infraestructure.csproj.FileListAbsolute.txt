@@ -1,3 +1,9 @@
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.csproj.AssemblyReference.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.AssemblyInfoInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.AssemblyInfo.cs
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.csproj.CoreCompileInputs.cache
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.sourcelink.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\Debug\net10.0\HandlingExtinguishers.Infraestructure.deps.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\Debug\net10.0\HandlingExtinguishers.Infraestructure.dll
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\Debug\net10.0\HandlingExtinguishers.Infraestructure.pdb
@@ -9,12 +15,6 @@ D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\Debug\net10.0\HandlingExtinguishers.Contracts.pdb
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\Debug\net10.0\en\HandlingExtinguishers.Core.resources.dll
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\bin\Debug\net10.0\es\HandlingExtinguishers.Core.resources.dll
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.csproj.AssemblyReference.cache
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.AssemblyInfoInputs.cache
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.AssemblyInfo.cs
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.csproj.CoreCompileInputs.cache
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.sourcelink.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\Handling.9BC6C283.Up2Date
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\HandlingExtinguishers.Infraestructure.dll
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers.Infraestructure\obj\Debug\net10.0\refint\HandlingExtinguishers.Infraestructure.dll

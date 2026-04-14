@@ -9,7 +9,6 @@ using HandlingExtinguishers.Core.Services;
 using HandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Infraestructure.Repositories;
 using HandlingExtinguishers.Infrastructure.Repositories;
-using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Configurations.Validators;
 using HandlingFireExtinguisher.Core.Services;
 using HandlingFireExtinguishers.Infraestructure.Repositories;
@@ -25,6 +24,7 @@ using ManejoExtintores.Core.Servicios;
 using MHandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Models.Extinguishers;
 using HandlingExtinguishers.Models.Authentication;
+using HandlingExtinguishers.Models.Models;
 #endregion
 
 public static class DependencyInjections
@@ -63,18 +63,18 @@ public static class DependencyInjections
         services.AddScoped<IValidator<ServicioBase>, ValidatorService>();
         services.AddScoped<IValidator<LoginRequestDto>, ValidatorAuthenticationUser>();
 
-        services.AddScoped<IServicieClient, ServicioCliente>();
-        services.AddScoped<IServicieCredit, ServiceCredit>();
-        services.AddScoped<IDetailService, ServicioDetalleServicios>();
-        services.AddScoped<IServiceDetailExtClients, ServicioDetalleExtClientes>();
-        services.AddScoped<IServicioGasto, ServicioGasto>();
-        services.AddScoped<IServiceCompany, ServiceCompany>();
-        services.AddScoped<IServiceEmployee, ServiceEmployee>();
-        services.AddScoped<IServiceInventory, ServicioInventario>();
-        services.AddScoped<IServicePrices, ServicioPrecios>();
-        services.AddScoped<IServiceProducts, ServicioProducto>();
-        services.AddScoped<IServiceWeightExtinguisher, ServiceWeightExtinguisher>();
-        services.AddScoped<IServiceTypeExtinguisher, ServicioTipoExtintor>();
+        services.AddScoped<IClientService, ServicioCliente>();
+        services.AddScoped<ICreditService, ServiceCredit>();
+        services.AddScoped<IDetailService, DetailServices>();
+        services.AddScoped<IServiceDetailExtinguisherClients, ServicioDetalleExtClientes>();
+        services.AddScoped<IExpenseService, ServicioGasto>();
+        services.AddScoped<ICompanyService, ServiceCompany>();
+        services.AddScoped<IEmployeeService, ServiceEmployee>();
+        services.AddScoped<IInventoryService, ServicioInventario>();
+        services.AddScoped<IPriceService, ServicioPrecios>();
+        services.AddScoped<IProductService, ServicioProducto>();
+        services.AddScoped<IWeightExtinguisherService, ServiceWeightExtinguisher>();
+        services.AddScoped<ITypeExtinguisherService, ServicioTipoExtintor>();
         services.AddScoped<IServiceOfService, ServiceOfService>();
         services.AddScoped<IAuthentificationService, AuthentificationService>();
 

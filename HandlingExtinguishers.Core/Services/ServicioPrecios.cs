@@ -11,7 +11,7 @@ using System.Net;
 
 namespace ManejoExtintores.Core.Servicios
 {
-    public class ServicioPrecios : IServicePrices
+    public class ServicioPrecios : IPriceService
     {
         private readonly IRepositoryPrice _repositorio;
         private readonly IMapper _mapper;

@@ -6,51 +6,51 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HandlingExtinguishers.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/detail-service")]
     [ApiController]
     [Authorize]
-    public class DetailServiceController : ControllerBase
+    public class DetailServiceController( IDetailService detailService ) : ControllerBase
     {
-        private readonly IDetailService _servicioDetalle;
+        private readonly IDetailService detailService = detailService;
 
-        public DetailServiceController(IDetailService serviciodetalle)
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchDetails( [FromQuery] FiltroDetalleServicio filter )
         {
-            _servicioDetalle = serviciodetalle;
+            var response = await detailService.SearchDetailsService( filter );
+
+            return Ok( response );
         }
 
-        [HttpGet]
-        public async Task<IActionResult> ConsultaDetalles([FromQuery] FiltroDetalleServicio filtro)
+        [HttpGet("search-by/{idDetail}")]
+        public async Task<IActionResult> GetDetailById( Guid idDetail )
         {
-            var response = await _servicioDetalle.ConsultaDetalles(filtro);
-            return Ok(response);
+            var response = await detailService.GetDetailServiceById( idDetail );
+
+            return Ok( response );
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaPorId(Guid id)
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateDetail( DetalleServicioBase request )
         {
-            var response = await _servicioDetalle.ConsultaDetallePorId(id);
-            return Ok(response);
+            var response = await detailService.CreateDetailService( request );
+
+            return Ok( response );
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CrearDetalle(DetalleServicioBase creardetalle)
+        [HttpPut("update-by/{idDetail}")]
+        public async Task<IActionResult> UpdateDetail( Guid idDetail, DetalleServicioBase request )
         {
-            var response = await _servicioDetalle.CrearDetalles(creardetalle);
-            return Ok(response);
+            var response = await detailService.UpdateDetailService( idDetail, request );
+
+            return Ok( response );
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarDetalles(Guid id, DetalleServicioBase actualizar)
+        [HttpDelete("delete-by/{idDetail}")]
+        public async Task<IActionResult> DeleteDetail( Guid idDetail )
         {
-            var response = await _servicioDetalle.ActualizarDetalle(id, actualizar);
-            return Ok(response);
-        }
+            var response = await detailService.DeleteDetailService( idDetail );
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(Guid id)
-        {
-            var response = await _servicioDetalle.EliminarDetalle(id);
-            return Ok(response);
+            return Ok( response );
 
         }
 

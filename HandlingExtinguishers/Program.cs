@@ -1,8 +1,8 @@
-﻿using HandlingExtinguisher.Infraestructure.Data;
-using HandlingExtinguishers.Configurations;
+﻿using HandlingExtinguishers.Configurations;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Core.Localization;
+using HandlingExtinguishers.Infraestructure.Data;
 using HandlingExtinguishers.Infraestructure.Middleware;
 using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

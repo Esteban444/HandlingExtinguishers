@@ -7,66 +7,65 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HandlingExtinguishers.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/employee")]
     [ApiController]
     [Authorize]
-    public class EmployeeController : ControllerBase
+    public class EmployeeController( IEmployeeService serviceEmployee ) : ControllerBase
     {
-        private readonly IServiceEmployee _serviceEmployee;
+        private readonly IEmployeeService serviceEmployee = serviceEmployee;
 
-        public EmployeeController(IServiceEmployee serviceEmployee)
-        {
-            _serviceEmployee = serviceEmployee;
-        }
-
-        [HttpGet("search-employees")]
+        [HttpGet("search")]
         [ProducesResponseType(typeof(FilterEmployeeResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
         public async Task<IActionResult> Employees([FromQuery] QueryParameter filter)
         {
-            var response = await _serviceEmployee.SearchEmployees(filter);
+            var response = await serviceEmployee.SearchEmployees(filter);
             return Ok(response);
         }
 
-        [HttpGet("search-employee-by/{employeeId}")]
+        [HttpGet("search-by/{employeeId}")]
         [ProducesResponseType(typeof(EmployeeResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> EmployeeById(Guid employeeId)
+        public async Task<IActionResult> EmployeeById( Guid employeeId )
         {
-            var response = await _serviceEmployee.SearchEmployeeById(employeeId);
-            return Ok(response);
+            var response = await serviceEmployee.SearchEmployeeById( employeeId );
+
+            return Ok( response );
         }
 
-        [HttpPost("add-employee")]
+        [HttpPost("create")]
         [ProducesResponseType(typeof(EmployeeResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> AddEnployee(EmployeeRequestDto empleadob)
+        public async Task<IActionResult> CreateEmployee( EmployeeRequestDto request )
         {
-            var response = await _serviceEmployee.AddEmployee(empleadob);
-            return Ok(response);
+            var response = await serviceEmployee.CreateEmployee( request );
+
+            return Ok( response );
         }
 
-        [HttpPut("update-employee-by/{employeeId}")]
+        [HttpPut("update-by/{employeeId}")]
         [ProducesResponseType(typeof(EmployeeResponseDto), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> UpdateEmployee(Guid employeeId, PatchEmployeeRequestDto request)
+        public async Task<IActionResult> UpdateEmployee( Guid employeeId, PatchEmployeeRequestDto request )
         {
-            var response = await _serviceEmployee.UpdatedFieldEmployee(employeeId, request);
-            return Ok(response);
+            var response = await serviceEmployee.UpdatedEmployee( employeeId, request );
+
+            return Ok( response );
         }
 
-        [HttpDelete("delete-employee-by/{employeeId}")]
+        [HttpDelete("delete-by/{employeeId}")]
         [ProducesResponseType(typeof(bool), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> DeleteEmployee(Guid employeeId)
+        public async Task<IActionResult> DeleteEmployee( Guid employeeId )
         {
-            var response = await _serviceEmployee.DeleteEmployee(employeeId);
-            return Ok(response);
+            var response = await serviceEmployee.DeleteEmployee( employeeId );
+
+            return Ok( response );
 
         }
     }

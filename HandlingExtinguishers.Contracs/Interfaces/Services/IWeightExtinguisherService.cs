@@ -2,7 +2,7 @@
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services 
 {
-    public interface IServiceWeightExtinguisher
+    public interface IWeightExtinguisherService
     {
         Task<IEnumerable<WightExtuinguiserDto>> SearchWeightExtinguishers();
         Task<WightExtuinguiserDto> SearchWeightExtinguisherById( Guid idWeightExtinguisher );

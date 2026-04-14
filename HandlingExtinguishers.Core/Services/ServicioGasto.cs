@@ -11,7 +11,7 @@ using System.Net;
 
 namespace ManejoExtintores.Core.Servicios
 {
-    public class ServicioGasto : IServicioGasto
+    public class ServicioGasto : IExpenseService
     {
         private readonly IRepositoryExpense _repositorio;
         private readonly IMapper _mapper;

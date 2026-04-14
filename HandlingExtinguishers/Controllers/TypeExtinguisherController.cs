@@ -11,10 +11,10 @@ namespace HandlingExtinguishers.Controllers
     [Authorize]
     public class TypeExtinguisherController : ControllerBase
     {
-        private readonly IServiceTypeExtinguisher _servicioTExtintor;
+        private readonly ITypeExtinguisherService _servicioTExtintor;
         private readonly IValidator<TipoExtintorBase> _validator;
 
-        public TypeExtinguisherController( IServiceTypeExtinguisher servicioTipo, IValidator<TipoExtintorBase> validator )
+        public TypeExtinguisherController( ITypeExtinguisherService servicioTipo, IValidator<TipoExtintorBase> validator )
         {
             _servicioTExtintor = servicioTipo;
             _validator = validator;

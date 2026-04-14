@@ -12,10 +12,10 @@ namespace HandlingExtinguishers.Controllers
     [Authorize]
     public class ProductController : ControllerBase
     {
-        private readonly IServiceProducts _servicioProducto;
+        private readonly IProductService _servicioProducto;
         private readonly IValidator<ProductoBase> _validator;
 
-        public ProductController(IServiceProducts servicioProducto, IValidator<ProductoBase> validator)
+        public ProductController(IProductService servicioProducto, IValidator<ProductoBase> validator)
         {
             _servicioProducto = servicioProducto;
             _validator = validator;

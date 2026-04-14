@@ -1,9 +1,10 @@
-﻿using HandlingExtinguishers.Models.Models;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Repositories;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Repositories
+#region Usings
+using HandlingExtinguishers.Models.Models;
+#endregion
+
+public interface IRepositoryEmployee : IBaseRepository<Employee>
 {
-    public interface IRepositoryEmployee : IBaseRepository<Employee>
-    {
 
-    }
 }

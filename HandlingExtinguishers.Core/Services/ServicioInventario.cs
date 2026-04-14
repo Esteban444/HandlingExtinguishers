@@ -11,7 +11,7 @@ using System.Net;
 
 namespace HandlingExtinguishers.Core.Services
 {
-    public class ServicioInventario : IServiceInventory
+    public class ServicioInventario : IInventoryService
     {
         private readonly IMapper _mapper;
         private readonly IRepositoryInventory _repositorio;

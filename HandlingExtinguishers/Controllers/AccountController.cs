@@ -58,11 +58,11 @@ namespace HandlingExtinguishers.Controllers
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken( [FromHeader] string authorization )
         {
-            if (string.IsNullOrEmpty( authorization ) )
+            if ( string.IsNullOrEmpty( authorization ) )
                 return BadRequest( new AuthResponse { Errors = [ValidatorMessageCommonConstants.TokenRequired] } );
 
             if ( !AuthenticationHeaderValue.TryParse( authorization, out var headerValue ) )
-                return BadRequest(new AuthResponse { Errors = [ValidatorMessageCommonConstants.InvalidAuthorizationFormat] });
+                return BadRequest( new AuthResponse { Errors = [ValidatorMessageCommonConstants.InvalidAuthorizationFormat] } );
 
             var token = headerValue.Parameter;
 

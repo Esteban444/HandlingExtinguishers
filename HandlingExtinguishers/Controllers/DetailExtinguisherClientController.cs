@@ -8,73 +8,75 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HandlingExtinguishers.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/detail-extinguisher-client")]
     [ApiController]
     [Authorize]
-    public class DetailExtinguisherClientController : ControllerBase
+    public class DetailExtinguisherClientController( IServiceDetailExtinguisherClients serviceDetailExtinguisherClients,
+                                                     IValidator<BaseDetailExtinguisherClient> validator ) : ControllerBase
     {
-        private readonly IServiceDetailExtClients _servicioDetalleExtClientes;
-        private readonly IValidator<BaseDetailExtinguisherClient> _validator;
-        public DetailExtinguisherClientController(IServiceDetailExtClients servicioDetalleExtClientes,
-            IValidator<BaseDetailExtinguisherClient> validator)
-        {
-            _servicioDetalleExtClientes = servicioDetalleExtClientes;
-            _validator = validator;
-        }
+        private readonly IServiceDetailExtinguisherClients serviceDetailExtinguisherClients = serviceDetailExtinguisherClients;
+        private readonly IValidator<BaseDetailExtinguisherClient> validator = validator;
 
         [HttpGet]
-        public async Task<IActionResult> ConsultaDetalleExtClientes([FromQuery] FiltroDetalleExtClientes filtro)
+        public async Task<IActionResult> SearchDetailClients( [FromQuery] FiltroDetalleExtClientes filter )
         {
-            var response = await _servicioDetalleExtClientes.ConsultaDetalleClientes(filtro);
+            var response = await serviceDetailExtinguisherClients.SearchDetailClients( filter );
+
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaDetalleExtclientePorId(Guid id)
+        [HttpGet("search-by/{idDetail}")]
+        public async Task<IActionResult> SearchDetailClientById( Guid idDetail )
         {
-            var response = await _servicioDetalleExtClientes.ConsultaDetalleExtClientePorId(id);
-            return Ok(response);
+            var response = await serviceDetailExtinguisherClients.SearchDetailClientById( idDetail );
+
+            return Ok( response );
         }
 
         [HttpPost]
-        public async Task<IActionResult> CrearDetalleExtintorCliente([FromBody] BaseDetailExtinguisherClient crear)
+        public async Task<IActionResult> CreateDetailExtinguisher( [FromBody] BaseDetailExtinguisherClient request )
         {
-            var Validacion = _validator.Validate(crear);
+            var Validacion = validator.Validate( request );
+
             if (!Validacion.IsValid)
             {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+                var errors = Validacion.Errors.Select(error => error.ErrorMessage);
 
                 return BadRequest(new ResponseDetailExtinguisherClient { Errors = errors });
             }
             else
             {
-                var response = await _servicioDetalleExtClientes.CrearDetalleExtCliente(crear);
-                return Ok(response);
+                var response = await serviceDetailExtinguisherClients.CreateDetailClient( request );
+
+                return Ok( response );
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarCredito(Guid id, BaseDetailExtinguisherClient actualizar)
+        [HttpPut("update-by/{idDetail}")]
+        public async Task<IActionResult> UpdateDetailClient( Guid idDetail, BaseDetailExtinguisherClient request )
         {
-            var Validacion = _validator.Validate(actualizar);
+            var Validacion = validator.Validate( request );
+
             if (!Validacion.IsValid)
             {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+                var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
                 return BadRequest(new RespuestaCredito { Errors = errors });
             }
             else
             {
-                var response = await _servicioDetalleExtClientes.ActualizarDetalleExtCliente(id, actualizar);
+                var response = await serviceDetailExtinguisherClients.UpdateDetailClient( idDetail, request );
+
                 return Ok(response);
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarCredito(Guid id)
+        [HttpDelete("delete-by/{idDetail}")]
+        public async Task<IActionResult> DeleteDetailExtinguisherClient( Guid idDetail )
         {
-            var response = await _servicioDetalleExtClientes.EliminarDetalleExtCliente(id);
-            return Ok(response);
+            var response = await serviceDetailExtinguisherClients.DeleteDetailClient( idDetail );
+
+            return Ok( response );
         }
 
     }

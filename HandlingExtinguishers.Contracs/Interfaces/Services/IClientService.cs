@@ -3,7 +3,7 @@ using ManejoExtintores.Core.Filtros_Busqueda;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services 
 {
-    public interface IServicieClient
+    public interface IClientService
     {
         Task<IEnumerable<ClientDto>> GetClients(FilterClient filtro);
         Task<ClientDto> GetClient(Guid clientId);

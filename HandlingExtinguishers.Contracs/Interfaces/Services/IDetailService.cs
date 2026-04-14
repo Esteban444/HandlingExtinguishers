@@ -1,14 +1,15 @@
-﻿using ManagementFireEstinguisher.Dto.Services;
-using ManejoExtintores.Core.Filtros_Busqueda;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services
+#region Usings
+using ManagementFireEstinguisher.Dto.Services;
+using ManejoExtintores.Core.Filtros_Busqueda;
+#endregion
+
+public interface IDetailService
 {
-    public interface IDetailService
-    {
-        Task<List<DetalleServicioDTO>> ConsultaDetalles(FiltroDetalleServicio filtro);
-        public Task<DetalleServicioDTO> ConsultaDetallePorId(Guid id);
-        Task<DetalleServicioBase> CrearDetalles(DetalleServicioBase detalle);
-        Task<DetalleServicioBase> ActualizarDetalle(Guid id, DetalleServicioBase detalle);
-        Task<DetalleServicioDTO> EliminarDetalle(Guid id);
-    }
+    Task<List<DetalleServicioDTO>> SearchDetailsService( FiltroDetalleServicio filter );
+    public Task<DetalleServicioDTO> GetDetailServiceById( Guid idDetail );
+    Task<DetalleServicioBase> CreateDetailService( DetalleServicioBase detail );
+    Task<DetalleServicioBase> UpdateDetailService( Guid idDetail, DetalleServicioBase detail );
+    Task<DetalleServicioDTO> DeleteDetailService( Guid idDetail ); 
 }

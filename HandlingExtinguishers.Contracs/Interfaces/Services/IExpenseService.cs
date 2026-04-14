@@ -3,7 +3,7 @@ using ManejoExtintores.Core.Filtros_Busqueda;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
-    public interface IServicioGasto
+    public interface IExpenseService
     {
         Task<IEnumerable<GastosDTO>> GetGastos(FiltrosGastos filtros);
         Task<GastosDTO> GetGasto(Guid id);

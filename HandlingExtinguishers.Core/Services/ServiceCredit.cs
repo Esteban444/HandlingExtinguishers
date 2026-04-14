@@ -11,7 +11,7 @@ using System.Net;
 
 namespace HandlingExtinguishers.Core.Services
 {
-    public class ServiceCredit : IServicieCredit
+    public class ServiceCredit : ICreditService
     {
         private readonly IRepositoryCredit _repositorio;
         private readonly IMapper _mapper;

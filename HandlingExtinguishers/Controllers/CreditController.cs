@@ -12,10 +12,10 @@ namespace HandlingExtinguishers.Controllers
     [Authorize]
     public class CreditController : ControllerBase
     {
-        private readonly IServicieCredit _serviciCreditos;
+        private readonly ICreditService _serviciCreditos;
         private readonly IValidator<CreditoServicioBase> _validator;
 
-        public CreditController(IServicieCredit servicioCreditos, IValidator<CreditoServicioBase> validator)
+        public CreditController(ICreditService servicioCreditos, IValidator<CreditoServicioBase> validator)
         {
             _serviciCreditos = servicioCreditos;
             _validator = validator;

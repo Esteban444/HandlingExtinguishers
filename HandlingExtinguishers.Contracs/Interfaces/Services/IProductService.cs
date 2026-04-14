@@ -3,7 +3,7 @@ using ManejoExtintores.Core.Filtros_Busqueda;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
-    public interface IServiceProducts
+    public interface IProductService
     {
         Task<IEnumerable<ProductoDTO>> ConsultaProductos(FiltroProductos filtros);
         Task<ProductoDTO> ConsultaPorId(Guid id);
