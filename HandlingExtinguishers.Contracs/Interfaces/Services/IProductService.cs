@@ -1,5 +1,6 @@
-﻿using ManagementFireEstinguisher.Dto.Products;
-using ManejoExtintores.Core.Filtros_Busqueda;
+﻿using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Products;
+using ManagementFireEstinguisher.Dto.Products;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {

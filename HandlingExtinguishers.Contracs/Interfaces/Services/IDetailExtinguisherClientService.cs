@@ -1,15 +1,15 @@
 ﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
 #region Usings
-using HandlingExtinguisher.Dto.Clients;
-using ManejoExtintores.Core.Filtros_Busqueda;
+using HandlingExtinguishers.Models.Clients;
+using HandlingExtinguishers.Models.Filters;
 #endregion
 
 public interface IServiceDetailExtinguisherClients 
 {
-    Task<List<DetailExtinguisherClientDto>> SearchDetailClients( FiltroDetalleExtClientes filter );
-    Task<DetailExtinguisherClientDto> SearchDetailClientById( Guid idDetail );
-    Task<BaseDetailExtinguisherClient> CreateDetailClient( BaseDetailExtinguisherClient detailExtinguisherClient );
-    Task<BaseDetailExtinguisherClient> UpdateDetailClient( Guid idDetail, BaseDetailExtinguisherClient detailExtinguisherClient );
-    Task<DetailExtinguisherClientDto> DeleteDetailClient( Guid idDetail );
+    Task<List<DetailExtinguisherClientRequest>> SearchDetailClients( FilterDetailExtClient filter );
+    Task<DetailExtinguisherClientRequest> SearchDetailClientById( Guid idDetail );
+    Task<DetailExtinguisherClientRequest> CreateDetailClient( DetailExtinguisherClientRequest detailExtinguisherClient );
+    Task<DetailExtinguisherClientRequest> UpdateDetailClient( Guid idDetail, DetailExtinguisherClientRequest detailExtinguisherClient );
+    Task<DetailExtinguisherClientRequest> DeleteDetailClient( Guid idDetail );
 }

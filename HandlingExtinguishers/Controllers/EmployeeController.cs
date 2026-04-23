@@ -1,72 +1,74 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Services;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+
+[Route("api/employee")]
+[ApiController]
+[Authorize]
+public class EmployeeController( IEmployeeService serviceEmployee ) : ControllerBase
 {
-    [Route("api/employee")]
-    [ApiController]
-    [Authorize]
-    public class EmployeeController( IEmployeeService serviceEmployee ) : ControllerBase
+    private readonly IEmployeeService serviceEmployee = serviceEmployee;
+
+    [HttpGet("search")]
+    [ProducesResponseType(typeof(FilterEmployeeResponse), 200)]
+    [ProducesResponseType(typeof(FailedOperationResult), 404)]
+    [ProducesResponseType(typeof(FailedOperationResult), 400)]
+    public async Task<IActionResult> Employees([FromQuery] QueryParameter filter)
     {
-        private readonly IEmployeeService serviceEmployee = serviceEmployee;
+        var response = await serviceEmployee.SearchEmployees(filter);
+        return Ok(response);
+    }
 
-        [HttpGet("search")]
-        [ProducesResponseType(typeof(FilterEmployeeResponseDto), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> Employees([FromQuery] QueryParameter filter)
-        {
-            var response = await serviceEmployee.SearchEmployees(filter);
-            return Ok(response);
-        }
+    [HttpGet("search-by/{employeeId}")]
+    [ProducesResponseType(typeof(EmployeeResponse), 200)]
+    [ProducesResponseType(typeof(FailedOperationResult), 404)]
+    [ProducesResponseType(typeof(FailedOperationResult), 400)]
+    public async Task<IActionResult> EmployeeById( Guid employeeId )
+    {
+        var response = await serviceEmployee.SearchEmployeeById( employeeId );
 
-        [HttpGet("search-by/{employeeId}")]
-        [ProducesResponseType(typeof(EmployeeResponseDto), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> EmployeeById( Guid employeeId )
-        {
-            var response = await serviceEmployee.SearchEmployeeById( employeeId );
+        return Ok( response );
+    }
 
-            return Ok( response );
-        }
+    [HttpPost("create")]
+    [ProducesResponseType(typeof(EmployeeResponse), 200)]
+    [ProducesResponseType(typeof(FailedOperationResult), 404)]
+    [ProducesResponseType(typeof(FailedOperationResult), 400)]
+    public async Task<IActionResult> CreateEmployee( EmployeeRequest request )
+    {
+        var response = await serviceEmployee.CreateEmployee( request );
 
-        [HttpPost("create")]
-        [ProducesResponseType(typeof(EmployeeResponseDto), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> CreateEmployee( EmployeeRequestDto request )
-        {
-            var response = await serviceEmployee.CreateEmployee( request );
+        return Ok( response );
+    }
 
-            return Ok( response );
-        }
+    [HttpPut("update-by/{employeeId}")]
+    [ProducesResponseType(typeof(EmployeeResponse), 200)]
+    [ProducesResponseType(typeof(FailedOperationResult), 404)]
+    [ProducesResponseType(typeof(FailedOperationResult), 400)]
+    public async Task<IActionResult> UpdateEmployee( Guid employeeId, PatchEmployeeRequest request )
+    {
+        var response = await serviceEmployee.UpdatedEmployee( employeeId, request );
 
-        [HttpPut("update-by/{employeeId}")]
-        [ProducesResponseType(typeof(EmployeeResponseDto), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> UpdateEmployee( Guid employeeId, PatchEmployeeRequestDto request )
-        {
-            var response = await serviceEmployee.UpdatedEmployee( employeeId, request );
+        return Ok( response );
+    }
 
-            return Ok( response );
-        }
+    [HttpDelete("delete-by/{employeeId}")]
+    [ProducesResponseType(typeof(bool), 200)]
+    [ProducesResponseType(typeof(FailedOperationResult), 404)]
+    [ProducesResponseType(typeof(FailedOperationResult), 400)]
+    public async Task<IActionResult> DeleteEmployee( Guid employeeId )
+    {
+        var response = await serviceEmployee.DeleteEmployee( employeeId );
 
-        [HttpDelete("delete-by/{employeeId}")]
-        [ProducesResponseType(typeof(bool), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> DeleteEmployee( Guid employeeId )
-        {
-            var response = await serviceEmployee.DeleteEmployee( employeeId );
+        return Ok( response );
 
-            return Ok( response );
-
-        }
     }
 }

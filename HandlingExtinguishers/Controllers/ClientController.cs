@@ -1,80 +1,84 @@
-﻿using FluentValidation;
-using HandlinExtinguisher.Dto.Clients;
-using HandlingExtinguisher.Dto.Clients;
+﻿
+namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using ManejoExtintores.Core.Filtros_Busqueda;
+using HandlingExtinguishers.Models;
+using HandlingExtinguishers.Models.Clients;
+using HandlingExtinguishers.Models.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+[Route("[controller]")]
+[ApiController]
+[Authorize]
+public class ClientController( IClientService client, IValidator<ClientRequest> validator ) : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    [Authorize]
-    public class ClientController : ControllerBase
+    private readonly IClientService serviceClient = client;
+    private readonly IValidator<ClientRequest> validator = validator;
+
+    [HttpGet("search-clients")]
+    public async Task<IActionResult> Searchs( [FromQuery] FilterClient filter )
     {
-        private readonly IClientService _serviceClient;
-        private readonly IValidator<BaseClient> _validator;
-        public ClientController(IClientService client, IValidator<BaseClient> validator)
+        var response = await serviceClient.SearchClients( filter );
+
+        return Ok( response );
+    }
+
+    [HttpGet("search-client-by/{clientId}")]
+    public async Task<IActionResult> Search( Guid clientId )
+    {
+        var response = await serviceClient.SearchClientById( clientId );
+
+        return Ok( response );
+    }
+
+    [HttpPost("crate-client")]
+    public async Task<IActionResult> Create( ClientRequest client )
+    {
+        var Validation = validator.Validate( client );
+
+        if ( !Validation.IsValid )
         {
-            _serviceClient = client;
-            _validator = validator;
-        }
+            var errors = Validation.Errors.Select(e => e.ErrorMessage);
 
-        [HttpGet("clients")]
-        public async Task<IActionResult> Searchs([FromQuery] FilterClient filter)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var response = await _serviceClient.GetClients(filter);
-            return Ok(response);
-        }
+            var response = await serviceClient.CreateClient( client );
 
-        [HttpGet("search-by/{clientId}")]
-        public async Task<IActionResult> Search(Guid clientId)
+            return Ok( response );
+        }
+    }
+
+    [HttpPut("update-client-by/{clientId}")]
+    public async Task<IActionResult> UpdateClient( Guid clientId, ClientRequest request )
+    {
+        var Validation = validator.Validate( request );
+
+        if ( !Validation.IsValid )
         {
-            var response = await _serviceClient.GetClient(clientId);
-            return Ok(response);
-        }
+            var errors = Validation.Errors.Select(e => e.ErrorMessage);
 
-        [HttpPost("client")]
-        public async Task<IActionResult> Create(BaseClient client)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var Validation = _validator.Validate(client);
-            if (!Validation.IsValid)
-            {
-                var errors = Validation.Errors.Select(e => e.ErrorMessage);
+            var response = await serviceClient.UpdateClient( clientId, request );
 
-                return BadRequest(new ResponseClient { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviceClient.CreateClient(client);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPut("update/{clientId}")]
-        public async Task<IActionResult> UpdateClient(Guid clientId, BaseClient request)
-        {
-            var Validation = _validator.Validate(request);
-            if (!Validation.IsValid)
-            {
-                var errors = Validation.Errors.Select(e => e.ErrorMessage);
+    [HttpDelete("delete-client-by/{clientId}")]
+    public async Task<IActionResult> DeleteClient( Guid clientId )
+    {
+        var response = await serviceClient.DeleteClient( clientId );
 
-                return BadRequest(new ResponseClient { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviceClient.UpdateClient(clientId, request);
-                return Ok(response);
-            }
-        }
+        return Ok( response );
 
-        [HttpDelete("delete/{clientId}")]
-        public async Task<IActionResult> DeleteClient(Guid clientId)
-        {
-            var response = await _serviceClient.DeleteClient(clientId);
-            return Ok(response);
-
-        }
     }
 }

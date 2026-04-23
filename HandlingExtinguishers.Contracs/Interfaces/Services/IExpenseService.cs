@@ -1,15 +1,14 @@
-﻿using ManagementFireEstinguisher.Dto.Expenses;
-using ManejoExtintores.Core.Filtros_Busqueda;
+﻿using HandlingExtinguishers.Models.Expenses;
+using HandlingExtinguishers.Models.Filters;
 
 namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
     public interface IExpenseService
     {
-        Task<IEnumerable<GastosDTO>> GetGastos(FiltrosGastos filtros);
-        Task<GastosDTO> GetGasto(Guid id);
-        Task<GastosBase> CrearGasto(GastosBase gasto);
-        Task<GastosBase> ActualizarGasto(Guid id, GastosBase gasto);
-        Task<GastosDTO> EliminarGasto(Guid id);
-
+        Task<IEnumerable<ExpenseRequest>> SearchExpense( FilterExpense filters );
+        Task<ExpenseRequest> SearchExpenseById( Guid idExpense );
+        Task<ExpenseRequest> CreateExpense( ExpenseRequest request );
+        Task<ExpenseRequest> UpdateExpense( Guid idExpense, ExpenseRequest request );
+        Task<ExpenseRequest> DeleteExpense( Guid idExpense  );    
     }
 }

@@ -1,121 +1,131 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
 using HandlingExtinguishers.Core.Localization;
-using HandlingExtinguishers.Models.Models;
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Services;
 using ManagementFireEstinguisher.Dto;
-using ManagementFireEstinguisher.Dto.Services;
-using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
+#endregion
 
-namespace ManejoExtintores.Core.Servicios
+public class ServiceOfService(IRepositoryService repository, IMapper mapper) : IServiceOfService
 {
-    public class ServiceOfService : IServiceOfService
+    private readonly IRepositoryService repository = repository;
+
+    private readonly IMapper mapper = mapper;
+
+    public async Task<IEnumerable<ServiceRequest>> SearchServices( FilterService filtros )
     {
-        private readonly IRepositoryService _repositorio;
+        var result = await repository.GetAll().ToListAsync();
 
-        private readonly IMapper _mapper;
-        public ServiceOfService(IRepositoryService repositorio, IMapper mapper)
+        var response = mapper.Map<IEnumerable<ServiceRequest>>( result );
+
+        return response; 
+    }
+
+    public async Task<ServiceRequest> SearchServiceById( Guid idService )
+    {
+        var result = await repository.FindBy( service => service.ServiceId == idService ).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            _repositorio = repositorio;
-            _mapper = mapper;
+            return mapper.Map<ServiceRequest>( result );
         }
-
-        public async Task<IEnumerable<ServicioDTO>> ConsultarServicios(FiltroServicios filtros)
+        else
         {
-            var servicios = await _repositorio.GetAll().ToListAsync();
-            var serviciosdt = _mapper.Map<IEnumerable<ServicioDTO>>(servicios);
-            return serviciosdt;
+            throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
         }
+    }
 
-        public async Task<ServicioDTO> ConsultaServicio(Guid id)
+    public async Task<ServiceRequest> CreateServiceDetail( ServiceRequest request )
+    {
+        // await _repositorio.Add(serviciob);
+        var response = mapper.Map<ServiceRequest>( request );
+
+        return response;
+    }
+
+    public async Task<ServiceRequest> CreateService( ServiceRequest request )
+    {
+        var result = mapper.Map<Models.Models.Service>( request );
+
+        await repository.Add( result );
+
+        var response = mapper.Map<ServiceRequest>( result );
+
+        return response;
+    }
+
+    public async Task<EditStatus> UpdateStatus( Guid id, EditStatus request )
+    {
+        var result = await repository.FindBy( service => service.ServiceId == id).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            var serviciobd = await _repositorio.FindBy(s => s.Id == id).FirstOrDefaultAsync();
-            if (serviciobd != null)
+            result.StateService = request.Status ?? result.StateService;
+
+            await repository.Update( result );
+
+            var response = mapper.Map<EditStatus>( result );
+
+            return response;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
+        }
+    }
+
+    public async Task<ServiceRequest> UpdateService( Guid idService, ServiceRequest request )
+    {
+        var result = await repository.FindBy( service => service.ServiceId == idService).FirstOrDefaultAsync();
+
+        if ( result is not null )
+        {
+            result.ClientId = request.IdClient;
+            result.EmployeeId = request.IdEmployee;
+            result.ServiceDate = request.ServiceDate ?? result.ServiceDate;
+            result.Price = request.Price ?? result.Price;
+            result.StateService = request.Status ?? result.StateService;
+
+            await repository.Update(result);
+
+            var response = mapper.Map<ServiceRequest>( result );
+
+            return response;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
+        }
+    }
+
+    public async Task<ServiceRequest> DeleteService( Guid idService )
+    {
+        var result = await repository.FindBy( service => service.ServiceId == idService ).FirstOrDefaultAsync();
+
+        if ( result is not null ) 
+        {
+            try
             {
-                return _mapper.Map<ServicioDTO>(serviciobd);
+                await repository.Delete( result );
+
+                var response = mapper.Map<ServiceRequest>( result );
+
+                return response;
             }
-            else
+            catch (Exception)
             {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
+                throw new HandlingExceptions( HandlingExtinguisherResources.RelatedService );
             }
         }
-
-        public async Task<ServicioBase> CrearServicioDetalle(ServicioBase serviciob)
+        else
         {
-            // await _repositorio.Add(serviciob);
-            serviciob = _mapper.Map<ServicioBase>(serviciob);
-            return serviciob;
-        }
-
-        public async Task<ServicioBase> CrearServicios(ServicioBase crearserviciob)
-        {
-            var crearservicios = _mapper.Map<Service>(crearserviciob);
-            await _repositorio.Add(crearservicios);
-            var serviciob = _mapper.Map<ServicioBase>(crearservicios);
-            return serviciob;
-        }
-
-        public async Task<EditStatus> ActualizarEstado(Guid id, EditStatus modificar)
-        {
-            var serviciobd = await _repositorio.FindBy(s => s.Id == id).FirstOrDefaultAsync();
-            if (serviciobd != null)
-            {
-                serviciobd.StateService = modificar.Status ?? serviciobd.StateService;
-
-                await _repositorio.Update(serviciobd);
-                var servicioAct = _mapper.Map<EditStatus>(serviciobd);
-                return servicioAct;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
-            }
-        }
-
-        public async Task<ServicioBase> ActualizarServicios(Guid id, ServicioBase servicio)
-        {
-            var serviciobd = await _repositorio.FindBy(s => s.Id == id).FirstOrDefaultAsync();
-            if (serviciobd != null)
-            {
-                serviciobd.IdClient = servicio.IdClientes;
-                serviciobd.IdEmployee = servicio.IdEmpleados;
-                serviciobd.ServiceDate = servicio.FechaServicio ?? serviciobd.ServiceDate;
-                serviciobd.Price = servicio.Valor ?? serviciobd.Price;
-                serviciobd.StateService = servicio.Estado ?? serviciobd.StateService;
-
-                await _repositorio.Update(serviciobd);
-                var servicioAct = _mapper.Map<ServicioBase>(serviciobd);
-                return servicioAct;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
-            }
-        }
-
-        public async Task<ServicioDTO> EliminarServicios(Guid id)
-        {
-            var serviciobd = await _repositorio.FindBy(s => s.Id == id).FirstOrDefaultAsync();
-            if (serviciobd != null)
-            {
-                try
-                {
-                    await _repositorio.Delete(serviciobd);
-                    var servicioEliminado = _mapper.Map<ServicioDTO>(serviciobd);
-                    return servicioEliminado;
-                }
-                catch (Exception)
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedService );
-                }
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
-            }
+            throw new HandlingExceptions( HandlingExtinguisherResources.ServiceNotFound );
         }
     }
 }

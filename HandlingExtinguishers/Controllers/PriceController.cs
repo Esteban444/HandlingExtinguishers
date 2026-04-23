@@ -1,7 +1,8 @@
 ﻿using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Prices;
 using ManagementFireEstinguisher.Dto.Prices;
-using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConsultasPrecios([FromQuery] FiltroPrecios filtro)
+        public async Task<IActionResult> ConsultasPrecios([FromQuery] FilterPrices filtro)
         {
             var response = await _servicioPrecios.ConsultaPrecios(filtro);
             return Ok(response);

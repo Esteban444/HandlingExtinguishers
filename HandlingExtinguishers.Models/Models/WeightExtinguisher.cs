@@ -1,12 +1,14 @@
-﻿namespace HandlingExtinguishers.Models.Models
-{
-    public class WeightExtinguisher
-    {
-        public Guid Id { get; set; }
-        public int? WeightPound { get; set; }
+﻿namespace HandlingExtinguishers.Models.Models;
 
-        public ICollection<DetailService>? DetaileService { get; set; }
-        public ICollection<Inventory>? Inventory { get; set; }
-        public ICollection<Product>? Product { get; set; }
-    }
+public class WeightExtinguisher
+{
+    public Guid WeightExtinguisherId { get; set; }
+
+    public int? WeightPound { get; set; }
+
+    public ICollection<DetailService>? DetailServices { get; set; }
+
+    public ICollection<Inventory>? Inventories { get; set; }
+
+    public ICollection<Product>? Products { get; set; }
 }

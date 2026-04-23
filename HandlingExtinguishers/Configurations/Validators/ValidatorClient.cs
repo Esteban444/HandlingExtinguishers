@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using HandlingExtinguisher.Dto.Clients;
+using HandlingExtinguishers.Models.Clients;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidatorClient : AbstractValidator<BaseClient>
+    public class ValidatorClient : AbstractValidator<ClientRequest>
     {
         public ValidatorClient()
         {

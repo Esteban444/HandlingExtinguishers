@@ -6,9 +6,9 @@ using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
 using HandlingExtinguishers.Core.Localization;
+using HandlingExtinguishers.Models.Filters;
 using HandlingExtinguishers.Models.Models;
-using ManagementFireEstinguisher.Dto.Services;
-using ManejoExtintores.Core.Filtros_Busqueda;
+using HandlingExtinguishers.Models.Services;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
@@ -17,7 +17,7 @@ public class DetailServices( IRepositoryDetailService repository, IMapper mapper
     private readonly IMapper mapper = mapper;
     private readonly IRepositoryDetailService repository = repository;
 
-    public async Task<List<DetalleServicioDTO>> SearchDetailsService( FiltroDetalleServicio filter )
+    public async Task<List<DetalleServicioDTO>> SearchDetailsService( FilterDetailService filter )
     {
         var details = await repository.GetAll().ToArrayAsync();
 
@@ -28,7 +28,7 @@ public class DetailServices( IRepositoryDetailService repository, IMapper mapper
 
     public async Task<DetalleServicioDTO> GetDetailServiceById( Guid idDetail )
     {
-        var detail = await repository.FindBy( detail => detail.Id == idDetail ).FirstOrDefaultAsync();
+        var detail = await repository.FindBy( detail => detail.DetailServiceId == idDetail ).FirstOrDefaultAsync();
 
         if ( detail is not null )
         {
@@ -53,14 +53,14 @@ public class DetailServices( IRepositoryDetailService repository, IMapper mapper
 
     public async Task<DetalleServicioBase> UpdateDetailService( Guid idDetail, DetalleServicioBase detail )
     {
-        var result = await repository.FindBy( detail => detail.Id == idDetail ).FirstOrDefaultAsync();
+        var result = await repository.FindBy( detail => detail.DetailServiceId == idDetail ).FirstOrDefaultAsync();
 
         if ( result is not null )
         {
-            result.IdService = detail.IdServicios;
+            result.ServiceId = detail.IdServicios;
             result.Description = detail.Descripcion;
-            result.IdTypeExtinguisher = detail.IdTipoExtintor;
-            result.IdWeightExtinguisher = detail.IdPesoExtintor;
+            result.TypeExtinguisherId = detail.IdTipoExtintor;
+            result.WeightExtinguisherId = detail.IdPesoExtintor;
             result.Price = detail.Valor;
             result.Quantity = detail.Cantidad;
             result.Total = detail.Total;
@@ -79,7 +79,7 @@ public class DetailServices( IRepositoryDetailService repository, IMapper mapper
 
     public async Task<DetalleServicioDTO> DeleteDetailService( Guid idDetail )
     {
-        var result = await repository.FindBy( detail => detail.Id == idDetail ).FirstOrDefaultAsync();
+        var result = await repository.FindBy( detail => detail.DetailServiceId == idDetail ).FirstOrDefaultAsync();
 
         if ( result is not null )
         {

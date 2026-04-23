@@ -1,4 +1,4 @@
-﻿namespace ManagementFireEstinguisher.Dto.Services
+﻿namespace HandlingExtinguishers.Models.Services
 {
     public class DetalleServicioBase
     {

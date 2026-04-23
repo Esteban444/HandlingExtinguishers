@@ -1,14 +1,13 @@
-﻿using ManagementFireEstinguisher.Dto.Credit;
-using ManejoExtintores.Core.Filtros_Busqueda;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services
+using HandlingExtinguishers.Models.Credit;
+using HandlingExtinguishers.Models.Filters;
+
+public interface ICreditService
 {
-    public interface ICreditService
-    {
-        Task<List<CreditoServiciosDTO>> ConsultaCreditos(FiltroCreditos filtros);
-        Task<CreditoServiciosDTO> ConsultaCreditoPorId(Guid id);
-        Task<CreditoServicioBase> CrearCredito(CreditoServicioBase credito);
-        Task<CreditoServicioBase> ActualizarCredito(Guid id, CreditoServicioBase credito);
-        Task<CreditoServiciosDTO> EliminarCredito(Guid id);
-    }
+    Task<List<CreditServiceRequest>> SearchCredits(FilterCredit filters );
+    Task<CreditServiceRequest> SearchCreditById( Guid idCredit );
+    Task<CreditServiceRequest> CreateCredit( CreditServiceRequest credit );
+    Task<CreditServiceRequest> UpdateCredit( Guid idCredit, CreditServiceRequest credit );
+    Task<CreditServiceRequest> DeleteCredit( Guid idCredit );
 }

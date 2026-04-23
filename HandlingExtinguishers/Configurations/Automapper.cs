@@ -1,85 +1,82 @@
-﻿using AutoMapper;
-using HandlingExtinguisher.Dto.Clients;
+﻿namespace HandlingExtinguishers.Configurations;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Company;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto;
-using ManagementFireEstinguisher.Dto.Credit;
-using ManagementFireEstinguisher.Dto.Expenses;
-using ManagementFireEstinguisher.Dto.Extinguishers;
 using ManagementFireEstinguisher.Dto.Inventories;
-using ManagementFireEstinguisher.Dto.Prices;
 using ManagementFireEstinguisher.Dto.Products;
-using ManagementFireEstinguisher.Dto.Services;
 using ManagementFireEstinguisher.Dto.Users;
 using HandlingExtinguishers.Models.Extinguishers;
+using HandlingExtinguishers.Models.Credit;
+using HandlingExtinguishers.Models.Expenses;
+using HandlingExtinguishers.Models.Services;
+using HandlingExtinguishers.Models.Clients;
+using HandlingExtinguishers.Models.Inventories;
+using HandlingExtinguishers.Models.Products;
+using HandlingExtinguishers.Models.Prices;
+#endregion
 
-namespace HandlingExtinguishers.Configurations
+public class Automapper : Profile
 {
-    public class Automapper : Profile
+    public Automapper()
     {
-        public Automapper()
-        {
-            CreateMap<Users, RegisterUserDto>().ReverseMap();
+        CreateMap<Users, RegisterUserDto>().ReverseMap();
 
-            CreateMap<Client, ClientDto>().ReverseMap();
-            CreateMap<Client, BaseClient>().ReverseMap();
+        CreateMap<Client, ClientRequest>().ReverseMap();
 
-            CreateMap<CreditService, CreditoServicioBase>().ReverseMap();
-            CreateMap<CreditService, CreditoServiciosDTO>()
-                .ForMember(x => x.Servicio, y => y.MapFrom(z => z.Service));
+        CreateMap<CreditService, CreditServiceRequest>()
+            .ForMember(x => x.Service, y => y.MapFrom(z => z.Service));
 
-            CreateMap<DetailService, DetalleServicioDTO>()
-                .ForMember(x => x.Inventarios, y => y.MapFrom(z => z.Inventories))
-                .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher))
-                .ForMember(x => x.Precios, y => y.MapFrom(z => z.Price))
-                .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher));
-            CreateMap<DetailService, DetalleServicioBase>().ReverseMap();
+        CreateMap<DetailService, DetalleServicioDTO>()
+            .ForMember(x => x.Inventarios, y => y.MapFrom(z => z.Inventories))
+            .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher))
+            .ForMember(x => x.Precios, y => y.MapFrom(z => z.Price))
+            .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher));
+        CreateMap<DetailService, DetalleServicioBase>().ReverseMap();
 
-            CreateMap<DetailExtinguisherClient, BaseDetailExtinguisherClient>().ReverseMap();
-            CreateMap<DetailExtinguisherClient, DetailExtinguisherClientDto>()
-                .ForMember(x => x.Client, y => y.MapFrom(z => z.Clientes));
+        CreateMap<DetailExtinguisherClient, DetailExtinguisherClientRequest>()
+            .ForMember(x => x.Client, y => y.MapFrom(z => z.Client));
 
-            CreateMap<Company, CompanyResponseDto>().ReverseMap();
-            CreateMap<Company, CompanyRequestDto>().ReverseMap();
-            CreateMap<Company, PatchCompanyRequestDto>().ReverseMap();
+        CreateMap<Company, CompanyResponse>().ReverseMap();
+        CreateMap<Company, CompanyRequest>().ReverseMap();
+        CreateMap<Company, PatchCompanyRequest>().ReverseMap();
 
-            CreateMap<Employee, EmployeeResponseDto>()
-                .ForMember(x => x.Company, y => y.MapFrom(z => z.Company));
-            CreateMap<Employee, EmployeeRequestDto>().ReverseMap();
-            CreateMap<Employee, EmployeeBaseResponseDto>().ReverseMap();
-            CreateMap<EmployeeRequestDto, EmployeeBaseResponseDto>().ReverseMap();
+        CreateMap<Employee, EmployeeResponse>()
+            .ForMember(x => x.Company, y => y.MapFrom(z => z.Company));
+        CreateMap<Employee, EmployeeRequest>().ReverseMap();
+        CreateMap<Employee, EmployeeBaseResponse>().ReverseMap();
+        CreateMap<EmployeeRequest, EmployeeBaseResponse>().ReverseMap();
 
-            CreateMap<Inventory, InventarioDTO>()
-                .ForMember(x => x.Producto, y => y.MapFrom(z => z.Product))
-                .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher))
-                .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher));
-            CreateMap<Inventory, InventarioBase>().ReverseMap();
+        CreateMap<Inventory, InventarioDTO>()
+            .ForMember(x => x.Producto, y => y.MapFrom(z => z.Product))
+            .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher))
+            .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher));
+        CreateMap<Inventory, InventarioBase>().ReverseMap();
 
 
-            CreateMap<Expense, GastosBase>().ReverseMap();
-            CreateMap<Expense, GastosDTO>().ReverseMap();
+        CreateMap<Expense, ExpenseRequest>().ReverseMap();
 
-            CreateMap<Price, PrecioBase>().ReverseMap();
-            CreateMap<Price, PrecioDTO>()
-                .ForMember(x => x.Producto, y => y.MapFrom(z => z.Product));
+        CreateMap<Price, PrecioBase>().ReverseMap();
+        CreateMap<Price, PrecioDTO>()
+            .ForMember(x => x.Producto, y => y.MapFrom(z => z.Product));
 
-            CreateMap<Product, ProductoBase>().ReverseMap();
-            CreateMap<Product, ProductoDTO>()
-                .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher))
-                .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher));
+        CreateMap<Product, ProductoBase>().ReverseMap();
+        CreateMap<Product, ProductoDTO>()
+            .ForMember(x => x.TipoExtintor, y => y.MapFrom(z => z.TypeExtinguisher))
+            .ForMember(x => x.PesoExtintor, y => y.MapFrom(z => z.WeightExtinguisher));
 
-            CreateMap<WeightExtinguisher, WeightExtinguisherBase>().ReverseMap();
-            CreateMap<WeightExtinguisher, WightExtuinguiserDto>().ReverseMap();
+        CreateMap<WeightExtinguisher, WeightExtinguisherBase>().ReverseMap();
+        CreateMap<WeightExtinguisher, WightExtuinguiserDto>().ReverseMap();
 
-            CreateMap<TypeExtinguisher, TipoExtintorBase>().ReverseMap();
-            CreateMap<TypeExtinguisher, TipoExtintorDTO>().ReverseMap();
+        CreateMap<TypeExtinguisher, TypeExtinguisherRequest>().ReverseMap();
 
-            CreateMap<Service, ServicioBase>().ReverseMap();
-            CreateMap<Service, EditStatus>().ReverseMap();
-            CreateMap<Service, ServicioDTO>()
-                .ForMember(x => x.Cliente, y => y.MapFrom(z => z.Client))
-                .ForMember(x => x.Empleado, y => y.MapFrom(z => z.Employee));
-        }
+        CreateMap<Service, ServiceRequest>().ReverseMap();
+        CreateMap<Service, EditStatus>().ReverseMap();
+        CreateMap<Service, Service>()
+            .ForMember(x => x.Client, y => y.MapFrom(z => z.Client))
+            .ForMember(x => x.Employee, y => y.MapFrom(z => z.Employee));
     }
 }

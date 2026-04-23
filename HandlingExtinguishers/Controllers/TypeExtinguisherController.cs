@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models.Extinguishers;
 using ManagementFireEstinguisher.Dto.Extinguishers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,9 @@ namespace HandlingExtinguishers.Controllers
     public class TypeExtinguisherController : ControllerBase
     {
         private readonly ITypeExtinguisherService _servicioTExtintor;
-        private readonly IValidator<TipoExtintorBase> _validator;
+        private readonly IValidator<TypeExtinguisherRequest> _validator;
 
-        public TypeExtinguisherController( ITypeExtinguisherService servicioTipo, IValidator<TipoExtintorBase> validator )
+        public TypeExtinguisherController( ITypeExtinguisherService servicioTipo, IValidator<TypeExtinguisherRequest> validator )
         {
             _servicioTExtintor = servicioTipo;
             _validator = validator;
@@ -35,7 +36,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CrearTipoExtintor(TipoExtintorBase tipobase)
+        public async Task<IActionResult> CrearTipoExtintor( TypeExtinguisherRequest tipobase)
         {
             var Validacion = _validator.Validate(tipobase);
             if (!Validacion.IsValid)
@@ -52,7 +53,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarTipo(Guid id, TipoExtintorBase actualizar)
+        public async Task<IActionResult> ActualizarTipo(Guid id, TypeExtinguisherRequest actualizar)
         {
             var Validacion = _validator.Validate(actualizar);
             if (!Validacion.IsValid)

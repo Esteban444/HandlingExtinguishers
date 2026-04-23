@@ -1,9 +1,8 @@
-﻿namespace HandlingExtinguishers.Models.Models
+﻿namespace HandlingExtinguishers.Models.Models;
+
+public class BaseModel
 {
-    public class BaseModel
-    {
-        public Guid Id { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-    }
+    public DateTime? CreatedAt { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
 }

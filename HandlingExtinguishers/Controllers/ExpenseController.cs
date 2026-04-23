@@ -1,81 +1,85 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using ManagementFireEstinguisher.Dto.Expenses;
-using ManejoExtintores.Core.Filtros_Busqueda;
+using HandlingExtinguishers.Models;
+using HandlingExtinguishers.Models.Expenses;
+using HandlingExtinguishers.Models.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+
+[Route("api/expense")]
+[ApiController]
+[Authorize]
+public class ExpenseController( IExpenseService expenseService, IValidator<ExpenseRequest> validator ) : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    [Authorize]
-    public class ExpenseController : ControllerBase
+
+    private readonly IExpenseService expenseService = expenseService;
+    private readonly IValidator<ExpenseRequest> validator = validator;
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchExpense( [FromQuery] FilterExpense filter )
     {
+        var response = await expenseService.SearchExpense( filter );
 
-        private readonly IExpenseService _servicioGasto;
-        private readonly IValidator<GastosBase> _validator;
+        return Ok( response );
+    }
 
-        public ExpenseController(IExpenseService servicioGasto, IValidator<GastosBase> validator)
+    [HttpGet("search-by/{idExpense}")]
+    public async Task<IActionResult> SearchExpenseById( Guid idExpense )
+    {
+        var response = await expenseService.SearchExpenseById( idExpense );
+
+        return Ok(response);
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateExpense( ExpenseRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            _servicioGasto = servicioGasto;
-            _validator = validator;
-        }
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-        [HttpGet]
-        public async Task<IActionResult> ConsultaGastos([FromQuery] FiltrosGastos filtros)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var response = await _servicioGasto.GetGastos(filtros);
-            return Ok(response);
-        }
+            var response = await expenseService.CreateExpense( request );
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaGastoPorId(Guid id)
+            return Ok( response );
+        }
+    }
+
+    [HttpPut("update-by/{idExpense}")]
+    public async Task<IActionResult> UpdateExpernse( Guid idExpense, ExpenseRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            var response = await _servicioGasto.GetGasto(id);
-            return Ok(response);
-        }
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-        [HttpPost]
-        public async Task<IActionResult> CrearGasto(GastosBase gastosbase)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var Validacion = _validator.Validate(gastosbase);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var response = await expenseService.UpdateExpense( idExpense, request );
 
-                return BadRequest(new RespuestaGasto { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioGasto.CrearGasto(gastosbase);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarGasto(Guid id, GastosBase actualizar)
-        {
-            var Validacion = _validator.Validate(actualizar);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+    [HttpDelete("delete-by/{idExpense}")]
+    public async Task<IActionResult> DeleteExpense(Guid idExpense)
+    {
+        var response = await expenseService.DeleteExpense( idExpense );
 
-                return BadRequest(new RespuestaGasto { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioGasto.ActualizarGasto(id, actualizar);
-                return Ok(response);
-            }
-        }
+        return Ok( response );
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(Guid id)
-        {
-            var response = await _servicioGasto.EliminarGasto(id);
-            return Ok(response);
-
-        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models.Filters;
 using ManagementFireEstinguisher.Dto.Inventories;
-using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +22,7 @@ namespace HandlingExtinguisher.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConsultaInventarios([FromQuery] FiltroInventario filtro)
+        public async Task<IActionResult> ConsultaInventarios([FromQuery] FilterInventory filtro)
         {
             var response = await _servicioInventario.ConsultaInventarios(filtro);
             return Ok(response);

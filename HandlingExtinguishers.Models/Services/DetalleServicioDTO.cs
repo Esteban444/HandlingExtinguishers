@@ -1,9 +1,9 @@
 ﻿using HandlingExtinguishers.Models.Extinguishers;
-using ManagementFireEstinguisher.Dto.Extinguishers;
-using ManagementFireEstinguisher.Dto.Inventories;
-using ManagementFireEstinguisher.Dto.Prices;
+using HandlingExtinguishers.Models.Inventories;
+using HandlingExtinguishers.Models.Prices;
 
-namespace ManagementFireEstinguisher.Dto.Services
+
+namespace HandlingExtinguishers.Models.Services
 {
     public class DetalleServicioDTO : DetalleServicioBase
     {
@@ -11,7 +11,7 @@ namespace ManagementFireEstinguisher.Dto.Services
 
         public WightExtuinguiserDto PesoExtintor { get; set; }
         public ICollection<PrecioDTO> Precios { get; set; }
-        public TipoExtintorDTO TipoExtintor { get; set; }
+        public TypeExtinguisherRequest TipoExtintor { get; set; }
         public ICollection<InventarioDTO> Inventarios { get; set; }
     }
 }

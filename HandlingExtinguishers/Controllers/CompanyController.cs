@@ -15,7 +15,7 @@ namespace HandlingExtinguishers.Controllers
         private readonly ICompanyService serviceCompany = serviceCompany;
 
         [HttpGet("search-company-enable")]
-        [ProducesResponseType(typeof(FilterCompanyResponseDto), 200)]
+        [ProducesResponseType(typeof(FilterCompanyResponse), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
         public async Task<IActionResult> SearchCompanies( [FromQuery] QueryParameter filter )
@@ -26,7 +26,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpGet("search-company-disabled")]
-        [ProducesResponseType(typeof(FilterCompanyResponseDto), 200)]
+        [ProducesResponseType(typeof(FilterCompanyResponse), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
         public async Task<IActionResult> SearchCompaniesDisabled( [FromQuery] QueryParameter filter )
@@ -37,7 +37,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpGet("search-by/{companyId}")]
-        [ProducesResponseType(typeof(CompanyResponseDto), 200)]
+        [ProducesResponseType(typeof(CompanyResponse), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
         public async Task<IActionResult> SearchCompany( Guid companyId )
@@ -48,10 +48,10 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPost("Create")]
-        [ProducesResponseType(typeof(CompanyResponseDto), 200)]
+        [ProducesResponseType(typeof(CompanyResponse), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> CreateCompany( CompanyRequestDto company )
+        public async Task<IActionResult> CreateCompany( CompanyRequest company )
         {
             var response = await serviceCompany.CreateCompany( company );
 
@@ -59,10 +59,10 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPatch("update-by/{companyId}")]
-        [ProducesResponseType(typeof(CompanyResponseDto), 200)]
+        [ProducesResponseType(typeof(CompanyResponse), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> UpdateCompany( Guid companyId, PatchCompanyRequestDto company )
+        public async Task<IActionResult> UpdateCompany( Guid companyId, PatchCompanyRequest company )
         {
             var response = await serviceCompany.UpdateCompany( companyId, company );
 

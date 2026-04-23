@@ -3,7 +3,7 @@ using HandlingExtinguishers.Models.Employees;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidatorEmployee : AbstractValidator<EmployeeRequestDto>
+    public class ValidatorEmployee : AbstractValidator<EmployeeRequest>
     {
         public ValidatorEmployee()
         {

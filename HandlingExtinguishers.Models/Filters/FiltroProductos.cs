@@ -1,8 +1,6 @@
-﻿
-namespace ManejoExtintores.Core.Filtros_Busqueda
+﻿namespace HandlingExtinguishers.Models.Filters;
+
+public class FiltroProductos
 {
-    public class FiltroProductos
-    {
-        public string TipoProducto { get; set; }
-    }
+    public string? TypeProduct  { get; set; }
 }

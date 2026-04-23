@@ -3,7 +3,7 @@ using HandlingExtinguishers.Models.Company;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidatorCompany : AbstractValidator<CompanyRequestDto>
+    public class ValidatorCompany : AbstractValidator<CompanyRequest>
     {
         public ValidatorCompany()
         {

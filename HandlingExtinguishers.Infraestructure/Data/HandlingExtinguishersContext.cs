@@ -24,18 +24,18 @@ public partial class HandlingExtinguisherContext( DbContextOptions<HandlingExtin
     public DbSet<Service> Service { get; set; }
     public DbSet<TypeExtinguisher> TypeExtinguisher { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating( ModelBuilder modelBuilder )
     {
-        modelBuilder.Entity<Client>().Property( entyty => entyty.Id ).HasConversion<string>();
+        modelBuilder.Entity<Client>().Property( entyty => entyty.ClientId ).HasConversion<string>();
 
-        modelBuilder.Entity<Company>().Property( entyty => entyty.Id ).HasConversion<string>();
+        modelBuilder.Entity<Company>().Property( entyty => entyty.CompanyId ).HasConversion<string>();
         modelBuilder.Entity<Company>( entity =>
         {
             entity.ToTable("Company");
 
-            entity.HasKey(e => e.Id);
+            entity.HasKey(e => e.CompanyId);
 
-            entity.Property( entyty => entyty.Id ).HasColumnName( "id" );
+            entity.Property( entyty => entyty.CompanyId ).HasColumnName( "id" );
 
             entity.Property( entyty => entyty.Address )
                 .HasMaxLength( 100 )
@@ -64,37 +64,37 @@ public partial class HandlingExtinguisherContext( DbContextOptions<HandlingExtin
 
         });
 
-        modelBuilder.Entity<CreditService>().Property( entyty => entyty.Id ).HasConversion<string>();
-        modelBuilder.Entity<CreditService>().Property( entyty => entyty.IdService ).HasConversion<string>();
+        modelBuilder.Entity<CreditService>().Property( entyty => entyty.CreditServiceId ).HasConversion<string>();
+        modelBuilder.Entity<CreditService>().Property( entyty => entyty.ServiceId ).HasConversion<string>();
 
-        modelBuilder.Entity<DetailService>().Property( entyty => entyty.Id ).HasConversion<string>();
-        modelBuilder.Entity<DetailService>().Property( entyty => entyty.IdService ).HasConversion<string>();
-        modelBuilder.Entity<DetailService>().Property( entyty => entyty.IdTypeExtinguisher ).HasConversion<string>();
-        modelBuilder.Entity<DetailService>().Property( entyty => entyty.IdWeightExtinguisher ).HasConversion<string>();
+        modelBuilder.Entity<DetailService>().Property( entyty => entyty.DetailServiceId ).HasConversion<string>();
+        modelBuilder.Entity<DetailService>().Property( entyty => entyty.ServiceId ).HasConversion<string>();
+        modelBuilder.Entity<DetailService>().Property( entyty => entyty.TypeExtinguisherId ).HasConversion<string>();
+        modelBuilder.Entity<DetailService>().Property( entyty => entyty.WeightExtinguisherId ).HasConversion<string>();
 
-        modelBuilder.Entity<Employee>().Property( entyty => entyty.Id ).HasConversion<string>();
+        modelBuilder.Entity<Employee>().Property( entyty => entyty.EmployeeId ).HasConversion<string>();
         modelBuilder.Entity<Employee>().Property( entyty => entyty.CompanyId ).HasConversion<string>();
-        modelBuilder.Entity<Expense>().Property( entyty => entyty.Id ).HasConversion<string>();
+        modelBuilder.Entity<Expense>().Property( entyty => entyty.ExpenseId ).HasConversion<string>(); 
+        
+        modelBuilder.Entity<Inventory>().Property( entyty => entyty.InventoryId ).HasConversion<string>();
+        modelBuilder.Entity<Inventory>().Property( entyty => entyty.ProductId ).HasConversion<string>();
+        modelBuilder.Entity<Inventory>().Property( entyty => entyty.TypeExtinguisherId ).HasConversion<string>();
+        modelBuilder.Entity<Inventory>().Property( entyty => entyty.WeightExtinguisherId ).HasConversion<string>();
 
-        modelBuilder.Entity<Inventory>().Property( entyty => entyty.Id ).HasConversion<string>();
-        modelBuilder.Entity<Inventory>().Property( entyty => entyty.IdProduct ).HasConversion<string>();
-        modelBuilder.Entity<Inventory>().Property( entyty => entyty.IdTypeExtinguisher ).HasConversion<string>();
-        modelBuilder.Entity<Inventory>().Property( entyty => entyty.IdWeigthExtinguisher ).HasConversion<string>();
+        modelBuilder.Entity<WeightExtinguisher>().Property( entyty => entyty.WeightExtinguisherId ).HasConversion<string>();
 
-        modelBuilder.Entity<WeightExtinguisher>().Property( entyty => entyty.Id ).HasConversion<string>();
+        modelBuilder.Entity<Price>().Property( entyty => entyty.PriceId ).HasConversion<string>();
+        modelBuilder.Entity<Price>().Property( entyty => entyty.ProductId ).HasConversion<string>();
 
-        modelBuilder.Entity<Price>().Property( entyty => entyty.Id ).HasConversion<string>();
-        modelBuilder.Entity<Price>().Property( entyty => entyty.IdProduct ).HasConversion<string>();
+        modelBuilder.Entity<Product>().Property( entyty => entyty.ProductId ).HasConversion<string>();
+        modelBuilder.Entity<Product>().Property( entyty => entyty.TypeExtinguisherId ).HasConversion<string>();
+        modelBuilder.Entity<Product>().Property( entyty => entyty.WeightExtinguisherId ).HasConversion<string>();
 
-        modelBuilder.Entity<Product>().Property( entyty => entyty.Id ).HasConversion<string>();
-        modelBuilder.Entity<Product>().Property( entyty => entyty.IdTypeExtinguisher ).HasConversion<string>();
-        modelBuilder.Entity<Product>().Property( entyty => entyty.IdWeightExtinguisher ).HasConversion<string>();
+        modelBuilder.Entity<Service>().Property( entyty => entyty.ServiceId ).HasConversion<string>();
+        modelBuilder.Entity<Service>().Property( entyty => entyty.ClientId ).HasConversion<string>();
+        modelBuilder.Entity<Service>().Property( entyty => entyty.EmployeeId ).HasConversion<string>();
 
-        modelBuilder.Entity<Service>().Property( entyty => entyty.Id ).HasConversion<string>();
-        modelBuilder.Entity<Service>().Property( entyty => entyty.IdClient ).HasConversion<string>();
-        modelBuilder.Entity<Service>().Property( entyty => entyty.IdEmployee ).HasConversion<string>();
-
-        modelBuilder.Entity<TypeExtinguisher>().Property( entyty => entyty.Id ).HasConversion<string>();
+        modelBuilder.Entity<TypeExtinguisher>().Property( entyty => entyty.TypeExtinguisherId ).HasConversion<string>();
 
         modelBuilder.ApplyConfigurationsFromAssembly( Assembly.GetExecutingAssembly() );
 

@@ -1,13 +1,13 @@
-﻿using ManagementFireEstinguisher.Dto.Extinguishers;
+﻿using HandlingExtinguishers.Models.Extinguishers;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services
+namespace HandlingExtinguishers.Contracts.Interfaces.Services;
+
+
+public interface ITypeExtinguisherService
 {
-    public interface ITypeExtinguisherService
-    {
-        Task<IEnumerable<TipoExtintorDTO>> ConsultaTipoExtintor();
-        Task<TipoExtintorDTO> ConsultaTipoId(Guid id);
-        Task<TipoExtintorBase> CrearTipoExtintor(TipoExtintorBase tipo);
-        Task<TipoExtintorBase> ActualizarTipoExtintor(Guid id, TipoExtintorBase tipo);
-        Task<TipoExtintorDTO> EliminarTipoExtintor(Guid id);
-    }
+    Task<IEnumerable<TypeExtinguisherRequest>> ConsultaTipoExtintor();
+    Task<TypeExtinguisherRequest> ConsultaTipoId(Guid id);
+    Task<TypeExtinguisherRequest> CrearTipoExtintor(TypeExtinguisherRequest tipo);
+    Task<TypeExtinguisherRequest> ActualizarTipoExtintor(Guid id, TypeExtinguisherRequest tipo);
+    Task<TypeExtinguisherRequest> EliminarTipoExtintor(Guid id);
 }

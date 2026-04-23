@@ -1,6 +1,6 @@
-﻿using ManagementFireEstinguisher.Dto.Products;
+﻿using HandlingExtinguishers.Models.Products;
 
-namespace ManagementFireEstinguisher.Dto.Prices
+namespace HandlingExtinguishers.Models.Prices
 {
     public class PrecioDTO : PrecioBase
     {

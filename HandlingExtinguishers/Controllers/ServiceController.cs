@@ -1,102 +1,109 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models;
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Services;
 using ManagementFireEstinguisher.Dto;
 using ManagementFireEstinguisher.Dto.Services;
-using ManejoExtintores.Core.Filtros_Busqueda;
 using Microsoft.AspNetCore.Mvc;
+# endregion
 
-namespace HandlingExtinguishers.Controllers
+[Route("api/service")]
+[ApiController]
+public class ServiceController(IServiceOfService service, IValidator<ServiceRequest> validator) : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class ServiceController : ControllerBase
+    private readonly IServiceOfService service = service;
+    private readonly IValidator<ServiceRequest> validator = validator;
+
+    [HttpGet("search")]
+    public async Task<IActionResult> ConsultaServicios( [FromQuery] FilterService filter )
     {
-        private readonly IServiceOfService _serviciodeServicio;
-        private readonly IValidator<ServicioBase> _validator;
+        var response = await service.SearchServices( filter );
 
-        public ServiceController(IServiceOfService serviciodeservicio, IValidator<ServicioBase> validator)
+        return Ok( response );
+    }
+
+    [HttpGet("search-by/{idService}")]
+    public async Task<IActionResult> SearchById( Guid idService )
+    {
+        var response = await service.SearchServiceById( idService );
+
+        return Ok( response );
+    }
+
+    [HttpPost("create-detail")]
+    public async Task<IActionResult> CreateServiceDetail( ServiceRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            _serviciodeServicio = serviciodeservicio;
-            _validator = validator;
-        }
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-        [HttpGet]
-        public async Task<IActionResult> ConsultaServicios([FromQuery] FiltroServicios filtros)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var response = await _serviciodeServicio.ConsultarServicios(filtros);
-            return Ok(response);
-        }
+            var response = await service.CreateServiceDetail( request );
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaPorId(Guid id)
+            return Ok( response );
+        }
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateService( ServiceRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            var response = await _serviciodeServicio.ConsultaServicio(id);
-            return Ok(response);
-        }
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-        [HttpPost("Crear-Servicio-Detalle")]
-        public async Task<IActionResult> CreacionDetalleServicio(ServicioBase serviciobase)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var Validacion = _validator.Validate(serviciobase);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var response = await service.CreateService( request );
 
-                return BadRequest(new RespuestaServicios { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviciodeServicio.CrearServicioDetalle(serviciobase);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> Crear(ServicioBase serviciob)
+    [HttpPut("update-status")]
+    public async Task<IActionResult> UpdateStatus( Guid idService, EditStatus request)
+    {
+        var response = await service.UpdateStatus( idService, request );
+
+        return Ok( response );
+    }
+
+    [HttpPut("update-by/{idService}")]
+    public async Task<IActionResult> UpdateService( Guid idService, ServiceRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            var Validacion = _validator.Validate(serviciob);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-                return BadRequest(new RespuestaServicios { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviciodeServicio.CrearServicios(serviciob);
-                return Ok(response);
-            }
+            return BadRequest( new ErrorResponse { Errors = errors } );
         }
-
-        [HttpPut("modificar-estado")]
-        public async Task<IActionResult> ModificarEstado(Guid id, EditStatus modificar)
+        else
         {
-            var response = await _serviciodeServicio.ActualizarEstado(id, modificar);
-            return Ok(response);
-        }
+            var response = await service.UpdateService( idService, request );
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarServicios(Guid id, ServicioBase actualizar)
-        {
-            var Validacion = _validator.Validate(actualizar);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
-
-                return BadRequest(new RespuestaServicios { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviciodeServicio.ActualizarServicios(id, actualizar);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(Guid id)
-        {
-            var response = await _serviciodeServicio.EliminarServicios(id);
-            return Ok(response);
-        }
+    [HttpDelete("delete-by/{idService}")]
+    public async Task<IActionResult> DeleteService( Guid idService )
+    {
+        var response = await service.DeleteService( idService );
+
+        return Ok( response );
     }
 }

@@ -4,7 +4,7 @@ using HandlingExtinguishers.Models.Authentication;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {
-    public class ValidatorAuthenticationUser : AbstractValidator<LoginRequestDto>
+    public class ValidatorAuthenticationUser : AbstractValidator<LoginRequest>
     {
         public ValidatorAuthenticationUser()
         {

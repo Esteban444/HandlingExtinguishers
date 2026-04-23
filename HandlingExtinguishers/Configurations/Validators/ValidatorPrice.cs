@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using ManagementFireEstinguisher.Dto.Prices;
+using HandlingExtinguishers.Models.Prices;
 
 namespace HandlingExtinguishers.Configurations.Validators
 {

@@ -1,14 +1,13 @@
-﻿using HandlingExtinguisher.Dto.Clients;
-using ManejoExtintores.Core.Filtros_Busqueda;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services 
+using HandlingExtinguishers.Models.Clients;
+using HandlingExtinguishers.Models.Filters;
+
+public interface IClientService
 {
-    public interface IClientService
-    {
-        Task<IEnumerable<ClientDto>> GetClients(FilterClient filtro);
-        Task<ClientDto> GetClient(Guid clientId);
-        Task<BaseClient> CreateClient(BaseClient cliente);
-        Task<BaseClient> UpdateClient(Guid clientId, BaseClient cliente);
-        Task<ClientDto> DeleteClient(Guid clientId);
-    }
+    Task<IEnumerable<ClientRequest>> SearchClients( FilterClient filtro );
+    Task<ClientRequest> SearchClientById( Guid clientId );
+    Task<ClientRequest> CreateClient( ClientRequest cliente );
+    Task<ClientRequest> UpdateClient( Guid clientId, ClientRequest cliente );
+    Task<ClientRequest> DeleteClient( Guid clientId );
 }

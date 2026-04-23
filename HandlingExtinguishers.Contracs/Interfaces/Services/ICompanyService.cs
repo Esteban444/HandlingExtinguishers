@@ -7,10 +7,10 @@ using HandlingExtinguishers.Models.Company;
 
 public interface ICompanyService
 {
-    Task<FilterCompanyResponseDto> SearchCompanies( QueryParameter filter );
-    Task<FilterCompanyResponseDto> SearchCompaniesDisabled( QueryParameter filter );
-    Task<CompanyResponseDto> SearchCompany( Guid companyId );
-    Task<CompanyRequestDto> CreateCompany( CompanyRequestDto company );
-    Task<CompanyRequestDto> UpdateCompany( Guid companyId, PatchCompanyRequestDto companyBase ); 
+    Task<FilterCompanyResponse> SearchCompanies( QueryParameter filter );
+    Task<FilterCompanyResponse> SearchCompaniesDisabled( QueryParameter filter );
+    Task<CompanyResponse> SearchCompany( Guid companyId );
+    Task<CompanyRequest> CreateCompany( CompanyRequest company );
+    Task<CompanyRequest> UpdateCompany( Guid companyId, PatchCompanyRequest companyBase ); 
     Task<bool> DeleteCompany( Guid companyId );
 }

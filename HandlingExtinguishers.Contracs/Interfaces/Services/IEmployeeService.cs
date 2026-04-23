@@ -5,10 +5,10 @@ namespace HandlingExtinguishers.Contracts.Interfaces.Services
 {
     public interface IEmployeeService
     {
-        Task<FilterEmployeeResponseDto> SearchEmployees( QueryParameter filter );
-        Task<EmployeeResponseDto> SearchEmployeeById( Guid idEmployee );
-        Task<EmployeeBaseResponseDto> CreateEmployee( EmployeeRequestDto request ); 
-        Task<EmployeeResponseDto> UpdatedEmployee( Guid idEmployee, PatchEmployeeRequestDto request );
+        Task<FilterEmployeeResponse> SearchEmployees( QueryParameter filter );
+        Task<EmployeeResponse> SearchEmployeeById( Guid idEmployee );
+        Task<EmployeeBaseResponse> CreateEmployee( EmployeeRequest request ); 
+        Task<EmployeeResponse> UpdatedEmployee( Guid idEmployee, PatchEmployeeRequest request );
         Task<bool> DeleteEmployee( Guid idEmployee );
     }
 }

@@ -1,78 +1,83 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
-using ManagementFireEstinguisher.Dto.Credit;
-using ManejoExtintores.Core.Filtros_Busqueda;
+using HandlingExtinguishers.Models;
+using HandlingExtinguishers.Models.Credit;
+using HandlingExtinguishers.Models.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+
+[Route("[controller]")]
+[ApiController]
+[Authorize]
+public class CreditController( ICreditService servicioCredit, IValidator<CreditServiceRequest> validator ) : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    [Authorize]
-    public class CreditController : ControllerBase
+    private readonly ICreditService serviciCredit = servicioCredit;
+    private readonly IValidator<CreditServiceRequest> validator = validator;
+
+    [HttpGet("search-credits")]
+    public async Task<IActionResult>SearchCredit( [FromQuery] FilterCredit filter )
     {
-        private readonly ICreditService _serviciCreditos;
-        private readonly IValidator<CreditoServicioBase> _validator;
+        var response = await serviciCredit.SearchCredits( filter );
 
-        public CreditController(ICreditService servicioCreditos, IValidator<CreditoServicioBase> validator)
+        return Ok( response );
+    }
+
+    [HttpGet("search-credit-by{id}")]
+    public async Task<IActionResult> SearchById( Guid idCredit )
+    {
+        var response = await serviciCredit.SearchCreditById( idCredit );
+
+        return Ok( response );
+    }
+
+    [HttpPost("create-credit")]
+    public async Task<IActionResult> CreateCredit( CreditServiceRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            _serviciCreditos = servicioCreditos;
-            _validator = validator;
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage);
+
+            return BadRequest(new ErrorResponse { Errors = errors });
         }
-        [HttpGet]
-        public async Task<IActionResult> ConsultaCreditos([FromQuery] FiltroCreditos filtro)
+        else
         {
-            var response = await _serviciCreditos.ConsultaCreditos(filtro);
-            return Ok(response);
-        }
+            var response = await serviciCredit.CreateCredit( request );
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaporId(Guid id)
+            return Ok( response );
+        }
+    }
+
+    [HttpPut("update-credit-by/{idCredit}")]
+    public async Task<IActionResult> UpdateCredit(Guid idCredit, CreditServiceRequest request )
+    {
+        var validation = validator.Validate( request );
+
+        if ( !validation.IsValid )
         {
-            var response = await _serviciCreditos.ConsultaCreditoPorId(id);
-            return Ok(response);
-        }
+            var errors = validation.Errors.Select( error => error.ErrorMessage );
 
-        [HttpPost]
-        public async Task<IActionResult> CrearCredito(CreditoServicioBase crearcredito)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var Validacion = _validator.Validate(crearcredito);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var response = await serviciCredit.UpdateCredit( idCredit, request );
 
-                return BadRequest(new RespuestaCredito { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviciCreditos.CrearCredito(crearcredito);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarCredito(Guid id, CreditoServicioBase actualizar)
-        {
-            var Validacion = _validator.Validate(actualizar);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+    [HttpDelete("delete-credit-by/{idCredit}")]
+    public async Task<IActionResult> DeleteCredit(Guid idCredit)
+    {
+        var response = await serviciCredit.DeleteCredit( idCredit );
 
-                return BadRequest(new RespuestaCredito { Errors = errors });
-            }
-            else
-            {
-                var response = await _serviciCreditos.ActualizarCredito(id, actualizar);
-                return Ok(response);
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarCredito(Guid id)
-        {
-            var response = await _serviciCreditos.EliminarCredito(id);
-            return Ok(response);
-        }
+        return Ok(response);
     }
 }

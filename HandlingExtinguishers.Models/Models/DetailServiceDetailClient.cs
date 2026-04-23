@@ -1,14 +1,14 @@
-﻿using HandlingExtinguishers.Models.Models;
+﻿namespace HandlingExtinguishers.Models.Models;
 
-namespace HandlingEstinguisherS.Dto.Models
+public class DetailServiceDetailClient
 {
-    public class DetailServiceDetailClient
-    {
-        public Guid Id { get; set; }
-        public Guid? IdDetailService { get; set; }
-        public Guid? IdDetailExtinguisherClient { get; set; }
+    public Guid DetailServiceDetailClientId { get; set; }
 
-        public DetailExtinguisherClient? DetaileExtinguisherClient { get; set; }
-        public DetailService? DetailService { get; set; }
-    }
+    public Guid? DetailServiceId { get; set; }
+
+    public Guid? DetailExtinguisherClientId { get; set; }
+
+    public DetailExtinguisherClient? DetailExtinguisherClient { get; set; }
+
+    public DetailService? DetailService { get; set; }
 }

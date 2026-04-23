@@ -1,4 +1,4 @@
-﻿namespace ManagementFireEstinguisher.Dto.Prices
+﻿namespace HandlingExtinguishers.Models.Prices
 {
     public class PrecioBase
     {

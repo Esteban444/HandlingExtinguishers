@@ -1,0 +1,94 @@
+﻿using AutoMapper;
+using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core.Exceptions;
+using HandlingExtinguishers.Core.Localization;
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Models;
+using HandlingExtinguishers.Models.Prices;
+using Microsoft.EntityFrameworkCore;
+
+namespace HandlingExtinguishers.Core.Services
+{
+    public class PreceService : IPriceService
+    {
+        private readonly IRepositoryPrice _repositorio;
+        private readonly IMapper _mapper;
+        public PreceService(IRepositoryPrice repositorio, IMapper mapper)
+        {
+            _repositorio = repositorio;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<PrecioDTO>> ConsultaPrecios(FilterPrices filtro)
+        {
+            var precios = await _repositorio.GetAll().ToListAsync<Price>();
+            var preciodt = _mapper.Map<IEnumerable<PrecioDTO>>(precios);
+            return preciodt;
+        }
+
+        public async Task<PrecioDTO> ConsultaPor(Guid id)
+        {
+            var preciobd = await _repositorio.FindBy(p => p.PriceId == id).FirstOrDefaultAsync<Price>();
+            if (preciobd != null)
+            {
+                return _mapper.Map<PrecioDTO>(preciobd);
+            }
+            else
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.PriceNotFound );
+            }
+        }
+
+        public async Task<PrecioBase> CrearPrecio(PrecioBase preciobase)
+        {
+            var precio = _mapper.Map<Price>(preciobase);
+            await _repositorio.Add(precio);
+            preciobase = _mapper.Map<PrecioBase>(precio);
+            return preciobase;
+        }
+
+
+        public async Task<PrecioBase> ActualizarPrecio(Guid id, PrecioBase precioAct)
+        {
+            var precios = await _repositorio.FindBy(p => p.PriceId == id).FirstOrDefaultAsync<Price>();
+            if (precios != null)
+            {
+                precios.ProductId = precioAct.IdProductos;
+                precios.Description = precioAct.Descripcion;
+                precios.Value = precioAct.Valor;
+                precios.Iva = precioAct.Iva;
+
+                await _repositorio.Update(precios);
+                precioAct = _mapper.Map<PrecioBase>(precios);
+                return precioAct;
+            }
+            else
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.PriceNotFound );
+            }
+        }
+
+        public async Task<PrecioDTO> EliminarPrecio(Guid id)
+        {
+            var preciobd = await _repositorio.FindBy(p => p.PriceId == id).FirstOrDefaultAsync<Price>();
+            if (preciobd != null)
+            {
+                try
+                {
+                    await _repositorio.Delete(preciobd);
+                    var precioE = _mapper.Map<PrecioDTO>(preciobd);
+                    return precioE;
+                }
+                catch (Exception)
+                {
+                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedPrice );
+                }
+            }
+            else
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.PriceNotFound );
+            }
+        }
+    }
+}

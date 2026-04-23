@@ -1,5 +1,4 @@
-﻿using HandlingExtinguisher.Dto.Users;
-using HandlingExtinguishers.Core.Exceptions;
+﻿using HandlingExtinguishers.Core.Exceptions;
 using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Authentication;
 using HandlingExtinguishers.Models.Models;
@@ -65,14 +64,14 @@ namespace HandlingExtinguishers.Core.Helpers
             return tokenOptions;
         }
 
-        public async Task<AuthResponseDto> CreateToken( Users user )
+        public async Task<AuthenticationResponse> CreateToken( Users user )
         {
             var signingCredential = GetSignatureCredentials();
             var claims = await GetClaims( user );
             var optionsToken = GetTokenOptions( signingCredential, claims );
             var token = new JwtSecurityTokenHandler().WriteToken( optionsToken );
 
-            var response = new AuthResponseDto
+            var response = new AuthenticationResponse
             {
                 Token = token,
                 Expiration = optionsToken.ValidTo.ToString( CommonConstants.DateTimeFormat )
@@ -81,7 +80,7 @@ namespace HandlingExtinguishers.Core.Helpers
             return response;
         }
 
-        public TokenValidationDto ValidateCurrentToken( string token )
+        public TokenValidation ValidateCurrentToken( string token )
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             try
@@ -96,7 +95,7 @@ namespace HandlingExtinguishers.Core.Helpers
 
                 var claims = tokenHandler.ValidateToken( token, validationParameters, out SecurityToken validatedToken );
 
-                return new TokenValidationDto
+                return new TokenValidation
                 {
                     IsSuccess = true,
                     Claims = claims

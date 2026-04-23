@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using HandlingExtinguisher.Dto.Users;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
 using ManagementFireEstinguisher.Dto.Users;
@@ -21,7 +20,7 @@ namespace HandlingExtinguishers.Core.Services
         private readonly IMapper mapper = mapper;
         private readonly JwtHandler jwtHandler = jwtHandler;
 
-        public async Task<AuthResponseDto> Login( LoginRequestDto request )
+        public async Task<AuthenticationResponse> Login( LoginRequest request )
         {
             try
             {
@@ -55,7 +54,7 @@ namespace HandlingExtinguishers.Core.Services
             }
         }
 
-        public async Task<AuthResponseDto> RefreshToken( string token )
+        public async Task<AuthenticationResponse> RefreshToken( string token )
         {
             try
             {
@@ -73,7 +72,7 @@ namespace HandlingExtinguishers.Core.Services
 
                 var result = await jwtHandler.CreateToken( user );
 
-                AuthResponseDto response = new();
+                AuthenticationResponse response = new();
 
                 if ( result is not null )
                 {

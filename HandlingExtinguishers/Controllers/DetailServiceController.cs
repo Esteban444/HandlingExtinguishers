@@ -1,6 +1,6 @@
 ﻿using HandlingExtinguishers.Contracts.Interfaces.Services;
-using ManagementFireEstinguisher.Dto.Services;
-using ManejoExtintores.Core.Filtros_Busqueda;
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +14,7 @@ namespace HandlingExtinguishers.Controllers
         private readonly IDetailService detailService = detailService;
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchDetails( [FromQuery] FiltroDetalleServicio filter )
+        public async Task<IActionResult> SearchDetails( [FromQuery] FilterDetailService filter )
         {
             var response = await detailService.SearchDetailsService( filter );
 
