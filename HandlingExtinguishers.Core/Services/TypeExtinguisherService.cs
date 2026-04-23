@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
@@ -6,89 +9,92 @@ using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Extinguishers;
 using HandlingExtinguishers.Models.Models;
 using Microsoft.EntityFrameworkCore;
+#endregion
 
-namespace ManagementFireEstinguisher.Core.Servicios
+public class TypeExtinguisherService( IBaseRepository<TypeExtinguisher> repository, IMapper mapper ) : ITypeExtinguisherService
 {
-    public class TypeExtinguisherService : ITypeExtinguisherService
+    private readonly IBaseRepository<TypeExtinguisher> repository = repository;
+    private readonly IMapper mapper = mapper;
+
+    public async Task<IEnumerable<TypeExtinguisherResponse>> SearchTypeExtinguisher()
     {
-        private readonly IBaseRepository<TypeExtinguisherRequest> _repositorio;
-        private readonly IMapper _mapper;
-        public TypeExtinguisherService( IBaseRepository<TypeExtinguisherRequest> repositorio, IMapper mapper )
+        var result = await repository.GetAll().ToListAsync();
+
+        var response = mapper.Map<IEnumerable<TypeExtinguisherResponse>>( result );
+
+        return response;
+    }
+
+    public async Task<TypeExtinguisherResponse> SearchTypeExtinguisherById( Guid typeExtinguisherId )
+    {
+        var result = await repository.FindBy( type => type.TypeExtinguisherId == typeExtinguisherId ).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            _repositorio = repositorio;
-            _mapper = mapper;
+            return mapper.Map<TypeExtinguisherResponse>( result );
         }
-
-        public async Task<IEnumerable<TypeExtinguisherRequest>> ConsultaTipoExtintor()
+        else
         {
-            var tipos = await _repositorio.GetAll().ToListAsync();
-            var tiposdt = _mapper.Map<IEnumerable<TypeExtinguisherRequest>>(tipos);
-            return tiposdt;
+            throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
         }
+    }
 
-        public async Task<TypeExtinguisherRequest> ConsultaTipoId(Guid id)
+    public async Task<TypeExtinguisherResponse> CreateTypeExtinguisher( TypeExtinguisherRequest request )
+    {
+        var result = mapper.Map<TypeExtinguisher>( request );
+
+        await repository.Add( result );   
+
+        var response = mapper.Map<TypeExtinguisherResponse>( result );
+
+        return response;
+    }
+
+    public async Task<TypeExtinguisherResponse> UpdateTypeExtinguisher( Guid id, TypeExtinguisherRequest request )
+    {
+        var result = await repository.FindBy( type => type.TypeExtinguisherId == id).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            var tipobd = await _repositorio.FindBy(t => t.TypeExtinguisherId == id).FirstOrDefaultAsync();
-            if (tipobd != null)
-            {
-                return _mapper.Map<TypeExtinguisherRequest>(tipobd);
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
-            }
-        }
+            //typeInDb.IdDetalleServ = request.IdDetalleServ;
+            result.TypeExtinguisherId = request.TypeExtinguisherId;
 
-        public async Task<TypeExtinguisherRequest> CrearTipoExtintor( TypeExtinguisherRequest request )
-        {
-            var result = _mapper.Map<TypeExtinguisherRequest>(request);
+            await repository.Update( result );
 
-            await _repositorio.Add(result);
-
-            var response = _mapper.Map<TypeExtinguisherRequest>(result);
+            var response = mapper.Map<TypeExtinguisherResponse>( result );
 
             return response;
         }
-
-        public async Task<TypeExtinguisherRequest> ActualizarTipoExtintor(Guid id, TypeExtinguisherRequest tipo)
+        else
         {
-            var tipobd = await _repositorio.FindBy(t => t.TypeExtinguisherId == id).FirstOrDefaultAsync();
-            if (tipobd != null)
-            {
-                //tipobd.IdDetalleServ = tipo.IdDetalleServ;
-                tipobd.TypeExtinguisherId = tipo.TypeExtinguisherId;
-                await _repositorio.Update(tipobd);
-                var tipoAct = _mapper.Map<TypeExtinguisherRequest>(tipobd);
-                return tipoAct;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
-            }
+            throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
         }
-
-
-        public async Task<TypeExtinguisherRequest> EliminarTipoExtintor(Guid id)
-        {
-            var tipobd = await _repositorio.FindBy(t => t.TypeExtinguisherId == id).FirstOrDefaultAsync();
-            if (tipobd != null)
-            {
-                try
-                {
-                    await _repositorio.Delete(tipobd);
-                    var tipoEli = _mapper.Map<TypeExtinguisherRequest>(tipobd);
-                    return tipoEli;
-                }
-                catch (Exception)
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherRelated );
-                }
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
-            }
-        }
-
     }
+
+
+    public async Task<TypeExtinguisherResponse> DeleteTypeExtinguisher( Guid typeExtinguisherId )
+    {
+        var result = await repository.FindBy( type => type.TypeExtinguisherId == typeExtinguisherId).FirstOrDefaultAsync();
+
+        if ( result is not null )
+        {
+            try
+            {
+                await repository.Delete( result );
+
+                var response = mapper.Map<TypeExtinguisherResponse>( result );
+
+                return response;
+            }
+            catch ( Exception )
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherRelated );
+            }
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.TypeExtinguisherNotFound );
+        }
+    }
+
 }

@@ -8,9 +8,14 @@ using HandlingExtinguishers.Models.Company;
 public interface ICompanyService
 {
     Task<FilterCompanyResponse> SearchCompanies( QueryParameter filter );
+
     Task<FilterCompanyResponse> SearchCompaniesDisabled( QueryParameter filter );
+
     Task<CompanyResponse> SearchCompany( Guid companyId );
+
     Task<CompanyRequest> CreateCompany( CompanyRequest company );
-    Task<CompanyRequest> UpdateCompany( Guid companyId, PatchCompanyRequest companyBase ); 
+
+    Task<CompanyRequest> UpdateCompany( Guid companyId, CompanyRequest request ); 
+
     Task<bool> DeleteCompany( Guid companyId );
 }

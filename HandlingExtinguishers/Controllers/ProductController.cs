@@ -1,80 +1,83 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Filters;
-using ManagementFireEstinguisher.Dto.Products;
+using HandlingExtinguishers.Models.Products;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+[Route("api/product")]
+[ApiController]
+[Authorize]
+public class ProductController( IProductService productService, IValidator<ProductRequest> validator ) : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    [Authorize]
-    public class ProductController : ControllerBase
+    private readonly IProductService productService = productService;
+    private readonly IValidator<ProductRequest> validator = validator;
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchProduct( [FromQuery] FilterProduct filter )
     {
-        private readonly IProductService _servicioProducto;
-        private readonly IValidator<ProductoBase> _validator;
+        var response = await productService.SearchProduct( filter );
 
-        public ProductController(IProductService servicioProducto, IValidator<ProductoBase> validator)
+        return Ok( response );
+    }
+
+    [HttpGet("search-by/{productId}")]
+    public async Task<IActionResult> SearchProductById( Guid productId )
+    {
+        var response = await productService.SearchProductById( productId );
+
+        return Ok( response );
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateProduct( ProductRequest request )
+    {
+        var validation = validator.Validate( request );
+
+        if ( !validation.IsValid )
         {
-            _servicioProducto = servicioProducto;
-            _validator = validator;
-        }
+            var errors = validation.Errors.Select( error => error.ErrorMessage );
 
-        [HttpGet]
-        public async Task<IActionResult> ConsultaProductos([FromQuery] FiltroProductos filtros)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var response = await _servicioProducto.ConsultaProductos(filtros);
-            return Ok(response);
-        }
+            var response = await productService.CreateProduct( request );
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaProductoPorId(Guid id)
+            return Ok( response );
+        }
+    }
+
+    [HttpPut("update-by/{productId}")]
+    public async Task<IActionResult> UpdateProduct( Guid productId, ProductRequest request )
+    {
+        var validation = validator.Validate( request );
+
+        if ( !validation.IsValid )
         {
-            var response = await _servicioProducto.ConsultaPorId(id);
-            return Ok(response);
-        }
+            var errors = validation.Errors.Select( error => error.ErrorMessage );
 
-        [HttpPost]
-        public async Task<IActionResult> CrearProductos(ProductoBase productobase)
+            return BadRequest(new ErrorResponse { Errors = errors });
+        }
+        else
         {
-            var Validacion = _validator.Validate(productobase);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var response = await productService.UpdateProduct( productId, request );
 
-                return BadRequest(new RespuestaProductos { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioProducto.CrearProducto(productobase);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarProductos(Guid id, ProductoBase actualizar)
-        {
-            var Validacion = _validator.Validate(actualizar);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+    [HttpDelete("delete-by/{productId}")]
+    public async Task<IActionResult> DeleteProduct( Guid productId )
+    {
+        var response = await productService.DeleteProduct( productId );
 
-                return BadRequest(new RespuestaProductos { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioProducto.ActualizarProducto(id, actualizar);
-                return Ok(response);
-            }
-        }
+        return Ok( response );
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(Guid id)
-        {
-            var response = await _servicioProducto.EliminarProducto(id);
-            return Ok(response);
-
-        }
     }
 }

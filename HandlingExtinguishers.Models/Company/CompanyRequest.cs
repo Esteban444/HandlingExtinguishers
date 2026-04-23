@@ -13,4 +13,6 @@ public class CompanyRequest
     public string? Email { get; set; }
 
     public string? Nit { get; set; }
+
+    public bool? Active { get; set; }
 }

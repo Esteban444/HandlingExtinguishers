@@ -7,9 +7,13 @@ using HandlingExtinguishers.Models.Filters;
 
 public interface IServiceDetailExtinguisherClients 
 {
-    Task<List<DetailExtinguisherClientRequest>> SearchDetailClients( FilterDetailExtClient filter );
-    Task<DetailExtinguisherClientRequest> SearchDetailClientById( Guid idDetail );
-    Task<DetailExtinguisherClientRequest> CreateDetailClient( DetailExtinguisherClientRequest detailExtinguisherClient );
-    Task<DetailExtinguisherClientRequest> UpdateDetailClient( Guid idDetail, DetailExtinguisherClientRequest detailExtinguisherClient );
-    Task<DetailExtinguisherClientRequest> DeleteDetailClient( Guid idDetail );
+    Task<List<DetailExtinguisherClientResponse>> SearchDetailClients( FilterDetailExtClient filter );
+
+    Task<DetailExtinguisherClientResponse> SearchDetailClientById( Guid detailId );
+
+    Task<DetailExtinguisherClientResponse> CreateDetailClient( DetailExtinguisherClientRequest request );
+
+    Task<DetailExtinguisherClientResponse> UpdateDetailClient( Guid detailId, DetailExtinguisherClientRequest request );
+
+    Task<DetailExtinguisherClientResponse> DeleteDetailClient( Guid detailId );
 }

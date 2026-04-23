@@ -27,5 +27,5 @@ public class ServiceRequest
 
     public EmployeeResponse? Employee { get; set; }
 
-    public List<DetalleServicioBase>? ServiceDetails { get; set; }
+    public List<DetailServiceRequest>? ServiceDetails { get; set; }
 }

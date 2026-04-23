@@ -10,29 +10,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HandlingExtinguishers.Core.Services
 {
-    public class PreceService : IPriceService
+    public class PreceService( IPriceRepository repositoryPrice, IMapper mapper ) : IPriceService
     {
-        private readonly IRepositoryPrice _repositorio;
-        private readonly IMapper _mapper;
-        public PreceService(IRepositoryPrice repositorio, IMapper mapper)
+        private readonly IPriceRepository repositoryPrice = repositoryPrice;
+        private readonly IMapper mapper = mapper;
+
+        public async Task<IEnumerable<PriceResponse>> SearchPrices(FilterPrices filtro)
         {
-            _repositorio = repositorio;
-            _mapper = mapper;
+            var result = await repositoryPrice.GetAll().ToListAsync<Price>();
+
+            var response = mapper.Map<IEnumerable<PriceResponse>>( result );
+
+            return response;
         }
 
-        public async Task<IEnumerable<PrecioDTO>> ConsultaPrecios(FilterPrices filtro)
+        public async Task<PriceResponse> SearchPriceById( Guid priceId )
         {
-            var precios = await _repositorio.GetAll().ToListAsync<Price>();
-            var preciodt = _mapper.Map<IEnumerable<PrecioDTO>>(precios);
-            return preciodt;
-        }
+            var result = await repositoryPrice.FindBy( price => price.PriceId == priceId ).FirstOrDefaultAsync<Price>();
 
-        public async Task<PrecioDTO> ConsultaPor(Guid id)
-        {
-            var preciobd = await _repositorio.FindBy(p => p.PriceId == id).FirstOrDefaultAsync<Price>();
-            if (preciobd != null)
+            if ( result != null ) 
             {
-                return _mapper.Map<PrecioDTO>(preciobd);
+                return mapper.Map<PriceResponse>( result );
             }
             else
             {
@@ -40,28 +38,34 @@ namespace HandlingExtinguishers.Core.Services
             }
         }
 
-        public async Task<PrecioBase> CrearPrecio(PrecioBase preciobase)
+        public async Task<PriceResponse> CreatePrice( PriceRequest request )
         {
-            var precio = _mapper.Map<Price>(preciobase);
-            await _repositorio.Add(precio);
-            preciobase = _mapper.Map<PrecioBase>(precio);
-            return preciobase;
+            var result = mapper.Map<Price>( request );
+
+            await repositoryPrice.Add( result );
+
+            var response = mapper.Map<PriceResponse>( result );
+
+            return response;
         }
 
 
-        public async Task<PrecioBase> ActualizarPrecio(Guid id, PrecioBase precioAct)
+        public async Task<PriceResponse> UpdatePrice( Guid priceId, PriceRequest request )
         {
-            var precios = await _repositorio.FindBy(p => p.PriceId == id).FirstOrDefaultAsync<Price>();
-            if (precios != null)
-            {
-                precios.ProductId = precioAct.IdProductos;
-                precios.Description = precioAct.Descripcion;
-                precios.Value = precioAct.Valor;
-                precios.Iva = precioAct.Iva;
+            var result = await repositoryPrice.FindBy( price => price.PriceId == priceId ).FirstOrDefaultAsync<Price>();
 
-                await _repositorio.Update(precios);
-                precioAct = _mapper.Map<PrecioBase>(precios);
-                return precioAct;
+            if ( result is not null)
+            {
+                result.ProductId = request.ProductId;
+                result.Description = request.Description;
+                result.Value = request.Value;
+                result.Iva = request.Tax;
+
+                await repositoryPrice.Update( result );
+
+                var response = mapper.Map<PriceResponse>( result );
+
+                return response;
             }
             else
             {
@@ -69,16 +73,19 @@ namespace HandlingExtinguishers.Core.Services
             }
         }
 
-        public async Task<PrecioDTO> EliminarPrecio(Guid id)
+        public async Task<PriceResponse> DeletePrice(Guid priceId)
         {
-            var preciobd = await _repositorio.FindBy(p => p.PriceId == id).FirstOrDefaultAsync<Price>();
-            if (preciobd != null)
+            var result = await repositoryPrice.FindBy( price => price.PriceId == priceId ).FirstOrDefaultAsync<Price>();
+
+            if ( result is not null )
             {
                 try
                 {
-                    await _repositorio.Delete(preciobd);
-                    var precioE = _mapper.Map<PrecioDTO>(preciobd);
-                    return precioE;
+                    await repositoryPrice.Delete( result );
+
+                    var response = mapper.Map<PriceResponse>( result );
+
+                    return response;
                 }
                 catch (Exception)
                 {

@@ -5,11 +5,11 @@ namespace HandlingExtinguishers.Models.Models
     {
         public Guid ClientId { get; set; } 
 
-        public decimal? DocumentClient { get; set; }
+        public decimal? DocumentNumber { get; set; }
 
         public string? Name { get; set; }
 
-        public string? LasName { get; set; }
+        public string? LastName { get; set; }
 
         public string? Description { get; set; }
 
@@ -22,6 +22,7 @@ namespace HandlingExtinguishers.Models.Models
         public string? Nit { get; set; }
 
         public ICollection<DetailExtinguisherClient>? DetalleExtClientes { get; set; }
+
         public ICollection<Service>? Services { get; set; }
     }
 }

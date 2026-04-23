@@ -62,7 +62,7 @@ namespace HandlingExtinguishers.Controllers
         [ProducesResponseType(typeof(CompanyResponse), 200)]
         [ProducesResponseType(typeof(FailedOperationResult), 404)]
         [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> UpdateCompany( Guid companyId, PatchCompanyRequest company )
+        public async Task<IActionResult> UpdateCompany( Guid companyId, CompanyRequest company )
         {
             var response = await serviceCompany.UpdateCompany( companyId, company );
 

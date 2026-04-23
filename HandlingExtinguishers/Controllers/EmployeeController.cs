@@ -53,7 +53,7 @@ public class EmployeeController( IEmployeeService serviceEmployee ) : Controller
     [ProducesResponseType(typeof(EmployeeResponse), 200)]
     [ProducesResponseType(typeof(FailedOperationResult), 404)]
     [ProducesResponseType(typeof(FailedOperationResult), 400)]
-    public async Task<IActionResult> UpdateEmployee( Guid employeeId, PatchEmployeeRequest request )
+    public async Task<IActionResult> UpdateEmployee( Guid employeeId, EmployeeRequest request )
     {
         var response = await serviceEmployee.UpdatedEmployee( employeeId, request );
 

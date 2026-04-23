@@ -14,11 +14,11 @@ using HandlingExtinguishers.Core.Exceptions;
 using HandlingExtinguishers.Core.Localization;
 #endregion
 
-public class CompanyService( IRepositoryCompany repositoryCompany, IMapper mapper, 
-                             IRepositoryEmployee repositoryEmployee ) : ICompanyService
+public class CompanyService( ICompanyRepository repositoryCompany, IMapper mapper, 
+                             IEmployeeRepository repositoryEmployee ) : ICompanyService
 {
-    private readonly IRepositoryCompany repositoryCompany = repositoryCompany;
-    private readonly IRepositoryEmployee repositoryEmployee = repositoryEmployee;
+    private readonly ICompanyRepository repositoryCompany = repositoryCompany;
+    private readonly IEmployeeRepository repositoryEmployee = repositoryEmployee;
     private readonly IMapper mapper = mapper;
 
     public async Task<FilterCompanyResponse> SearchCompanies( QueryParameter filter )
@@ -118,7 +118,7 @@ public class CompanyService( IRepositoryCompany repositoryCompany, IMapper mappe
         }
     }
 
-    public async Task<CompanyRequest> UpdateCompany(Guid companyId, PatchCompanyRequest request)
+    public async Task<CompanyRequest> UpdateCompany(Guid companyId, CompanyRequest request)
     {
         try
         {
@@ -126,7 +126,7 @@ public class CompanyService( IRepositoryCompany repositoryCompany, IMapper mappe
 
             if ( search is not null )
             {
-                var properties = new UpdateMapperProperties<Company, PatchCompanyRequest>();
+                var properties = new UpdateMapperProperties<Company, CompanyRequest>();
 
                 var result = await properties.MapperUpdate( search!, request );
 

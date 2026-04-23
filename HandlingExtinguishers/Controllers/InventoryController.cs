@@ -1,81 +1,90 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Inventories;
 using ManagementFireEstinguisher.Dto.Inventories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguisher.Controllers
+[Route("api/inventory")]
+[ApiController]
+[Authorize]
+public class InventoryController : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    [Authorize]
-    public class InventoryController : ControllerBase
+    private readonly IInventoryService inventoryService;
+    private readonly IValidator<InventarioRequest> validator;
+
+    public InventoryController( IInventoryService inventoryService, IValidator<InventarioRequest> validator )
     {
-        private readonly IInventoryService _servicioInventario;
-        private readonly IValidator<InventarioBase> _validator;
+        this.inventoryService = inventoryService;
+        this.validator = validator;
+    }
 
-        public InventoryController( IInventoryService servicioInventario, IValidator<InventarioBase> validator )
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchInventories( [FromQuery] FilterInventory filter )
+    {
+        var response = await inventoryService.SearchInventories( filter );
+
+        return Ok( response );
+    }
+
+    [HttpGet("search-by/{inventoryId}")]
+    public async Task<IActionResult> GetInventoryById( Guid inventoryId )
+    {
+
+        var response = await inventoryService.SearchInventoryById( inventoryId );
+
+        return Ok( response );
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateInventory( InventarioRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            _servicioInventario = servicioInventario;
-            _validator = validator;
-        }
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-        [HttpGet]
-        public async Task<IActionResult> ConsultaInventarios([FromQuery] FilterInventory filtro)
+            return BadRequest( new InventaryResponse { Errors = errors } );
+        }
+        else
         {
-            var response = await _servicioInventario.ConsultaInventarios(filtro);
-            return Ok(response);
-        }
+            var response = await inventoryService.CreateInventory( request );
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaPorId(Guid id)
+            return Ok( response );
+        }
+    }
+
+    [HttpPut("update-by/{inventoryId}")]
+    public async Task<IActionResult> UpdateInventory( Guid inventoryId, InventarioRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-            var response = await _servicioInventario.ConsultaInventarioPorId(id);
-            return Ok(response);
+            return BadRequest(new InventaryResponse { Errors = errors });
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Crear(InventarioBase inventariob)
+        else
         {
-            var Validacion = _validator.Validate(inventariob);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var response = await inventoryService.UpdateInventory( inventoryId, request );
 
-                return BadRequest(new RespuestaInventario { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioInventario.CrearInventario(inventariob);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarInventario(Guid id, InventarioBase actualizar)
-        {
-            var Validacion = _validator.Validate(actualizar);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+    [HttpDelete("delete-by/{inventoryId}")]
+    public async Task<IActionResult> DeleteInventory(Guid inventoryId)
+    {
+        var response = await inventoryService.DeleteInventory( inventoryId );
 
-                return BadRequest(new RespuestaInventario { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioInventario.ActualizarInventario(id, actualizar);
-                return Ok(response);
-            }
-        }
+        return Ok( response );
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Eliminar(Guid id)
-        {
-            var response = await _servicioInventario.EliminarInventario(id);
-            return Ok(response);
-
-        }
     }
 }

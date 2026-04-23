@@ -1,30 +1,29 @@
-﻿using FluentValidation;
-using ManagementFireEstinguisher.Dto.Inventories;
+﻿namespace HandlingExtinguishers.Configurations.Validators;
 
-namespace HandlingExtinguishers.Configurations.Validators
+using FluentValidation;
+using HandlingExtinguishers.Models.Inventories;
+
+public class ValidatorInventory : AbstractValidator<InventarioRequest>
 {
-    public class ValidatorInventory : AbstractValidator<InventarioBase>
+    public ValidatorInventory()
     {
-        public ValidatorInventory()
-        {
-            RuleFor(i => i.IdProductos).NotEmpty()
-               .WithMessage("El campo idproductos no puede ir vacio, y el producto debe existir en la tabla Productos de la base de datos");
+        RuleFor(i => i.ProductId).NotEmpty()
+           .WithMessage("El campo idproductos no puede ir vacio, y el producto debe existir en la tabla Productos de la base de datos");
 
-            RuleFor(i => i.Descripcion)
-                .NotEmpty()
-            .WithMessage("El campo descripcion no puede ir vacio");
+        RuleFor(i => i.Description)
+            .NotEmpty()
+        .WithMessage("El campo descripcion no puede ir vacio");
 
-            RuleFor(i => i.Fecha)
-                .NotEmpty()
-            .WithMessage("El campo fecha no puede ir vacio");
+        RuleFor(i => i.Date)
+            .NotEmpty()
+        .WithMessage("El campo fecha no puede ir vacio");
 
-            RuleFor(i => i.Cantidad)
-                .NotEmpty()
-            .WithMessage("El campo cantidad no puede ir vacia");
+        RuleFor(i => i.Quantity)
+            .NotEmpty()
+        .WithMessage("El campo cantidad no puede ir vacia");
 
-            RuleFor(i => i.FechaVencimiento)
-                .NotEmpty()
-            .WithMessage("El campo fechaVencimiento no puede ir vacia");
-        }
+        RuleFor(i => i.ExpirationDate)
+            .NotEmpty()
+        .WithMessage("El campo fechaVencimiento no puede ir vacia");
     }
 }

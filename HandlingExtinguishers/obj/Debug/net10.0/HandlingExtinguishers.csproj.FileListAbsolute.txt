@@ -6,7 +6,6 @@ D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\Ha
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\HandlingExtinguishers.csproj.CoreCompileInputs.cache
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\HandlingExtinguishers.MvcApplicationPartsAssemblyInfo.cache
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\HandlingExtinguishers.sourcelink.json
-D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\HandlingExtinguishers.MvcApplicationPartsAssemblyInfo.cs
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\appsettings.Development.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\appsettings.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\HandlingExtinguishers.staticwebassets.endpoints.json
@@ -79,6 +78,7 @@ D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\Ha
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\HandlingExtinguishers.Models.pdb
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\en\HandlingExtinguishers.Core.resources.dll
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\bin\Debug\net10.0\es\HandlingExtinguishers.Core.resources.dll
+D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\HandlingExtinguishers.MvcApplicationPartsAssemblyInfo.cs
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\rjimswa.dswa.cache.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 D:\Repositorios\HandlingExtinguishers\HandlingExtinguishers\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json

@@ -12,28 +12,28 @@ using HandlingExtinguishers.Models.Models;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
-public class DetailExtinguisherClientService( IRepositoryDetailExtinguisherClient repositoryDetailExtinguisherClient, 
+public class DetailExtinguisherClientService( IDetailExtinguisherClientRepository repositoryDetailExtinguisherClient, 
                                          IMapper mapper ) : IServiceDetailExtinguisherClients
 {
-    private readonly IRepositoryDetailExtinguisherClient repositoryDetailExtinguisherClient = repositoryDetailExtinguisherClient;
+    private readonly IDetailExtinguisherClientRepository repositoryDetailExtinguisherClient = repositoryDetailExtinguisherClient;
     private readonly IMapper mapper = mapper;
 
-    public async Task<List<DetailExtinguisherClientRequest>> SearchDetailClients( FilterDetailExtClient filter ) 
+    public async Task<List<DetailExtinguisherClientResponse>>SearchDetailClients( FilterDetailExtClient filter ) 
     {
         var search = await repositoryDetailExtinguisherClient.GetAll().ToListAsync();
 
-        var response = mapper.Map<List<DetailExtinguisherClientRequest>>( search );
+        var response = mapper.Map<List<DetailExtinguisherClientResponse>>( search );
 
         return response;
     }
 
-    public async Task<DetailExtinguisherClientRequest> SearchDetailClientById( Guid idDetail )
+    public async Task<DetailExtinguisherClientResponse> SearchDetailClientById( Guid idDetail )
     {
         var result = await repositoryDetailExtinguisherClient.FindBy( detail => detail.DetailExtinguisherClientId == idDetail ).FirstOrDefaultAsync();
 
         if ( result is not null )
         {
-            return mapper.Map<Models.Clients.DetailExtinguisherClientRequest>( result );
+            return mapper.Map<DetailExtinguisherClientResponse>( result );
         }
         else
         {
@@ -41,18 +41,18 @@ public class DetailExtinguisherClientService( IRepositoryDetailExtinguisherClien
         }
     }
 
-    public async Task<DetailExtinguisherClientRequest> CreateDetailClient( DetailExtinguisherClientRequest request  )
+    public async Task<DetailExtinguisherClientResponse> CreateDetailClient( DetailExtinguisherClientRequest request  )
     {
         var detailExtinguisher = mapper.Map<DetailExtinguisherClient>( request );
 
         await repositoryDetailExtinguisherClient.Add( detailExtinguisher );
 
-        var result = mapper.Map<DetailExtinguisherClientRequest>( detailExtinguisher );
+        var result = mapper.Map<DetailExtinguisherClientResponse>( detailExtinguisher );
 
         return result;
     }
 
-    public async Task<DetailExtinguisherClientRequest> UpdateDetailClient( Guid idDetail, DetailExtinguisherClientRequest request )
+    public async Task<DetailExtinguisherClientResponse> UpdateDetailClient( Guid idDetail, DetailExtinguisherClientRequest request )
     {
         var result = await repositoryDetailExtinguisherClient.FindBy( detail => detail.DetailExtinguisherClientId == idDetail ).FirstOrDefaultAsync();
 
@@ -67,7 +67,7 @@ public class DetailExtinguisherClientService( IRepositoryDetailExtinguisherClien
 
             await repositoryDetailExtinguisherClient.Update( result );
 
-            var response = mapper.Map<DetailExtinguisherClientRequest>( result );
+            var response = mapper.Map<DetailExtinguisherClientResponse>( result );
 
             return response;
         }
@@ -77,7 +77,7 @@ public class DetailExtinguisherClientService( IRepositoryDetailExtinguisherClien
         }
     }
 
-    public async Task<DetailExtinguisherClientRequest> DeleteDetailClient( Guid idDetail )
+    public async Task<DetailExtinguisherClientResponse> DeleteDetailClient( Guid idDetail )
     {
         var result = await repositoryDetailExtinguisherClient.FindBy( detail => detail.DetailExtinguisherClientId == idDetail ).FirstOrDefaultAsync();
 
@@ -87,7 +87,7 @@ public class DetailExtinguisherClientService( IRepositoryDetailExtinguisherClien
             {
                 await repositoryDetailExtinguisherClient.Delete( result );
 
-                var response = mapper.Map<DetailExtinguisherClientRequest>( result );
+                var response = mapper.Map<DetailExtinguisherClientResponse>( result );
 
                 return response;
             }

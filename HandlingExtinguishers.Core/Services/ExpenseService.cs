@@ -11,27 +11,27 @@ using HandlingExtinguishers.Models.Filters;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
-public class ExpenseService( IRepositoryExpense repository, IMapper mapper ) : IExpenseService
+public class ExpenseService( IExpenseRepository repository, IMapper mapper ) : IExpenseService
 {
-    private readonly IRepositoryExpense repository = repository;
+    private readonly IExpenseRepository repository = repository;
     private readonly IMapper mapper = mapper;
 
-    public async Task<IEnumerable<ExpenseRequest>> SearchExpense( FilterExpense filters )
+    public async Task<IEnumerable<ExpenseResponse>> SearchExpense( FilterExpense filters )
     {
         var result = await repository.GetAll().ToListAsync();
 
-        var response = mapper.Map<IEnumerable<ExpenseRequest>>( result );
+        var response = mapper.Map<IEnumerable<ExpenseResponse>>( result );
 
         return response;
     }
 
-    public async Task<ExpenseRequest> SearchExpenseById( Guid idExpense )
+    public async Task<ExpenseResponse> SearchExpenseById( Guid idExpense )
     {
         var result = await repository.FindBy( expense => expense.ExpenseId == idExpense ).FirstOrDefaultAsync();
 
         if ( result is not null)
         {
-            return mapper.Map<ExpenseRequest>( result );
+            return mapper.Map<ExpenseResponse>( result );
         }
         else
         {
@@ -39,18 +39,18 @@ public class ExpenseService( IRepositoryExpense repository, IMapper mapper ) : I
         }
     }
 
-    public async Task<ExpenseRequest> CreateExpense( ExpenseRequest request )
+    public async Task<ExpenseResponse> CreateExpense( ExpenseRequest request )
     {
         var result = mapper.Map<Models.Models.Expense>( request );
 
         await repository.Add( result );
 
-        var response = mapper.Map<ExpenseRequest>( result );
+        var response = mapper.Map<ExpenseResponse>( result );
 
         return response;
     }
 
-    public async Task<ExpenseRequest> UpdateExpense( Guid idExpense, ExpenseRequest request )
+    public async Task<ExpenseResponse> UpdateExpense( Guid idExpense, ExpenseRequest request )
     {
         var result = await repository.FindBy( expense => expense.ExpenseId == idExpense).FirstOrDefaultAsync();
 
@@ -63,7 +63,7 @@ public class ExpenseService( IRepositoryExpense repository, IMapper mapper ) : I
 
             await repository.Update( result );
 
-            var response = mapper.Map<ExpenseRequest>( result );
+            var response = mapper.Map<ExpenseResponse>( result );
 
             return response;
         }
@@ -73,7 +73,7 @@ public class ExpenseService( IRepositoryExpense repository, IMapper mapper ) : I
         }
     }
 
-    public async Task<ExpenseRequest> DeleteExpense( Guid idExpense )
+    public async Task<ExpenseResponse> DeleteExpense( Guid idExpense )
     {
         var result = await repository.FindBy( expense => expense.ExpenseId == idExpense).FirstOrDefaultAsync();
 
@@ -81,7 +81,7 @@ public class ExpenseService( IRepositoryExpense repository, IMapper mapper ) : I
         {
             await repository.Delete( result );
 
-            var response = mapper.Map<ExpenseRequest>( result );
+            var response = mapper.Map<ExpenseResponse>( result );
 
             return response;
         }

@@ -2,9 +2,9 @@
 
 using FluentValidation;
 using HandlingExtinguishers.Core.Helpers;
-using ManagementFireEstinguisher.Dto.Users;
+using HandlingExtinguishers.Models.Authentication;
 
-public class ValidatorRegisterUser : AbstractValidator<RegisterUserDto>
+public class ValidatorRegisterUser : AbstractValidator<RegisterUserRequest>
 {
     public ValidatorRegisterUser() 
     {

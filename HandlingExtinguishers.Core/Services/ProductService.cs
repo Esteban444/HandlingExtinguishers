@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
@@ -6,90 +9,93 @@ using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Filters;
 using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Models.Products;
-using ManagementFireEstinguisher.Dto.Products;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
+#endregion
 
-namespace ManejoExtintores.Core.Servicios
+public class ProductService( IProductRepository repository, IMapper mapper ) : IProductService
 {
-    public class ProductService : IProductService
+    private readonly IProductRepository repository = repository;
+    private readonly IMapper mapper = mapper;
+
+    public async Task<IEnumerable<ProductRequest>> SearchProduct( FilterProduct filter )
     {
-        private readonly IRepositoryProduct _repositorio;
-        private readonly IMapper _mapper;
-        public ProductService(IRepositoryProduct repositorio, IMapper mapper)
+        var result = await repository.GetAll().ToListAsync();
+
+        var response = mapper.Map<IEnumerable<ProductRequest>>( result );
+
+        return response;
+    }
+
+    public async Task<ProductRequest> SearchProductById( Guid productId )
+    {
+        var result = await repository.FindBy( product => product.ProductId == productId).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            _repositorio = repositorio;
-            _mapper = mapper;
+            return mapper.Map<ProductRequest>( result );
         }
-
-        public async Task<IEnumerable<ProductoDTO>> ConsultaProductos(FiltroProductos filtros)
+        else
         {
-            var productos = await _repositorio.GetAll().ToListAsync();
-            var productodt = _mapper.Map<IEnumerable<ProductoDTO>>(productos);
-            return productodt;
+            throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
         }
+    }
 
-        public async Task<ProductoDTO> ConsultaPorId(Guid id)
+    public async Task<ProductResponse> CreateProduct( ProductRequest request )
+    {
+        var result = mapper.Map<Product>( request );
+
+        await repository.Add( result );
+
+        var response = mapper.Map<ProductResponse>( result );
+
+        return response;
+    }
+
+    public async Task<ProductResponse> UpdateProduct( Guid productId, ProductRequest request )
+    {
+        var result = await repository.FindBy( product => product.ProductId == productId ).FirstOrDefaultAsync();
+
+        if ( result is not null ) 
         {
-            var productobd = await _repositorio.FindBy(p => p.ProductId == id).FirstOrDefaultAsync();
-            if (productobd != null)
+            result.TypeExtinguisherId = request.TypeExtinguisherId;
+            result.WeightExtinguisherId = request.WeightExtinguisherId;
+            result.TypeProduct = request.ProductType;
+
+            await repository.Update( result );
+
+            var response = mapper.Map<ProductResponse>( result ) ;
+
+            return response;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
+        }
+    }
+
+    public async Task<ProductResponse> DeleteProduct( Guid productId )
+    {
+        var result = await repository.FindBy( product => product.ProductId == productId).FirstOrDefaultAsync();
+
+        if ( result is not null ) 
+        {
+            try
             {
-                return _mapper.Map<ProductoDTO>(productobd);
+                await repository.Delete( result );
+
+                var response = mapper.Map<ProductResponse>( result );
+
+                return response;
             }
-            else
+            catch ( Exception )
             {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
+
+                throw new HandlingExceptions( HandlingExtinguisherResources.RelatedProduct );
             }
         }
-
-        public async Task<ProductoBase> CrearProducto(ProductoBase productobase)
+        else
         {
-            var producto = _mapper.Map<Product>(productobase);
-            await _repositorio.Add(producto);
-            productobase = _mapper.Map<ProductoBase>(producto);
-            return productobase;
-        }
-
-        public async Task<ProductoBase> ActualizarProducto(Guid id, ProductoBase productobs)
-        {
-            var productosbd = await _repositorio.FindBy(p => p.ProductId == id).FirstOrDefaultAsync();
-            if (productosbd != null)
-            {
-                productosbd.TypeExtinguisherId = productobs.IdTipoExtintor;
-                productosbd.WeightExtinguisherId = productobs.IdPesoExtintor;
-                productosbd.TypeProduct = productobs.TipoProducto;
-
-                await _repositorio.Update(productosbd);
-                productobs = _mapper.Map<ProductoBase>(productosbd);
-                return productobs;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
-            }
-        }
-
-        public async Task<ProductoBase> EliminarProducto(Guid id)
-        {
-            var productobd = await _repositorio.FindBy(p => p.ProductId == id).FirstOrDefaultAsync();
-            if (productobd != null)
-            {
-                try
-                {
-                    await _repositorio.Delete(productobd);
-                    var productoE = _mapper.Map<ProductoBase>(productobd);
-                    return productoE;
-                }
-                catch (Exception)
-                {
-
-                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedProduct );
-                }
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
-            }
+            throw new HandlingExceptions( HandlingExtinguisherResources.ProductNotFound );
         }
     }
 }

@@ -1,14 +1,19 @@
-﻿using HandlingExtinguishers.Models.Employees;
-using HandlingExtinguishers.Models.Pagination;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services
+#region Usings
+using HandlingExtinguishers.Models.Employees;
+using HandlingExtinguishers.Models.Pagination;
+#endregion
+
+public interface IEmployeeService
 {
-    public interface IEmployeeService
-    {
-        Task<FilterEmployeeResponse> SearchEmployees( QueryParameter filter );
-        Task<EmployeeResponse> SearchEmployeeById( Guid idEmployee );
-        Task<EmployeeBaseResponse> CreateEmployee( EmployeeRequest request ); 
-        Task<EmployeeResponse> UpdatedEmployee( Guid idEmployee, PatchEmployeeRequest request );
-        Task<bool> DeleteEmployee( Guid idEmployee );
-    }
+    Task<FilterEmployeeResponse> SearchEmployees( QueryParameter filter );
+
+    Task<EmployeeResponse> SearchEmployeeById( Guid employeeId );
+
+    Task<EmployeeResponse> CreateEmployee( EmployeeRequest request ); 
+
+    Task<EmployeeResponse> UpdatedEmployee( Guid employeeId, EmployeeRequest request );
+
+    Task<bool> DeleteEmployee( Guid employeeId );
 }

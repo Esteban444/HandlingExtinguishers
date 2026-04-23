@@ -12,9 +12,9 @@ using ManagementFireEstinguisher.Dto;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
-public class ServiceOfService(IRepositoryService repository, IMapper mapper) : IServiceOfService
+public class ServiceOfService(IServiceRepository repository, IMapper mapper) : IServiceOfService
 {
-    private readonly IRepositoryService repository = repository;
+    private readonly IServiceRepository repository = repository;
 
     private readonly IMapper mapper = mapper;
 

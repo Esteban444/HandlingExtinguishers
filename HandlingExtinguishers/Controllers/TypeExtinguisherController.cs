@@ -1,80 +1,82 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Extinguishers;
-using ManagementFireEstinguisher.Dto.Extinguishers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+[Route("api-type-extinguisher")]
+[ApiController]
+[Authorize]
+public class TypeExtinguisherController( ITypeExtinguisherService typeExtinguisherService, 
+                                         IValidator<TypeExtinguisherRequest> validator) : ControllerBase
 {
-    [Route("[controller]")]
-    [ApiController]
-    [Authorize]
-    public class TypeExtinguisherController : ControllerBase
+    private readonly ITypeExtinguisherService typeExtinguisherService = typeExtinguisherService;
+    private readonly IValidator<TypeExtinguisherRequest> validator = validator;
+
+    [HttpGet("searchs")]
+    public async Task<IActionResult> Searchs()
     {
-        private readonly ITypeExtinguisherService _servicioTExtintor;
-        private readonly IValidator<TypeExtinguisherRequest> _validator;
+        var response = await typeExtinguisherService.SearchTypeExtinguisher();
 
-        public TypeExtinguisherController( ITypeExtinguisherService servicioTipo, IValidator<TypeExtinguisherRequest> validator )
+        return Ok( response );
+    }
+
+    [HttpGet("search-by/{typeExtinguisherId}")]
+    public async Task<IActionResult> SearchTypeExtinguisherById( Guid typeExtinguisherId )
+    {
+        var response = await typeExtinguisherService.SearchTypeExtinguisherById( typeExtinguisherId );
+
+        return Ok( response );
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateTypeExtinguisher( TypeExtinguisherRequest request )
+    {
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
         {
-            _servicioTExtintor = servicioTipo;
-            _validator = validator;
-        }
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
 
-        [HttpGet]
-        public async Task<IActionResult> Consultas()
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var response = await _servicioTExtintor.ConsultaTipoExtintor();
-            return Ok(response);
-        }
+            var response = await typeExtinguisherService.CreateTypeExtinguisher( request );
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> ConsultaTipoExtPorId(Guid id)
+            return Ok( response );
+        }
+    }
+
+    [HttpPut("update-by/{typeExtinguisherId}")]
+    public async Task<IActionResult> UpdateTypeExtinguisher( Guid typeExtinguisherId, TypeExtinguisherRequest request )
+    {
+        var validation = validator.Validate( request );
+
+        if ( !validation.IsValid )
         {
-            var response = await _servicioTExtintor.ConsultaTipoId(id);
-            return Ok(response);
-        }
+            var errors = validation.Errors.Select( error => error.ErrorMessage );
 
-        [HttpPost]
-        public async Task<IActionResult> CrearTipoExtintor( TypeExtinguisherRequest tipobase)
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+        else
         {
-            var Validacion = _validator.Validate(tipobase);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+            var response = await typeExtinguisherService.UpdateTypeExtinguisher( typeExtinguisherId, request );
 
-                return BadRequest(new RespuestaTipoExtintor { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioTExtintor.CrearTipoExtintor(tipobase);
-                return Ok(response);
-            }
+            return Ok( response );
         }
+    }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarTipo(Guid id, TypeExtinguisherRequest actualizar)
-        {
-            var Validacion = _validator.Validate(actualizar);
-            if (!Validacion.IsValid)
-            {
-                var errors = Validacion.Errors.Select(e => e.ErrorMessage);
+    [HttpDelete("delete-by/{typeExtinguisherId}")]
+    public async Task<IActionResult> DeleteTypeExtinguisher( Guid typeExtinguisherId )
+    {
+        var response = await typeExtinguisherService.DeleteTypeExtinguisher( typeExtinguisherId );
 
-                return BadRequest(new RespuestaTipoExtintor { Errors = errors });
-            }
-            else
-            {
-                var response = await _servicioTExtintor.ActualizarTipoExtintor(id, actualizar);
-                return Ok(response);
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarTipoExt(Guid id)
-        {
-            var response = await _servicioTExtintor.EliminarTipoExtintor(id);
-            return Ok(response);
-
-        }
+        return Ok( response );
     }
 }

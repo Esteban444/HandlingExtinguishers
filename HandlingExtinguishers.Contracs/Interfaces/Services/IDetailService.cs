@@ -1,16 +1,19 @@
 ﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
+#region Usings
 using HandlingExtinguishers.Models.Filters;
 using HandlingExtinguishers.Models.Services;
-
-#region Usings
 #endregion
 
 public interface IDetailService
 {
-    Task<List<DetalleServicioDTO>> SearchDetailsService( FilterDetailService filter );
-    public Task<DetalleServicioDTO> GetDetailServiceById( Guid idDetail );
-    Task<DetalleServicioBase> CreateDetailService( DetalleServicioBase detail );
-    Task<DetalleServicioBase> UpdateDetailService( Guid idDetail, DetalleServicioBase detail );
-    Task<DetalleServicioDTO> DeleteDetailService( Guid idDetail ); 
+    Task<List<DetailServiceResponse>> SearchDetailsService( FilterDetailService filter );
+
+    public Task<DetailServiceResponse> GetDetailServiceById( Guid detailId );
+
+    Task<DetailServiceResponse> CreateDetailService( DetailServiceRequest request );
+
+    Task<DetailServiceResponse> UpdateDetailService( Guid detailId, DetailServiceRequest request );
+
+    Task<DetailServiceResponse> DeleteDetailService( Guid detailId ); 
 }

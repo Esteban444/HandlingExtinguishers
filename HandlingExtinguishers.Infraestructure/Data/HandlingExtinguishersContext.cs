@@ -11,8 +11,7 @@ public partial class HandlingExtinguisherContext( DbContextOptions<HandlingExtin
 {
     public DbSet<Client> Client { get; set; }
     public DbSet<CreditService> CreditService { get; set; }
-    //public DbSet<DetalleExtintorClientes> DetaileFireExtinguisherClient { get; set; }
-    //public DbSet<DetalleServicioDetalleClientes> DetailServiceDetailClient { get; set; }
+    public DbSet<DetailExtinguisherClient> DetailExtinguisherClient { get; set; }
     public DbSet<DetailService> DetailService { get; set; }
     public DbSet<Employee> Employee { get; set; }
     public DbSet<Company> Company { get; set; }

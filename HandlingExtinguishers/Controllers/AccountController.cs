@@ -1,79 +1,79 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Controllers;
+
+#region Usings
+using FluentValidation;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Authentication;
-using ManagementFireEstinguisher.Dto.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+[Route("api/account")]
+[ApiController]
+[AllowAnonymous]
+
+public class AccountController( IAuthentificationService authentificationService, 
+                                IValidator<LoginRequest> validator, 
+                                IValidator<RegisterUserRequest> validatorRegister ) : ControllerBase
 {
-    [Route("api/account")]
-    [ApiController]
-    [AllowAnonymous]
+    private readonly IValidator<LoginRequest> validator = validator;
+    private readonly IValidator<RegisterUserRequest> validatorRegister = validatorRegister;
+    private readonly IAuthentificationService authentificationService = authentificationService;
 
-    public class AccountController( IAuthentificationService authentificationService, 
-                                    IValidator<LoginRequest> validator, 
-                                    IValidator<RegisterUserDto> validatorRegister ) : ControllerBase
+    [HttpPost("login")]
+    public async Task<IActionResult> Login( [FromBody] LoginRequest request )
     {
-        private readonly IValidator<LoginRequest> validator = validator;
-        private readonly IValidator<RegisterUserDto> validatorRegister = validatorRegister;
-        private readonly IAuthentificationService authentificationService = authentificationService;
+        var validationResult = validator.Validate( request );
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Loguin( [FromBody] LoginRequest request )
+        if ( !validationResult.IsValid )
         {
-            var Validacion = validator.Validate( request );
+            var errors = validationResult.Errors.Select( error => error.ErrorMessage );
 
-            if ( !Validacion.IsValid )
-            {
-                var errors = Validacion.Errors.Select( error => error.ErrorMessage );
-
-                return BadRequest( new ErrorResponse { Errors = errors } );
-            }
-
-            var result = await authentificationService.Login( request );
-
-            return Ok( result );
+            return BadRequest( new ErrorResponse { Errors = errors } );
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register( [FromBody] RegisterUserDto request )
-        {
-            var Validacion = validatorRegister.Validate( request );
+        var result = await authentificationService.Login( request );
 
-            if ( !Validacion.IsValid )
-            {
-                var errors = Validacion.Errors.Select( error => error.ErrorMessage );
-
-                return BadRequest( new ErrorResponse { Errors = errors } );
-            }
-
-            var result = await authentificationService.Register( request );
-
-            return Ok( result );
-        }
-
-        [HttpPost("refresh-token")]
-        public async Task<IActionResult> RefreshToken( [FromHeader] string authorization )
-        {
-            if ( string.IsNullOrEmpty( authorization ) )
-                return BadRequest( new ErrorResponse { Errors = [ValidatorMessageCommonConstants.TokenRequired] } );
-
-            if ( !AuthenticationHeaderValue.TryParse( authorization, out var headerValue ) )
-                return BadRequest( new ErrorResponse { Errors = [ValidatorMessageCommonConstants.InvalidAuthorizationFormat] } );
-
-            var token = headerValue.Parameter;
-
-            if ( string.IsNullOrWhiteSpace( token ) )
-                return BadRequest( new ErrorResponse { Errors = [ValidatorMessageCommonConstants.TokenCannotBeEmpty] } );
-
-            var result = await authentificationService.RefreshToken( token );
-
-            return Ok( result );
-        }
-
+        return Ok( result );
     }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register( [FromBody] RegisterUserRequest request )
+    {
+        var Validacion = validatorRegister.Validate( request );
+
+        if ( !Validacion.IsValid )
+        {
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
+
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+
+        var result = await authentificationService.Register( request );
+
+        return Ok( result );
+    }
+
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken( [FromHeader] string authorization )
+    {
+        if ( string.IsNullOrEmpty( authorization ) )
+            return BadRequest( new ErrorResponse { Errors = [ValidatorMessageCommonConstants.TokenRequired] } );
+
+        if ( !AuthenticationHeaderValue.TryParse( authorization, out var headerValue ) )
+            return BadRequest( new ErrorResponse { Errors = [ValidatorMessageCommonConstants.InvalidAuthorizationFormat] } );
+
+        var token = headerValue.Parameter;
+
+        if ( string.IsNullOrWhiteSpace( token ) )
+            return BadRequest( new ErrorResponse { Errors = [ValidatorMessageCommonConstants.TokenCannotBeEmpty] } );
+
+        var result = await authentificationService.RefreshToken( token );
+
+        return Ok( result );
+    }
+
 }

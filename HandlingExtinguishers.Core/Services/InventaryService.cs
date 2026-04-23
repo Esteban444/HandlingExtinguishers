@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
@@ -6,95 +9,97 @@ using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Filters;
 using HandlingExtinguishers.Models.Inventories;
 using HandlingExtinguishers.Models.Models;
-using ManagementFireEstinguisher.Dto.Inventories;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
+#endregion
 
-namespace HandlingExtinguishers.Core.Services
+public class InventaryService( IInventoryRepository repositoryInventory, IMapper mapper ) : IInventoryService
 {
-    public class InventaryService : IInventoryService
+    private readonly IMapper mapper = mapper;
+    private readonly IInventoryRepository repositoryInventory = repositoryInventory;
+
+    public async Task<IEnumerable<InventarioRequest>> SearchInventories( FilterInventory filter )
     {
-        private readonly IMapper _mapper;
-        private readonly IRepositoryInventory _repositorio;
+        var result = await repositoryInventory.GetAll().ToListAsync();
 
-        public InventaryService(IRepositoryInventory repositorio, IMapper mapper)
-        {
-            _repositorio = repositorio;
-            _mapper = mapper;
-        }
+        var response = mapper.Map<IEnumerable<InventarioRequest>>( result );
 
-        public async Task<IEnumerable<InventarioDTO>> ConsultaInventarios(FilterInventory filtro)
-        {
-            var inventarios = await _repositorio.GetAll().ToListAsync();
-            var inventariosdt = _mapper.Map<IEnumerable<InventarioDTO>>(inventarios);
-            return inventariosdt;
-        }
-
-        public async Task<InventarioDTO> ConsultaInventarioPorId(Guid id)
-        {
-            var inventario = await _repositorio.FindBy(i => i.InventoryId == id).FirstOrDefaultAsync();
-            if (inventario != null)
-            {
-                return _mapper.Map<InventarioDTO>(inventario);
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
-            }
-        }
-
-        public async Task<InventarioBase> CrearInventario(InventarioBase inventario)
-        {
-            var invent = _mapper.Map<Inventory>(inventario);
-            await _repositorio.Add(invent);
-            var inventariob = _mapper.Map<InventarioBase>(invent);
-            return inventariob;
-        }
-
-        public async Task<InventarioBase> ActualizarInventario(Guid id, InventarioBase inventario)
-        {
-            var inventarios = await _repositorio.FindBy(i => i.InventoryId == id).FirstOrDefaultAsync();
-            if (inventarios != null)
-            {
-                inventarios.ProductId = inventario.IdProductos;
-                inventarios.Date = inventario.Fecha;
-                inventarios.Description = inventario.Descripcion;
-                inventarios.TypeExtinguisherId = inventario.IdTipoExtintor;
-                inventarios.WeightExtinguisherId = inventario.IdPesoExtintor;
-                inventarios.Quantity = inventario.Cantidad;
-                inventarios.ExpirationDate = inventario.FechaVencimiento;
-
-                await _repositorio.Update(inventarios);
-                var inventariAct = _mapper.Map<InventarioBase>(inventarios);
-                return inventariAct;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
-            }
-        }
-
-        public async Task<InventarioBase> EliminarInventario(Guid id)
-        {
-            var inventariobd = await _repositorio.FindBy(i => i.InventoryId == id).FirstOrDefaultAsync();
-            if (inventariobd != null)
-            {
-                try
-                {
-                    await _repositorio.Delete(inventariobd);
-                    var inventarioE = _mapper.Map<InventarioBase>(inventariobd);
-                    return inventarioE;
-                }
-                catch ( Exception )
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedInventory );
-                }
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
-            }
-        }
-
+        return response;
     }
+
+    public async Task<InventarioRequest> SearchInventoryById( Guid inventoryId )
+    {
+        var result = await repositoryInventory.FindBy(i => i.InventoryId == inventoryId ).FirstOrDefaultAsync();
+
+        if ( result is not null )
+        {
+            return mapper.Map<InventarioRequest>( result );
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
+        }
+    }
+
+    public async Task<InventarioRequest> CreateInventory( InventarioRequest request )
+    {
+        var result = mapper.Map<Inventory>( request );
+
+        await repositoryInventory.Add( result );
+
+        var response = mapper.Map<InventarioRequest>( result );
+
+        return response;
+    }
+
+    public async Task<InventarioRequest> UpdateInventory( Guid inventoryId, InventarioRequest request )
+    {
+        var result = await repositoryInventory.FindBy(i => i.InventoryId == inventoryId).FirstOrDefaultAsync();
+
+        if ( result is not null ) 
+        {
+            result.ProductId = request.ProductId;
+            result.Date = request.Date;
+            result.Description = request.Description;
+            result.TypeExtinguisherId = request.TypeExtinguisherId;
+            result.WeightExtinguisherId = request.WeightExtinguisherId;
+            result.Quantity = request.Quantity;
+            result.ExpirationDate = request.ExpirationDate;
+
+            await repositoryInventory.Update( result );
+
+            var response = mapper.Map<InventarioRequest>( result );
+
+            return response;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
+        }
+    }
+
+    public async Task<InventarioRequest> DeleteInventory( Guid inventoryId )
+    {
+        var result = await repositoryInventory.FindBy(inventory => inventory.InventoryId == inventoryId).FirstOrDefaultAsync();
+
+        if ( result is not null )
+        {
+            try
+            {
+                await repositoryInventory.Delete( result );
+
+                var response = mapper.Map<InventarioRequest>( result  );
+
+                return response;
+            }
+            catch ( Exception )
+            {
+                throw new HandlingExceptions( HandlingExtinguisherResources.RelatedInventory );
+            }
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.InventoryNotFound );
+        }
+    }
+
 }

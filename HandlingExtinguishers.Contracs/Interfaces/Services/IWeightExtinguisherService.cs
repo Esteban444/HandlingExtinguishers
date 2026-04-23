@@ -1,13 +1,16 @@
-﻿using HandlingExtinguishers.Models.Extinguishers;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services; 
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services 
+using HandlingExtinguishers.Models.Extinguishers;
+
+public interface IWeightExtinguisherService
 {
-    public interface IWeightExtinguisherService
-    {
-        Task<IEnumerable<WightExtuinguiserDto>> SearchWeightExtinguishers();
-        Task<WightExtuinguiserDto> SearchWeightExtinguisherById( Guid idWeightExtinguisher );
-        Task<WeightExtinguisherBase> CreateWeightExtinguisher( WeightExtinguisherBase weightExtinguisher );
-        Task<WeightExtinguisherBase> UpdateWeightExtinguisher( Guid idWeightExtinguisher, WeightExtinguisherBase weightExtinguisher );
-        Task<WightExtuinguiserDto> DeleteWeightExtinguisher( Guid idWeightExtinguisher );
-    }
+    Task<IEnumerable<WightExtinguisherRequest>> SearchWeightExtinguishers();
+
+    Task<WightExtinguisherRequest> SearchWeightExtinguisherById( Guid weightExtinguisherId );
+
+    Task<WightExtinguisherRequest> CreateWeightExtinguisher( WightExtinguisherRequest weightExtinguisher );
+
+    Task<WightExtinguisherRequest> UpdateWeightExtinguisher( Guid weightExtinguisherId, WightExtinguisherRequest weightExtinguisher );
+
+    Task<WightExtinguisherRequest> DeleteWeightExtinguisher( Guid weightExtinguisherId );
 }

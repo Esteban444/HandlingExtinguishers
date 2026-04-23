@@ -30,7 +30,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateDetail( DetalleServicioBase request )
+        public async Task<IActionResult> CreateDetail( DetailServiceRequest request )
         {
             var response = await detailService.CreateDetailService( request );
 
@@ -38,7 +38,7 @@ namespace HandlingExtinguishers.Controllers
         }
 
         [HttpPut("update-by/{idDetail}")]
-        public async Task<IActionResult> UpdateDetail( Guid idDetail, DetalleServicioBase request )
+        public async Task<IActionResult> UpdateDetail( Guid idDetail, DetailServiceRequest request )
         {
             var response = await detailService.UpdateDetailService( idDetail, request );
 

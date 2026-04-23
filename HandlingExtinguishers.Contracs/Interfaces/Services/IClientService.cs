@@ -5,9 +5,13 @@ using HandlingExtinguishers.Models.Filters;
 
 public interface IClientService
 {
-    Task<IEnumerable<ClientRequest>> SearchClients( FilterClient filtro );
-    Task<ClientRequest> SearchClientById( Guid clientId );
-    Task<ClientRequest> CreateClient( ClientRequest cliente );
-    Task<ClientRequest> UpdateClient( Guid clientId, ClientRequest cliente );
-    Task<ClientRequest> DeleteClient( Guid clientId );
+    Task<IEnumerable<ClientResponse>> SearchClients( FilterClient filtro );
+
+    Task<ClientResponse> SearchClientById( Guid clientId );
+
+    Task<ClientResponse> CreateClient( ClientRequest cliente );
+
+    Task<ClientResponse> UpdateClient( Guid clientId, ClientRequest cliente );
+
+    Task<ClientResponse> DeleteClient( Guid clientId );
 }

@@ -4,11 +4,11 @@ public class ClientRequest
 {
     public Guid ClientId { get; set; }
 
-    public decimal? DocumentClient { get; set; }
+    public decimal? DocumentNumber { get; set; }
 
     public string? Name { get; set; }
 
-    public string? LasName { get; set; }
+    public string? LastName { get; set; }
 
     public string? Description { get; set; }
 

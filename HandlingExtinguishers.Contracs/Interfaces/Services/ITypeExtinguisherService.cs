@@ -5,9 +5,13 @@ namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
 public interface ITypeExtinguisherService
 {
-    Task<IEnumerable<TypeExtinguisherRequest>> ConsultaTipoExtintor();
-    Task<TypeExtinguisherRequest> ConsultaTipoId(Guid id);
-    Task<TypeExtinguisherRequest> CrearTipoExtintor(TypeExtinguisherRequest tipo);
-    Task<TypeExtinguisherRequest> ActualizarTipoExtintor(Guid id, TypeExtinguisherRequest tipo);
-    Task<TypeExtinguisherRequest> EliminarTipoExtintor(Guid id);
+    Task<IEnumerable<TypeExtinguisherResponse>> SearchTypeExtinguisher();
+
+    Task<TypeExtinguisherResponse> SearchTypeExtinguisherById( Guid typeExtinguisherId );
+
+    Task<TypeExtinguisherResponse> CreateTypeExtinguisher( TypeExtinguisherRequest request );  
+    
+    Task<TypeExtinguisherResponse> UpdateTypeExtinguisher( Guid typeExtinguisherId, TypeExtinguisherRequest request);
+
+    Task<TypeExtinguisherResponse> DeleteTypeExtinguisher( Guid typeExtinguisherId );
 }

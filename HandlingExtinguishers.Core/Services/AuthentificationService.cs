@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models.Models;
-using ManagementFireEstinguisher.Dto.Users;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -89,7 +88,7 @@ namespace HandlingExtinguishers.Core.Services
             }
         }
 
-        public async Task<OperationResult> Register( RegisterUserDto request    )
+        public async Task<OperationResult> Register( RegisterUserRequest request    )
         {
             try
             {

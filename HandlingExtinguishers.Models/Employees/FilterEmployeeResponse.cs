@@ -4,5 +4,5 @@ using HandlingExtinguishers.Models.Pagination;
 
 public class FilterEmployeeResponse
 {
-    public PagedResponse<IEnumerable<EmployeeBaseResponse>>? Employees { get; set; }
+    public PagedResponse<IEnumerable<EmployeeResponse>>? Employees { get; set; }
 }

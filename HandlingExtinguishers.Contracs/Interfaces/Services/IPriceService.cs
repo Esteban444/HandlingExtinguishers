@@ -5,9 +5,13 @@ using HandlingExtinguishers.Models.Prices;
 
 public interface IPriceService 
 {
-    Task<IEnumerable<PrecioDTO>> ConsultaPrecios( FilterPrices filtro);
-    Task<PrecioDTO> ConsultaPor(Guid id);
-    Task<PrecioBase> CrearPrecio(PrecioBase precio);
-    Task<PrecioBase> ActualizarPrecio(Guid id, PrecioBase precio);
-    Task<PrecioDTO> EliminarPrecio(Guid id);
+    Task<IEnumerable<PriceResponse>> SearchPrices( FilterPrices filter );
+
+    Task<PriceResponse> SearchPriceById( Guid priceId );
+
+    Task<PriceResponse> CreatePrice(PriceRequest price );
+
+    Task<PriceResponse> UpdatePrice( Guid priceId, PriceRequest price );
+
+    Task<PriceResponse> DeletePrice( Guid priceId );
 }

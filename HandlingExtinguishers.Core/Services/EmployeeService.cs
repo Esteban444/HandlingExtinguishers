@@ -14,10 +14,10 @@ using Microsoft.EntityFrameworkCore;
 using WebApplicationFacturas.Helpers;
 #endregion
 
-public class EmployeeService( IRepositoryEmployee repositoryEmployee, IMapper mapper ) : IEmployeeService
+public class EmployeeService( IEmployeeRepository repositoryEmployee, IMapper mapper ) : IEmployeeService
 {
     private readonly IMapper mapper = mapper;
-    private readonly IRepositoryEmployee repositoryEmployee = repositoryEmployee;
+    private readonly IEmployeeRepository repositoryEmployee = repositoryEmployee;
 
     public async Task<FilterEmployeeResponse> SearchEmployees( QueryParameter filter )
     {
@@ -36,9 +36,9 @@ public class EmployeeService( IRepositoryEmployee repositoryEmployee, IMapper ma
 
             var pagegResult = await search.PaginateAsync( filter );
 
-            var result = mapper.Map<List<EmployeeBaseResponse>>( pagegResult.Resource );
+            var result = mapper.Map<List<EmployeeResponse>>( pagegResult.Resource );
 
-            response.Employees = PaginationHelper.CreatePagedReponse<EmployeeBaseResponse>( result, filter, pagegResult.TotalRecords );
+            response.Employees = PaginationHelper.CreatePagedReponse<EmployeeResponse>( result, filter, pagegResult.TotalRecords );
 
             return response;
         }
@@ -69,7 +69,7 @@ public class EmployeeService( IRepositoryEmployee repositoryEmployee, IMapper ma
         }
     }
 
-    public async Task<EmployeeBaseResponse> CreateEmployee( EmployeeRequest request )
+    public async Task<EmployeeResponse> CreateEmployee( EmployeeRequest request )
     {
         try
         {
@@ -79,7 +79,7 @@ public class EmployeeService( IRepositoryEmployee repositoryEmployee, IMapper ma
 
             await repositoryEmployee.Add( employee );
 
-            var response = mapper.Map<EmployeeBaseResponse>( request );
+            var response = mapper.Map<EmployeeResponse>( request );
 
             return response;
         }
@@ -89,7 +89,7 @@ public class EmployeeService( IRepositoryEmployee repositoryEmployee, IMapper ma
         }
     }
 
-    public async Task<EmployeeResponse> UpdatedEmployee( Guid employeeId, PatchEmployeeRequest request )
+    public async Task<EmployeeResponse> UpdatedEmployee( Guid employeeId, EmployeeRequest request )
     {
         try
         {
@@ -97,7 +97,7 @@ public class EmployeeService( IRepositoryEmployee repositoryEmployee, IMapper ma
 
             if ( search is not null )
             {
-                var properties = new UpdateMapperProperties<Employee, PatchEmployeeRequest>();
+                var properties = new UpdateMapperProperties<Employee, EmployeeRequest>();
 
                 var result = await properties.MapperUpdate( search!, request );
 

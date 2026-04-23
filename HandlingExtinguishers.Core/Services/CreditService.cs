@@ -12,27 +12,27 @@ using HandlingExtinguishers.Models.Models;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
-public class CreditService( IRepositoryCredit repository, IMapper mapper ) : ICreditService
+public class CreditService( ICreditServiceRepository repository, IMapper mapper ) : ICreditService
 {
-    private readonly IRepositoryCredit repository = repository;
+    private readonly ICreditServiceRepository repository = repository;
     private readonly IMapper mapper = mapper;
 
-    public async Task<List<CreditServiceRequest>> SearchCredits( FilterCredit filters )
+    public async Task<List<CreditServiceResponse>> SearchCredits( FilterCredit filters )
     {
         var credits = await repository.GetAll().ToListAsync();
 
-        var response = mapper.Map<List<CreditServiceRequest>>( credits );
+        var response = mapper.Map<List<CreditServiceResponse>>( credits );
 
         return response;
     }
 
-    public async Task<CreditServiceRequest> SearchCreditById( Guid idCredit )
+    public async Task<CreditServiceResponse> SearchCreditById( Guid creditId )
     {
-        var result = await repository.FindBy( credit => credit.CreditServiceId == idCredit ).FirstOrDefaultAsync();
+        var result = await repository.FindBy( credit => credit.CreditServiceId == creditId ).FirstOrDefaultAsync();
 
         if ( result is not null )
         {
-            return mapper.Map<CreditServiceRequest>( result );
+            return mapper.Map<CreditServiceResponse>( result );
         }
         else
         {
@@ -40,18 +40,18 @@ public class CreditService( IRepositoryCredit repository, IMapper mapper ) : ICr
         }
     }
 
-    public async Task<CreditServiceRequest> CreateCredit( CreditServiceRequest credit )
+    public async Task<CreditServiceResponse> CreateCredit( CreditServiceRequest request )
     {
-        var result = mapper.Map<Models.Models.CreditService>( credit );
+        var result = mapper.Map<Models.Models.CreditService>( request );
 
         await repository.Add( result );
 
-        var response = mapper.Map<CreditServiceRequest>( result );
+        var response = mapper.Map<CreditServiceResponse>( result );
 
         return response;
     }
 
-    public async Task<CreditServiceRequest> UpdateCredit( Guid id, CreditServiceRequest credit )
+    public async Task<CreditServiceResponse> UpdateCredit( Guid id, CreditServiceRequest credit )
     {
         var result = await repository.FindBy(x => x.CreditServiceId == id).FirstOrDefaultAsync();
 
@@ -64,7 +64,7 @@ public class CreditService( IRepositoryCredit repository, IMapper mapper ) : ICr
 
             await repository.Update( result );
 
-            var response = mapper.Map<CreditServiceRequest>( result );
+            var response = mapper.Map<CreditServiceResponse>( result );
 
             return response;
         }
@@ -74,7 +74,7 @@ public class CreditService( IRepositoryCredit repository, IMapper mapper ) : ICr
         }
     }
 
-    public async Task<CreditServiceRequest> DeleteCredit( Guid idCredit )
+    public async Task<CreditServiceResponse> DeleteCredit( Guid idCredit )
     {
         var result = await repository.FindBy( credit => credit.ServiceId == idCredit).FirstOrDefaultAsync();
 
@@ -84,7 +84,7 @@ public class CreditService( IRepositoryCredit repository, IMapper mapper ) : ICr
             {
                 await repository.Delete( result );
 
-                var response = mapper.Map<CreditServiceRequest>( result );
+                var response = mapper.Map<CreditServiceResponse>( result );
 
                 return response;
             }

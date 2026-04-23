@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿namespace HandlingExtinguishers.Core.Services;
+
+#region Usings
+using AutoMapper;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Exceptions;
@@ -6,100 +9,91 @@ using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Models.Extinguishers;
 using HandlingExtinguishers.Models.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
+#endregion
 
-namespace HandlingExtinguishers.Core.Services
+public class WeightExtinguisherService( IBaseRepository<WeightExtinguisher> repository, IMapper mapper ) : IWeightExtinguisherService
 {
-    public class WeightExtinguisherService : IWeightExtinguisherService
+    private readonly IBaseRepository<WeightExtinguisher> repository = repository;
+    private readonly IMapper mapper = mapper;
+
+    public async Task<IEnumerable<WightExtinguisherRequest>> SearchWeightExtinguishers()
     {
-        private readonly IBaseRepository<WeightExtinguisher> repository;
-        private readonly IMapper mapper;
-        public WeightExtinguisherService( IBaseRepository<WeightExtinguisher> repository, IMapper mapper )
+        var result = await repository.GetAll().ToListAsync();
+
+        var response = mapper.Map<IEnumerable<WightExtinguisherRequest>>( result );
+
+        return response;
+    }
+
+    public async Task<WightExtinguisherRequest> SearchWeightExtinguisherById( Guid idWeightExtinguisher )
+    {
+        var result = await repository.FindBy( weight => weight.WeightExtinguisherId == idWeightExtinguisher ).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            this.repository = repository;
-            this.mapper = mapper;
+            return mapper.Map<WightExtinguisherRequest>( result ); ;
         }
-
-        public async Task<IEnumerable<WightExtuinguiserDto>> SearchWeightExtinguishers()
+        else
         {
-            var weightExtinguishers = await repository.GetAll().ToListAsync();
-
-            var weight = mapper.Map<IEnumerable<WightExtuinguiserDto>>( weightExtinguishers );
-
-            return weight;
+            throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
         }
+    }
 
-        public async Task<WightExtuinguiserDto> SearchWeightExtinguisherById( Guid idWeightExtinguisher )
+    public async Task<WightExtinguisherRequest> CreateWeightExtinguisher( WightExtinguisherRequest weightExtinguisher )
+    {
+        var result = mapper.Map<WeightExtinguisher>( weightExtinguisher );
+
+        await repository.Add( result );
+
+        var response = mapper.Map<WightExtinguisherRequest>( result );
+
+        return response;
+    }
+
+    public async Task<WightExtinguisherRequest> UpdateWeightExtinguisher( Guid weightExtinguisherId, WightExtinguisherRequest request )
+    {
+        var result = await repository.FindBy( weight => weight.WeightExtinguisherId == weightExtinguisherId ).FirstOrDefaultAsync();
+
+        if ( result is not null )
         {
-            var weightExtinguisher = await repository.FindBy( weight => weight.WeightExtinguisherId == idWeightExtinguisher ).FirstOrDefaultAsync();
+            result.WeightPound = request.WeightInPounds;
 
-            if ( weightExtinguisher is not null )
+            await repository.Update( result );
+
+            var response = mapper.Map<WightExtinguisherRequest>( result );
+
+            return response;
+        }
+        else
+        {
+            throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
+        }
+    }
+
+
+    public async Task<WightExtinguisherRequest> DeleteWeightExtinguisher( Guid idWeightExtinguisher )
+    {
+        var weightExtinguisher = await repository.FindBy( weight => weight.WeightExtinguisherId == idWeightExtinguisher ).FirstOrDefaultAsync();
+
+        if ( weightExtinguisher is not null )
+        {
+            try
             {
-                return mapper.Map<WightExtuinguiserDto>( weightExtinguisher ); ;
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
-            }
-        }
+                await repository.Delete(weightExtinguisher);
 
-        public async Task<WeightExtinguisherBase> CreateWeightExtinguisher( WeightExtinguisherBase weightExtinguisher )
-        {
-            var weight = mapper.Map<WeightExtinguisher>( weightExtinguisher );
-
-            await repository.Add( weight );
-
-            var result = mapper.Map<WeightExtinguisherBase>( weight );
-
-            return result;
-        }
-
-        public async Task<WeightExtinguisherBase> UpdateWeightExtinguisher( Guid idWeightExtinguisher, WeightExtinguisherBase weightExtinguisherBase )
-        {
-            var weightExtinguisher = await repository.FindBy(p => p.WeightExtinguisherId == idWeightExtinguisher ).FirstOrDefaultAsync();
-
-            if ( weightExtinguisher is not null )
-            {
-                //weightExtinguisherDb.IdDetalleServ = weightExtinguisher.IdDetalleServ;
-                weightExtinguisher.WeightPound = weightExtinguisherBase.PesoXlibras;
-
-                await repository.Update( weightExtinguisher );
-
-                var result = mapper.Map<WeightExtinguisherBase>( weightExtinguisher );
+                var result = mapper.Map<WightExtinguisherRequest>(weightExtinguisher);
 
                 return result;
             }
-            else
+            catch (Exception)
             {
-                throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
+                throw new HandlingExceptions( HandlingExtinguisherResources.RelatedWeight );
             }
         }
-
-
-        public async Task<WightExtuinguiserDto> DeleteWeightExtinguisher( Guid idWeightExtinguisher )
+        else
         {
-            var weightExtinguisher = await repository.FindBy( weight => weight.WeightExtinguisherId == idWeightExtinguisher ).FirstOrDefaultAsync();
-
-            if ( weightExtinguisher is not null )
-            {
-                try
-                {
-                    await repository.Delete(weightExtinguisher);
-
-                    var result = mapper.Map<WightExtuinguiserDto>(weightExtinguisher);
-
-                    return result;
-                }
-                catch (Exception)
-                {
-                    throw new HandlingExceptions( HandlingExtinguisherResources.RelatedWeight );
-                }
-            }
-            else
-            {
-                throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
-            }
+            throw new HandlingExceptions( HandlingExtinguisherResources.WeightNotFound );
         }
-
     }
+
 }

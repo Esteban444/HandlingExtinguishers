@@ -12,12 +12,12 @@ using HandlingExtinguishers.Models.Models;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
-public class ClientService( IRepositoryClient repository, IMapper mapper ) : IClientService
+public class ClientService( IClientRepository repository, IMapper mapper ) : IClientService
 {
-    private readonly IRepositoryClient repository = repository;
+    private readonly IClientRepository repository = repository;
     private readonly IMapper mapper = mapper;
 
-    public async Task<IEnumerable<ClientRequest>> SearchClients( FilterClient filter )
+    public async Task<IEnumerable<ClientResponse>> SearchClients( FilterClient filter )
     {
         var result = await repository.GetAll().ToListAsync();
 
@@ -28,20 +28,20 @@ public class ClientService( IRepositoryClient repository, IMapper mapper ) : ICl
 
         if (filter.LastName != null)
         {
-            result = result.Where(x => x.LasName!.ToLower().Contains(filter.LastName.ToLower())).ToList();
+            result = result.Where(x => x.LastName!.ToLower().Contains(filter.LastName.ToLower())).ToList();
         }
-        var response = mapper.Map<IEnumerable<ClientRequest>>(result);
+        var response = mapper.Map<IEnumerable<ClientResponse>>(result);
 
         return response;
     }
 
-    public async Task<ClientRequest> SearchClientById( Guid clientId )
+    public async Task<ClientResponse> SearchClientById( Guid clientId )
     {
         var client = await repository.FindBy(client => client.ClientId == clientId).FirstOrDefaultAsync();
 
-        if ( client is null )
+        if ( client is not null )
         {
-            return mapper.Map<ClientRequest>( client );
+            return mapper.Map<ClientResponse>( client );
         }
         else
         {
@@ -49,27 +49,27 @@ public class ClientService( IRepositoryClient repository, IMapper mapper ) : ICl
         }
     }
 
-    public async Task<ClientRequest> CreateClient( ClientRequest request )
+    public async Task<ClientResponse> CreateClient( ClientRequest request )
     {
         var client = mapper.Map<Client>( request );
 
         await repository.Add( client );
 
-        var response = mapper.Map<ClientRequest>( client );
+        var response = mapper.Map<ClientResponse>( client );
 
         return response;
 
     }
 
-    public async Task<ClientRequest> UpdateClient( Guid clientId, ClientRequest client )
+    public async Task<ClientResponse> UpdateClient( Guid clientId, ClientRequest client )
     {
         var result = await repository.FindBy(c => c.ClientId == clientId).FirstOrDefaultAsync();
 
         if ( result is not null )
         {
-            result.DocumentClient = client.DocumentClient;
+            result.DocumentNumber = client.DocumentNumber;
             result.Name = client.Name;
-            result.LasName = client.LasName;
+            result.LastName = client.LastName;
             result.Description = client.Description;
             result.Address = client.Address;
             result.Phone = client.Phone;
@@ -78,7 +78,7 @@ public class ClientService( IRepositoryClient repository, IMapper mapper ) : ICl
 
             await repository.Update( result );
 
-            var response = mapper.Map<ClientRequest>( result );
+            var response = mapper.Map<ClientResponse>( result );
 
             return response;
         }
@@ -88,7 +88,7 @@ public class ClientService( IRepositoryClient repository, IMapper mapper ) : ICl
         }
     }
 
-    public async Task<ClientRequest> DeleteClient( Guid clientId )
+    public async Task<ClientResponse> DeleteClient( Guid clientId )
     {
         var result = await repository.FindBy(client => client.ClientId == clientId).FirstOrDefaultAsync();
 
@@ -98,7 +98,7 @@ public class ClientService( IRepositoryClient repository, IMapper mapper ) : ICl
             {
                 await repository.Delete( result );
 
-                var response = mapper.Map<ClientRequest>( result );
+                var response = mapper.Map<ClientResponse>( result );
 
                 return response;
             }

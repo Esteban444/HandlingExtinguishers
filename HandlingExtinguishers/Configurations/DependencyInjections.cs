@@ -2,47 +2,44 @@
 
 #region Usings
 using FluentValidation;
+using HandlingExtinguishers.Configurations.Validators;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Core.Services;
 using HandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Infraestructure.Repositories;
 using HandlingExtinguishers.Infrastructure.Repositories;
-using HandlingExtinguishers.Configurations.Validators;
-using HandlingFireExtinguishers.Infraestructure.Repositories;
-using ManagementFireEstinguisher.Core.Servicios;
-using ManagementFireEstinguisher.Dto.Inventories;
-using ManagementFireEstinguisher.Dto.Products;
-using ManejoExtintores.Core.Servicios;
-using MHandlingExtinguishers.Infraestructura.Repositorios;
-using HandlingExtinguishers.Models.Extinguishers;
 using HandlingExtinguishers.Models.Authentication;
-using HandlingExtinguishers.Models.Models;
-using HandlingExtinguishers.Models.Credit;
 using HandlingExtinguishers.Models.Clients;
+using HandlingExtinguishers.Models.Credit;
 using HandlingExtinguishers.Models.Expenses;
-using HandlingExtinguishers.Models.Services;
+using HandlingExtinguishers.Models.Extinguishers;
+using HandlingExtinguishers.Models.Inventories;
+using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Models.Prices;
+using HandlingExtinguishers.Models.Products;
+using HandlingExtinguishers.Models.Services;
+using MHandlingExtinguishers.Infraestructura.Repositorios;
 #endregion
 
 public static class DependencyInjections
 {
     public static IServiceCollection AdddependencyInjection(this IServiceCollection services)
     {
-        services.AddScoped<IRepositoryCompany, CompanyRepository>();
+        services.AddScoped<ICompanyRepository, CompanyRepository>();
 
-        services.AddScoped<IRepositoryClient, RepositoryClient>();
-        services.AddScoped<IRepositoryCredit, RepositoryCredit>();
-        services.AddScoped<IRepositoryDetailService, RepositoryDetailService>();
-        services.AddScoped<IRepositoryDetailExtinguisherClient, RepositoryDetailExtinguisherClient>();
-        services.AddScoped<IRepositoryEmployee, RepositoryEmployee>();
-        services.AddScoped<IRepositoryExpense, RepositoryExpense>();
-        services.AddScoped<IRepositoryInventory, RepositoryInventory>();
-        services.AddScoped<IRepositoryPrice, RepositoryPrice>();
-        services.AddScoped<IRepositoryProduct, RepositoryProduct>();
+        services.AddScoped<IClientRepository, ClientRepository>();
+        services.AddScoped<ICreditServiceRepository, CreditRepository>();
+        services.AddScoped<IDetailServiceRepository, DetailServiceReposytory>();
+        services.AddScoped<IDetailExtinguisherClientRepository, DetailExtinguisherClientRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IExpenseRepository, ExpenseRepository>();
+        services.AddScoped<IInventoryRepository, InventoryRepository>();
+        services.AddScoped<IPriceRepository, PriceRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IBaseRepository<WeightExtinguisher>, BaseRepository<WeightExtinguisher>>();
         services.AddScoped<IBaseRepository<TypeExtinguisher>, BaseRepository<TypeExtinguisher>>();
-        services.AddScoped<IRepositoryService, RepositoryService>();
+        services.AddScoped<IServiceRepository, ServiceRepository>();
 
         services.AddScoped<IValidator<ClientRequest>, ValidatorClient>();
         services.AddScoped<IValidator<CreditServiceRequest>, ValidatorCredit>();
@@ -53,10 +50,10 @@ public static class DependencyInjections
         services.AddValidatorsFromAssemblyContaining<ValidatorEmployee>();
 
         services.AddScoped<IValidator<ExpenseRequest>, ValidatorExpense>();
-        services.AddScoped<IValidator<InventarioBase>, ValidatorInventory>();
-        services.AddScoped<IValidator<WeightExtinguisherBase>, ValidatorWieghtExtinguisher>();
-        services.AddScoped<IValidator<PrecioBase>, ValidatorPrice>();
-        services.AddScoped<IValidator<ProductoBase>, ValidatorProduct>();
+        services.AddScoped<IValidator<InventarioRequest>, ValidatorInventory>();
+        services.AddScoped<IValidator<WightExtinguisherRequest>, ValidatorWieghtExtinguisher>();
+        services.AddScoped<IValidator<PriceRequest>, ValidatorPrice>();
+        services.AddScoped<IValidator<ProductRequest>, ValidatorProduct>();
         services.AddScoped<IValidator<TypeExtinguisherRequest>, ValidatorTypeExtinguisher>();
         services.AddScoped<IValidator<ServiceRequest>, ValidatorService>();
         services.AddScoped<IValidator<LoginRequest>, ValidatorAuthenticationUser>();

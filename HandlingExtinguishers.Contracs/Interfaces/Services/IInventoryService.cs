@@ -1,15 +1,17 @@
-﻿using HandlingExtinguishers.Models.Filters;
-using HandlingExtinguishers.Models.Inventories;
-using ManagementFireEstinguisher.Dto.Inventories;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Inventories;
+
+public interface IInventoryService
 {
-    public interface IInventoryService
-    {
-        Task<IEnumerable<InventarioDTO>> ConsultaInventarios(FilterInventory filtro);
-        Task<InventarioDTO> ConsultaInventarioPorId(Guid id);
-        Task<InventarioBase> CrearInventario(InventarioBase inventario);
-        Task<InventarioBase> ActualizarInventario(Guid id, InventarioBase inventario);
-        Task<InventarioBase> EliminarInventario(Guid id);
-    }
+    Task<IEnumerable<InventarioRequest>> SearchInventories( FilterInventory filter );
+
+    Task<InventarioRequest> SearchInventoryById( Guid inventoryId ); 
+
+    Task<InventarioRequest> CreateInventory( InventarioRequest inventario );
+
+    Task<InventarioRequest> UpdateInventory( Guid inventoriId, InventarioRequest inventario );
+
+    Task<InventarioRequest> DeleteInventory( Guid inventoriId );
 }

@@ -1,15 +1,17 @@
-﻿using HandlingExtinguishers.Models.Filters;
-using HandlingExtinguishers.Models.Products;
-using ManagementFireEstinguisher.Dto.Products;
+﻿namespace HandlingExtinguishers.Contracts.Interfaces.Services;
 
-namespace HandlingExtinguishers.Contracts.Interfaces.Services
+using HandlingExtinguishers.Models.Filters;
+using HandlingExtinguishers.Models.Products;
+
+public interface IProductService
 {
-    public interface IProductService
-    {
-        Task<IEnumerable<ProductoDTO>> ConsultaProductos(FiltroProductos filtros);
-        Task<ProductoDTO> ConsultaPorId(Guid id);
-        Task<ProductoBase> CrearProducto(ProductoBase producto);
-        Task<ProductoBase> ActualizarProducto(Guid id, ProductoBase producto);
-        Task<ProductoBase> EliminarProducto(Guid id);
-    }
+    Task<IEnumerable<ProductRequest>> SearchProduct( FilterProduct filter );
+
+    Task<ProductRequest> SearchProductById( Guid productId  );
+
+    Task<ProductResponse> CreateProduct( ProductRequest request );
+
+    Task<ProductResponse> UpdateProduct( Guid productId, ProductRequest request );
+
+    Task<ProductResponse> DeleteProduct( Guid productId );
 }
