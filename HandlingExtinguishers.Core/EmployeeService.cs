@@ -26,7 +26,7 @@ public class EmployeeService( IEmployeeRepository repositoryEmployee, IMapper ma
 
             var search = repositoryEmployee.FindByAsNoTracking(x => x.Active);
 
-            if ( filter.OrderBy == "Id" ) filter.OrderBy = "Name";
+            if ( filter.OrderBy == "EmployeeId" ) filter.OrderBy = "Name";
 
             if ( !string.IsNullOrEmpty( filter.Search ) )
             {

@@ -1,4 +1,6 @@
-﻿namespace HandlingExtinguishers.Models.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace HandlingExtinguishers.Models.Models;
 
 public class Inventory
 {
@@ -22,9 +24,12 @@ public class Inventory
 
     public Product? Product { get; set; }
 
+    [JsonIgnore]
     public DetailService? DetailService { get; set; }
 
+    [JsonIgnore]
     public WeightExtinguisher? WeightExtinguisher { get; set; }
 
+    [JsonIgnore]
     public TypeExtinguisher? TypeExtinguisher { get; set; }
 }

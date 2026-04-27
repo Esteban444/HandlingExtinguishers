@@ -8,11 +8,11 @@ using HandlingExtinguishers.Models.Pagination;
 
 public class ActiveCompaniesStrategy : ICompanySearchStrategy
 {
-    public IQueryable<Company> Apply(IQueryable<Company> query, QueryParameter filter)
+    public IQueryable<Company> Apply( IQueryable<Company> query, QueryParameter filter )
     {
         var result = query.Where( company => company.Active );
 
-        if ( filter.OrderBy == "Id" ) filter.OrderBy = "Name";
+        if ( filter.OrderBy == "CompanyId" ) filter.OrderBy = "Name";
 
         return result;
     }

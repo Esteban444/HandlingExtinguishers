@@ -88,8 +88,8 @@ namespace HandlingExtinguishers.Core.Helpers
                 var mySecurityKey = new SymmetricSecurityKey( Encoding.ASCII.GetBytes( jwtConfiguration.GetSection( CommonConstants.JwtSecurityKeyName ).Value! ) );
                 TokenValidationParameters validationParameters = new()
                 {
-                    ValidIssuer = jwtConfiguration.GetSection(CommonConstants.JwtValidIssuerKeyName).Value,
-                    ValidAudiences = [jwtConfiguration.GetSection(CommonConstants.JwtValidAudienceKeyName).Value],
+                    ValidIssuer = jwtConfiguration.GetSection( CommonConstants.JwtValidIssuerKeyName ).Value,
+                    ValidAudiences = [jwtConfiguration.GetSection( CommonConstants.JwtValidAudienceKeyName ).Value],
                     IssuerSigningKeys = [mySecurityKey]
                 };
 

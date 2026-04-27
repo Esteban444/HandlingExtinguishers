@@ -3,13 +3,20 @@
 public class Company : BaseModel
 {
     public Guid CompanyId { get; private set; }
+
     public string? Name { get; private set; }
+
     public string? Address { get; private set; }
+
     public string? Phone { get; private set; }
+
     public string? Email { get; private set; }
+
     public string? Nit { get; private set; }
+
     public bool Active { get; private set; }
-    public ICollection<Employee>? Employee { get; private set; }
+
+    public ICollection<Employee>? Employees { get; private set; }
 
     private Company() { }
 

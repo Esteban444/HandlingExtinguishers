@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 #endregion
 
-[Route("api-weight-extinguisher")]
+[Route("api/weight-extinguisher")]
 [ApiController]
 [Authorize]
 public class WeightExtinguisherController( IWeightExtinguisherService serviceWeightExtinguisher, 
@@ -34,7 +34,7 @@ public class WeightExtinguisherController( IWeightExtinguisherService serviceWei
         return Ok(response);
     }
 
-    [HttpPost("create-weight-extinguisher")]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateWeightExtinguisher( WightExtinguisherRequest request )
     {
         var Validation = validator.Validate( request );

@@ -30,193 +30,6 @@
         ]
       }
     },
-    "/Inventory": {
-      "get": {
-        "tags": [
-          "Inventory"
-        ],
-        "parameters": [
-          {
-            "name": "Fecha",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "Descripcion",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "FechaVencimiento",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Inventory"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/Inventory/{id}": {
-      "get": {
-        "tags": [
-          "Inventory"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Inventory"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InventarioBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Inventory"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
     "/api/account/login": {
       "post": {
         "tags": [
@@ -226,22 +39,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequestDto"
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequestDto"
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequestDto"
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequestDto"
+                "$ref": "#/components/schemas/LoginRequest"
               }
             }
           },
@@ -268,22 +81,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUserDto"
+                "$ref": "#/components/schemas/RegisterUserRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUserDto"
+                "$ref": "#/components/schemas/RegisterUserRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUserDto"
+                "$ref": "#/components/schemas/RegisterUserRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUserDto"
+                "$ref": "#/components/schemas/RegisterUserRequest"
               }
             }
           },
@@ -318,7 +131,7 @@
         ]
       }
     },
-    "/Client/clients": {
+    "/Client/search-clients": {
       "get": {
         "tags": [
           "Client"
@@ -365,7 +178,7 @@
         ]
       }
     },
-    "/Client/search-by/{clientId}": {
+    "/Client/search-client-by/{clientId}": {
       "get": {
         "tags": [
           "Client"
@@ -393,7 +206,7 @@
         ]
       }
     },
-    "/Client/client": {
+    "/Client/crate-client": {
       "post": {
         "tags": [
           "Client"
@@ -402,22 +215,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             }
           },
@@ -435,7 +248,7 @@
         ]
       }
     },
-    "/Client/update/{clientId}": {
+    "/Client/update-client-by/{clientId}": {
       "put": {
         "tags": [
           "Client"
@@ -455,22 +268,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseClient"
+                "$ref": "#/components/schemas/ClientRequest"
               }
             }
           },
@@ -488,7 +301,7 @@
         ]
       }
     },
-    "/Client/delete/{clientId}": {
+    "/Client/delete-client-by/{clientId}": {
       "delete": {
         "tags": [
           "Client"
@@ -516,7 +329,7 @@
         ]
       }
     },
-    "/Company/search-company-enable": {
+    "/api/company/search-company-enable": {
       "get": {
         "tags": [
           "Company"
@@ -563,64 +376,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FilterCompanyResponseDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FilterCompanyResponseDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FilterCompanyResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "security": [
@@ -630,7 +386,7 @@
         ]
       }
     },
-    "/Company/search-company-disabled": {
+    "/api/company/search-company-disabled": {
       "get": {
         "tags": [
           "Company"
@@ -677,64 +433,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FilterCompanyResponseDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FilterCompanyResponseDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FilterCompanyResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "security": [
@@ -744,7 +443,7 @@
         ]
       }
     },
-    "/Company/search-company-by/{companyId}": {
+    "/api/company/search-by/{companyId}": {
       "get": {
         "tags": [
           "Company"
@@ -762,64 +461,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "security": [
@@ -829,7 +471,7 @@
         ]
       }
     },
-    "/Company/add-company": {
+    "/api/company/create": {
       "post": {
         "tags": [
           "Company"
@@ -838,22 +480,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/CompanyRequestDto"
+                "$ref": "#/components/schemas/CompanyRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CompanyRequestDto"
+                "$ref": "#/components/schemas/CompanyRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CompanyRequestDto"
+                "$ref": "#/components/schemas/CompanyRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CompanyRequestDto"
+                "$ref": "#/components/schemas/CompanyRequest"
               }
             }
           },
@@ -861,64 +503,7 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "security": [
@@ -928,7 +513,7 @@
         ]
       }
     },
-    "/Company/update-company-by/{companyId}": {
+    "/api/company/update-by/{companyId}": {
       "patch": {
         "tags": [
           "Company"
@@ -948,22 +533,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchCompanyRequestDto"
+                "$ref": "#/components/schemas/UpdateCompanyRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchCompanyRequestDto"
+                "$ref": "#/components/schemas/UpdateCompanyRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchCompanyRequestDto"
+                "$ref": "#/components/schemas/UpdateCompanyRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchCompanyRequestDto"
+                "$ref": "#/components/schemas/UpdateCompanyRequest"
               }
             }
           },
@@ -971,64 +556,7 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CompanyResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "security": [
@@ -1038,7 +566,7 @@
         ]
       }
     },
-    "/Company/delete-company-permanent-by/{companyId}": {
+    "/api/company/delete-by/{companyId}": {
       "delete": {
         "tags": [
           "Company"
@@ -1056,64 +584,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "boolean"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailedOperationResult"
-                }
-              }
-            }
+            "description": "OK"
           }
         },
         "security": [
@@ -1123,14 +594,14 @@
         ]
       }
     },
-    "/Credit": {
+    "/Credit/search-credits": {
       "get": {
         "tags": [
           "Credit"
         ],
         "parameters": [
           {
-            "name": "Fecha",
+            "name": "Date",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1148,7 +619,44 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/Credit/search-credit-by{id}": {
+      "get": {
+        "tags": [
+          "Credit"
+        ],
+        "parameters": [
+          {
+            "name": "idCredit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/Credit/create-credit": {
       "post": {
         "tags": [
           "Credit"
@@ -1157,22 +665,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             }
           },
@@ -1190,40 +698,14 @@
         ]
       }
     },
-    "/Credit/{id}": {
-      "get": {
-        "tags": [
-          "Credit"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
+    "/Credit/update-credit-by/{idCredit}": {
       "put": {
         "tags": [
           "Credit"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idCredit",
             "in": "path",
             "required": true,
             "schema": {
@@ -1236,22 +718,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreditoServicioBase"
+                "$ref": "#/components/schemas/CreditServiceRequest"
               }
             }
           },
@@ -1267,14 +749,16 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/Credit/delete-credit-by/{idCredit}": {
       "delete": {
         "tags": [
           "Credit"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idCredit",
             "in": "path",
             "required": true,
             "schema": {
@@ -1295,21 +779,21 @@
         ]
       }
     },
-    "/DetailExtinguisherClient": {
+    "/api/detail-extinguisher-client/search": {
       "get": {
         "tags": [
           "DetailExtinguisherClient"
         ],
         "parameters": [
           {
-            "name": "TipoExtintor",
+            "name": "TypeExtinguisher",
             "in": "query",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "FechaServicio",
+            "name": "ServiceDate",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1317,7 +801,7 @@
             }
           },
           {
-            "name": "FechaVencimiento",
+            "name": "ExpirationDate",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1325,7 +809,7 @@
             }
           },
           {
-            "name": "FechaMantenimiento",
+            "name": "MaintenanceDate",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1343,7 +827,37 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/detail-extinguisher-client/search-by/{idDetail}": {
+      "get": {
+        "tags": [
+          "DetailExtinguisherClient"
+        ],
+        "parameters": [
+          {
+            "name": "idDetail",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/detail-extinguisher-client/create": {
       "post": {
         "tags": [
           "DetailExtinguisherClient"
@@ -1352,22 +866,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             }
           },
@@ -1385,40 +899,14 @@
         ]
       }
     },
-    "/DetailExtinguisherClient/{id}": {
-      "get": {
-        "tags": [
-          "DetailExtinguisherClient"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
+    "/api/detail-extinguisher-client/update-detail-by/{idDetail}": {
       "put": {
         "tags": [
           "DetailExtinguisherClient"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idDetail",
             "in": "path",
             "required": true,
             "schema": {
@@ -1431,22 +919,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/BaseDetailExtinguisherClient"
+                "$ref": "#/components/schemas/DetailExtinguisherClientRequest"
               }
             }
           },
@@ -1462,14 +950,16 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/detail-extinguisher-client/delete-detail-by/{idDetail}": {
       "delete": {
         "tags": [
           "DetailExtinguisherClient"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idDetail",
             "in": "path",
             "required": true,
             "schema": {
@@ -1490,21 +980,21 @@
         ]
       }
     },
-    "/DetailService": {
+    "/api/detail-service/search": {
       "get": {
         "tags": [
           "DetailService"
         ],
         "parameters": [
           {
-            "name": "Descripcion",
+            "name": "Description",
             "in": "query",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "TipoExtintor",
+            "name": "TypeExtinguisher",
             "in": "query",
             "schema": {
               "type": "string"
@@ -1521,7 +1011,37 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/detail-service/search-by/{idDetail}": {
+      "get": {
+        "tags": [
+          "DetailService"
+        ],
+        "parameters": [
+          {
+            "name": "idDetail",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/detail-service/create": {
       "post": {
         "tags": [
           "DetailService"
@@ -1530,22 +1050,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             }
           },
@@ -1563,40 +1083,14 @@
         ]
       }
     },
-    "/DetailService/{id}": {
-      "get": {
-        "tags": [
-          "DetailService"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
+    "/api/detail-service/update-by/{idDetail}": {
       "put": {
         "tags": [
           "DetailService"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idDetail",
             "in": "path",
             "required": true,
             "schema": {
@@ -1609,22 +1103,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DetalleServicioBase"
+                "$ref": "#/components/schemas/DetailServiceRequest"
               }
             }
           },
@@ -1640,14 +1134,16 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/detail-service/delete-by/{idDetail}": {
       "delete": {
         "tags": [
           "DetailService"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idDetail",
             "in": "path",
             "required": true,
             "schema": {
@@ -1668,7 +1164,7 @@
         ]
       }
     },
-    "/Employee/search-employees": {
+    "/api/employee/search": {
       "get": {
         "tags": [
           "Employee"
@@ -1719,17 +1215,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FilterEmployeeResponseDto"
+                  "$ref": "#/components/schemas/FilterEmployeeResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FilterEmployeeResponseDto"
+                  "$ref": "#/components/schemas/FilterEmployeeResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FilterEmployeeResponseDto"
+                  "$ref": "#/components/schemas/FilterEmployeeResponse"
                 }
               }
             }
@@ -1782,7 +1278,7 @@
         ]
       }
     },
-    "/Employee/search-employee-by/{employeeId}": {
+    "/api/employee/search-by/{employeeId}": {
       "get": {
         "tags": [
           "Employee"
@@ -1804,17 +1300,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               }
             }
@@ -1867,7 +1363,7 @@
         ]
       }
     },
-    "/Employee/add-employee": {
+    "/api/employee/create": {
       "post": {
         "tags": [
           "Employee"
@@ -1876,22 +1372,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/EmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/EmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/EmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             }
           },
@@ -1903,17 +1399,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               }
             }
@@ -1966,7 +1462,7 @@
         ]
       }
     },
-    "/Employee/update-employee-by/{employeeId}": {
+    "/api/employee/update-by/{employeeId}": {
       "put": {
         "tags": [
           "Employee"
@@ -1986,22 +1482,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchEmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchEmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchEmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PatchEmployeeRequestDto"
+                "$ref": "#/components/schemas/EmployeeRequest"
               }
             }
           },
@@ -2013,17 +1509,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeResponseDto"
+                  "$ref": "#/components/schemas/EmployeeResponse"
                 }
               }
             }
@@ -2076,7 +1572,7 @@
         ]
       }
     },
-    "/Employee/delete-employee-by/{employeeId}": {
+    "/api/employee/delete-by/{employeeId}": {
       "delete": {
         "tags": [
           "Employee"
@@ -2161,21 +1657,21 @@
         ]
       }
     },
-    "/Expense": {
+    "/api/expense/search": {
       "get": {
         "tags": [
           "Expense"
         ],
         "parameters": [
           {
-            "name": "Descripcion",
+            "name": "Description",
             "in": "query",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "Fecha",
+            "name": "Date",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2193,7 +1689,37 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/expense/search-by/{idExpense}": {
+      "get": {
+        "tags": [
+          "Expense"
+        ],
+        "parameters": [
+          {
+            "name": "idExpense",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/expense/create": {
       "post": {
         "tags": [
           "Expense"
@@ -2202,22 +1728,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             }
           },
@@ -2235,40 +1761,14 @@
         ]
       }
     },
-    "/Expense/{id}": {
-      "get": {
-        "tags": [
-          "Expense"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
+    "/api/expense/update-by/{idExpense}": {
       "put": {
         "tags": [
           "Expense"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idExpense",
             "in": "path",
             "required": true,
             "schema": {
@@ -2281,22 +1781,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GastosBase"
+                "$ref": "#/components/schemas/ExpenseRequest"
               }
             }
           },
@@ -2312,14 +1812,16 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/expense/delete-by/{idExpense}": {
       "delete": {
         "tags": [
           "Expense"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "idExpense",
             "in": "path",
             "required": true,
             "schema": {
@@ -2340,356 +1842,29 @@
         ]
       }
     },
-    "/Price": {
+    "/api/inventory/search": {
       "get": {
         "tags": [
-          "Price"
+          "Inventory"
         ],
         "parameters": [
           {
-            "name": "Descripcion",
+            "name": "Date",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Description",
             "in": "query",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Price"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            }
           },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
           {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/Price/{id}": {
-      "get": {
-        "tags": [
-          "Price"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Price"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PrecioBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Price"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/Product": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "TipoProducto",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Product"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/Product/{id}": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProductoBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      }
-    },
-    "/Service": {
-      "get": {
-        "tags": [
-          "Service"
-        ],
-        "parameters": [
-          {
-            "name": "FechaServicio",
+            "name": "ExpirationDate",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2707,31 +1882,61 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api/inventory/search-by/{inventoryId}": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "parameters": [
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/inventory": {
       "post": {
         "tags": [
-          "Service"
+          "Inventory"
         ],
         "requestBody": {
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/InventarioRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/InventarioRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/InventarioRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/InventarioRequest"
               }
             }
           },
@@ -2749,19 +1954,453 @@
         ]
       }
     },
-    "/Service/{id}": {
+    "/api/inventory/update-by/{inventoryId}": {
+      "put": {
+        "tags": [
+          "Inventory"
+        ],
+        "parameters": [
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventarioRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventarioRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventarioRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventarioRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/inventory/delete-by/{inventoryId}": {
+      "delete": {
+        "tags": [
+          "Inventory"
+        ],
+        "parameters": [
+          {
+            "name": "inventoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/price/search": {
+      "get": {
+        "tags": [
+          "Price"
+        ],
+        "parameters": [
+          {
+            "name": "Description",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/price/search-by/{priceId}": {
+      "get": {
+        "tags": [
+          "Price"
+        ],
+        "parameters": [
+          {
+            "name": "priceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/price": {
+      "post": {
+        "tags": [
+          "Price"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/price/update-by/{priceId}": {
+      "put": {
+        "tags": [
+          "Price"
+        ],
+        "parameters": [
+          {
+            "name": "priceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/price/delete-by/{priceId}": {
+      "delete": {
+        "tags": [
+          "Price"
+        ],
+        "parameters": [
+          {
+            "name": "priceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/product/search": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "TypeProduct",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/product/search-by/{productId}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/product/create": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/product/update-by/{productId}": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/product/delete-by/{productId}": {
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/service/search": {
       "get": {
         "tags": [
           "Service"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
+            "name": "ServiceDate",
+            "in": "query",
             "schema": {
               "type": "string",
-              "format": "uuid"
+              "format": "date-time"
             }
           }
         ],
@@ -2775,65 +2414,16 @@
             "Bearer": [ ]
           }
         ]
-      },
-      "put": {
+      }
+    },
+    "/api/service/search-by/{serviceId}": {
+      "get": {
         "tags": [
           "Service"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Service"
-        ],
-        "parameters": [
-          {
-            "name": "id",
+            "name": "serviceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2854,7 +2444,7 @@
         ]
       }
     },
-    "/Service/Crear-Servicio-Detalle": {
+    "/api/service/create-detail": {
       "post": {
         "tags": [
           "Service"
@@ -2863,22 +2453,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/ServiceRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/ServiceRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/ServiceRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ServicioBase"
+                "$ref": "#/components/schemas/ServiceRequest"
               }
             }
           },
@@ -2896,14 +2486,56 @@
         ]
       }
     },
-    "/Service/modificar-estado": {
+    "/api/service/create": {
+      "post": {
+        "tags": [
+          "Service"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/service/update-status": {
       "put": {
         "tags": [
           "Service"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "serviceId",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2948,7 +2580,88 @@
         ]
       }
     },
-    "/TypeExtinguisher": {
+    "/api/service/update-by/{serviceId}": {
+      "put": {
+        "tags": [
+          "Service"
+        ],
+        "parameters": [
+          {
+            "name": "serviceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/service/delete-by/{serviceId}": {
+      "delete": {
+        "tags": [
+          "Service"
+        ],
+        "parameters": [
+          {
+            "name": "serviceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api-type-extinguisher/searchs": {
       "get": {
         "tags": [
           "TypeExtinguisher"
@@ -2963,7 +2676,37 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api-type-extinguisher/search-by/{typeExtinguisherId}": {
+      "get": {
+        "tags": [
+          "TypeExtinguisher"
+        ],
+        "parameters": [
+          {
+            "name": "typeExtinguisherId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api-type-extinguisher/create": {
       "post": {
         "tags": [
           "TypeExtinguisher"
@@ -2972,22 +2715,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             }
           },
@@ -3005,40 +2748,14 @@
         ]
       }
     },
-    "/TypeExtinguisher/{id}": {
-      "get": {
-        "tags": [
-          "TypeExtinguisher"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "Bearer": [ ]
-          }
-        ]
-      },
+    "/api-type-extinguisher/update-by/{typeExtinguisherId}": {
       "put": {
         "tags": [
           "TypeExtinguisher"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "typeExtinguisherId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3051,22 +2768,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoExtintorBase"
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
               }
             }
           },
@@ -3082,14 +2799,16 @@
             "Bearer": [ ]
           }
         ]
-      },
+      }
+    },
+    "/api-type-extinguisher/delete-by/{typeExtinguisherId}": {
       "delete": {
         "tags": [
           "TypeExtinguisher"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "typeExtinguisherId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3110,7 +2829,7 @@
         ]
       }
     },
-    "/WeightExtinguisher/searchs": {
+    "/api-weight-extinguisher/searchs": {
       "get": {
         "tags": [
           "WeightExtinguisher"
@@ -3127,7 +2846,7 @@
         ]
       }
     },
-    "/WeightExtinguisher/search-by/{idWeightExtinguisher}": {
+    "/api-weight-extinguisher/search-by/{idWeightExtinguisher}": {
       "get": {
         "tags": [
           "WeightExtinguisher"
@@ -3155,7 +2874,7 @@
         ]
       }
     },
-    "/WeightExtinguisher/create-weight-extinguisher": {
+    "/api-weight-extinguisher/create-weight-extinguisher": {
       "post": {
         "tags": [
           "WeightExtinguisher"
@@ -3164,22 +2883,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             }
           },
@@ -3197,14 +2916,14 @@
         ]
       }
     },
-    "/WeightExtinguisher/update-weight-extinguisher-by/{idWeightExtinguisher}": {
+    "/api-weight-extinguisher/update-weight-extinguisher-by/{weightExtinguisherId}": {
       "put": {
         "tags": [
           "WeightExtinguisher"
         ],
         "parameters": [
           {
-            "name": "idWeightExtinguisher",
+            "name": "weightExtinguisherId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3217,22 +2936,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/WeightExtinguisherBase"
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
               }
             }
           },
@@ -3250,14 +2969,14 @@
         ]
       }
     },
-    "/WeightExtinguisher/delete-weight-extinguisher-by/{idWeightExtinguisher}": {
+    "/api-weight-extinguisher/delete-weight-extinguisher-by/{weightExtinguisherId}": {
       "delete": {
         "tags": [
           "WeightExtinguisher"
         ],
         "parameters": [
           {
-            "name": "idWeightExtinguisher",
+            "name": "weightExtinguisherId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3281,10 +3000,14 @@
   },
   "components": {
     "schemas": {
-      "BaseClient": {
+      "Client": {
         "type": "object",
         "properties": {
-          "documentClient": {
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "documentNumber": {
             "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
             "type": [
               "null",
@@ -3299,7 +3022,85 @@
               "string"
             ]
           },
-          "lasName": {
+          "lastName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "address": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "nit": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "detalleExtClientes": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/DetailExtinguisherClient"
+            }
+          },
+          "services": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Service"
+            }
+          }
+        }
+      },
+      "ClientRequest": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "documentNumber": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastName": {
             "type": [
               "null",
               "string"
@@ -3337,10 +3138,232 @@
           }
         }
       },
-      "BaseDetailExtinguisherClient": {
+      "CompanyRequest": {
         "type": "object",
         "properties": {
-          "idClients": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "address": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "nit": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "active": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "CompanyResponse": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "address": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "nit": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "active": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "employees": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/EmployeeResponse"
+            }
+          }
+        }
+      },
+      "CreditService": {
+        "type": "object",
+        "properties": {
+          "creditServiceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "serviceId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "advances": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "debt": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "date": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "service": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Service"
+              }
+            ]
+          }
+        }
+      },
+      "CreditServiceRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "idService": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "advances": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "preview": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "debt": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "date": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "service": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Service"
+              }
+            ]
+          }
+        }
+      },
+      "DetailExtinguisherClient": {
+        "type": "object",
+        "properties": {
+          "detailExtinguisherClientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "clientId": {
             "type": [
               "null",
               "string"
@@ -3384,160 +3407,102 @@
           }
         }
       },
-      "CompanyRequestDto": {
+      "DetailExtinguisherClientRequest": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "address": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "description": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "phone": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "email": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "nit": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        }
-      },
-      "CompanyResponseDto": {
-        "type": "object",
-        "properties": {
-          "id": {
+          "detailExtinguisherClientId": {
             "type": "string",
             "format": "uuid"
           },
-          "name": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "address": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "description": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "phone": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "email": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "nit": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        }
-      },
-      "CreditoServicioBase": {
-        "type": "object",
-        "properties": {
-          "idServicio": {
+          "idClients": {
             "type": [
               "null",
               "string"
             ],
             "format": "uuid"
           },
-          "abono": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+          "typeExtinguisher": {
             "type": [
               "null",
-              "number",
               "string"
-            ],
-            "format": "double"
+            ]
           },
-          "deuda": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+          "weightExtinguisher": {
             "type": [
               "null",
-              "number",
+              "string"
+            ]
+          },
+          "quantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
               "string"
             ],
-            "format": "double"
+            "format": "int32"
           },
-          "fecha": {
+          "expirationDate": {
             "type": [
               "null",
               "string"
             ],
             "format": "date-time"
+          },
+          "maintenanceDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "client": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Client"
+              }
+            ]
           }
         }
       },
-      "DetalleServicioBase": {
+      "DetailService": {
         "type": "object",
         "properties": {
-          "idServicios": {
+          "detailServiceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "serviceId": {
             "type": [
               "null",
               "string"
             ],
             "format": "uuid"
           },
-          "descripcion": {
+          "description": {
             "type": [
               "null",
               "string"
             ]
           },
-          "idTipoExtintor": {
+          "typeExtinguisherId": {
             "type": [
               "null",
               "string"
             ],
             "format": "uuid"
           },
-          "idPesoExtintor": {
+          "weightExtinguisherId": {
             "type": [
               "null",
               "string"
             ],
             "format": "uuid"
           },
-          "valor": {
+          "price": {
             "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
             "type": [
               "null",
@@ -3546,7 +3511,103 @@
             ],
             "format": "double"
           },
-          "cantidad": {
+          "quantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "service": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Service"
+              }
+            ]
+          },
+          "weightExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/WeightExtinguisher"
+              }
+            ]
+          },
+          "prices": { },
+          "typeExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TypeExtinguisher"
+              }
+            ]
+          },
+          "inventories": { },
+          "detailServiceDetailClients": { }
+        }
+      },
+      "DetailServiceRequest": {
+        "type": "object",
+        "properties": {
+          "detailServiceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "serviceId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "typeExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "weightExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "value": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "quantity": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
@@ -3577,7 +3638,82 @@
           }
         }
       },
-      "EmployeeBaseResponseDto": {
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "companyId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "secondName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "secondLastName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "address": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "EmployeeRequest": {
         "type": "object",
         "properties": {
           "companyId": {
@@ -3628,12 +3764,22 @@
               "null",
               "string"
             ]
+          },
+          "active": {
+            "type": [
+              "null",
+              "boolean"
+            ]
           }
         }
       },
-      "EmployeeRequestDto": {
+      "EmployeeResponse": {
         "type": "object",
         "properties": {
+          "employeeId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "companyId": {
             "type": [
               "null",
@@ -3682,60 +3828,9 @@
               "null",
               "string"
             ]
-          }
-        }
-      },
-      "EmployeeResponseDto": {
-        "type": "object",
-        "properties": {
-          "idCompany": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
           },
-          "firstName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "secondName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "lastName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "secondLastName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "address": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "phone": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "email": {
-            "type": [
-              "null",
-              "string"
-            ]
+          "active": {
+            "type": "boolean"
           },
           "company": {
             "oneOf": [
@@ -3743,9 +3838,52 @@
                 "type": "null"
               },
               {
-                "$ref": "#/components/schemas/CompanyResponseDto"
+                "$ref": "#/components/schemas/CompanyResponse"
               }
             ]
+          }
+        }
+      },
+      "ExpenseRequest": {
+        "type": "object",
+        "properties": {
+          "expenseId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "date": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "quantity": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
           }
         }
       },
@@ -3789,22 +3927,7 @@
           }
         }
       },
-      "FilterCompanyResponseDto": {
-        "type": "object",
-        "properties": {
-          "companies": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/PagedResponseOfIEnumerableOfCompanyResponseDto"
-              }
-            ]
-          }
-        }
-      },
-      "FilterEmployeeResponseDto": {
+      "FilterEmployeeResponse": {
         "type": "object",
         "properties": {
           "employees": {
@@ -3813,26 +3936,54 @@
                 "type": "null"
               },
               {
-                "$ref": "#/components/schemas/PagedResponseOfIEnumerableOfEmployeeBaseResponseDto"
+                "$ref": "#/components/schemas/PagedResponseOfIEnumerableOfEmployeeResponse"
               }
             ]
           }
         }
       },
-      "GastosBase": {
+      "InventarioRequest": {
         "type": "object",
         "properties": {
-          "descripcion": {
-            "type": "string"
+          "inventaryId": {
+            "type": "string",
+            "format": "uuid"
           },
-          "fecha": {
+          "productId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "date": {
             "type": [
               "null",
               "string"
             ],
             "format": "date-time"
           },
-          "cantidad": {
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "typeExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "weightExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "quantity": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
@@ -3841,51 +3992,94 @@
             ],
             "format": "int32"
           },
-          "total": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
-            "format": "double"
-          }
-        }
-      },
-      "InventarioBase": {
-        "type": "object",
-        "properties": {
-          "idProductos": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
-          },
-          "fecha": {
+          "expirationDate": {
             "type": [
               "null",
               "string"
             ],
             "format": "date-time"
           },
-          "descripcion": {
-            "type": "string"
-          },
-          "idTipoExtintor": {
+          "serviceDetailId": {
             "type": [
               "null",
               "string"
             ],
             "format": "uuid"
           },
-          "idPesoExtintor": {
+          "product": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            ]
+          },
+          "weightExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
+              }
+            ]
+          },
+          "typeExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
+              }
+            ]
+          }
+        }
+      },
+      "Inventory": {
+        "type": "object",
+        "properties": {
+          "inventoryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "productId": {
             "type": [
               "null",
               "string"
             ],
             "format": "uuid"
           },
-          "cantidad": {
+          "date": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "typeExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "weightExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "quantity": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
@@ -3894,16 +4088,33 @@
             ],
             "format": "int32"
           },
-          "fechaVencimiento": {
+          "expirationDate": {
             "type": [
               "null",
               "string"
             ],
             "format": "date-time"
+          },
+          "detailServiceId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "product": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Product"
+              }
+            ]
           }
         }
       },
-      "LoginRequestDto": {
+      "LoginRequest": {
         "required": [
           "email",
           "password"
@@ -3918,7 +4129,7 @@
           }
         }
       },
-      "PagedResponseOfIEnumerableOfCompanyResponseDto": {
+      "PagedResponseOfIEnumerableOfEmployeeResponse": {
         "required": [
           "pageNumber",
           "pageSize"
@@ -3963,7 +4174,7 @@
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/CompanyResponseDto"
+              "$ref": "#/components/schemas/EmployeeResponse"
             }
           },
           "isSuccess": {
@@ -3977,66 +4188,404 @@
           }
         }
       },
-      "PagedResponseOfIEnumerableOfEmployeeBaseResponseDto": {
+      "PriceRequest": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "deatailServiceId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "value": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "tax": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "product": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ProductRequest"
+              }
+            ]
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "typeExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "weightExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "typeProduct": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "weightExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/WeightExtinguisher"
+              }
+            ]
+          },
+          "typeExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TypeExtinguisher"
+              }
+            ]
+          },
+          "inventories": { },
+          "prices": { }
+        }
+      },
+      "ProductRequest": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "typeExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "weightExtinguisherId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "productType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "wightExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/WightExtinguisherRequest"
+              }
+            ]
+          },
+          "typeExtinguisher": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TypeExtinguisherRequest"
+              }
+            ]
+          }
+        }
+      },
+      "RegisterUserRequest": {
         "required": [
-          "pageNumber",
-          "pageSize"
+          "fullName",
+          "userName",
+          "email",
+          "password"
         ],
         "type": "object",
         "properties": {
-          "pageNumber": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "fullName": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Service": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "clientId": {
             "type": [
-              "integer",
+              "null",
               "string"
             ],
-            "format": "int32"
+            "format": "uuid"
           },
-          "pageSize": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "employeeId": {
             "type": [
-              "integer",
+              "null",
               "string"
             ],
-            "format": "int32"
+            "format": "uuid"
           },
-          "totalPages": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "serviceDate": {
             "type": [
-              "integer",
+              "null",
               "string"
             ],
-            "format": "int32"
+            "format": "date-time"
           },
-          "totalRecords": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "price": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
             "type": [
-              "integer",
+              "null",
+              "number",
               "string"
             ],
-            "format": "int32"
+            "format": "double"
           },
-          "resource": {
+          "stateService": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "expirationDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "maintenenceDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "advance": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "client": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Client"
+              }
+            ]
+          },
+          "employee": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Employee"
+              }
+            ]
+          },
+          "creditServices": {
             "type": [
               "null",
               "array"
             ],
             "items": {
-              "$ref": "#/components/schemas/EmployeeBaseResponseDto"
+              "$ref": "#/components/schemas/CreditService"
             }
           },
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "errors": {
-            "type": "array",
+          "detailServices": {
+            "type": [
+              "null",
+              "array"
+            ],
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/DetailService"
             }
           }
         }
       },
-      "PatchCompanyRequestDto": {
+      "ServiceRequest": {
+        "type": "object",
+        "properties": {
+          "idService": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "idClient": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "idEmployee": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "serviceDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "price": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "status": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "expirationDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "maintenanceDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "preview": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "client": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/Client"
+              }
+            ]
+          },
+          "employee": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/EmployeeResponse"
+              }
+            ]
+          },
+          "serviceDetails": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/DetailServiceRequest"
+            }
+          }
+        }
+      },
+      "TypeExtinguisher": { },
+      "TypeExtinguisherRequest": {
+        "type": "object",
+        "properties": {
+          "typeExtinguisherId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "typeExtinguisher": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "UpdateCompanyRequest": {
         "type": "object",
         "properties": {
           "name": {
@@ -4083,232 +4632,51 @@
           }
         }
       },
-      "PatchEmployeeRequestDto": {
+      "WeightExtinguisher": {
         "type": "object",
         "properties": {
-          "companyId": {
-            "type": [
-              "null",
-              "string"
-            ],
+          "weightExtinguisherId": {
+            "type": "string",
             "format": "uuid"
           },
-          "firstName": {
+          "weightPound": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "string"
-            ]
-          },
-          "secondName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "lastName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "secondLastName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "address": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "phone": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "email": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "active": {
-            "type": [
-              "null",
-              "boolean"
-            ]
-          }
-        }
-      },
-      "PrecioBase": {
-        "type": "object",
-        "properties": {
-          "idProductos": {
-            "type": [
-              "null",
+              "integer",
               "string"
             ],
-            "format": "uuid"
+            "format": "int32"
           },
-          "descripcion": {
+          "detailServices": {
             "type": [
               "null",
-              "string"
-            ]
-          },
-          "valor": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
+              "array"
             ],
-            "format": "double"
-          },
-          "iva": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          }
-        }
-      },
-      "ProductoBase": {
-        "type": "object",
-        "properties": {
-          "idTipoExtintor": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
-          },
-          "idPesoExtintor": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
-          },
-          "tipoProducto": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        }
-      },
-      "RegisterUserDto": {
-        "required": [
-          "fullName",
-          "userName",
-          "email",
-          "password"
-        ],
-        "type": "object",
-        "properties": {
-          "fullName": {
-            "type": "string"
-          },
-          "userName": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
-        }
-      },
-      "ServicioBase": {
-        "type": "object",
-        "properties": {
-          "idClientes": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
-          },
-          "idEmpleados": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
-          },
-          "fechaServicio": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "valor": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "estado": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "fechaVencimiento": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "fechaMantenimiento": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "abono": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
-          },
-          "detalleServicios": {
-            "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DetalleServicioBase"
+              "$ref": "#/components/schemas/DetailService"
             }
-          }
+          },
+          "inventories": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/Inventory"
+            }
+          },
+          "products": { }
         }
       },
-      "TipoExtintorBase": {
+      "WightExtinguisherRequest": {
         "type": "object",
         "properties": {
-          "tipo_Extintor": {
-            "type": "string"
-          }
-        }
-      },
-      "WeightExtinguisherBase": {
-        "type": "object",
-        "properties": {
-          "pesoXlibras": {
+          "weightExtinguisherId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "weightInPounds": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
@@ -4334,9 +4702,6 @@
       "name": "HandlingExtinguishers"
     },
     {
-      "name": "Inventory"
-    },
-    {
       "name": "Account"
     },
     {
@@ -4359,6 +4724,9 @@
     },
     {
       "name": "Expense"
+    },
+    {
+      "name": "Inventory"
     },
     {
       "name": "Price"

@@ -1,4 +1,6 @@
-﻿namespace HandlingExtinguishers.Models.Company;
+﻿using HandlingExtinguishers.Models.Employees;
+
+namespace HandlingExtinguishers.Models.Company;
 
 public class CompanyResponse
 {
@@ -17,4 +19,6 @@ public class CompanyResponse
     public string? Nit { get; set; }
 
     public bool? Active { get; set; }
+
+    public List<EmployeeResponse>? Employees { get; set; }
 }

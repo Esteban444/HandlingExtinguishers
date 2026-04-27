@@ -61,6 +61,7 @@ public static class DependencyInjections
         services.AddScoped<IValidator<LoginRequest>, ValidatorAuthenticationUser>();
 
         // Query & Command services
+        services.AddScoped<IAuthentificationCommandService, AuthentificationCommandService>();
         services.AddScoped<ICompanyQueryService, CompanyQueryService>();
         services.AddScoped<ICompanyCommandService, CompanyCommandService>();
 
@@ -78,7 +79,6 @@ public static class DependencyInjections
         services.AddScoped<IWeightExtinguisherService, WeightExtinguisherService>();
         services.AddScoped<ITypeExtinguisherService, TypeExtinguisherService>();
         services.AddScoped<IServiceOfService, ServiceOfService>();
-        services.AddScoped<IAuthentificationCommandService, AuthentificationService>();
 
         return services;
     }

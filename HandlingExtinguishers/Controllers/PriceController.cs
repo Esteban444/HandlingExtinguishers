@@ -34,7 +34,7 @@ public class PriceController(IPriceService priceService, IValidator<PriceRequest
         return Ok( response );
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> CreatePrice( PriceRequest request )
     {
         var Validation = validator.Validate( request );

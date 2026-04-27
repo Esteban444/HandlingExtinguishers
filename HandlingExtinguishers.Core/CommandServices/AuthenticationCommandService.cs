@@ -15,7 +15,7 @@ using System.Security.Authentication;
 using System.Security.Claims;
 #endregion
 
-public class AuthentificationService( UserManager<Users> userManager, IMapper mapper, JwtHandler jwtHandler ) : IAuthentificationCommandService
+public class AuthentificationCommandService( UserManager<Users> userManager, IMapper mapper, JwtHandler jwtHandler ) : IAuthentificationCommandService
 {
     private readonly UserManager<Users> userManager = userManager;
     private readonly IMapper mapper = mapper;

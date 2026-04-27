@@ -1,5 +1,7 @@
 ﻿namespace HandlingExtinguishers.Infraestructure.Data;
 
+using HandlingExtinguishers.Core.Helpers;
+
 #region Usings
 using HandlingExtinguishers.Models.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -30,36 +32,36 @@ public partial class HandlingExtinguisherContext( DbContextOptions<HandlingExtin
         modelBuilder.Entity<Company>().Property( entyty => entyty.CompanyId ).HasConversion<string>();
         modelBuilder.Entity<Company>( entity =>
         {
-            entity.ToTable("Company");
+            entity.ToTable( CommonConstants.TableNameCompany );
 
             entity.HasKey(e => e.CompanyId);
 
-            entity.Property( entyty => entyty.CompanyId ).HasColumnName( "id" );
+            entity.Property( entyty => entyty.CompanyId ).HasColumnName( CommonConstants.IdColumnName );
 
             entity.Property( entyty => entyty.Address )
                 .HasMaxLength( 100 )
                 .IsUnicode( false )
-                .HasColumnName( "address" );
+                .HasColumnName( CommonConstants.AddressColumnName );
 
             entity.Property( entyty => entyty.Email )
                 .HasMaxLength( 150 )
                 .IsUnicode( false )
-                .HasColumnName( "email" );
+                .HasColumnName( CommonConstants.EmailColumnName );
 
             entity.Property( entyty => entyty.Nit )
                 .HasMaxLength( 50 )
                 .IsUnicode( false )
-                .HasColumnName( "nit" );
+                .HasColumnName( CommonConstants.NitColumnName );
 
             entity.Property( entyty => entyty.Name )
                 .HasMaxLength( 250 )
                 .IsUnicode( false )
-                .HasColumnName( "name" );
+                .HasColumnName( CommonConstants.NameColumnName );
 
             entity.Property( entyty => entyty.Phone )
                 .HasMaxLength( 50 )
                 .IsUnicode( false )
-                .HasColumnName( "phone" );
+                .HasColumnName( CommonConstants.PhoneColumnName );
 
         });
 
@@ -73,8 +75,58 @@ public partial class HandlingExtinguisherContext( DbContextOptions<HandlingExtin
 
         modelBuilder.Entity<Employee>().Property( entyty => entyty.EmployeeId ).HasConversion<string>();
         modelBuilder.Entity<Employee>().Property( entyty => entyty.CompanyId ).HasConversion<string>();
-        modelBuilder.Entity<Expense>().Property( entyty => entyty.ExpenseId ).HasConversion<string>(); 
-        
+        modelBuilder.Entity<Expense>().Property( entyty => entyty.ExpenseId ).HasConversion<string>();
+        modelBuilder.Entity<Employee>(entity =>
+        {
+            entity.ToTable( CommonConstants.TableNameEmployee );
+
+            entity.HasKey( e => e.EmployeeId );
+
+            entity.Property( entyty => entyty.EmployeeId ).HasColumnName( CommonConstants.IdColumnName );
+
+            entity.Property( entyty => entyty.CompanyId ).HasColumnName( CommonConstants.CompanyIdColumnName );
+
+            entity.Property( entyty => entyty.FirstName )
+                .HasMaxLength( 50 )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.FirstNameColumnName );
+
+            entity.Property( entyty => entyty.SecondName )
+                .HasMaxLength( 100 )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.SecondNameColumnName );
+
+            entity.Property( entyty => entyty.LastName )
+                .HasMaxLength( 50 )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.LastNameColumnName );
+
+            entity.Property( entyty => entyty.SecondLastName )
+                .HasMaxLength( 50 )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.SecondLastNameColumnName );
+
+            entity.Property( entyty => entyty.Address )
+                .HasMaxLength( 150 )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.AddressColumnName );
+
+            entity.Property(entyty => entyty.Phone)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName( CommonConstants.PhoneColumnName );
+
+            entity.Property( entyty => entyty.Email )
+                .HasMaxLength( 50 )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.EmailColumnName );
+
+            entity.Property( entyty => entyty.Active )
+                .IsUnicode( false )
+                .HasColumnName( CommonConstants.ActiveColumnName );
+
+        });
+
         modelBuilder.Entity<Inventory>().Property( entyty => entyty.InventoryId ).HasConversion<string>();
         modelBuilder.Entity<Inventory>().Property( entyty => entyty.ProductId ).HasConversion<string>();
         modelBuilder.Entity<Inventory>().Property( entyty => entyty.TypeExtinguisherId ).HasConversion<string>();

@@ -14,7 +14,7 @@ public static class CommonConstants
 
     public const int MaximumFailedAccessAttempts = 3;
 
-    public const string JwtConfigurationSectionName = "JWTConfiguracion";
+    public const string JwtConfigurationSectionName = "JWTConfiguration";
 
     public const string JwtValidIssuerKeyName = "validIssuer";
 
@@ -65,4 +65,32 @@ public static class CommonConstants
     public const string PropertyCreatedAt = "CreatedAt";
 
     public const string PropertyId = "Id";
+
+    public const string IdColumnName = "id";
+
+    public const string NameColumnName = "name";
+
+    public const string TableNameCompany = "Company";
+
+    public const string TableNameEmployee = "Employee";
+
+    public const string EmailColumnName = "email";
+
+    public const string AddressColumnName = "address";
+
+    public const string PhoneColumnName = "phone";
+
+    public const string NitColumnName = "nit";
+
+    public const string CompanyIdColumnName = "companyId";
+
+    public const string FirstNameColumnName = "firstName";
+
+    public const string SecondNameColumnName = "secondName";
+
+    public const string LastNameColumnName = "lastName";
+
+    public const string SecondLastNameColumnName = "secondLastName";
+
+    public const string ActiveColumnName = "active";
 }

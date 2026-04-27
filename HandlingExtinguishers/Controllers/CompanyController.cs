@@ -10,7 +10,6 @@ using HandlingExtinguishers.Models.Company;
 using HandlingExtinguishers.Models.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 #endregion
 
 [ApiController]

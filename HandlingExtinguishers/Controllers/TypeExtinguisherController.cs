@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 #endregion
 
-[Route("api-type-extinguisher")]
+[Route("api/type-extinguisher")]
 [ApiController]
 [Authorize]
 public class TypeExtinguisherController( ITypeExtinguisherService typeExtinguisherService, 

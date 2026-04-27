@@ -41,7 +41,7 @@ public class InventoryController : ControllerBase
         return Ok( response );
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateInventory( InventarioRequest request )
     {
         var Validacion = validator.Validate( request );

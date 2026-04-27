@@ -19,7 +19,7 @@ public class CompanyQueryService( ICompanyRepository repository,
 {
     private async Task<FilterCompanyResponse> ExecuteSearch( ICompanySearchStrategy strategy, QueryParameter filter )
     {
-        var baseQuery = repository.FindByAsNoTracking( company => true );
+        var baseQuery = repository.FindByAsNoTracking( company => true ).Include( company => company.Employees );
 
         var filtered = strategy.Apply( baseQuery, filter );
 

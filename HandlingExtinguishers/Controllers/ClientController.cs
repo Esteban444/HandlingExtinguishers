@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 #endregion
 
-[Route("[controller]")]
+[Route("api/client")]
 [ApiController]
 [Authorize]
 public class ClientController( IClientService client, IValidator<ClientRequest> validator ) : ControllerBase
@@ -35,7 +35,7 @@ public class ClientController( IClientService client, IValidator<ClientRequest> 
         return Ok( response );
     }
 
-    [HttpPost("crate-client")]
+    [HttpPost("crate")]
     public async Task<IActionResult> Create( ClientRequest client )
     {
         var Validation = validator.Validate( client );

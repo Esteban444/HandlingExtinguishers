@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_7",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_8",
     "RelativePath": "",
     "HttpMethod": "GET",
     "IsController": false,
@@ -355,7 +355,7 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
     "Method": "CreateDetailExtinguisher",
-    "RelativePath": "api/detail-extinguisher-client",
+    "RelativePath": "api/detail-extinguisher-client/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

@@ -1,0 +1,24 @@
+﻿namespace HandlingExtinguishers.Models.Models;
+
+public class Product
+{
+    public Guid ProductId { get; set; }
+
+    public Guid? TypeExtinguisherId { get; set; }
+
+    public Guid? WeightExtinguisherId { get; set; }
+
+    public string? TypeProduct { get; set; }
+
+    [JsonIgnore]
+    public WeightExtinguisher? WeightExtinguisher { get; set; }
+
+    [JsonIgnore]
+    public TypeExtinguisher? TypeExtinguisher { get; set; }
+
+    [JsonIgnore]
+    public ICollection<Inventory>? Inventories { get; set; }
+
+    [JsonIgnore]
+    public ICollection<Price>? Prices { get; set; }
+}

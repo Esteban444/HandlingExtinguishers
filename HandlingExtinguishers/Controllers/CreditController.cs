@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 #endregion
 
 
-[Route("[controller]")]
+[Route("api/credit")]
 [ApiController]
 [Authorize]
 public class CreditController( ICreditService servicioCredit, IValidator<CreditServiceRequest> validator ) : ControllerBase
@@ -35,7 +35,7 @@ public class CreditController( ICreditService servicioCredit, IValidator<CreditS
         return Ok( response );
     }
 
-    [HttpPost("create-credit")]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateCredit( CreditServiceRequest request )
     {
         var Validacion = validator.Validate( request );

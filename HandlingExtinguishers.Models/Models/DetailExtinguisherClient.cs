@@ -1,4 +1,6 @@
-﻿namespace HandlingExtinguishers.Models.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace HandlingExtinguishers.Models.Models;
 
 public class DetailExtinguisherClient
 {
@@ -16,7 +18,9 @@ public class DetailExtinguisherClient
 
     public DateTime? MaintenanceDate { get; set; }
 
+    [JsonIgnore]
     public Client? Client { get; set; }
 
+    [JsonIgnore]
     public ICollection<DetailServiceDetailClient>? DetailServiceDetailClients { get; set; }
 }

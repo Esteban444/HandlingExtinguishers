@@ -40,6 +40,7 @@ public class Automapper : Profile
 
         CreateMap<Company, CompanyResponse>().ReverseMap();
         CreateMap<Company, CompanyRequest>().ReverseMap();
+        CreateMap<Company, UpdateCompanyRequest>().ReverseMap();
 
         CreateMap<Employee, EmployeeResponse>()
             .ForMember(x => x.Company, y => y.MapFrom(z => z.Company));

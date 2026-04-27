@@ -1,4 +1,6 @@
-﻿namespace HandlingExtinguishers.Models.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace HandlingExtinguishers.Models.Models;
 
 public class Employee: BaseModel
 {
@@ -22,7 +24,9 @@ public class Employee: BaseModel
 
     public bool Active { get; set; }
 
+    [JsonIgnore]
     public Company? Company { get; set; }
 
+    [JsonIgnore]
     public ICollection<Service>? Services { get; set; }
 }

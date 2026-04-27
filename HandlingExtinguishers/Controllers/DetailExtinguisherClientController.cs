@@ -35,7 +35,7 @@ public class DetailExtinguisherClientController( IServiceDetailExtinguisherClien
         return Ok( response );
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> CreateDetailExtinguisher( [FromBody] DetailExtinguisherClientRequest request )
     {
         var Validacion = validator.Validate( request );
