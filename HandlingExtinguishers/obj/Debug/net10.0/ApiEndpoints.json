@@ -16,8 +16,166 @@
     ]
   },
   {
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
+    "Method": "CreateTypeExtinguisher",
+    "RelativePath": "api-type-extinguisher/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Extinguishers.TypeExtinguisherRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
+    "Method": "DeleteTypeExtinguisher",
+    "RelativePath": "api-type-extinguisher/delete-by/{typeExtinguisherId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "typeExtinguisherId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
+    "Method": "SearchTypeExtinguisherById",
+    "RelativePath": "api-type-extinguisher/search-by/{typeExtinguisherId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "typeExtinguisherId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
+    "Method": "Searchs",
+    "RelativePath": "api-type-extinguisher/searchs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
+    "Method": "UpdateTypeExtinguisher",
+    "RelativePath": "api-type-extinguisher/update-by/{typeExtinguisherId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "typeExtinguisherId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Extinguishers.TypeExtinguisherRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
+    "Method": "CreateWeightExtinguisher",
+    "RelativePath": "api-weight-extinguisher/create-weight-extinguisher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Extinguishers.WightExtinguisherRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
+    "Method": "DeletedWeightEstinguisher",
+    "RelativePath": "api-weight-extinguisher/delete-weight-extinguisher-by/{weightExtinguisherId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weightExtinguisherId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
+    "Method": "SearchWeightExtinguisherById",
+    "RelativePath": "api-weight-extinguisher/search-by/{idWeightExtinguisher}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idWeightExtinguisher",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
+    "Method": "SearchWeightExtinguishers",
+    "RelativePath": "api-weight-extinguisher/searchs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
+    "Method": "UpdateWeightExtinguisher",
+    "RelativePath": "api-weight-extinguisher/update-weight-extinguisher-by/{weightExtinguisherId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weightExtinguisherId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Extinguishers.WightExtinguisherRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HandlingExtinguishers.Controllers.AccountController",
-    "Method": "Loguin",
+    "Method": "Login",
     "RelativePath": "api/account/login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -25,7 +183,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "HandlingExtinguishers.Models.Authentication.LoginRequestDto",
+        "Type": "HandlingExtinguishers.Models.Authentication.LoginRequest",
         "IsRequired": true
       }
     ],
@@ -57,107 +215,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "ManagementFireEstinguisher.Dto.Users.RegisterUserDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
-    "Method": "Create",
-    "RelativePath": "Client/client",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "client",
-        "Type": "HandlingExtinguisher.Dto.Clients.BaseClient",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
-    "Method": "Searchs",
-    "RelativePath": "Client/clients",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Document",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "LastName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Nit",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
-    "Method": "DeleteClient",
-    "RelativePath": "Client/delete/{clientId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "clientId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
-    "Method": "Search",
-    "RelativePath": "Client/search-by/{clientId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "clientId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
-    "Method": "UpdateClient",
-    "RelativePath": "Client/update/{clientId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "clientId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "HandlingExtinguisher.Dto.Clients.BaseClient",
+        "Type": "HandlingExtinguishers.Models.Authentication.RegisterUserRequest",
         "IsRequired": true
       }
     ],
@@ -165,52 +223,24 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
-    "Method": "Create",
-    "RelativePath": "Company/add-company",
+    "Method": "CreateCompany",
+    "RelativePath": "api/company/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "empresabase",
-        "Type": "HandlingExtinguishers.Models.Company.CompanyRequestDto",
+        "Name": "company",
+        "Type": "HandlingExtinguishers.Models.Company.CompanyRequest",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "HandlingExtinguishers.Models.Company.CompanyResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
-    "Method": "Eliminar",
-    "RelativePath": "Company/delete-company-permanent-by/{companyId}",
+    "Method": "DeletedCompany",
+    "RelativePath": "api/company/delete-by/{companyId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -221,40 +251,12 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Boolean",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
-    "Method": "Company",
-    "RelativePath": "Company/search-company-by/{companyId}",
+    "Method": "SearchCompany",
+    "RelativePath": "api/company/search-by/{companyId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -265,40 +267,12 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "HandlingExtinguishers.Models.Company.CompanyResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
-    "Method": "CompaniesDasabled",
-    "RelativePath": "Company/search-company-disabled",
+    "Method": "SearchCompaniesDisabled",
+    "RelativePath": "api/company/search-company-disabled",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -324,40 +298,12 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "HandlingExtinguishers.Models.Company.FilterCompanyResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
-    "Method": "Companies",
-    "RelativePath": "Company/search-company-enable",
+    "Method": "SearchCompanies",
+    "RelativePath": "api/company/search-company-enable",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -383,40 +329,12 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "HandlingExtinguishers.Models.Company.FilterCompanyResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.CompanyController",
     "Method": "UpdateCompany",
-    "RelativePath": "Company/update-company-by/{companyId}",
+    "RelativePath": "api/company/update-by/{companyId}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -427,120 +345,39 @@
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "HandlingExtinguishers.Models.Company.PatchCompanyRequestDto",
+        "Name": "company",
+        "Type": "HandlingExtinguishers.Models.Company.UpdateCompanyRequest",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "HandlingExtinguishers.Models.Company.CompanyResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      },
-      {
-        "Type": "HandlingExtinguishers.Models.FailedOperationResult",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      }
-    ]
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
-    "Method": "ConsultaCreditos",
-    "RelativePath": "Credit",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Fecha",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
-    "Method": "CrearCredito",
-    "RelativePath": "Credit",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
+    "Method": "CreateDetailExtinguisher",
+    "RelativePath": "api/detail-extinguisher-client",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "crearcredito",
-        "Type": "ManagementFireEstinguisher.Dto.Credit.CreditoServicioBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Clients.DetailExtinguisherClientRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
-    "Method": "ConsultaporId",
-    "RelativePath": "Credit/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
-    "Method": "ActualizarCredito",
-    "RelativePath": "Credit/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Credit.CreditoServicioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
-    "Method": "EliminarCredito",
-    "RelativePath": "Credit/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
+    "Method": "DeleteDetailExtinguisherClient",
+    "RelativePath": "api/detail-extinguisher-client/delete-detail-by/{idDetail}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idDetail",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -549,29 +386,29 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
-    "Method": "ConsultaDetalleExtClientes",
-    "RelativePath": "DetailExtinguisherClient",
+    "Method": "SearchDetailClients",
+    "RelativePath": "api/detail-extinguisher-client/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "TipoExtintor",
+        "Name": "TypeExtinguisher",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "FechaServicio",
+        "Name": "ServiceDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "FechaVencimiento",
+        "Name": "ExpirationDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "FechaMantenimiento",
+        "Name": "MaintenanceDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
@@ -580,30 +417,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
-    "Method": "CrearDetalleExtintorCliente",
-    "RelativePath": "DetailExtinguisherClient",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "crear",
-        "Type": "HandlingExtinguisher.Dto.Clients.BaseDetailExtinguisherClient",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
-    "Method": "ConsultaDetalleExtclientePorId",
-    "RelativePath": "DetailExtinguisherClient/{id}",
+    "Method": "SearchDetailClientById",
+    "RelativePath": "api/detail-extinguisher-client/search-by/{idDetail}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idDetail",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -612,35 +433,51 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
-    "Method": "ActualizarCredito",
-    "RelativePath": "DetailExtinguisherClient/{id}",
+    "Method": "UpdateDetailClient",
+    "RelativePath": "api/detail-extinguisher-client/update-detail-by/{idDetail}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idDetail",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "HandlingExtinguisher.Dto.Clients.BaseDetailExtinguisherClient",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Clients.DetailExtinguisherClientRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetailExtinguisherClientController",
-    "Method": "EliminarCredito",
-    "RelativePath": "DetailExtinguisherClient/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
+    "Method": "CreateDetail",
+    "RelativePath": "api/detail-service/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Services.DetailServiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
+    "Method": "DeleteDetail",
+    "RelativePath": "api/detail-service/delete-by/{idDetail}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idDetail",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -649,19 +486,19 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
-    "Method": "ConsultaDetalles",
-    "RelativePath": "DetailService",
+    "Method": "SearchDetails",
+    "RelativePath": "api/detail-service/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Descripcion",
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "TipoExtintor",
+        "Name": "TypeExtinguisher",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -670,30 +507,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
-    "Method": "CrearDetalle",
-    "RelativePath": "DetailService",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "creardetalle",
-        "Type": "ManagementFireEstinguisher.Dto.Services.DetalleServicioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
-    "Method": "ConsultaPorId",
-    "RelativePath": "DetailService/{id}",
+    "Method": "GetDetailById",
+    "RelativePath": "api/detail-service/search-by/{idDetail}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idDetail",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -702,36 +523,20 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
-    "Method": "ActualizarDetalles",
-    "RelativePath": "DetailService/{id}",
+    "Method": "UpdateDetail",
+    "RelativePath": "api/detail-service/update-by/{idDetail}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idDetail",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Services.DetalleServicioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.DetailServiceController",
-    "Method": "Eliminar",
-    "RelativePath": "DetailService/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Services.DetailServiceRequest",
         "IsRequired": true
       }
     ],
@@ -739,21 +544,21 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
-    "Method": "AddEnployee",
-    "RelativePath": "Employee/add-employee",
+    "Method": "CreateEmployee",
+    "RelativePath": "api/employee/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "empleadob",
-        "Type": "HandlingExtinguishers.Models.Employees.EmployeeRequestDto",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponseDto",
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -784,7 +589,7 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "DeleteEmployee",
-    "RelativePath": "Employee/delete-employee-by/{employeeId}",
+    "RelativePath": "api/employee/delete-by/{employeeId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -827,21 +632,36 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
-    "Method": "EmployeeById",
-    "RelativePath": "Employee/search-employee-by/{employeeId}",
+    "Method": "Employees",
+    "RelativePath": "api/employee/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "employeeId",
-        "Type": "System.Guid",
-        "IsRequired": true
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponseDto",
+        "Type": "HandlingExtinguishers.Models.Employees.FilterEmployeeResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -871,36 +691,21 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
-    "Method": "Employees",
-    "RelativePath": "Employee/search-employees",
+    "Method": "EmployeeById",
+    "RelativePath": "api/employee/search-by/{employeeId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "OrderBy",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Search",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "PageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "employeeId",
+        "Type": "System.Guid",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "HandlingExtinguishers.Models.Employees.FilterEmployeeResponseDto",
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -931,7 +736,7 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.EmployeeController",
     "Method": "UpdateEmployee",
-    "RelativePath": "Employee/update-employee-by/{employeeId}",
+    "RelativePath": "api/employee/update-by/{employeeId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -943,13 +748,13 @@
       },
       {
         "Name": "request",
-        "Type": "HandlingExtinguishers.Models.Employees.PatchEmployeeRequestDto",
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponseDto",
+        "Type": "HandlingExtinguishers.Models.Employees.EmployeeResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -979,19 +784,51 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
-    "Method": "ConsultaGastos",
-    "RelativePath": "Expense",
+    "Method": "CreateExpense",
+    "RelativePath": "api/expense/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Expenses.ExpenseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
+    "Method": "DeleteExpense",
+    "RelativePath": "api/expense/delete-by/{idExpense}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idExpense",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
+    "Method": "SearchExpense",
+    "RelativePath": "api/expense/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Descripcion",
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "Fecha",
+        "Name": "Date",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
@@ -1000,30 +837,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
-    "Method": "CrearGasto",
-    "RelativePath": "Expense",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "gastosbase",
-        "Type": "ManagementFireEstinguisher.Dto.Expenses.GastosBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
-    "Method": "ConsultaGastoPorId",
-    "RelativePath": "Expense/{id}",
+    "Method": "SearchExpenseById",
+    "RelativePath": "api/expense/search-by/{idExpense}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idExpense",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1032,35 +853,51 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
-    "Method": "ActualizarGasto",
-    "RelativePath": "Expense/{id}",
+    "Method": "UpdateExpernse",
+    "RelativePath": "api/expense/update-by/{idExpense}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "idExpense",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Expenses.GastosBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Expenses.ExpenseRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ExpenseController",
-    "Method": "Eliminar",
-    "RelativePath": "Expense/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.InventoryController",
+    "Method": "CreateInventory",
+    "RelativePath": "api/inventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Inventories.InventarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.InventoryController",
+    "Method": "DeleteInventory",
+    "RelativePath": "api/inventory/delete-by/{inventoryId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "inventoryId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1068,25 +905,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
-    "Method": "ConsultaInventarios",
-    "RelativePath": "Inventory",
+    "ContainingType": "HandlingExtinguishers.Controllers.InventoryController",
+    "Method": "SearchInventories",
+    "RelativePath": "api/inventory/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Fecha",
+        "Name": "Date",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "Descripcion",
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "FechaVencimiento",
+        "Name": "ExpirationDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
@@ -1094,31 +931,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
-    "Method": "Crear",
-    "RelativePath": "Inventory",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "inventariob",
-        "Type": "ManagementFireEstinguisher.Dto.Inventories.InventarioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
-    "Method": "ConsultaPorId",
-    "RelativePath": "Inventory/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.InventoryController",
+    "Method": "GetInventoryById",
+    "RelativePath": "api/inventory/search-by/{inventoryId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "inventoryId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1126,36 +947,52 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
-    "Method": "ActualizarInventario",
-    "RelativePath": "Inventory/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.InventoryController",
+    "Method": "UpdateInventory",
+    "RelativePath": "api/inventory/update-by/{inventoryId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "inventoryId",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Inventories.InventarioBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Inventories.InventarioRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguisher.Controllers.InventoryController",
-    "Method": "Eliminar",
-    "RelativePath": "Inventory/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
+    "Method": "CreatePrice",
+    "RelativePath": "api/price",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Prices.PriceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
+    "Method": "DeletePrice",
+    "RelativePath": "api/price/delete-by/{priceId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "priceId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1164,14 +1001,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
-    "Method": "ConsultasPrecios",
-    "RelativePath": "Price",
+    "Method": "SearchPrice",
+    "RelativePath": "api/price/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Descripcion",
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -1180,30 +1017,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
-    "Method": "CrearPrecios",
-    "RelativePath": "Price",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "preciobase",
-        "Type": "ManagementFireEstinguisher.Dto.Prices.PrecioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
-    "Method": "ConsultaPrecio",
-    "RelativePath": "Price/{id}",
+    "Method": "SearchPriceById",
+    "RelativePath": "api/price/search-by/{priceId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "priceId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1212,35 +1033,51 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
-    "Method": "ActualizarPrecios",
-    "RelativePath": "Price/{id}",
+    "Method": "UpdatePrice",
+    "RelativePath": "api/price/update-by/{priceId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "priceId",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Prices.PrecioBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Prices.PriceRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.PriceController",
-    "Method": "EliminarPrecios",
-    "RelativePath": "Price/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
+    "Method": "CreateProduct",
+    "RelativePath": "api/product/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Products.ProductRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
+    "Method": "DeleteProduct",
+    "RelativePath": "api/product/delete-by/{productId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "productId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1249,14 +1086,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
-    "Method": "ConsultaProductos",
-    "RelativePath": "Product",
+    "Method": "SearchProduct",
+    "RelativePath": "api/product/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "TipoProducto",
+        "Name": "TypeProduct",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -1265,30 +1102,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
-    "Method": "CrearProductos",
-    "RelativePath": "Product",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productobase",
-        "Type": "ManagementFireEstinguisher.Dto.Products.ProductoBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
-    "Method": "ConsultaProductoPorId",
-    "RelativePath": "Product/{id}",
+    "Method": "SearchProductById",
+    "RelativePath": "api/product/search-by/{productId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "productId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1297,35 +1118,67 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
-    "Method": "ActualizarProductos",
-    "RelativePath": "Product/{id}",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/product/update-by/{productId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "productId",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Products.ProductoBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Products.ProductRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.ProductController",
-    "Method": "Eliminar",
-    "RelativePath": "Product/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
+    "Method": "CreateService",
+    "RelativePath": "api/service/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Services.ServiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
+    "Method": "CreateServiceDetail",
+    "RelativePath": "api/service/create-detail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Services.ServiceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
+    "Method": "DeleteService",
+    "RelativePath": "api/service/delete-by/{serviceId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "serviceId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1335,13 +1188,13 @@
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
     "Method": "ConsultaServicios",
-    "RelativePath": "Service",
+    "RelativePath": "api/service/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "FechaServicio",
+        "Name": "ServiceDate",
         "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
@@ -1350,30 +1203,14 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
-    "Method": "Crear",
-    "RelativePath": "Service",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "serviciob",
-        "Type": "ManagementFireEstinguisher.Dto.Services.ServicioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
-    "Method": "ConsultaPorId",
-    "RelativePath": "Service/{id}",
+    "Method": "SearchById",
+    "RelativePath": "api/service/search-by/{serviceId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "serviceId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1382,20 +1219,20 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
-    "Method": "ActualizarServicios",
-    "RelativePath": "Service/{id}",
+    "Method": "UpdateService",
+    "RelativePath": "api/service/update-by/{serviceId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "serviceId",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Services.ServicioBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Services.ServiceRequest",
         "IsRequired": true
       }
     ],
@@ -1403,130 +1240,51 @@
   },
   {
     "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
-    "Method": "Eliminar",
-    "RelativePath": "Service/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
-    "Method": "CreacionDetalleServicio",
-    "RelativePath": "Service/Crear-Servicio-Detalle",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "serviciobase",
-        "Type": "ManagementFireEstinguisher.Dto.Services.ServicioBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.ServiceController",
-    "Method": "ModificarEstado",
-    "RelativePath": "Service/modificar-estado",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/service/update-status",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "serviceId",
         "Type": "System.Guid",
         "IsRequired": false
       },
       {
-        "Name": "modificar",
-        "Type": "ManagementFireEstinguisher.Dto.EditStatus",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.EditStatus",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
-    "Method": "Consultas",
-    "RelativePath": "TypeExtinguisher",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
-    "Method": "CrearTipoExtintor",
-    "RelativePath": "TypeExtinguisher",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
+    "Method": "Create",
+    "RelativePath": "Client/crate-client",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "tipobase",
-        "Type": "ManagementFireEstinguisher.Dto.Extinguishers.TipoExtintorBase",
+        "Name": "client",
+        "Type": "HandlingExtinguishers.Models.Clients.ClientRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
-    "Method": "ConsultaTipoExtPorId",
-    "RelativePath": "TypeExtinguisher/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
-    "Method": "ActualizarTipo",
-    "RelativePath": "TypeExtinguisher/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "actualizar",
-        "Type": "ManagementFireEstinguisher.Dto.Extinguishers.TipoExtintorBase",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HandlingExtinguishers.Controllers.TypeExtinguisherController",
-    "Method": "EliminarTipoExt",
-    "RelativePath": "TypeExtinguisher/{id}",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
+    "Method": "DeleteClient",
+    "RelativePath": "Client/delete-client-by/{clientId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "clientId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1534,31 +1292,99 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
-    "Method": "CreateWeightExtinguisher",
-    "RelativePath": "WeightExtinguisher/create-weight-extinguisher",
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
+    "Method": "Search",
+    "RelativePath": "Client/search-client-by/{clientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
+    "Method": "Searchs",
+    "RelativePath": "Client/search-clients",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Document",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nit",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.ClientController",
+    "Method": "UpdateClient",
+    "RelativePath": "Client/update-client-by/{clientId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Clients.ClientRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
+    "Method": "CreateCredit",
+    "RelativePath": "Credit/create-credit",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "weightExtinguisher",
-        "Type": "HandlingExtinguishers.Models.Extinguishers.WeightExtinguisherBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Credit.CreditServiceRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
-    "Method": "DeletedWeightEstinguisher",
-    "RelativePath": "WeightExtinguisher/delete-weight-extinguisher-by/{idWeightExtinguisher}",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
+    "Method": "DeleteCredit",
+    "RelativePath": "Credit/delete-credit-by/{idCredit}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idWeightExtinguisher",
+        "Name": "idCredit",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -1566,47 +1392,58 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
-    "Method": "SearchWeightExtinguisherById",
-    "RelativePath": "WeightExtinguisher/search-by/{idWeightExtinguisher}",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
+    "Method": "SearchById",
+    "RelativePath": "Credit/search-credit-by{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idWeightExtinguisher",
+        "Name": "idCredit",
         "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
-    "Method": "SearchWeightExtinguishers",
-    "RelativePath": "WeightExtinguisher/searchs",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
+    "Method": "SearchCredit",
+    "RelativePath": "Credit/search-credits",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "Date",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "HandlingExtinguishers.Controllers.WeightExtinguisherController",
-    "Method": "UpdateWeightExtinguisher",
-    "RelativePath": "WeightExtinguisher/update-weight-extinguisher-by/{idWeightExtinguisher}",
+    "ContainingType": "HandlingExtinguishers.Controllers.CreditController",
+    "Method": "UpdateCredit",
+    "RelativePath": "Credit/update-credit-by/{idCredit}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "idWeightExtinguisher",
+        "Name": "idCredit",
         "Type": "System.Guid",
         "IsRequired": true
       },
       {
-        "Name": "weightExtinguisher",
-        "Type": "HandlingExtinguishers.Models.Extinguishers.WeightExtinguisherBase",
+        "Name": "request",
+        "Type": "HandlingExtinguishers.Models.Credit.CreditServiceRequest",
         "IsRequired": true
       }
     ],

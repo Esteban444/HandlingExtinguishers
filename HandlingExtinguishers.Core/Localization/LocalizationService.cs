@@ -1,6 +1,6 @@
 namespace HandlingExtinguishers.Core.Localization;
 
-using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Contracts.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
 

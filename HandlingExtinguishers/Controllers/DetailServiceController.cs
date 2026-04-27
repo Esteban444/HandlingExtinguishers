@@ -1,4 +1,4 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Services;
+﻿using HandlingExtinguishers.Contracts.Interfaces;
 using HandlingExtinguishers.Models.Filters;
 using HandlingExtinguishers.Models.Services;
 using Microsoft.AspNetCore.Authorization;

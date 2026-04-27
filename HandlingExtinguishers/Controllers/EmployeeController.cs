@@ -1,7 +1,8 @@
 ﻿namespace HandlingExtinguishers.Controllers;
 
+using HandlingExtinguishers.Contracts.Interfaces;
+
 #region Usings
-using HandlingExtinguishers.Contracts.Interfaces.Services;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Pagination;

@@ -1,5 +1,5 @@
 ﻿using HandlingExtinguishers.Configurations;
-using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Contracts.Interfaces;
 using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Core.Localization;
 using HandlingExtinguishers.Infraestructure.Data;
@@ -84,7 +84,7 @@ app.UseRequestLocalization();
 
 app.UseMiddleware<MiddlewareException>();
 
-if (app.Environment.IsDevelopment())
+if ( app.Environment.IsDevelopment() )
 {
     app.MapOpenApi();
     app.MapScalarApiReference();

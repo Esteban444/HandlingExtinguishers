@@ -2,6 +2,7 @@
 
 #region Usings
 using AutoMapper;
+using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Authentication;
 using HandlingExtinguishers.Models.Clients;
 using HandlingExtinguishers.Models.Company;
@@ -14,7 +15,6 @@ using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Models.Prices;
 using HandlingExtinguishers.Models.Products;
 using HandlingExtinguishers.Models.Services;
-using ManagementFireEstinguisher.Dto;
 #endregion
 
 public class Automapper : Profile

@@ -1,14 +1,14 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Repositories;
-using HandlingExtinguishers.Infraestructure.Data;
-using HandlingExtinguishers.Infrastructure.Repositories;
-using HandlingExtinguishers.Models.Models;
+﻿namespace HandlingExtinguishers.Infraestructure.Repositories;
 
-namespace HandlingExtinguishers.Infraestructura.Repositorios
+#region Usings
+using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Infraestructure.Data;
+using HandlingExtinguishers.Models.Models;
+#endregion
+
+public class ServiceRepository : BaseRepository<Service>, IServiceRepository
 {
-    public class ServiceRepository : BaseRepository<Service>, IServiceRepository
+    public ServiceRepository(HandlingExtinguisherContext context) : base(context)
     {
-        public ServiceRepository(HandlingExtinguisherContext context) : base(context)
-        {
-        }
     }
 }

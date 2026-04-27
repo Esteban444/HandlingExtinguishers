@@ -3,12 +3,15 @@
 #region Usings
 using FluentValidation;
 using HandlingExtinguishers.Configurations.Validators;
+using HandlingExtinguishers.Contracts.Interfaces;
+using HandlingExtinguishers.Contracts.Interfaces.CommandServices;
+using HandlingExtinguishers.Contracts.Interfaces.QueryServices;
 using HandlingExtinguishers.Contracts.Interfaces.Repositories;
-using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Core;
+using HandlingExtinguishers.Core.CommandServices;
+using HandlingExtinguishers.Core.QueryServices;
 using HandlingExtinguishers.Core.Services;
-using HandlingExtinguishers.Infraestructura.Repositorios;
 using HandlingExtinguishers.Infraestructure.Repositories;
-using HandlingExtinguishers.Infrastructure.Repositories;
 using HandlingExtinguishers.Models.Authentication;
 using HandlingExtinguishers.Models.Clients;
 using HandlingExtinguishers.Models.Credit;
@@ -19,7 +22,6 @@ using HandlingExtinguishers.Models.Models;
 using HandlingExtinguishers.Models.Prices;
 using HandlingExtinguishers.Models.Products;
 using HandlingExtinguishers.Models.Services;
-using MHandlingExtinguishers.Infraestructura.Repositorios;
 #endregion
 
 public static class DependencyInjections
@@ -58,12 +60,17 @@ public static class DependencyInjections
         services.AddScoped<IValidator<ServiceRequest>, ValidatorService>();
         services.AddScoped<IValidator<LoginRequest>, ValidatorAuthenticationUser>();
 
+        // Query & Command services
+        services.AddScoped<ICompanyQueryService, CompanyQueryService>();
+        services.AddScoped<ICompanyCommandService, CompanyCommandService>();
+
+        
+
         services.AddScoped<IClientService, ClientService>();
         services.AddScoped<ICreditService, Core.Services.CreditService>();
         services.AddScoped<IDetailService, DetailServices>();
         services.AddScoped<IServiceDetailExtinguisherClients, DetailExtinguisherClientService>();
         services.AddScoped<IExpenseService, ExpenseService>();
-        services.AddScoped<ICompanyService, CompanyService>();
         services.AddScoped<IEmployeeService, EmployeeService>();
         services.AddScoped<IInventoryService, InventaryService>();
         services.AddScoped<IPriceService, PreceService>();
@@ -71,7 +78,7 @@ public static class DependencyInjections
         services.AddScoped<IWeightExtinguisherService, WeightExtinguisherService>();
         services.AddScoped<ITypeExtinguisherService, TypeExtinguisherService>();
         services.AddScoped<IServiceOfService, ServiceOfService>();
-        services.AddScoped<IAuthentificationService, AuthentificationService>();
+        services.AddScoped<IAuthentificationCommandService, AuthentificationService>();
 
         return services;
     }

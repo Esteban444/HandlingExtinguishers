@@ -2,7 +2,7 @@
 
 #region Usings
 using FluentValidation;
-using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Contracts.Interfaces.CommandServices;
 using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Authentication;
@@ -15,13 +15,13 @@ using System.Net.Http.Headers;
 [ApiController]
 [AllowAnonymous]
 
-public class AccountController( IAuthentificationService authentificationService, 
+public class AccountController( IAuthentificationCommandService authentificationService, 
                                 IValidator<LoginRequest> validator, 
                                 IValidator<RegisterUserRequest> validatorRegister ) : ControllerBase
 {
     private readonly IValidator<LoginRequest> validator = validator;
     private readonly IValidator<RegisterUserRequest> validatorRegister = validatorRegister;
-    private readonly IAuthentificationService authentificationService = authentificationService;
+    private readonly IAuthentificationCommandService authentificationService = authentificationService;
 
     [HttpPost("login")]
     public async Task<IActionResult> Login( [FromBody] LoginRequest request )

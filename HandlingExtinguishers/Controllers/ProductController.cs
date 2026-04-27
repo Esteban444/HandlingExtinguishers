@@ -2,7 +2,7 @@
 
 #region Usings
 using FluentValidation;
-using HandlingExtinguishers.Contracts.Interfaces.Services;
+using HandlingExtinguishers.Contracts.Interfaces;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Filters;
 using HandlingExtinguishers.Models.Products;

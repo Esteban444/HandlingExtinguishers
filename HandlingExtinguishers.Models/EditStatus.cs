@@ -1,7 +1,6 @@
-﻿namespace ManagementFireEstinguisher.Dto
+﻿namespace HandlingExtinguishers.Models;
+
+public class EditStatus
 {
-    public class EditStatus
-    {
-        public string? Status { get; set; }
-    }
+    public string? Status { get; set; }
 }

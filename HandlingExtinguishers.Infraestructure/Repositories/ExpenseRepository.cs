@@ -1,15 +1,11 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+﻿namespace HandlingExtinguishers.Infraestructure.Repositories;
+
+#region
+using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Infraestructure.Data;
-using HandlingExtinguishers.Infrastructure.Repositories;
 using HandlingExtinguishers.Models.Models;
+#endregion
 
-namespace MHandlingExtinguishers.Infraestructura.Repositorios
+public class ExpenseRepository( HandlingExtinguisherContext context ) : BaseRepository<Expense>( context ), IExpenseRepository
 {
-    public class ExpenseRepository : BaseRepository<Expense>, IExpenseRepository
-    {
-        public ExpenseRepository(HandlingExtinguisherContext context) : base(context)
-        {
-
-        }
-    }
 }

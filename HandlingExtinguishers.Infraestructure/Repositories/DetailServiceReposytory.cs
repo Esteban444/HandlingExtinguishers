@@ -1,14 +1,11 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Repositories;
-using HandlingExtinguishers.Infraestructure.Data;
-using HandlingExtinguishers.Infrastructure.Repositories;
-using HandlingExtinguishers.Models.Models;
+﻿namespace HandlingExtinguishers.Infraestructure.Repositories;
 
-namespace MHandlingExtinguishers.Infraestructura.Repositorios
+#region Usings
+using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+using HandlingExtinguishers.Infraestructure.Data;
+using HandlingExtinguishers.Models.Models;
+#endregion
+
+public class DetailServiceReposytory( HandlingExtinguisherContext context ) : BaseRepository<DetailService>( context ), IDetailServiceRepository
 {
-    public class DetailServiceReposytory : BaseRepository<DetailService>, IDetailServiceRepository
-    {
-        public DetailServiceReposytory(HandlingExtinguisherContext context) : base(context)
-        {
-        }
-    }
 }

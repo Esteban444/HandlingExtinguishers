@@ -1,15 +1,11 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Repositories;
+﻿namespace HandlingExtinguishers.Infraestructure.Repositories;
+
+#region Usings
+using HandlingExtinguishers.Contracts.Interfaces.Repositories;
 using HandlingExtinguishers.Infraestructure.Data;
-using HandlingExtinguishers.Infrastructure.Repositories;
 using HandlingExtinguishers.Models.Models;
+#endregion
 
-namespace HandlingExtinguishers.Infraestructure.Repositories
+public class ClientRepository( HandlingExtinguisherContext context ) : BaseRepository<Client>( context ), IClientRepository
 {
-    public class ClientRepository : BaseRepository<Client>, IClientRepository
-    {
-        public ClientRepository(HandlingExtinguisherContext context) : base(context)
-        {
-        }
-
-    }
 }

@@ -1,20 +1,22 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Configurations.Validators;
+
+#region Usings
+using FluentValidation;
+using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Models.Company;
+#endregion
 
-namespace HandlingExtinguishers.Configurations.Validators
+public class ValidatorCompany : AbstractValidator<CompanyRequest>
 {
-    public class ValidatorCompany : AbstractValidator<CompanyRequest>
+    public ValidatorCompany()
     {
-        public ValidatorCompany()
-        {
-            RuleFor(x => x.Name).NotEmpty().
-                        WithMessage("El campo nombre no puede ir vacío");
+        RuleFor(x => x.Name).NotEmpty().
+                    WithMessage( ValidatorMessageCommonConstants.NameCannotBeEmpty );
 
-            RuleFor(x => x.Address).NotEmpty().
-                  WithMessage("El campo dirección no puede ir vacío");
+        RuleFor(x => x.Address).NotEmpty().
+              WithMessage( ValidatorMessageCommonConstants.AddressCannotBeEmpty );
 
-            RuleFor(x => x.Nit).NotEmpty().
-                 WithMessage("El campo nit no puede ir vacío");
-        }
+        RuleFor(x => x.Email).NotEmpty().
+             WithMessage( ValidatorMessageCommonConstants.EmailCannotBeEmpty );
     }
 }

@@ -8,9 +8,9 @@ namespace HandlingExtinguishers.Configurations.Validators
     {
         public ValidatorAuthenticationUser()
         {
-            RuleFor( field => field.Email).NotEmpty().WithMessage(ValidatorMessageCommonConstants.EmailCannotBeEmpty );
+            RuleFor( field => field.Email).NotEmpty().WithMessage( ValidatorMessageCommonConstants.EmailCannotBeEmpty );
 
-            RuleFor( field => field.Password).NotEmpty().WithMessage(ValidatorMessageCommonConstants.PasswordCannotBeEmpty );
+            RuleFor( field => field.Password).NotEmpty().WithMessage( ValidatorMessageCommonConstants.PasswordCannotBeEmpty );
         }
     }
 }

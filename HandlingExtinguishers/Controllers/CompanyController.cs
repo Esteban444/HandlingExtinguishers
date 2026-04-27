@@ -1,84 +1,59 @@
-﻿using HandlingExtinguishers.Contracts.Interfaces.Services;
-using HandlingExtinguishers.Models.Pagination;
+﻿namespace HandlingExtinguishers.Controllers;
+
+using FluentValidation;
+
+#region Usings
+using HandlingExtinguishers.Contracts.Interfaces.CommandServices;
+using HandlingExtinguishers.Contracts.Interfaces.QueryServices;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Company;
+using HandlingExtinguishers.Models.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+#endregion
 
-namespace HandlingExtinguishers.Controllers
+[ApiController]
+[Route("api/company")]
+[Authorize]
+public class CompanyController( ICompanyQueryService queryService,
+                                ICompanyCommandService commandService,
+                                IValidator<CompanyRequest> validator ) : ControllerBase
 {
-    [ApiController]
-    [Route("api/company")]
-    [Authorize]
-    public class CompanyController( ICompanyService serviceCompany ) : ControllerBase
+    public IValidator<CompanyRequest> Validator = validator;
+
+
+    [HttpGet("search-company-enable")]
+    public async Task<IActionResult> SearchCompanies( [FromQuery] QueryParameter filter ) =>
+        Ok( await queryService.SearchCompanies( filter ) );
+
+    [HttpGet("search-company-disabled")]
+    public async Task<IActionResult> SearchCompaniesDisabled( [FromQuery] QueryParameter filter ) =>
+        Ok( await queryService.SearchCompaniesDisabled( filter ) );
+
+    [HttpGet("search-by/{companyId}")]
+    public async Task<IActionResult> SearchCompany( Guid companyId ) =>
+        Ok( await queryService.SearchCompany( companyId ) );
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateCompany( CompanyRequest company)
     {
-        private readonly ICompanyService serviceCompany = serviceCompany;
-
-        [HttpGet("search-company-enable")]
-        [ProducesResponseType(typeof(FilterCompanyResponse), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> SearchCompanies( [FromQuery] QueryParameter filter )
+        var validationResult = await Validator.ValidateAsync( company );
+        if ( !validationResult.IsValid )
         {
-            var response = await serviceCompany.SearchCompanies( filter );
+            var errors = validationResult.Errors.Select( error => error.ErrorMessage ).ToList();
 
-            return Ok( response );
+            return BadRequest(new ErrorResponse { Errors = errors });
         }
 
-        [HttpGet("search-company-disabled")]
-        [ProducesResponseType(typeof(FilterCompanyResponse), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> SearchCompaniesDisabled( [FromQuery] QueryParameter filter )
-        {
-            var response = await serviceCompany.SearchCompaniesDisabled( filter );
-
-            return Ok( response );
-        }
-
-        [HttpGet("search-by/{companyId}")]
-        [ProducesResponseType(typeof(CompanyResponse), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> SearchCompany( Guid companyId )
-        {
-            var response = await serviceCompany.SearchCompany( companyId );
-
-            return Ok( response);
-        }
-
-        [HttpPost("Create")]
-        [ProducesResponseType(typeof(CompanyResponse), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> CreateCompany( CompanyRequest company )
-        {
-            var response = await serviceCompany.CreateCompany( company );
-
-            return Ok( response );
-        }
-
-        [HttpPatch("update-by/{companyId}")]
-        [ProducesResponseType(typeof(CompanyResponse), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> UpdateCompany( Guid companyId, CompanyRequest company )
-        {
-            var response = await serviceCompany.UpdateCompany( companyId, company );
-
-            return Ok( response );
-        }
-
-        [HttpDelete("delete-by/{companyId}")]
-        [ProducesResponseType(typeof(bool), 200)]
-        [ProducesResponseType(typeof(FailedOperationResult), 404)]
-        [ProducesResponseType(typeof(FailedOperationResult), 400)]
-        public async Task<IActionResult> DeletedCompany ( Guid companyId )
-        {
-            var response = await serviceCompany.DeleteCompany( companyId );
-
-            return Ok( response );
-
-        }
+        return Ok( await commandService.CreateCompany( company ) );
     }
+
+    [HttpPatch("update-by/{companyId}")]
+    public async Task<IActionResult> UpdateCompany( Guid companyId, UpdateCompanyRequest company ) =>
+        Ok( await commandService.UpdateCompany( companyId, company ) );
+
+    [HttpDelete("delete-by/{companyId}")]
+    public async Task<IActionResult> DeletedCompany( Guid companyId ) =>
+        Ok( await commandService.DeleteCompany( companyId ) );
 }
