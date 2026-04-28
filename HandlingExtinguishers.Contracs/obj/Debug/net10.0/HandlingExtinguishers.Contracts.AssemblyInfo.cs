@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HandlingExtinguishers.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d553a4c4969ebadec1288ee3defa02e789d9440d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+481c5156684a69316b856e6b005ad0573702fd69")]
 [assembly: System.Reflection.AssemblyProductAttribute("HandlingExtinguishers.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HandlingExtinguishers.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

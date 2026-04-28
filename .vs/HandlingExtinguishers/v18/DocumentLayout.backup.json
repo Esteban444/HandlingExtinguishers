@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "D:\\Repositorios\\HandlingExtinguishers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|solutionrelative:handlingextinguishers\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\queryservices\\companyqueryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\queryservices\\companyqueryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{262D665F-3054-4049-A454-DD49ACF186A1}|HandlingExtinguishers.Infraestructure\\HandlingExtinguishers.Infraestructure.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.infraestructure\\data\\handlingextinguisherscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{262D665F-3054-4049-A454-DD49ACF186A1}|HandlingExtinguishers.Infraestructure\\HandlingExtinguishers.Infraestructure.csproj|solutionrelative:handlingextinguishers.infraestructure\\data\\handlingextinguisherscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\queryservices\\employeequeryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\queryservices\\employeequeryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\commandservices\\employeecommandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\commandservices\\employeecommandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\commandservices\\companycommandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\commandservices\\companycommandservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB5DA3F3-E258-4080-A3FE-FC73559579A8}|HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.models\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB5DA3F3-E258-4080-A3FE-FC73559579A8}|HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj|solutionrelative:handlingextinguishers.models\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB5DA3F3-E258-4080-A3FE-FC73559579A8}|HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.models\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB5DA3F3-E258-4080-A3FE-FC73559579A8}|HandlingExtinguishers.Models\\HandlingExtinguishers.Models.csproj|solutionrelative:handlingextinguishers.models\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\helpers\\validatormessagecommonconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\helpers\\validatormessagecommonconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers.core\\helpers\\commonconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BEFE876F-B245-453F-A24A-7B87C0D60906}|HandlingExtinguishers.Core\\HandlingExtinguishers.Core.csproj|solutionrelative:handlingextinguishers.core\\helpers\\commonconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|d:\\repositorios\\handlingextinguishers\\handlingextinguishers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{561B71DB-118F-428E-BFF0-77A536156D25}|HandlingExtinguishers\\HandlingExtinguishers.csproj|solutionrelative:handlingextinguishers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 318,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,52 +70,104 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HandlingExtinguishersContext.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Infraestructure\\Data\\HandlingExtinguishersContext.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers.Infraestructure\\Data\\HandlingExtinguishersContext.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Infraestructure\\Data\\HandlingExtinguishersContext.cs",
-              "RelativeToolTip": "HandlingExtinguishers.Infraestructure\\Data\\HandlingExtinguishersContext.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAH0AAABAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "CompanyQueryService.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\QueryServices\\CompanyQueryService.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\QueryServices\\CompanyQueryService.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\QueryServices\\CompanyQueryService.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Core\\QueryServices\\CompanyQueryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T22:20:50.433Z",
+              "WhenOpened": "2026-04-28T22:31:23.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Program.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers\\Program.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Program.cs",
-              "RelativeToolTip": "HandlingExtinguishers\\Program.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAUwDgAAAAEAAAAAAAAAA==",
+              "Title": "CompanyCommandService.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\CommandServices\\CompanyCommandService.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\CommandServices\\CompanyCommandService.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\CommandServices\\CompanyCommandService.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Core\\CommandServices\\CompanyCommandService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADQAAAB4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T19:05:02.303Z",
+              "WhenOpened": "2026-04-28T22:07:23.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CompanyController.cs",
-              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Controllers\\CompanyController.cs",
-              "RelativeDocumentMoniker": "HandlingExtinguishers\\Controllers\\CompanyController.cs",
-              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers\\Controllers\\CompanyController.cs",
-              "RelativeToolTip": "HandlingExtinguishers\\Controllers\\CompanyController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Company.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\Models\\Company.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Models\\Models\\Company.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\Models\\Company.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Models\\Models\\Company.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T18:29:42.172Z",
+              "WhenOpened": "2026-04-28T21:42:03.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Models\\Models\\Employee.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Models\\Models\\Employee.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Models\\Models\\Employee.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAEgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T21:33:31.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ValidatorMessageCommonConstants.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Helpers\\ValidatorMessageCommonConstants.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\Helpers\\ValidatorMessageCommonConstants.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Helpers\\ValidatorMessageCommonConstants.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Core\\Helpers\\ValidatorMessageCommonConstants.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAABwAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T21:22:05.711Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "EmployeeCommandService.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\CommandServices\\EmployeeCommandService.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\CommandServices\\EmployeeCommandService.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\CommandServices\\EmployeeCommandService.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Core\\CommandServices\\EmployeeCommandService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAFsAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T20:51:20.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeQueryService.cs",
+              "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\QueryServices\\EmployeeQueryService.cs",
+              "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\QueryServices\\EmployeeQueryService.cs",
+              "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\QueryServices\\EmployeeQueryService.cs",
+              "RelativeToolTip": "HandlingExtinguishers.Core\\QueryServices\\EmployeeQueryService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADQAAAB6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T20:28:54.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "CommonConstants.cs",
               "DocumentMoniker": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Helpers\\CommonConstants.cs",
               "RelativeDocumentMoniker": "HandlingExtinguishers.Core\\Helpers\\CommonConstants.cs",
               "ToolTip": "D:\\Repositorios\\HandlingExtinguishers\\HandlingExtinguishers.Core\\Helpers\\CommonConstants.cs",
               "RelativeToolTip": "HandlingExtinguishers.Core\\Helpers\\CommonConstants.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFgAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAAGIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-27T19:58:34.571Z",
               "EditorCaption": ""

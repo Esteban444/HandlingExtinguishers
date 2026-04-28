@@ -14,7 +14,9 @@ using HandlingExtinguishers.Core.Services;
 using HandlingExtinguishers.Infraestructure.Repositories;
 using HandlingExtinguishers.Models.Authentication;
 using HandlingExtinguishers.Models.Clients;
+using HandlingExtinguishers.Models.Company;
 using HandlingExtinguishers.Models.Credit;
+using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Expenses;
 using HandlingExtinguishers.Models.Extinguishers;
 using HandlingExtinguishers.Models.Inventories;
@@ -46,11 +48,13 @@ public static class DependencyInjections
         services.AddScoped<IValidator<ClientRequest>, ValidatorClient>();
         services.AddScoped<IValidator<CreditServiceRequest>, ValidatorCredit>();
         services.AddScoped<IValidator<DetailExtinguisherClientRequest>, ValidatorDetailExtinguisherClient>();
-
-     
-        services.AddValidatorsFromAssemblyContaining<ValidatorCompany>();
-        services.AddValidatorsFromAssemblyContaining<ValidatorEmployee>();
-
+        services.AddScoped<IValidator<CompanyRequest>, ValidatorCompany>();
+        services.AddScoped<IValidator<EmployeeRequest>, ValidatorEmployee>();
+        services.AddScoped<IValidator<ClientRequest>, ValidatorClient>();
+        services.AddScoped<IValidator<CreditServiceRequest>, ValidatorCredit>();
+        services.AddScoped<IValidator<DetailExtinguisherClientRequest>, ValidatorDetailExtinguisherClient>();
+        services.AddScoped<IValidator<ExpenseRequest>, ValidatorExpense>();
+        services.AddScoped<IValidator<InventarioRequest>, ValidatorInventory>();
         services.AddScoped<IValidator<ExpenseRequest>, ValidatorExpense>();
         services.AddScoped<IValidator<InventarioRequest>, ValidatorInventory>();
         services.AddScoped<IValidator<WightExtinguisherRequest>, ValidatorWieghtExtinguisher>();
@@ -64,15 +68,16 @@ public static class DependencyInjections
         services.AddScoped<IAuthentificationCommandService, AuthentificationCommandService>();
         services.AddScoped<ICompanyQueryService, CompanyQueryService>();
         services.AddScoped<ICompanyCommandService, CompanyCommandService>();
+        services.AddScoped<IEmployeeQueryService, EmployeeQueryService>();
+        services.AddScoped<IEmployeeCommandService, EmployeeCommandService>();
 
-        
+
 
         services.AddScoped<IClientService, ClientService>();
         services.AddScoped<ICreditService, Core.Services.CreditService>();
         services.AddScoped<IDetailService, DetailServices>();
         services.AddScoped<IServiceDetailExtinguisherClients, DetailExtinguisherClientService>();
         services.AddScoped<IExpenseService, ExpenseService>();
-        services.AddScoped<IEmployeeService, EmployeeService>();
         services.AddScoped<IInventoryService, InventaryService>();
         services.AddScoped<IPriceService, PreceService>();
         services.AddScoped<IProductService, ProductService>();

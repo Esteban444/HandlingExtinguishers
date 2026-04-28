@@ -1,31 +1,33 @@
-﻿using FluentValidation;
+﻿namespace HandlingExtinguishers.Configurations.Validators;
+
+#region Usings
+using FluentValidation;
+using HandlingExtinguishers.Core.Helpers;
 using HandlingExtinguishers.Models.Employees;
+#endregion
 
-namespace HandlingExtinguishers.Configurations.Validators
+public class ValidatorEmployee : AbstractValidator<EmployeeRequest>
 {
-    public class ValidatorEmployee : AbstractValidator<EmployeeRequest>
+    public ValidatorEmployee()
     {
-        public ValidatorEmployee()
-        {
-            RuleFor(x => x.CompanyId)
-                .NotEmpty()
-                .WithMessage("El campo companyId no puede ir vacio, y la empresa debe existir en la base de datos");
+        RuleFor( employee => employee.CompanyId )
+            .NotEmpty()
+            .WithMessage( ValidatorMessageCommonConstants.CompanyIdCannotBeEmpty );
 
-            RuleFor(x => x.FirstName)
-                .NotEmpty()
-            .WithMessage("El campo firstName no puede ir vacio");
+        RuleFor( employee => employee.FirstName)
+            .NotEmpty()
+        .WithMessage(ValidatorMessageCommonConstants.FirstNameCannotBeEmpty);
 
-            RuleFor(x => x.LastName)
-                .NotEmpty()
-            .WithMessage("El campo lastName no puede ir vacio");
+        RuleFor( employee => employee.LastName)
+            .NotEmpty()
+        .WithMessage( ValidatorMessageCommonConstants.LastNameCannotBeEmpty );
 
-            RuleFor(x => x.Phone)
-                .NotEmpty()
-            .WithMessage("El campo phone no puede ir vacia");
+        RuleFor( employee => employee.Phone )
+            .NotEmpty()
+        .WithMessage( ValidatorMessageCommonConstants.PhoneCannotBeEmpty );
 
-            RuleFor(x => x.Email)
-                .NotEmpty()
-                .WithMessage("El campo email no puede ir vacio");
-        }
+        RuleFor( employee => employee.Email )
+            .NotEmpty()
+            .WithMessage( ValidatorMessageCommonConstants.EmailCannotBeEmpty );
     }
 }

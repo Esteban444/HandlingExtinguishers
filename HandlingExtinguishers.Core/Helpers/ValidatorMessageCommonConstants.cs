@@ -19,4 +19,12 @@ public static class ValidatorMessageCommonConstants
     public const string NameCannotBeEmpty = "The name field cannot be left blank";
 
     public const string AddressCannotBeEmpty = "The address field cannot be left blank";
+
+    public const string PhoneCannotBeEmpty = "The phone field cannot be left blank";
+
+    public const string FirstNameCannotBeEmpty = "The firstName field cannot be empty";
+
+    public const string LastNameCannotBeEmpty = "The lastName field cannot be empty";
+
+    public const string CompanyIdCannotBeEmpty = "The companyId field cannot be empty";
 }

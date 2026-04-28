@@ -93,4 +93,8 @@ public static class CommonConstants
     public const string SecondLastNameColumnName = "secondLastName";
 
     public const string ActiveColumnName = "active";
+
+    public const string EmployeeIdPropertyName = "EmployeeId";
+
+    public const string EmployeePropertyName = "Name";
 }

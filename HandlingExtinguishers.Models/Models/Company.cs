@@ -20,8 +20,11 @@ public class Company : BaseModel
 
     private Company() { }
 
-    public static Company Create( string name, string? address, string? phone,
-                                  string? email, string nit )
+    public static Company Create( string name, 
+                                  string? address, 
+                                  string? phone,
+                                  string? email, 
+                                  string nit )
     {
         return new Company
         {

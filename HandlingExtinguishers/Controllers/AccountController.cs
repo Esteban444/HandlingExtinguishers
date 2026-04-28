@@ -26,11 +26,11 @@ public class AccountController( IAuthentificationCommandService authentification
     [HttpPost("login")]
     public async Task<IActionResult> Login( [FromBody] LoginRequest request )
     {
-        var validationResult = validator.Validate( request );
+        var validation = validator.Validate( request );
 
-        if ( !validationResult.IsValid )
+        if ( !validation.IsValid )
         {
-            var errors = validationResult.Errors.Select( error => error.ErrorMessage );
+            var errors = validation.Errors.Select( error => error.ErrorMessage );
 
             return BadRequest( new ErrorResponse { Errors = errors } );
         }
@@ -43,11 +43,11 @@ public class AccountController( IAuthentificationCommandService authentification
     [HttpPost("register")]
     public async Task<IActionResult> Register( [FromBody] RegisterUserRequest request )
     {
-        var Validacion = validatorRegister.Validate( request );
+        var Validation = validatorRegister.Validate( request );
 
-        if ( !Validacion.IsValid )
+        if ( !Validation.IsValid )
         {
-            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
+            var errors = Validation.Errors.Select( error => error.ErrorMessage );
 
             return BadRequest( new ErrorResponse { Errors = errors } );
         }

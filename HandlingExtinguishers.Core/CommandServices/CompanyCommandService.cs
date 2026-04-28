@@ -47,15 +47,24 @@ public class CompanyCommandService( ICompanyRepository repository,
 
     public async Task<bool> DeleteCompany( Guid companyId )
     {
-        var company = await repository.FindBy( company => company.CompanyId == companyId ).FirstOrDefaultAsync()
-                                              ?? throw new HandlingExceptions(HandlingExtinguisherResources.CompanyNotFound);
+        var company = await repository.FindBy( company => company.CompanyId == companyId && company.Active ).FirstOrDefaultAsync()
+                                              ?? throw new HandlingExceptions(HandlingExtinguisherResources.CompanyNotFound );
 
-        var employees = await employeeRepository.FindBy( employee => employee.CompanyId == companyId ).ToListAsync();
+        var employees = await employeeRepository.FindBy( employee => employee.CompanyId == companyId && employee.Active ).ToListAsync();
 
         if ( employees.Any() )
-            await employeeRepository.DeleteRange( employees );
+        {
+            foreach ( var employee in employees )
+            {
+                employee.Deactivate();
+            }
 
-        await repository.Delete( company );
+            await employeeRepository.PatchRange( employees );
+        }
+
+        company.Deactivate();
+
+        await repository.Patch( company );
 
         return true;
     }

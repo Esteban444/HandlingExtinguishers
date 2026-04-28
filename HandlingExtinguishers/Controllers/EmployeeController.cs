@@ -1,8 +1,9 @@
 ﻿namespace HandlingExtinguishers.Controllers;
 
-using HandlingExtinguishers.Contracts.Interfaces;
-
 #region Usings
+using FluentValidation;
+using HandlingExtinguishers.Contracts.Interfaces.CommandServices;
+using HandlingExtinguishers.Contracts.Interfaces.QueryServices;
 using HandlingExtinguishers.Models;
 using HandlingExtinguishers.Models.Employees;
 using HandlingExtinguishers.Models.Pagination;
@@ -14,9 +15,12 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/employee")]
 [ApiController]
 [Authorize]
-public class EmployeeController( IEmployeeService serviceEmployee ) : ControllerBase
+public class EmployeeController( IEmployeeQueryService employeeQueryService,
+                                 IEmployeeCommandService employeeCommandService,
+                                 IValidator<EmployeeRequest> validator ) : ControllerBase
 {
-    private readonly IEmployeeService serviceEmployee = serviceEmployee;
+    private readonly IEmployeeQueryService queryService = employeeQueryService;
+    private readonly IEmployeeCommandService commandService = employeeCommandService;
 
     [HttpGet("search")]
     [ProducesResponseType(typeof(FilterEmployeeResponse), 200)]
@@ -24,7 +28,7 @@ public class EmployeeController( IEmployeeService serviceEmployee ) : Controller
     [ProducesResponseType(typeof(FailedOperationResult), 400)]
     public async Task<IActionResult> Employees([FromQuery] QueryParameter filter)
     {
-        var response = await serviceEmployee.SearchEmployees(filter);
+        var response = await queryService.SearchEmployees(filter);
         return Ok(response);
     }
 
@@ -34,7 +38,7 @@ public class EmployeeController( IEmployeeService serviceEmployee ) : Controller
     [ProducesResponseType(typeof(FailedOperationResult), 400)]
     public async Task<IActionResult> EmployeeById( Guid employeeId )
     {
-        var response = await serviceEmployee.SearchEmployeeById( employeeId );
+        var response = await queryService.SearchEmployeeById( employeeId );
 
         return Ok( response );
     }
@@ -45,7 +49,16 @@ public class EmployeeController( IEmployeeService serviceEmployee ) : Controller
     [ProducesResponseType(typeof(FailedOperationResult), 400)]
     public async Task<IActionResult> CreateEmployee( EmployeeRequest request )
     {
-        var response = await serviceEmployee.CreateEmployee( request );
+        var Validacion = validator.Validate( request );
+
+        if ( !Validacion.IsValid )
+        {
+            var errors = Validacion.Errors.Select( error => error.ErrorMessage );
+
+            return BadRequest( new ErrorResponse { Errors = errors } );
+        }
+
+        var response = await commandService.CreateEmployee( request );
 
         return Ok( response );
     }
@@ -56,7 +69,7 @@ public class EmployeeController( IEmployeeService serviceEmployee ) : Controller
     [ProducesResponseType(typeof(FailedOperationResult), 400)]
     public async Task<IActionResult> UpdateEmployee( Guid employeeId, EmployeeRequest request )
     {
-        var response = await serviceEmployee.UpdatedEmployee( employeeId, request );
+        var response = await commandService.UpdatedEmployee( employeeId, request );
 
         return Ok( response );
     }
@@ -67,7 +80,7 @@ public class EmployeeController( IEmployeeService serviceEmployee ) : Controller
     [ProducesResponseType(typeof(FailedOperationResult), 400)]
     public async Task<IActionResult> DeleteEmployee( Guid employeeId )
     {
-        var response = await serviceEmployee.DeleteEmployee( employeeId );
+        var response = await commandService.DeleteEmployee( employeeId );
 
         return Ok( response );
 
