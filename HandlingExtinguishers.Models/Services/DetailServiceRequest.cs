@@ -2,8 +2,6 @@
 
 public class DetailServiceRequest
 {
-    public Guid DetailServiceId { get; set; }
-
     public Guid? ServiceId { get; set; }
 
     public string? Description { get; set; }
@@ -12,7 +10,7 @@ public class DetailServiceRequest
 
     public Guid? WeightExtinguisherId { get; set; }
 
-    public decimal? Value { get; set; }
+    public decimal? Price { get; set; }
 
     public int? Quantity { get; set; }
 

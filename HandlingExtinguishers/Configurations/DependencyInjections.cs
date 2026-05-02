@@ -70,12 +70,15 @@ public static class DependencyInjections
         services.AddScoped<ICompanyCommandService, CompanyCommandService>();
         services.AddScoped<IEmployeeQueryService, EmployeeQueryService>();
         services.AddScoped<IEmployeeCommandService, EmployeeCommandService>();
+        services.AddScoped<IServiceQueryService, ServiceQueryService>();
+        services.AddScoped<IServiceCommandService, ServiceCommandService>();
+        services.AddScoped<IDetailServiceQueryService, DetailServiceQueryService>();
+        services.AddScoped<IDetailServiceCommandService, DetailServiceCommandService>();
 
 
 
         services.AddScoped<IClientService, ClientService>();
         services.AddScoped<ICreditService, Core.Services.CreditService>();
-        services.AddScoped<IDetailService, DetailServices>();
         services.AddScoped<IServiceDetailExtinguisherClients, DetailExtinguisherClientService>();
         services.AddScoped<IExpenseService, ExpenseService>();
         services.AddScoped<IInventoryService, InventaryService>();
@@ -83,7 +86,6 @@ public static class DependencyInjections
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<IWeightExtinguisherService, WeightExtinguisherService>();
         services.AddScoped<ITypeExtinguisherService, TypeExtinguisherService>();
-        services.AddScoped<IServiceOfService, ServiceOfService>();
 
         return services;
     }

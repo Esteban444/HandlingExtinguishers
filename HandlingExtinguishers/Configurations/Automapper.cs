@@ -28,12 +28,25 @@ public class Automapper : Profile
         CreateMap<CreditService, CreditServiceRequest>()
             .ForMember(x => x.Service, y => y.MapFrom(z => z.Service));
 
-        CreateMap<DetailService, DetailServiceResponse>().ReverseMap() ;
-            //.ForMember(x => x.Inv, y => y.MapFrom(z => z.Inventories))
-            //.ForMember(x => x.W, y => y.MapFrom(z => z.WeightExtinguisher))
-            //.ForMember(x => x.Prices, y => y.MapFrom(z => z.Price))
-            //.ForMember(x => x.TypeExtinguisher, y => y.MapFrom(z => z.TypeExtinguisher));
-        CreateMap<DetailService, DetailServiceRequest>().ReverseMap();
+        CreateMap<DetailServiceRequest, DetailService>();
+
+        CreateMap<ServiceRequest, Service>()
+            .ForMember( dest => dest.DetailServices,
+                        opt => opt.MapFrom( src => src.Details ) );
+
+        CreateMap<DetailService, DetailServiceResponse>()
+            .ForMember( dest => dest.TypeExtinguisher,
+                        opt => opt.MapFrom( src => src.TypeExtinguisher!.Extinguisher  ) )
+            .ForMember( dest => dest.WeightExtinguisher,
+                        opt => opt.MapFrom( src => src.WeightExtinguisher!.WeightPound ) );
+
+        CreateMap<Service, ServiceResponse>()
+            .ForMember( dest => dest.ClientName,
+                        opt => opt.MapFrom( src => src.Client!.Name ) )
+            .ForMember( dest => dest.EmployeeName,
+                        opt => opt.MapFrom( src => src.Employee!.FirstName + " " + src.Employee.LastName ) )
+            .ForMember( dest => dest.Details,
+                        opt => opt.MapFrom( src => src.DetailServices ) );
 
         CreateMap<DetailExtinguisherClient, DetailExtinguisherClientRequest>()
             .ForMember(x => x.Client, y => y.MapFrom(z => z.Client));

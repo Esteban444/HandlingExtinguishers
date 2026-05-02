@@ -2,17 +2,13 @@
 
 public class DetailServiceResponse
 {
-    public Guid DetailServiuceId { get; set; }
-
-    public Guid? ServiceId { get; set; }
+    public Guid DetailServiceId { get; set; }
 
     public string? Description { get; set; }
 
-    public Guid? TypeExtinguisherId { get; set; }
+    public string? TypeExtinguisher { get; set; }
 
-    public Guid? WeightExtinguisherId { get; set; }
-
-    public decimal? Value { get; set; }
+    public string? WeightExtinguisher { get; set; }
 
     public int? Quantity { get; set; }
 
